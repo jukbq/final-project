@@ -3,7 +3,6 @@ header {
 }
 header .header-wrapper {
   width: 100vw;
-  height: 100%;
   position: fixed;
   z-index: 110;
   top: 0;
@@ -25,6 +24,9 @@ header .header-wrapper .container .header-top {
   justify-content: space-between;
   background: var(--clr-white);
   transition: var(--transition);
+}
+header .header-wrapper .container .header-top .scroll-down {
+  margin-top: -45%;
 }
 header .header-wrapper .container .header-top .header-phone a {
   font-size: 16px;
@@ -254,8 +256,6 @@ header .header-wrapper .container .header-bottom .user-c-wrapper .user-cabinet b
 header .header-wrapper .container .header-bottom .header-cart {
   position: relative;
   min-width: 130px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -348,5 +348,3 @@ header .header-wrapper .container .header-bottom .header-cart .tooltip::after {
   border-left-width: 7px;
   border-bottom: 7px solid var(--clr-white);
 }
-
-/*# sourceMappingURL=header.component.css.map */

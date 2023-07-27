@@ -1,7 +1,7 @@
 <header>
-  <div class="header-wrapper">
+  <div class="header-wrapper ">
    <div class="container">
-  <div class="header-top">
+  <div class="header-top ">
     <div class="header-phone">
       <a href="tel:+380971830618">+38 097 18 306 18 </a>
       <p>нд-чт 09:30 − 21:00 <br> пт- сб 09:30 − 22:00 <br></p>
@@ -35,8 +35,9 @@
     </div>
   </div>
   <div class="header-bottom">
-    <a class="header-logo">
-      <img src="https://firebasestorage.googleapis.com/v0/b/my-final-project-cbaf4.appspot.com/o/header-img%2Flogo-pizza-red.svg?alt=media&token=5bc92d92-286a-4216-8de9-9fd1b20b01d1" alt="" srcset=""></a>
+    <a class="header-logo" [routerLink]="['/home/']">
+      <img src="https://firebasestorage.googleapis.com/v0/b/my-final-project-cbaf4.appspot.com/o/header-img%2Flogo-pizza-red.svg?alt=media&token=5bc92d92-286a-4216-8de9-9fd1b20b01d1" alt="" srcset="">
+    </a>
     <div class="menu-list">
       <ul>
         <li id="menu-item-1129"
@@ -73,7 +74,7 @@
         </div>
       </a>
       <div class="user-cabinet not-login">
-        <button class="user-c-btn open-popup" data-rel="1">
+        <button [routerLink]="[ '/admin']" class="user-c-btn open-popup" data-rel="1">
           <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M10 10.5001C12.3012 10.5001 14.1667 8.6346 14.1667 6.33341C14.1667 4.03223 12.3012 2.16675 10 2.16675C7.69885 2.16675 5.83337 4.03223 5.83337 6.33341C5.83337 8.6346 7.69885 10.5001 10 10.5001Z"
