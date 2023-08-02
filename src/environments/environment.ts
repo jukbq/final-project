@@ -1,12 +1,14 @@
+
+import { initializeApp } from 'firebase/app';
+
 export const environment = {
   firebase: {
-    projectId: 'my-final-project-cbaf4',
-    appId: '1:990838836472:web:952e297f42e6e8ec16bf0d',
-    databaseURL: 'https://my-final-project-cbaf4-default-rtdb.firebaseio.com',
-    storageBucket: 'my-final-project-cbaf4.appspot.com',
-    locationId: 'europe-west',
-    apiKey: 'AIzaSyCNPM7dybfRVXPebZ-nFbcYwyS0gWvlhCs',
-    authDomain: 'my-final-project-cbaf4.firebaseapp.com',
-    messagingSenderId: '990838836472',
+    apiKey: 'AIzaSyCxc7k2tJkgir63ymEd17wLtxCWnMsmw0A',
+    authDomain: 'final-project-393613.firebaseapp.com',
+    projectId: 'final-project-393613',
+    storageBucket: 'final-project-393613.appspot.com',
+    messagingSenderId: '1081720963205',
+    appId: '1:1081720963205:web:7236448f8cf041204e29ec',
   },
 };
+

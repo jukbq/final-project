@@ -1,1 +1,77 @@
-<p>admin-actions works!</p>
+<section>
+    <div class="add_action">
+        <button (click)="action_form = !action_form" class="btn" data-rel="address" type="button">
+            ДОДАТИ АКЦІЮ
+        </button>
+        <table [ngClass]="{ active: action_form }" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Заголовок</th>
+                    <th scope="col">Опис</th>
+                    <!--  <th scope="col">Посилання</th> -->
+                    <th scope="col">Картинка</th>
+                    <th scope="col">Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let actions of actions; let i = index">
+                    <td>{{ actions.title }}</td>
+                    <td>{{ actions.description }}</td>
+                    <!--   <td>{{ actions.link }}</td> -->
+                    <td class="image">
+                        <img [src]="actions.images" />
+                    </td>
+                    <td class="btn_tr">
+                        <a (click)="editAction(actions)" type="button">Редагувати</a>
+                        <a (click)="delAction(actions)" type="button">Видалити</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class="form_conteiner" [ngClass]="{ active: !action_form }">
+            <form [formGroup]="actionForn" (ngSubmit)="creatAction()" class="form_action">
+                <div class="input_section">
+                    <input formControlName="title" type="text" name="title" class="form-control"
+                        placeholder="*Заголовок" aria-label="Заголовок" />
+                    <input formControlName="link" type="text" name="link" class="form-control" placeholder="*Посилання"
+                        aria-label="Посилання" />
+                    <textarea formControlName="description" class="form-control" name="description" placeholder="*Опис"
+                        id="floatingTextarea2" style="height: 100px"></textarea>
+
+                </div>
+                <div class="load_file">
+                    <input class="form-control form-control-lg" type="file" (change)="upload($event)" />
+                </div>
+
+                <div class="progress_line">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped" role="progressbar"
+                            aria-label="Default striped example" [style.width.%]="uploadPercent" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+                <div class="image_block">
+                    <td class="image">
+                        <img [src]="valueByControl('images')" />
+                    </td>
+
+                </div>
+
+                <div class="batton_section">
+                    <button [disabled]="actionForn.invalid" type="submit" class="btn">
+                        {{ edit_status ? "Зберегти" : "Додати" }}
+                    </button>
+
+                    <button (click)="deleteImage()" type="submit" class="btn se">
+                        Видалити фото
+                    </button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</section>

@@ -7,7 +7,6 @@ import {MatSliderModule} from "@angular/material/slider";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {RouterModule} from "@angular/router";
 
-
 const MATERIAL = [MatSliderModule, MatDialogModule, MatFormFieldModule];
 
 @NgModule({
@@ -19,6 +18,7 @@ const MATERIAL = [MatSliderModule, MatDialogModule, MatFormFieldModule];
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+  
   ],
   exports: [
     ...MATERIAL,
@@ -26,8 +26,8 @@ const MATERIAL = [MatSliderModule, MatDialogModule, MatFormFieldModule];
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+ 
   ],
   providers: [{ provide: MatDialogRef, useValue: {} }],
-
 })
-export class SharedModule { }
+export class SharedModule {}
