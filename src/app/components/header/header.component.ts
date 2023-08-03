@@ -1,6 +1,5 @@
-import {Component, ElementRef, HostListener} from '@angular/core';
-import {Router} from "@angular/router";
-
+import { Component, ElementRef, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,28 +11,26 @@ export class HeaderComponent {
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any) {
-    const header = this.el.nativeElement.querySelector('header');
-    const headerTop = this.el.nativeElement.querySelector('.header-top');
+    const headerWrapper =
+      this.el.nativeElement.querySelector('.header-wrapper');
     const scrollPosition = window.scrollY;
+    const windowWidth = window.innerWidth;
 
-    if (scrollPosition > 0) {
-      // Якщо сторінку прокручено вниз, приховати header-top
-      headerTop.style.transform = 'translateY(-100%)';
-      header.style.transition = 'transform 0.3s ease';
-      header.style.transform = 'translateY(-100%)';
-    } else {
-      // Якщо сторінку прокручено вгору, показати header-top
-      headerTop.style.transform = 'none';
-      header.style.transition = 'none';
-      header.style.transform = 'none';
+    if (windowWidth > 1240) {
+      if (scrollPosition > 0) {
+        headerWrapper.style.top = '-65px';
+      } else {
+        headerWrapper.style.top = '0px';
+      }
     }
   }
 
   public hamburger_active() {
-     const headerTop = this.el.nativeElement.querySelector('.header-top');
-     const headerMenuList = this.el.nativeElement.querySelector('.menu-list');
-     const hamburgerInner = this.el.nativeElement.querySelector('.hamburger-inner');
- 
+    const headerTop = this.el.nativeElement.querySelector('.header-top');
+    const headerMenuList = this.el.nativeElement.querySelector('.menu-list');
+    const hamburgerInner =
+      this.el.nativeElement.querySelector('.hamburger-inner');
+
     if (hamburgerInner) {
       headerTop.classList.toggle('active');
       headerMenuList.classList.toggle('active');

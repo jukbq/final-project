@@ -1,13 +1,15 @@
 header {
+    width: 100vw;
     height: 156px;
 
     .header-wrapper {
-        width: 100vw;
+        width: 100%;
         position: fixed;
         z-index: 110;
         top: 0;
         left: 0;
         transition: var(--transition);
+
 
         .container {
             width: 80%;

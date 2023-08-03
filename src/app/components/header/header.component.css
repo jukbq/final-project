@@ -1,8 +1,9 @@
 header {
+  width: 100vw;
   height: 156px;
 }
 header .header-wrapper {
-  width: 100vw;
+  width: 100%;
   position: fixed;
   z-index: 110;
   top: 0;
@@ -378,6 +379,7 @@ header .header-wrapper .container .header-bottom .hamburger {
 @media (max-width: 1240px) {
   header .header-wrapper .container {
     position: relative;
+    width: 90%;
   }
   header .header-wrapper .container .header-top {
     position: absolute;
@@ -418,8 +420,15 @@ header .header-wrapper .container .header-bottom .hamburger {
     height: 40px;
     position: absolute;
     bottom: -40px;
+    background-color: var(--clr-white);
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.06);
     transition: var(--transition);
+  }
+  header .header-wrapper .container .header-bottom .menu-list ul {
+    padding: 0;
+  }
+  header .header-wrapper .container .header-bottom .menu-list ul li {
+    margin-right: 0px;
   }
   header .header-wrapper .container .header-bottom .menu-list.active {
     transform: translateX(0);
@@ -553,5 +562,15 @@ header .header-wrapper .container .header-bottom .hamburger {
     transition-property: transform;
     transition-duration: 0.15s;
     transition-timing-function: ease;
+  }
+}
+@media (max-width: 524px) {
+  header .header-wrapper .container {
+    width: 100vw;
+    padding: 0;
+  }
+  header .header-wrapper .container .header-bottom .header-logo {
+    width: 35%;
+    margin-left: 15px;
   }
 }
