@@ -1,9 +1,8 @@
 header {
-  width: 100vw;
   height: 156px;
 }
 header .header-wrapper {
-  width: 100%;
+  width: 100vw;
   position: fixed;
   z-index: 110;
   top: 0;

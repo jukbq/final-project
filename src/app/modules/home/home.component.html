@@ -1,5 +1,29 @@
-<ngx-slick-carousel class="carousel" [config]="slickConfig">
-    <div class="slide" *ngFor="let image of images">
-        <img src="{{ image }}" alt="Slide {{ image }}">
+<section>   
+    
+    <div class="banner-decor">
+            <img src="https://mapizza.com.ua/wp-content/uploads/2022/03/banner-decor.svg" alt="">
+        </div>
+    <div class="carusel_comtainer">
+    
+
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
+            (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+            (beforeChange)="beforeChange($event)">
+
+            <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+
+                <div class="tatile_conteiner">
+                    <h1>{{ slide.title }}</h1>
+                    <p>{{ slide.description }}</p>
+                    <a class="btn" href="{{ slide.link }}">
+                        <span>Замовити</span>
+                        <i></i>
+                    </a>
+                </div>
+                <div class="image_conteiner">
+                    <img src="{{ slide.images }}" alt="">
+                </div>
+            </div>
+        </ngx-slick-carousel>
     </div>
-</ngx-slick-carousel>
+</section>
