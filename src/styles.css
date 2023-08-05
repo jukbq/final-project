@@ -76,6 +76,22 @@
   background: var(--clr-green);
 }
 
+@media (max-width: 986px) {
+  .batton-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+  }
+  .batton-container .slick-prev,
+  .batton-container .slick-next {
+    display: none;
+  }
+  .batton-container .slick-dots {
+    width: 50%;
+  }
+}
 @font-face {
   font-family: "Mont Blanc";
   src: url("https://fonts.cdnfonts.com/css/mont-blanc") format("truetype");
@@ -90,7 +106,16 @@
   --transition: all .3s linear;
 }
 
-body.custom-font {
+body {
+  padding: 0 7vw;
+}
+body .custom-font {
   margin: 0;
   font-family: "Mont Blanc", sans-serif;
+}
+
+@media (max-width: 524px) {
+  body {
+    padding: 0 3vw;
+  }
 }

@@ -17,7 +17,17 @@
 
 
 
-body.custom-font {
-  margin: 0;
-  font-family: 'Mont Blanc', sans-serif;
+body {
+  padding: 0 7vw;
+
+  .custom-font {
+    margin: 0;
+    font-family: 'Mont Blanc', sans-serif;
+  }
+}
+
+@media (max-width:524px) {
+  body {
+    padding: 0 3vw;
+  }
 }

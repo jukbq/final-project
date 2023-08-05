@@ -1,7 +1,7 @@
 section .action-conteiner {
-  width: 100vw;
+  width: 100%;
   position: relative;
-  height: 500px;
+  height: 600px;
 }
 section .action-conteiner .banner-decor {
   position: absolute;
@@ -14,7 +14,7 @@ section .action-conteiner .banner-decor img {
   width: 100%;
 }
 section .action-conteiner .carusel_container {
-  width: 80%;
+  /*      width: 80%; */
   margin: 0 auto;
   position: relative;
 }
@@ -42,6 +42,7 @@ section .action-conteiner .carusel_container .carousel .slide .title_container {
 }
 section .action-conteiner .carusel_container .carousel .slide .title_container h1 {
   font-size: 40px;
+  font-weight: 600;
 }
 section .action-conteiner .carusel_container .carousel .slide .title_container p {
   font-size: 16px;
@@ -100,4 +101,64 @@ section .action-conteiner .carusel_container .carousel .slide .image_conteiner i
   width: 100%;
   height: auto;
   overflow: hidden;
+}
+
+@media (max-width: 1028px) {
+  section {
+    margin: 0 auto;
+  }
+  section .action-conteiner {
+    width: 100%;
+  }
+  section .action-conteiner .banner-decor {
+    display: none;
+  }
+  section .batton-container {
+    bottom: 5%;
+  }
+  section .carusel_container .carousel .slide .title_container {
+    justify-content: flex-start;
+    padding: 20px 10px;
+  }
+  section .carusel_container .carousel .slide .title_container h1 {
+    font-size: 30px;
+  }
+}
+@media (max-width: 986px) {
+  section .action-conteiner {
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+  }
+  section .action-conteiner .carusel_container .carousel .slide {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  section .action-conteiner .carusel_container .carousel .slide .title_container {
+    width: 100%;
+    order: 2;
+    margin-bottom: 80px;
+  }
+  section .action-conteiner .carusel_container .carousel .slide .title_container h1 {
+    font-size: 30px;
+  }
+  section .action-conteiner .carusel_container .carousel .slide .image_conteiner {
+    width: 100%;
+    order: 1;
+    margin-bottom: 20px;
+  }
+  section .action-conteiner .carusel_container .carousel .slide .image_conteiner {
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  section .action-conteiner .carusel_container .carousel .slide .image_conteiner img {
+    width: 80%;
+    height: auto;
+    overflow: hidden;
+  }
 }

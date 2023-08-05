@@ -10,7 +10,6 @@ header .header-wrapper {
   transition: var(--transition);
 }
 header .header-wrapper .container {
-  width: 80%;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -376,6 +375,9 @@ header .header-wrapper .container .header-bottom .hamburger {
 }
 
 @media (max-width: 1240px) {
+  header {
+    height: 110px;
+  }
   header .header-wrapper .container {
     position: relative;
     width: 90%;

@@ -1,10 +1,8 @@
 section {
-
-
     .action-conteiner {
-        width: 100vw;
-        position: relative;
-        height: 500px;
+        width: 100%;
+         position: relative;
+        height: 600px;
    
 
         .banner-decor {
@@ -20,7 +18,7 @@ section {
         }
 
         .carusel_container {
-            width: 80%;
+       /*      width: 80%; */
             margin: 0 auto;
             position: relative;
 
@@ -51,6 +49,7 @@ section {
 
                         h1 {
                             font-size: 40px;
+                            font-weight: 600;
                         }
 
                         p {

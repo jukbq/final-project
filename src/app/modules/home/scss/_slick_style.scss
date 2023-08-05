@@ -1,96 +1,119 @@
-   .batton-container {
-       width: 245px;
-       height: 50px;
-       position: absolute;
-       display: flex;
-       justify-content: space-between;
-       align-items: center;
-       bottom: 10%;
-       left: 6%;
-       z-index: 1000;
-       opacity: 1;
+.batton-container {
+    width: 245px;
+    height: 50px;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 10%;
+    left: 6%;
+    z-index: 1000;
+    opacity: 1;
 
 
-       .slick-prev,
-       .slick-next {
+    .slick-prev,
+    .slick-next {
 
-           position: relative;
-           width: 48px;
-           height: 48px;
-           background: var(--clr-white);
-           top: 0;
-           bottom: 0;
-           border-radius: 50%;
-           transform: translate(0, 0);
-           transition: var(--transition);
+        position: relative;
+        width: 48px;
+        height: 48px;
+        background: var(--clr-white);
+        top: 0;
+        bottom: 0;
+        border-radius: 50%;
+        transform: translate(0, 0);
+        transition: var(--transition);
 
-           i {
-               width: 16px;
-               height: 16px;
-               position: absolute;
-               top: 50%;
-               left: 50%;
-
-
-               svg {
-                   display: block;
-                   width: 100%;
-                   stroke: var(--clr-black);
-                   transition: var(--transition);
-               }
-
-               transform: translate(-50%, -50%);
+        i {
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
 
 
-           }
+            svg {
+                display: block;
+                width: 100%;
+                stroke: var(--clr-black);
+                transition: var(--transition);
+            }
 
-           &::before {
-               content: none;
-           }
-
-           &:hover {
-               background: var(--clr-green);
-
-           }
+            transform: translate(-50%, -50%);
 
 
-       }
+        }
 
-       .slick-prev {
-           transform: rotate(180deg);
-       }
+        &::before {
+            content: none;
+        }
 
-       .slick-dots {
-           position: relative;
-           width: 60%;
-           display: flex;
-           justify-content: space-between;
-           bottom: 0;
+        &:hover {
+            background: var(--clr-green);
 
-           .slick-active {
-               background: var(--clr-red);
+        }
 
-               &:hover {
-                   border: 1px solid var(--clr-red);
 
-               }
-           }
+    }
 
-           li {
-               width: 12px;
-               height: 12px;
-               border-radius: 50%;
-               background-color: transparent;
-               border: 1px solid #d1d9ce;
+    .slick-prev {
+        transform: rotate(180deg);
+    }
 
-               button::before {
-                   content: none;
-               }
+    .slick-dots {
+        position: relative;
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+        bottom: 0;
 
-               &:hover {
-                   background: var(--clr-green);
+        .slick-active {
+            background: var(--clr-red);
 
-               }
-           }
-       }
-   }
+            &:hover {
+                border: 1px solid var(--clr-red);
+
+            }
+        }
+
+        li {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 1px solid #d1d9ce;
+
+            button::before {
+                content: none;
+            }
+
+            &:hover {
+                background: var(--clr-green);
+
+            }
+        }
+    }
+
+
+}
+
+@media (max-width: 986px) {
+    .batton-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      left: 0;
+
+
+        .slick-prev,
+        .slick-next {
+            display: none;
+        }
+
+        .slick-dots {
+              width: 50%;
+        }
+
+    }
+}

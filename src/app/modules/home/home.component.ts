@@ -30,7 +30,7 @@ export class HomeComponent {
     slidesToScroll: 1,
     infinite: true,
     fade: true, // Застосування ефекту зникання
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000, // Затримка між автоматичними переходами в мілісекундах
     dots: true,
     arrows: true,
