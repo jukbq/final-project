@@ -1,3 +1,81 @@
+.batton-container {
+  width: 245px;
+  height: 50px;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 10%;
+  left: 6%;
+  z-index: 1000;
+  opacity: 1;
+}
+.batton-container .slick-prev,
+.batton-container .slick-next {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background: var(--clr-white);
+  top: 0;
+  bottom: 0;
+  border-radius: 50%;
+  transform: translate(0, 0);
+  transition: var(--transition);
+}
+.batton-container .slick-prev i,
+.batton-container .slick-next i {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.batton-container .slick-prev i svg,
+.batton-container .slick-next i svg {
+  display: block;
+  width: 100%;
+  stroke: var(--clr-black);
+  transition: var(--transition);
+}
+.batton-container .slick-prev::before,
+.batton-container .slick-next::before {
+  content: none;
+}
+.batton-container .slick-prev:hover,
+.batton-container .slick-next:hover {
+  background: var(--clr-green);
+}
+.batton-container .slick-prev {
+  transform: rotate(180deg);
+}
+.batton-container .slick-dots {
+  position: relative;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  bottom: 0;
+}
+.batton-container .slick-dots .slick-active {
+  background: var(--clr-red);
+}
+.batton-container .slick-dots .slick-active:hover {
+  border: 1px solid var(--clr-red);
+}
+.batton-container .slick-dots li {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #d1d9ce;
+}
+.batton-container .slick-dots li button::before {
+  content: none;
+}
+.batton-container .slick-dots li:hover {
+  background: var(--clr-green);
+}
+
 @font-face {
   font-family: "Mont Blanc";
   src: url("https://fonts.cdnfonts.com/css/mont-blanc") format("truetype");

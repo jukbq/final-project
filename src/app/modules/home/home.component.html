@@ -1,29 +1,32 @@
-<section>   
+<section>
+<div class="action-conteiner">
     
-    <div class="banner-decor">
+        <div class="banner-decor">
             <img src="https://mapizza.com.ua/wp-content/uploads/2022/03/banner-decor.svg" alt="">
         </div>
-    <div class="carusel_comtainer">
+        <div class="carusel_container">
+            <div class="batton-container"></div>
     
-
-        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
-            (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-            (beforeChange)="beforeChange($event)">
-
-            <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-
-                <div class="tatile_conteiner">
-                    <h1>{{ slide.title }}</h1>
-                    <p>{{ slide.description }}</p>
-                    <a class="btn" href="{{ slide.link }}">
-                        <span>Замовити</span>
-                        <i></i>
-                    </a>
+            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
+                (init)="onCarouselInit($event)">
+    
+                <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+    
+                    <div class="title_container">
+                        <h1>{{ slide.title }}</h1>
+                        <p>{{ slide.description }}</p>
+                        <a class="btn" href="{{ slide.link }}">
+                            <span>Замовити</span>
+                            <i></i>
+                        </a>
+    
+                    </div>
+                    <div class="image_conteiner">
+                        <img src="{{ slide.images }}" alt="">
+                    </div>
                 </div>
-                <div class="image_conteiner">
-                    <img src="{{ slide.images }}" alt="">
-                </div>
-            </div>
-        </ngx-slick-carousel>
-    </div>
+    
+            </ngx-slick-carousel>
+        </div>
+</div>
 </section>

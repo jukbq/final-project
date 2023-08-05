@@ -1,28 +1,30 @@
-section {
+section .action-conteiner {
   width: 100vw;
   position: relative;
+  height: 500px;
 }
-section .banner-decor {
+section .action-conteiner .banner-decor {
   position: absolute;
   width: 25%;
   top: 0%;
   left: 4%;
   z-index: 10000;
 }
-section .banner-decor img {
+section .action-conteiner .banner-decor img {
   width: 100%;
 }
-section .carusel_comtainer {
+section .action-conteiner .carusel_container {
   width: 80%;
   margin: 0 auto;
+  position: relative;
 }
-section .carusel_comtainer .carousel {
+section .action-conteiner .carusel_container .carousel {
   display: block;
   width: 100%;
-  height: 335px;
+  height: 100%;
   margin-top: 20px;
 }
-section .carusel_comtainer .carousel .slide {
+section .action-conteiner .carusel_container .carousel .slide {
   position: relative;
   width: 100%;
   height: 100%;
@@ -31,23 +33,23 @@ section .carusel_comtainer .carousel .slide {
   border-radius: 16px;
   margin: 0 auto;
 }
-section .carusel_comtainer .carousel .slide .tatile_conteiner {
+section .action-conteiner .carusel_container .carousel .slide .title_container {
   width: 45%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 0px 50px;
 }
-section .carusel_comtainer .carousel .slide .tatile_conteiner h1 {
+section .action-conteiner .carusel_container .carousel .slide .title_container h1 {
   font-size: 40px;
 }
-section .carusel_comtainer .carousel .slide .tatile_conteiner p {
+section .action-conteiner .carusel_container .carousel .slide .title_container p {
   font-size: 16px;
   line-height: 1.5em;
   color: var(--clr-grey);
   font-weight: 400;
 }
-section .carusel_comtainer .carousel .slide .tatile_conteiner .btn {
+section .action-conteiner .carusel_container .carousel .slide .title_container .btn {
   width: 170px;
   position: relative;
   display: inline-flex;
@@ -65,10 +67,10 @@ section .carusel_comtainer .carousel .slide .tatile_conteiner .btn {
   text-transform: uppercase;
   transition: var(--transition);
 }
-section .carusel_comtainer .carousel .slide .tatile_conteiner .btn:hover {
+section .action-conteiner .carusel_container .carousel .slide .title_container .btn:hover {
   background: var(--clr-green);
 }
-section .carusel_comtainer .carousel .slide .tatile_conteiner .btn i {
+section .action-conteiner .carusel_container .carousel .slide .title_container .btn i {
   display: inline-block;
   flex-shrink: 0;
   position: relative;
@@ -78,7 +80,7 @@ section .carusel_comtainer .carousel .slide .tatile_conteiner .btn i {
   border: 2px solid var(--clr-white);
   margin-left: 15px;
 }
-section .carusel_comtainer .carousel .slide .tatile_conteiner .btn i::before {
+section .action-conteiner .carusel_container .carousel .slide .title_container .btn i::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -90,11 +92,11 @@ section .carusel_comtainer .carousel .slide .tatile_conteiner .btn i::before {
   border-right: 2px solid var(--clr-white);
   border-bottom: 2px solid var(--clr-white);
 }
-section .carusel_comtainer .carousel .slide .image_conteiner {
+section .action-conteiner .carusel_container .carousel .slide .image_conteiner {
   width: 55%;
   height: 100%;
 }
-section .carusel_comtainer .carousel .slide .image_conteiner img {
+section .action-conteiner .carusel_container .carousel .slide .image_conteiner img {
   width: 100%;
   height: auto;
   overflow: hidden;

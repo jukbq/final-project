@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { ActionResponse } from 'src/app/shared/interfaces/action';
 import { ActionService } from 'src/app/shared/services/action/action.service';
+import { SlickCarouselComponent } from 'ngx-slick-carousel';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { ActionService } from 'src/app/shared/services/action/action.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  constructor(private actionService: ActionService) {}
+  constructor(private actionService: ActionService, private el: ElementRef) {}
 
   public slides: Array<ActionResponse> = [];
 
@@ -19,6 +20,7 @@ export class HomeComponent {
   getActions(): void {
     this.actionService.getAll().subscribe((data) => {
       this.slides = data;
+      console.log(this.actionService);
       console.log(this.slides);
     });
   }
@@ -39,24 +41,32 @@ export class HomeComponent {
     this.slides.length = this.slides.length - 1;
   }
 
-  slickInit(event: any) {
-    console.log('Slick carousel initialized:', event);
-  }
+  onCarouselInit(event: any) {
+    const battocontainer = document.querySelector('.batton-container');
+    const slickprev = document.querySelector('.slick-prev');
+    const slickdots = document.querySelector('.slick-dots');
+    const slicknext = document.querySelector('.slick-next');
 
-  breakpoint(event: any) {
-    console.log('Breakpoint reached:', event);
-    if (event.currentBreakpoint === 'xs') {
-      this.slideConfig.slidesToShow = 1;
-    } else {
-      this.slideConfig.slidesToShow = 4;
+    // Перевірка, чи battocontainer є елементом, а не null
+    if (battocontainer instanceof Element) {
+      slickprev!.innerHTML = `
+      <i>
+        <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 8.00004V5.33004C1 2.02005 3.35 0.660045 6.22 2.32005L8.53 3.66004L10.84 5.00004C13.71 6.66004 13.71 9.37004 10.84 11.03L8.53 12.37L6.22 13.71C3.35 15.34 1 13.99 1 10.67V8.00004Z" stroke-width="1.5"></path>
+        </svg>
+      </i>
+    `;
+      slicknext!.innerHTML = `
+   <i>
+<svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 8.00004V5.33004C1 2.02005 3.35 0.660045 6.22 2.32005L8.53 3.66004L10.84 5.00004C13.71 6.66004 13.71 9.37004 10.84 11.03L8.53 12.37L6.22 13.71C3.35 15.34 1 13.99 1 10.67V8.00004Z" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</i>
+    `;
+      battocontainer.appendChild(slickprev!);
+      battocontainer.appendChild(slickdots!);
+      battocontainer.appendChild(slicknext!);
+      console.log(battocontainer);
     }
-  }
-
-  afterChange(event: any) {
-    console.log('Slide changed:', event);
-  }
-
-  beforeChange(event: any) {
-    console.log('Before slide change:', event);
   }
 }
