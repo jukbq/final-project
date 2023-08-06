@@ -1,0 +1,143 @@
+section {
+  width: 80vw;
+  padding: 20px 40px;
+}
+section .add_goods {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section .add_goods .btn {
+  width: 65%;
+  border: 1px solid #D1D9CE;
+  border-radius: 12px;
+  background: rgba(209, 217, 206, 0);
+  transition: 0.35s;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+  padding: 16px 22px;
+}
+section .add_goods .btn:hover {
+  background-color: var(--clr-red);
+  color: var(--clr-white);
+}
+section .add_goods table {
+  width: 100%;
+  margin-top: 20px;
+}
+section .add_goods table thead {
+  width: 100%;
+}
+section .add_goods table thead tr {
+  border-bottom: var(--clr-grey);
+}
+section .add_goods table.active {
+  display: none;
+}
+section .add_goods table tbody tr .image {
+  width: 80px;
+  height: 70px;
+  overflow: hidden;
+}
+section .add_goods table tbody tr .image img {
+  height: 100%;
+}
+section .add_goods table tbody tr .btn_tr {
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+}
+section .add_goods table tbody tr .btn_tr a {
+  text-decoration: none;
+  color: #b5d8f7;
+  font-size: 18px;
+  font-weight: 500;
+}
+section .add_goods .form_conteiner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+section .add_goods .form_conteiner.active {
+  display: none;
+}
+section .add_goods .form_conteiner .form_goods {
+  width: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+}
+section .add_goods .form_conteiner .form_goods .input_section {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+section .add_goods .form_conteiner .form_goods .input_section .form-select {
+  color: black;
+}
+section .add_goods .form_conteiner .form_goods .input_section input,
+section .add_goods .form_conteiner .form_goods .input_section textarea {
+  width: 90%;
+  margin-top: 20px;
+  height: auto;
+}
+section .add_goods .form_conteiner .form_goods .form-floating,
+section .add_goods .form_conteiner .form_goods .load_file {
+  margin-top: 20px;
+}
+section .add_goods .form_conteiner .form_goods .progress_line {
+  margin-top: 36px;
+  width: 100%;
+}
+section .add_goods .form_conteiner .form_goods .progress_line .progress {
+  width: 100%;
+}
+section .add_goods .form_conteiner .form_goods .image_block {
+  width: 48%;
+  height: auto;
+  position: relative;
+  margin-top: 19px;
+}
+section .add_goods .form_conteiner .form_goods .image_block .image {
+  max-width: 750px;
+  height: 100%;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+section .add_goods .form_conteiner .form_goods .image_block .image img {
+  height: 400px;
+}
+section .add_goods .form_conteiner .form_goods .image_block .btn {
+  width: 175px;
+  height: 52px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+section .add_goods .form_conteiner .form_goods .batton_section {
+  width: 90%;
+  margin-top: 20px;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+section .add_goods .form_conteiner .form_goods .batton_section .btn {
+  width: 200px;
+}
+section .add_goods .form_conteiner .form_goods .batton_section .btn:hover {
+  background-color: var(--clr-red);
+  color: var(--clr-white);
+}

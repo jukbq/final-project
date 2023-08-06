@@ -1,5 +1,4 @@
 section {
-  width: 100vw;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -34,23 +33,28 @@ section .admin_menu {
   border: 1px solid #D1D9CE;
   border-radius: 12px;
   padding: 0;
+  margin-top: 20px;
 }
 section .admin_menu li {
   width: 20%;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: var(--transition);
 }
 section .admin_menu li p {
   cursor: pointer;
-  width: 100%;
-  height: 100%;
   font-weight: 600;
   font-size: 14px;
   line-height: 1em;
   color: var(--clr-grey);
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 0;
 }
-section .admin_menu li p:hover {
+section .admin_menu li:hover p {
   color: var(--clr-green);
 }
 section .admin_menu li.active {

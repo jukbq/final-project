@@ -1,8 +1,11 @@
 <section>
     <div class="add_action">
         <button (click)="action_form = !action_form" class="btn" data-rel="address" type="button">
-            ДОДАТИ АКЦІЮ
+            {{ !action_form ? "ДОДАТИ АКЦІЮ" : "ВІДМІНИТИ" }}
+          
         </button>
+       
+       
         <table [ngClass]="{ active: action_form }" class="table">
             <thead>
                 <tr>

@@ -5,6 +5,7 @@ const LIST: any[] = [
   { name: 'АКЦІЇ', link: 'action' },
   { name: 'КАТЕГОРІЇ', link: 'categories' },
   { name: 'ТОВАРИ', link: 'goods' },
+  { name: 'ДОДАТКОВІ ТОВАРИ', link: 'additional-products' },
   { name: 'ЗАМОВЛЕННЯ', link: 'order' },
 ];
 

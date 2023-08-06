@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 })
 export class ActionService {
   private actionArr: Array<ActionResponse> = [];
-
   private actionCollection!: CollectionReference<DocumentData>;
 
   constructor(private afs: Firestore) {

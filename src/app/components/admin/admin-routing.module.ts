@@ -5,6 +5,7 @@ import { AdminActionsComponent } from './admin-actions/admin-actions.component';
 import { AdminCategoriesComponent } from './admin-categories/admin-categories.component';
 import { AdminGoodsComponent } from './admin-goods/admin-goods.component';
 import { AdminOrderComponent } from './admin-order/admin-order.component';
+import { AdminAdditionalProductsComponent } from './admin-additional-products/admin-additional-products.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: 'action', component: AdminActionsComponent },
       { path: 'categories', component: AdminCategoriesComponent },
       { path: 'goods', component: AdminGoodsComponent },
+      { path: 'additional-products', component: AdminAdditionalProductsComponent },
       { path: 'order', component: AdminOrderComponent },
       { path: '', pathMatch: 'full', redirectTo: 'action' },
     ],

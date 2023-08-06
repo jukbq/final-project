@@ -2,14 +2,14 @@ section {
   width: 80vw;
   padding: 20px 40px;
 }
-section .add_action {
+section .add_ap {
   width: 75%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-section .add_action .btn {
+section .add_ap .btn {
   width: 65%;
   border: 1px solid #D1D9CE;
   border-radius: 12px;
@@ -21,53 +21,53 @@ section .add_action .btn {
   font-weight: bold;
   padding: 16px 22px;
 }
-section .add_action .btn:hover {
+section .add_ap .btn:hover {
   background-color: var(--clr-red);
   color: var(--clr-white);
 }
-section .add_action table {
+section .add_ap table {
   width: 100%;
   margin-top: 20px;
 }
-section .add_action table thead {
+section .add_ap table thead {
   width: 100%;
 }
-section .add_action table thead tr {
+section .add_ap table thead tr {
   border-bottom: var(--clr-grey);
 }
-section .add_action table.active {
+section .add_ap table.active {
   display: none;
 }
-section .add_action table tbody tr .image {
+section .add_ap table tbody tr .image {
   width: 80px;
   height: 70px;
   overflow: hidden;
 }
-section .add_action table tbody tr .image img {
+section .add_ap table tbody tr .image img {
   height: 100%;
 }
-section .add_action table tbody tr .btn_tr {
+section .add_ap table tbody tr .btn_tr {
   width: 40px;
   display: flex;
   flex-direction: column;
 }
-section .add_action table tbody tr .btn_tr a {
+section .add_ap table tbody tr .btn_tr a {
   text-decoration: none;
   color: #b5d8f7;
   font-size: 18px;
   font-weight: 500;
 }
-section .add_action .form_conteiner {
+section .add_ap .form_conteiner {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
 }
-section .add_action .form_conteiner.active {
+section .add_ap .form_conteiner.active {
   display: none;
 }
-section .add_action .form_conteiner .form_action {
+section .add_ap .form_conteiner .form_addProd {
   width: 50%;
   position: relative;
   display: flex;
@@ -77,7 +77,7 @@ section .add_action .form_conteiner .form_action {
   align-items: center;
   margin-top: 20px;
 }
-section .add_action .form_conteiner .form_action .input_section {
+section .add_ap .form_conteiner .form_addProd .input_section {
   width: 100%;
   position: relative;
   display: flex;
@@ -85,55 +85,56 @@ section .add_action .form_conteiner .form_action .input_section {
   align-items: center;
   margin-bottom: 30px;
 }
-section .add_action .form_conteiner .form_action .input_section input,
-section .add_action .form_conteiner .form_action .input_section textarea {
+section .add_ap .form_conteiner .form_addProd .input_section input,
+section .add_ap .form_conteiner .form_addProd .input_section textarea {
   width: 90%;
   margin-top: 20px;
   height: auto;
 }
-section .add_action .form_conteiner .form_action .form-floating,
-section .add_action .form_conteiner .form_action .load_file {
+section .add_ap .form_conteiner .form_addProd .form-floating,
+section .add_ap .form_conteiner .form_addProd .load_file {
   margin-top: 20px;
 }
-section .add_action .form_conteiner .form_action .progress_line {
+section .add_ap .form_conteiner .form_addProd .progress_line {
   margin-top: 36px;
   width: 100%;
 }
-section .add_action .form_conteiner .form_action .progress_line .progress {
+section .add_ap .form_conteiner .form_addProd .progress_line .progress {
   width: 100%;
 }
-section .add_action .form_conteiner .form_action .image_block {
+section .add_ap .form_conteiner .form_addProd .image_block {
   width: 48%;
   height: auto;
   position: relative;
   margin-top: 19px;
 }
-section .add_action .form_conteiner .form_action .image_block .image {
+section .add_ap .form_conteiner .form_addProd .image_block .image {
   max-width: 750px;
+  height: 100%;
   overflow: hidden;
   margin-bottom: 30px;
 }
-section .add_action .form_conteiner .form_action .image_block .image img {
-  height: 100%;
+section .add_ap .form_conteiner .form_addProd .image_block .image img {
+  height: 400px;
 }
-section .add_action .form_conteiner .form_action .image_block .btn {
+section .add_ap .form_conteiner .form_addProd .image_block .btn {
   width: 175px;
   height: 52px;
   position: absolute;
   bottom: 0;
   left: 0;
 }
-section .add_action .form_conteiner .form_action .batton_section {
+section .add_ap .form_conteiner .form_addProd .batton_section {
   width: 90%;
   margin-top: 20px;
   height: auto;
   display: flex;
   justify-content: space-between;
 }
-section .add_action .form_conteiner .form_action .batton_section .btn {
+section .add_ap .form_conteiner .form_addProd .batton_section .btn {
   width: 200px;
 }
-section .add_action .form_conteiner .form_action .batton_section .btn:hover {
+section .add_ap .form_conteiner .form_addProd .batton_section .btn:hover {
   background-color: var(--clr-red);
   color: var(--clr-white);
 }

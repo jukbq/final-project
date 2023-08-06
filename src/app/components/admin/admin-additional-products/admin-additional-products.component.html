@@ -1,18 +1,17 @@
 <section>
 
-    <div class=" add_goods ">
+    <div class="add_ap ">
 
-        <button (click)="good_form = !good_form" class="btn" data-rel="address" type="button">
-            {{ !good_form ? "ДОДАТИ ТОВАР" : "ВІДМІНИТИ" }}
-          
+        <button (click)="ap_form = !ap_form" class="btn" data-rel="address" type="button">
+            {{ !ap_form ? "ДОДАТИ ТОВАР" : "ВІДМІНИТИ" }}
         </button>
-        <table [ngClass]="{ active: good_form }" class="table">
+
+        <table [ngClass]="{ active: ap_form }" class="table">
             <thead>
                 <tr>
                     <th scope="col">№</th>
                     <th scope="col">Категорія</th>
                     <th scope="col">Назва</th>
-                    <th scope="col">Інгридієгти</th>
                     <th scope="col">Вага</th>
                     <th scope="col">Ціна</th>
                     <th scope="col">Картинка</th>
@@ -20,55 +19,44 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let good of goods; let i = index">
+                <tr *ngFor="let addProd of addProd; let i = index">
                     <td>{{ i + 1 }}</td>
-                    <td>{{ good.category.titel }}</td>
-                    <td>{{ good.name }}</td>
-                    <td>{{ good.compound }}</td>
-                    <td>{{ good.weight }}</td>
-                    <td>{{ good.price }}</td>
+                    <td>{{ addProd.category.category }}</td>
+                    <td>{{ addProd.name }}</td>
+                    <td>{{ addProd.weight }}</td>
+                    <td>{{ addProd.price }}</td>
                     <td class="image">
-                        <img [src]="good.images" />
+                        <img [src]="addProd.images" />
                     </td>
                     <td class="btn_tr">
-                        <a (click)="editGood(good)" type="button">Редагувати</a>
-                        <a (click)="delGood(good)" type="button">Видалити</a>
+                        <a (click)="editAddProd(addProd)" type="button">Редагувати</a>
+                        <a (click)="delAddPro(addProd)" type="button">Видалити</a>
                     </td>
                 </tr>
             </tbody>
         </table>
 
-        <div class="form_conteiner" [ngClass]="{ active: !good_form }">
-            <form [formGroup]="goodForm" (ngSubmit)="creatGoods()" class="form_goods">
-               
-              
+        <div class="form_conteiner" [ngClass]="{ active: !ap_form}">
+            <form [formGroup]="addProdForm" (ngSubmit)="creatAddProd()" class="form_addProd">
+                
+             
+                
                 <div class="input_section">
-
-
-                    
-                    <label for="component">* Оберіть категорію</label>
-                    <select formControlName="category" name="category" class="form-select">
-                    <option [ngValue]="category" *ngFor="let category of category" > 
-                            {{ category.titel }}
-                        </option>
-                    </select>
-
+                        <label for="component">* Оберіть категорію</label>
+                        <select formControlName="category" name="category" class="form-select">
+                            <option [ngValue]="category" *ngFor="let category of category">
+                                {{ category.category }}
+                            </option>
+                        </select>
+                   
                     <input formControlName="name" type="text" name="name" class="form-control" placeholder="*Назва"
-                        aria-label="Заголовок" />
-
-                    <textarea formControlName="compound" class="form-control" name="compound" placeholder="*Інгридієгти"
-                        id="floatingTextarea2" style="height: 100px"></textarea>
-
+                        aria-label="Назва" />
                     <input formControlName="weight" type="number" name="weight" class="form-control" placeholder="*Вага"
                         aria-label="Вага" />
-                        
                     <input formControlName="price" type="number" name="price" class="form-control" placeholder="*Ціна"
                         aria-label="Ціна" />
                 </div>
-                <div class="select-addProd">
 
-
-                </div>
 
 
                 <div class="load_file">
@@ -92,7 +80,7 @@
                 </div>
 
                 <div class="batton_section">
-                    <button [disabled]="goodForm.invalid" type="submit" class="btn">
+                    <button [disabled]="addProdForm.invalid" type="submit" class="btn">
                         {{ edit_status ? "Зберегти" : "Додати" }}
                     </button>
                     <button (click)="deleteImage()" type="submit" class="btn">
@@ -100,6 +88,10 @@
                     </button>
                 </div>
             </form>
+            
+        </div>
+        <div class="form_conteiner" [ngClass]="{ active: !addCategory }">
+
         </div>
     </div>
 </section>

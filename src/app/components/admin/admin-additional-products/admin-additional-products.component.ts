@@ -15,45 +15,41 @@ import {
   Validators,
 } from '@angular/forms';
 import { AdditionalProductsResponse } from 'src/app/shared/interfaces/additional-products';
-import { СategoriesResponse } from 'src/app/shared/interfaces/categories';
-import { GoodsResponse } from 'src/app/shared/interfaces/goods';
-import { CategoriesService } from 'src/app/shared/services/categories/categories.service';
-import { GoodsService } from 'src/app/shared/services/goods/goods.service';
+import { APCategoryResponse } from 'src/app/shared/interfaces/additionalProductsCategory';
+import { AdditionalProductsService } from 'src/app/shared/services/additional-products/additional-products.service';
+import { ApCategoryService } from 'src/app/shared/services/apCategory/ap-category.service';
 
 @Component({
-  selector: 'app-admin-goods',
-  templateUrl: './admin-goods.component.html',
-  styleUrls: ['./admin-goods.component.scss'],
+  selector: 'app-admin-additional-products',
+  templateUrl: './admin-additional-products.component.html',
+  styleUrls: ['./admin-additional-products.component.scss'],
 })
-export class AdminGoodsComponent {
+export class AdminAdditionalProductsComponent {
   constructor(
     private formBuilder: FormBuilder,
-    private goodsService: GoodsService,
-    private categoriesService: CategoriesService,
+    private addProdService: AdditionalProductsService,
+    private addProdCategory: ApCategoryService, 
     private storsge: Storage
   ) {}
-
-  public category: Array<СategoriesResponse> = [];
-  public goods: Array<GoodsResponse> = [];
+  public category: Array<APCategoryResponse> = [];
   public addProd: Array<AdditionalProductsResponse> = [];
-  public good_form = false;
-  private goodID!: number | string;
-  public goodForm!: FormGroup;
+  public ap_form = false;
+  public addCategory = false;
+  private addProdID!: number | string;
+  public addProdForm!: FormGroup;
   public edit_status = false;
   public uploadPercent!: number;
   public link = '';
 
   ngOnInit(): void {
-    this.getCategory();
     this.initGoodForm();
-    this.getGoods();
+    this.getAddProd();
   }
 
   initGoodForm(): void {
-    this.goodForm = this.formBuilder.group({
+    this.addProdForm = this.formBuilder.group({
       category: [null, Validators.required],
       name: [null, Validators.required],
-      compound: [null, Validators.required],
       weight: [null, Validators.required],
       price: [null, Validators.required],
       images: [null, Validators.required],
@@ -61,59 +57,58 @@ export class AdminGoodsComponent {
     });
   }
 
-  getCategory(): void {
-    this.categoriesService.getAll().subscribe((data) => {
-      this.category = data as СategoriesResponse[];
-      console.log(this.category)
+  getAddProd(): void {
+    this.addProdService.getAll().subscribe((data) => {
+      this.addProd = data as AdditionalProductsResponse[];
     });
+    this.addProdCategory.getAll().subscribe((data) => {
+      this.category = data as APCategoryResponse[];
+        });
   }
 
-  getGoods(): void {
-    this.goodsService.getAll().subscribe((data) => {
-      this.goods = data as GoodsResponse[];
-      console.log(this.goods)
-    });
-  }
-
-  creatGoods() {
+  creatAddProd() {
     if (this.edit_status) {
-      this.goodsService
-        .editGoods(this.goodForm.value, this.goodID as string)
+      this.addProdService
+        .editAdditionalProductss(
+          this.addProdForm.value,
+          this.addProdID as string
+        )
         .then(() => {
-          this.getGoods();
+          this.getAddProd();
           this.uploadPercent = 0;
         });
     } else {
-      this.goodsService.addGoods(this.goodForm.value).then(() => {
-        this.getGoods();
-        this.uploadPercent = 0;
-      });
+      this.addProdService
+        .addAdditionalProducts(this.addProdForm.value)
+        .then(() => {
+          this.getAddProd();
+          this.uploadPercent = 0;
+        });
     }
 
     this.edit_status = false;
-    this.good_form = false;
-    this.goodForm.reset();
+    this.ap_form = false;
+    this.addProdForm.reset();
   }
 
-  editGood(good: GoodsResponse) {
-    this.goodForm.patchValue({
-      category: good.category,
-      name: good.name,
-      compound: good.compound,
-      weight: good.weight,
-      price: good.price,
-      images: good.images,
+  editAddProd(addProd: AdditionalProductsResponse) {
+    this.addProdForm.patchValue({
+      category: addProd.category,
+      name: addProd.name,
+      weight: addProd.weight,
+      price: addProd.price,
+      images: addProd.images,
     });
-    this.good_form = true;
+    this.ap_form = true;
     this.edit_status = true;
-    this.goodID = good.id;
+    this.addProdID = addProd.id;
   }
 
-  delGood(index: GoodsResponse) {
+  delAddPro(index: AdditionalProductsResponse) {
     const task = ref(this.storsge, index.images);
     deleteObject(task);
-    this.goodsService.delGoods(index.id as string).then(() => {
-      this.getGoods();
+    this.addProdService.delAdditionalProductss(index.id as string).then(() => {
+      this.getAddProd();
     });
   }
 
@@ -122,7 +117,7 @@ export class AdminGoodsComponent {
     this.loadFIle('images', file.name, file)
       .then((data) => {
         if (this.uploadPercent == 100) {
-          this.goodForm.patchValue({
+          this.addProdForm.patchValue({
             images: data,
           });
         }
@@ -162,17 +157,13 @@ export class AdminGoodsComponent {
     deleteObject(task).then(() => {
       console.log('File deleted');
       this.uploadPercent = 0;
-      this.goodForm.patchValue({
+      this.addProdForm.patchValue({
         images: null,
       });
     });
   }
 
   valueByControl(control: string): string {
-    return this.goodForm.get(control)?.value;
-  }
-
-  onFilterChange(){
-
+    return this.addProdForm.get(control)?.value;
   }
 }
