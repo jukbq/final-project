@@ -83,7 +83,16 @@ section .add_goods .form_conteiner .form_goods .input_section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-bottom: 30px;
+}
+section .add_goods .form_conteiner .form_goods .input_section .category-selection {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+section .add_goods .form_conteiner .form_goods .input_section .category-selection select {
+  width: 45%;
 }
 section .add_goods .form_conteiner .form_goods .input_section .form-select {
   color: black;

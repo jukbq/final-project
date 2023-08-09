@@ -9,8 +9,14 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
 
+
+
+
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [
+    HomeComponent
+ 
+  ],
   imports: [
     CommonModule,
     HomeRoutingModule,

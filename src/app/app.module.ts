@@ -29,6 +29,7 @@ import {
   getRemoteConfig,
 } from '@angular/fire/remote-config';
 
+
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, UserComponent],
   imports: [

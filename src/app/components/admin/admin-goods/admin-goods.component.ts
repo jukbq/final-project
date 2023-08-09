@@ -32,6 +32,12 @@ export class AdminGoodsComponent {
     private categoriesService: CategoriesService,
     private storsge: Storage
   ) {}
+  public menu: Array<any> = [
+    { menuName: 'Піца', link: 'pizza' },
+    { menuName: 'Салати', link: 'salads' },
+    { menuName: 'Десерти', link: 'desserts' },
+    { menuName: 'Напої', link: 'drinks' },
+  ];
 
   public category: Array<СategoriesResponse> = [];
   public goods: Array<GoodsResponse> = [];
@@ -51,6 +57,7 @@ export class AdminGoodsComponent {
 
   initGoodForm(): void {
     this.goodForm = this.formBuilder.group({
+      menu: [null],
       category: [null, Validators.required],
       name: [null, Validators.required],
       compound: [null, Validators.required],
@@ -64,14 +71,14 @@ export class AdminGoodsComponent {
   getCategory(): void {
     this.categoriesService.getAll().subscribe((data) => {
       this.category = data as СategoriesResponse[];
-      console.log(this.category)
+      console.log(this.category);
     });
   }
 
   getGoods(): void {
     this.goodsService.getAll().subscribe((data) => {
       this.goods = data as GoodsResponse[];
-      console.log(this.goods)
+      console.log(this.goods);
     });
   }
 
@@ -172,7 +179,5 @@ export class AdminGoodsComponent {
     return this.goodForm.get(control)?.value;
   }
 
-  onFilterChange(){
-
-  }
+  onFilterChange() {}
 }

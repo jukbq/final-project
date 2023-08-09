@@ -1,8 +1,10 @@
 /* import { LoginResponse } from './accoumt'; */
 import { СategoriesResponse } from './categories';
+import { MenuResponse } from './menu';
 
 
 export interface GoodsRequest {
+  menuName: MenuResponse;
   category: СategoriesResponse;
   link: СategoriesResponse;
   titel: СategoriesResponse;
