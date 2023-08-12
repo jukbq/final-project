@@ -28,18 +28,18 @@ export class MenuService {
   getAllmenu(name: string) {
     return collectionData(this.menuCollection, { idField: 'name' });
   }
-/* 
+
   addMenu(menu: MenuResponse) {
     return addDoc(this.menuCollection, menu);
   }
 
-  editCategory(menu: MenuResponse, id: string) {
+  editMenu(menu: MenuResponse, id: string) {
     const menuDocumentReference = doc(this.afs, `menu/${id}`);
     return updateDoc(menuDocumentReference, { ...menu });
   }
 
-  delCategory(id: string) {
+  delMenu(id: string) {
     const menuDocumentReference = doc(this.afs, `menu/${id}`);
     return deleteDoc(menuDocumentReference);
-  } */
+  }
 }

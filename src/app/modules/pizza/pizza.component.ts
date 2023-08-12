@@ -11,64 +11,69 @@ import { HeaderService } from 'src/app/shared/services/header/header.service';
 })
 export class PizzaComponent {
   constructor(
+
+    
     private el: ElementRef,
     private headerService: HeaderService,
     private categoriesService: CategoriesService,
     private goodsService: GoodsService
   ) {}
 
-  public listCategory: any[] = []; // Масив буде містити будь-які об'єкти
+  public listCategory: any[] = []
   public goodsArr: Array<GoodsResponse> = [];
   public categoryName!: string;
   public activeItem: any;
 
   ngOnInit(): void {
-    this.addInitialAllCategory(); // Додаємо "Всі" перед завантаженням даних
-    this.getCategory();
+    this.addInitialAllCategory(); // Додаємо категорію "Всі" перед завантаженням даних
+    this.getCategory(); // Отримати список категорій
     this.headerService.headerClick$.subscribe(() => {
-      this.scrollToPizzaContainer();
+      this.scrollToPizzaContainer(); // Під час кліку на заголовок перехід до списку товарів
     });
-    this.getGoods();
+    this.getGoods(); // Отримати всі товари (початковий стан)
   }
-  //Створення категорій
+
+  // Отримати список категорій
   getCategory() {
     this.categoriesService.getAll().subscribe((data) => {
-      this.listCategory = [...this.listCategory, ...data]; 
+      this.listCategory = [...this.listCategory, ...data]; // Додати категорії до списку
+
     });
   }
-  //Вибір товару за категоріями
+
+  // Вибір категорії зі списку
   onSelectItem(category: any): void {
     this.activeItem = category;
     this.categoryName = category.link;
     console.log(this.categoryName);
-    if (this.categoryName == 'all') {
-      this.getGoods();
+
+    if (this.categoryName === 'all') {
+      this.getGoods(); // Отримати всі товари "Піца"
     } else {
-      this.getGoodst();
-    }
-  }
-  //Всі види піцци
-  getGoods(): void {
-    this.goodsService.getAll().subscribe((data) => {
-      this.goodsArr = data as GoodsResponse[];
-      this.goodsArr = this.goodsArr.filter(
-        (item) => item.menu.menuName === 'Піца'
-      );
-    });
-  }
-  //По категоріях
-  getGoodst(): void {
-    if (this.goodsArr) {
-      this.goodsService.getAll().subscribe((data: GoodsResponse[]) => {
-        this.goodsArr = data.filter(
-          (good: GoodsResponse) =>
-            good.category && good.category.titel === this.categoryName
-        );
-      });
+      this.getGoodsByCategory(this.categoryName); // Отримати товари за обраною категорією
     }
   }
 
-  //Кількість товару
+  // Отримати всі товари "Піца"
+  getGoods(): void {
+    this.goodsService.getAll().subscribe((data) => {
+      this.goodsArr = data.filter((item) => item.menu.menuName === 'Піца');
+    });
+  }
+
+  // Отримати товари за обраною категорією "Піца"
+  getGoodsByCategory(categoryName: string): void {
+    this.goodsService.getAll().subscribe((data) => {
+      this.goodsArr = data.filter(
+        (good: GoodsResponse) =>
+          good.category &&
+          good.category.link === categoryName &&
+          good.menu.menuName === 'Піца'
+      );
+    });
+  }
+
+  // Змінити кількість товару
   quantity_goods(good: GoodsResponse, value: boolean): void {
     if (value) {
       ++good.count;
@@ -76,7 +81,8 @@ export class PizzaComponent {
       --good.count;
     }
   }
-  //Додавання в корзину
+
+  // Додати товар до кошика
   addToBasket(goods: GoodsResponse): void {
     let basket: Array<GoodsResponse> = [];
     if (localStorage.length > 0 && localStorage.getItem('basket')) {
@@ -92,10 +98,9 @@ export class PizzaComponent {
     }
     localStorage.setItem('basket', JSON.stringify(basket));
     goods.count = 1;
- /*    this.orderService.chageBasket.next(true);
-    this.updateBasket.emit(); */
   }
-  //Скрул до списку товарів
+
+  // Прокрутити до списку товарів
   scrollToPizzaContainer() {
     const pizzaContainer: HTMLElement =
       this.el.nativeElement.querySelector('#pizza-container');
@@ -113,12 +118,14 @@ export class PizzaComponent {
       });
     }
   }
-//Додає категорію всі в массив категорій
+
+  // Додати категорію "Всі" до списку категорій
   addInitialAllCategory() {
     const allCategory = this.createAllCategoriesObject();
     this.listCategory.push(allCategory);
   }
 
+  // Створити об'єкт категорії "Всі"
   createAllCategoriesObject(): any {
     const allCategory = {
       link: 'all',

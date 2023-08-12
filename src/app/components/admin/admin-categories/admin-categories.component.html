@@ -1,8 +1,95 @@
 <section>
 
     <h1>КАТЕГОРІЇ</h1>
+
+<ul class="category_menu">
+    <li *ngFor="let item of list" (click)="onSelectItem(item.link)" [class.active]="activeSection === item.link">
+        <p class="nav-link">{{item.name}}</p>
+    </li>
+</ul>
+
     <div class="add-category">
-        <div class="add-main-category">
+        <div class="add-menu-category" [ngClass]="{ active: activeSection === 'menu' }">
+            <h2>Основне меню</h2>
+            <button (click)="active_form_3 = !active_form_3" class="btn" data-rel="address" type="button">
+                {{ !active_form_3? "ДОДАТИ МЕНЮ" : "ВІДМІНИТИ" }}
+            </button>
+
+            <table [ngClass]="{ active: active_form_3 }" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">№</th>
+                        <th scope="col">Індекс</th>
+                        <th scope="col">Назва</th>
+                        <th scope="col">Лінк</th>
+                        <th scope="col">Картинка</th>
+                        <th scope="col">Дії</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let menu of menu; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ menu.menuindex }}</td>
+                        <td>{{ menu.menuName }}</td>
+                        <td>{{ menu.menulink }}</td>
+                        <td class="image">
+                            <img [src]="menu.menuImages" />
+                        </td>
+                        <td class="btn_tr">
+                            <a (click)="editMenu(menu)" type="button">Редагувати</a>
+                            <a (click)="delMenu(menu)" type="button">Видалити</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="form_conteiner" [ngClass]="{ active: !active_form_3 }">
+                <form [formGroup]="menuForm" (ngSubmit)="creatMenu()" class="form_category">
+                    <div class="input_section">
+                        <input formControlName="menuindex" type="number" name="menuindex" class="form-control"
+                            placeholder="*Порядок меню" aria-label="Порядок меню" />
+                        <input formControlName="menuName" type="text" name="menuName" class="form-control"
+                            placeholder="*Назва" aria-label="Назва" />
+                        <input formControlName="menulink" type="text" name="menulink" class="form-control" placeholder="*Щлях"
+                            aria-label="шлях" />
+                    </div>
+
+                    <div class="load_file">
+                        <input class="form-control form-control-lg" type="file" (change)="uploadMenuImage($event)" />
+                    </div>
+
+                    <div class="progress_line">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped" role="progressbar"
+                                aria-label="Default striped example" [style.width.%]="uploadPercent" aria-valuemin="0"
+                                aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="image_block">
+                        <td class="image">
+                            <img [src]="valueByControlMenu('menuImages')" />
+                        </td>
+                    </div>
+
+                    <div class="batton_section">
+                        <button [disabled]="menuForm.invalid" type="submit" class="btn">
+                            {{ menu_edit_status ? "Зберегти" : "Додати" }}
+                        </button>
+                        <button (click)="deleteImage()" type="submit" class="btn">
+                            Видалити
+                        </button>
+                    </div>
+
+                </form>
+
+
+
+
+            </div>
+        </div>
+
+        <div class="add-main-category" [ngClass]="{ active: activeSection === 'basic' }">
             <h2>Основні товари</h2>
             <button (click)="active_form_1 = !active_form_1" class="btn" data-rel="address" type="button">
                 {{ !active_form_1? "ДОДАТИ КАТЕГОРІЮ" : "ВІДМІНИТИ" }}
@@ -51,7 +138,7 @@
                     </div>
 
                     <div class="load_file">
-                        <input class="form-control form-control-lg" type="file" (change)="upload($event)" />
+                        <input class="form-control form-control-lg" type="file" (change)="uploadCategoryImage($event)" />
                     </div>
 
                     <div class="progress_line">
@@ -64,7 +151,7 @@
 
                     <div class="image_block">
                         <td class="image">
-                            <img [src]="valueByControl('images')" />
+                            <img [src]="valueByControlCategory('images')" />
                         </td>
                     </div>
 
@@ -85,9 +172,7 @@
             </div>
         </div>
 
-
-
-        <div class="add-additional-category">
+        <div class="add-additional-category" [ngClass]="{ active: activeSection === 'additional' }">
             <h2>Додаткові товари</h2>
             <button (click)="active_form_2 = !active_form_2" class="btn" data-rel="address" type="button">
                 {{ !active_form_2 ? "ДОДАТИ КАТЕГОРІЮ" : "ВІДМІНИТИ" }}

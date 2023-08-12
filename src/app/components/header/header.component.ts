@@ -1,6 +1,8 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuResponse } from 'src/app/shared/interfaces/menu';
 import { HeaderService } from 'src/app/shared/services/header/header.service';
+import { MenuService } from 'src/app/shared/services/menu/menu.service';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +13,24 @@ export class HeaderComponent {
   constructor(
     private el: ElementRef,
     private router: Router,
-    private headerService: HeaderService
+    private headerService: HeaderService,
+    private menuService: MenuService
   ) {}
+
+  public menuAr: Array<MenuResponse> = [];
+  public menuName!: string;
+
+  ngOnInit(): void {
+    this.getMenu();
+  }
+
+  getMenu() {
+    this.menuService.getAll().subscribe((data) => {
+      this.menuAr = data as MenuResponse[];
+      this.menuAr.sort((a, b) => a.menuindex - b.menuindex);
+      console.log(this.menuAr);
+    });
+  }
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any) {
@@ -31,7 +49,6 @@ export class HeaderComponent {
   }
   handleHeaderClick() {
     this.headerService.emitHeaderClick();
-    console.log('1111')
   }
 
   public hamburger_active() {

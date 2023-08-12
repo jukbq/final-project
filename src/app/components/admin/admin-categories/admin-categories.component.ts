@@ -16,6 +16,12 @@ import { ApCategoryService } from 'src/app/shared/services/apCategory/ap-categor
 import { MenuResponse } from 'src/app/shared/interfaces/menu';
 import { MenuService } from 'src/app/shared/services/menu/menu.service';
 
+const LIST: any[] = [
+  { name: 'МЕНЮ', link: 'menu' },
+  { name: 'ОСНОВНІ ТОВАРИ', link: 'basic' },
+  { name: 'ДОДАТКОВІ ТОВАРИ', link: 'additional' },
+];
+
 @Component({
   selector: 'app-admin-categories',
   templateUrl: './admin-categories.component.html',
@@ -23,32 +29,71 @@ import { MenuService } from 'src/app/shared/services/menu/menu.service';
 })
 export class AdminCategoriesComponent {
   constructor(
+    private menuService: MenuService,
     private categoriesService: CategoriesService,
     private apCategoriesService: ApCategoryService,
-    private menuService: MenuService,
     private formBuild: FormBuilder,
     private storsgeIcon: Storage
   ) {}
 
+  // Масив для відображення меню
+  public list: any[] = LIST;
+
+  // Масиви для збереження даних з сервера
   public menu: Array<MenuResponse> = [];
   public category: Array<СategoriesResponse> = [];
   public apCategory: Array<APCategoryResponse> = [];
+
+  // Форми для роботи з даними
+  public menuForm!: FormGroup;
   public categoryForn!: FormGroup;
   public apCategoryForn!: FormGroup;
+
+  // Змінні для відстеження активної форми
   public active_form_1 = false;
   public active_form_2 = false;
+  public active_form_3 = false;
+
+  // Змінні для відстеження статусу редагування
   public edit_status = false;
   public ap_edit_status = false;
+  public menu_edit_status = false;
+
+  // Змінна для відстеження відсотка завантаження
   public uploadPercent!: number;
+
+  // Змінна для збереження ідентифікатора категорії
   private categoryID!: number | string;
 
+  // Змінна для відстеження активного пункту меню
+  public activeItem: any;
+
+  // Змінна для відстеження активної секції
+  public activeSection = 'menu';
+
   ngOnInit(): void {
+    this.initMenuForm();
     this.initCategoryForm();
     this.initAPCategoryForm();
     this.getCategory();
-
   }
 
+  // Обробник вибору пункту меню
+  onSelectItem(item: string): void {
+    this.activeSection = item;
+  }
+
+  // Ініціалізація форми для меню
+  initMenuForm(): void {
+    this.menuForm = this.formBuild.group({
+      menuindex: [null, Validators.required],
+      menuName: [null, Validators.required],
+      menulink: [null, Validators.required],
+      menuImages: [null, Validators.required],
+    });
+  }
+
+  // Ініціалізація форми для категорій
   initCategoryForm(): void {
     this.categoryForn = this.formBuild.group({
       menu: [null, Validators.required],
@@ -57,6 +102,8 @@ export class AdminCategoriesComponent {
       images: [null, Validators.required],
     });
   }
+
+  // Ініціалізація форми для додаткових категорій
   initAPCategoryForm(): void {
     this.apCategoryForn = this.formBuild.group({
       category: [null, Validators.required],
@@ -64,22 +111,41 @@ export class AdminCategoriesComponent {
     });
   }
 
+  // Отримання даних з сервера
   getCategory(): void {
     this.categoriesService.getAll().subscribe((data) => {
       this.category = data as СategoriesResponse[];
-     });
-     
+    });
+
     this.apCategoriesService.getAll().subscribe((data) => {
       this.apCategory = data as APCategoryResponse[];
     });
 
     this.menuService.getAll().subscribe((data) => {
       this.menu = data as MenuResponse[];
+      console.log(this.menu);
     });
-
   }
 
+  // Додавання або редагування меню
+  creatMenu() {
+    if (this.menu_edit_status) {
+      this.menuService
+        .editMenu(this.menuForm.value, this.categoryID as string)
+        .then(() => {
+          this.getCategory();
+        });
+    } else {
+      this.menuService.addMenu(this.menuForm.value).then(() => {
+        this.getCategory();
+      });
+    }
+    this.menu_edit_status = false;
+    this.active_form_3 = false;
+    this.menuForm.reset();
+  }
 
+  // Додавання або редагування категорії
   creatCategory() {
     if (this.edit_status) {
       this.categoriesService
@@ -96,6 +162,8 @@ export class AdminCategoriesComponent {
     this.active_form_1 = false;
     this.categoryForn.reset();
   }
+
+  // Додавання або редагування додаткової категорії
   appCreatCategory() {
     if (this.ap_edit_status) {
       this.apCategoriesService
@@ -116,6 +184,20 @@ export class AdminCategoriesComponent {
     this.apCategoryForn.reset();
   }
 
+  // Редагування меню
+  editMenu(menu: MenuResponse) {
+    this.menuForm.patchValue({
+      menuindex: menu.menuindex,
+      menuName: menu.menuName,
+      menulink: menu.menulink,
+      menuImages: menu.menuImages,
+    });
+    this.active_form_3 = true;
+    this.menu_edit_status = true;
+    this.categoryID = menu.id;
+  }
+
+  // Редагування категорії
   editCategory(categ: СategoriesResponse) {
     this.categoryForn.patchValue({
       menu: categ.menu,
@@ -127,6 +209,8 @@ export class AdminCategoriesComponent {
     this.edit_status = true;
     this.categoryID = categ.id;
   }
+
+  // Редагування додаткової категорії
   apEditCategory(categ: APCategoryResponse) {
     this.apCategoryForn.patchValue({
       category: categ.category,
@@ -137,7 +221,24 @@ export class AdminCategoriesComponent {
     this.categoryID = categ.id;
   }
 
-  upload(actionImage: any): void {
+  // Завантаження зображення для меню
+  uploadMenuImage(actionImage: any): void {
+    const file = actionImage.target.files[0];
+    this.loadFIle('icon', file.name, file)
+      .then((data) => {
+        if (this.uploadPercent == 100) {
+          this.menuForm.patchValue({
+            menuImages: data,
+          });
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  // Завантаження зображення для категорії
+  uploadCategoryImage(actionImage: any): void {
     const file = actionImage.target.files[0];
     this.loadFIle('icon', file.name, file)
       .then((data) => {
@@ -152,6 +253,7 @@ export class AdminCategoriesComponent {
       });
   }
 
+  // Завантаження файлу в хмарне сховище
   async loadFIle(
     folder: string,
     name: string,
@@ -172,11 +274,21 @@ export class AdminCategoriesComponent {
         console.error(e);
       }
     } else {
-      console.log('Wtong fike');
+      console.log('Wrong file');
     }
     return Promise.resolve(urlIcom);
   }
 
+  // Видалення пункту меню
+  delMenu(index: MenuResponse) {
+    const task = ref(this.storsgeIcon, index.menuImages);
+    deleteObject(task);
+    this.menuService.delMenu(index.id as string).then(() => {
+      this.getCategory();
+    });
+  }
+
+  // Видалення категорії
   delCategory(index: СategoriesResponse) {
     const task = ref(this.storsgeIcon, index.images);
     deleteObject(task);
@@ -184,15 +296,19 @@ export class AdminCategoriesComponent {
       this.getCategory();
     });
   }
+
+  // Видалення додаткової категорії
   apDelCategory(index: APCategoryResponse) {
     this.apCategoriesService.delCategory(index.id as string).then(() => {
       this.getCategory();
     });
   }
 
+  // Видалення зображення
   deleteImage(): void {
-    const task = ref(this.storsgeIcon, this.valueByControl('images'));
-    deleteObject(task).then(() => {
+    const task1 = ref(this.storsgeIcon, this.valueByControlMenu('menuImages'));
+    const task2 = ref(this.storsgeIcon, this.valueByControlCategory('images'));
+    deleteObject(task1 && task2).then(() => {
       console.log('File deleted');
       this.uploadPercent = 0;
       this.categoryForn.patchValue({
@@ -201,7 +317,13 @@ export class AdminCategoriesComponent {
     });
   }
 
-  valueByControl(control: string): string {
+  // Отримання значення за назвою поля у формі меню
+  valueByControlMenu(control: string): string {
+    return this.menuForm.get(control)?.value;
+  }
+
+  // Отримання значення за назвою поля у формі категорії
+  valueByControlCategory(control: string): string {
     return this.categoryForn.get(control)?.value;
   }
 }

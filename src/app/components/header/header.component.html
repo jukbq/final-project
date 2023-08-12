@@ -40,33 +40,19 @@
       <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/heder%2Flogo-pizza-red.svg?alt=media&token=78da0861-830a-4dd3-b756-b2d016361e89" alt="" srcset="">
     </a>
     <div class="menu-list">
-      <ul>
-        <li class="menu-item" [routerLink]="['/home/pizza']" (click)="handleHeaderClick()">
-          <a>Піца
-          <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/heder%2Fi-menu-1.svg?alt=media&token=88e2dfff-a0b4-4e9e-a6bb-e14ea3473201" alt="">
-          </a>
+      <ul >
+        <li class="menu-item" *ngFor="let menu of menuAr; let isFirst = first"
+        [routerLink]="['/home' + menu.menulink]" (click)="handleHeaderClick()"
+          [class.active]="isFirst && !menuName || menu.menulink === menuName" >
+              <a>
+            {{ menu.menuName }}
+            <img src="{{menu.menuImages}}">
+                      </a>
         </li>
-      
-        <li class="menu-item">
-          <a href="#">Салати
-          <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/heder%2Fi-menu-2.svg?alt=media&token=d430ab43-e5d5-4424-888e-c8ad6322265a" alt="">
-          </a>
-        </li>     
-
-        <li class="menu-item">
-          <a href="#">Десерти
-          <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/heder%2Fi-menu-3.svg?alt=media&token=6ade1947-2e80-4d5b-a91b-cce9238a317d" alt="">
-          </a>
-        </li>     
-            
-        <li class="menu-item">
-          <a href="#">Напої
-          <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/heder%2Fi-menu-4.svg?alt=media&token=294ebc56-ab6a-4dd7-89f3-e0e76f967d94" alt="">
-          </a>
-        </li>     
-            
      </ul>
     </div>
+
+
     <div class="user-c-wrapper">
       <a class="user-fav " href="https://mapizza.com.ua/favorite/">
         <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -2,21 +2,68 @@ section {
   width: 80vw;
   padding: 20px 40px;
   text-align: center;
-}
-section .add-category {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-section .add-category .add-main-category,
-section .add-category .add-additional-category {
-  width: 55%;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+section .category_menu {
+  width: 50%;
+  display: flex;
+  list-style: none;
+  text-align: center;
+  border: 1px solid #D1D9CE;
+  border-radius: 12px;
+  padding: 0;
+  margin-top: 20px;
+}
+section .category_menu li {
+  width: 33%;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+section .category_menu li p {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1em;
+  color: var(--clr-grey);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+section .category_menu li:hover p {
+  color: var(--clr-green);
+}
+section .category_menu li.active {
+  background-color: var(--clr-red);
+  border-radius: 12px;
+}
+section .category_menu li.active p {
+  color: var(--clr-white);
+}
+section .add-category {
+  width: 100%;
+  position: relative;
+}
+section .add-category .add-menu-category,
+section .add-category .add-main-category,
+section .add-category .add-additional-category {
+  display: none;
+  width: 55%;
+  margin: 0 auto;
+}
+section .add-category .add-menu-category.active,
+section .add-category .add-main-category.active,
+section .add-category .add-additional-category.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section .add-category .add-menu-category .btn,
 section .add-category .add-main-category .btn,
 section .add-category .add-additional-category .btn {
   width: 65%;
@@ -30,44 +77,53 @@ section .add-category .add-additional-category .btn {
   font-weight: bold;
   padding: 16px 22px;
 }
+section .add-category .add-menu-category .btn:hover,
 section .add-category .add-main-category .btn:hover,
 section .add-category .add-additional-category .btn:hover {
   background-color: var(--clr-red);
   color: var(--clr-white);
 }
+section .add-category .add-menu-category table,
 section .add-category .add-main-category table,
 section .add-category .add-additional-category table {
   width: 100%;
   margin-top: 20px;
 }
+section .add-category .add-menu-category table thead,
 section .add-category .add-main-category table thead,
 section .add-category .add-additional-category table thead {
   width: 100%;
 }
+section .add-category .add-menu-category table thead tr,
 section .add-category .add-main-category table thead tr,
 section .add-category .add-additional-category table thead tr {
   border-bottom: var(--clr-grey);
 }
+section .add-category .add-menu-category table.active,
 section .add-category .add-main-category table.active,
 section .add-category .add-additional-category table.active {
   display: none;
 }
+section .add-category .add-menu-category table tbody tr .image,
 section .add-category .add-main-category table tbody tr .image,
 section .add-category .add-additional-category table tbody tr .image {
   width: 80px;
   height: 70px;
   overflow: hidden;
 }
+section .add-category .add-menu-category table tbody tr .image img,
 section .add-category .add-main-category table tbody tr .image img,
 section .add-category .add-additional-category table tbody tr .image img {
   height: 100%;
 }
+section .add-category .add-menu-category table tbody tr .btn_tr,
 section .add-category .add-main-category table tbody tr .btn_tr,
 section .add-category .add-additional-category table tbody tr .btn_tr {
   width: 40px;
   display: flex;
   flex-direction: column;
 }
+section .add-category .add-menu-category table tbody tr .btn_tr a,
 section .add-category .add-main-category table tbody tr .btn_tr a,
 section .add-category .add-additional-category table tbody tr .btn_tr a {
   text-decoration: none;
@@ -75,6 +131,7 @@ section .add-category .add-additional-category table tbody tr .btn_tr a {
   font-size: 18px;
   font-weight: 500;
 }
+section .add-category .add-menu-category .form_conteiner,
 section .add-category .add-main-category .form_conteiner,
 section .add-category .add-additional-category .form_conteiner {
   width: 100%;
@@ -83,10 +140,12 @@ section .add-category .add-additional-category .form_conteiner {
   justify-content: space-evenly;
   align-items: center;
 }
+section .add-category .add-menu-category .form_conteiner.active,
 section .add-category .add-main-category .form_conteiner.active,
 section .add-category .add-additional-category .form_conteiner.active {
   display: none;
 }
+section .add-category .add-menu-category .form_conteiner .form_category,
 section .add-category .add-main-category .form_conteiner .form_category,
 section .add-category .add-additional-category .form_conteiner .form_category {
   width: 50%;
@@ -98,6 +157,7 @@ section .add-category .add-additional-category .form_conteiner .form_category {
   align-items: center;
   margin-top: 20px;
 }
+section .add-category .add-menu-category .form_conteiner .form_category .input_section,
 section .add-category .add-main-category .form_conteiner .form_category .input_section,
 section .add-category .add-additional-category .form_conteiner .form_category .input_section {
   width: 100%;
@@ -107,27 +167,33 @@ section .add-category .add-additional-category .form_conteiner .form_category .i
   align-items: center;
   margin-bottom: 30px;
 }
+section .add-category .add-menu-category .form_conteiner .form_category .input_section input,
 section .add-category .add-main-category .form_conteiner .form_category .input_section input,
 section .add-category .add-additional-category .form_conteiner .form_category .input_section input {
   width: 90%;
   margin-top: 20px;
   height: auto;
 }
+section .add-category .add-menu-category .form_conteiner .form_category .form-floating,
+section .add-category .add-menu-category .form_conteiner .form_category .load_file,
 section .add-category .add-main-category .form_conteiner .form_category .form-floating,
 section .add-category .add-main-category .form_conteiner .form_category .load_file,
 section .add-category .add-additional-category .form_conteiner .form_category .form-floating,
 section .add-category .add-additional-category .form_conteiner .form_category .load_file {
   margin-top: 20px;
 }
+section .add-category .add-menu-category .form_conteiner .form_category .progress_line,
 section .add-category .add-main-category .form_conteiner .form_category .progress_line,
 section .add-category .add-additional-category .form_conteiner .form_category .progress_line {
   margin-top: 36px;
   width: 100%;
 }
+section .add-category .add-menu-category .form_conteiner .form_category .progress_line .progress,
 section .add-category .add-main-category .form_conteiner .form_category .progress_line .progress,
 section .add-category .add-additional-category .form_conteiner .form_category .progress_line .progress {
   width: 100%;
 }
+section .add-category .add-menu-category .form_conteiner .form_category .image_block,
 section .add-category .add-main-category .form_conteiner .form_category .image_block,
 section .add-category .add-additional-category .form_conteiner .form_category .image_block {
   width: 48%;
@@ -135,6 +201,7 @@ section .add-category .add-additional-category .form_conteiner .form_category .i
   position: relative;
   margin-top: 19px;
 }
+section .add-category .add-menu-category .form_conteiner .form_category .image_block .image,
 section .add-category .add-main-category .form_conteiner .form_category .image_block .image,
 section .add-category .add-additional-category .form_conteiner .form_category .image_block .image {
   max-width: 750px;
@@ -142,10 +209,12 @@ section .add-category .add-additional-category .form_conteiner .form_category .i
   overflow: hidden;
   margin-bottom: 30px;
 }
+section .add-category .add-menu-category .form_conteiner .form_category .image_block .image img,
 section .add-category .add-main-category .form_conteiner .form_category .image_block .image img,
 section .add-category .add-additional-category .form_conteiner .form_category .image_block .image img {
   height: 400px;
 }
+section .add-category .add-menu-category .form_conteiner .form_category .image_block .btn,
 section .add-category .add-main-category .form_conteiner .form_category .image_block .btn,
 section .add-category .add-additional-category .form_conteiner .form_category .image_block .btn {
   width: 175px;
@@ -154,6 +223,7 @@ section .add-category .add-additional-category .form_conteiner .form_category .i
   bottom: 0;
   left: 0;
 }
+section .add-category .add-menu-category .form_conteiner .form_category .batton_section,
 section .add-category .add-main-category .form_conteiner .form_category .batton_section,
 section .add-category .add-additional-category .form_conteiner .form_category .batton_section {
   width: 90%;
@@ -162,10 +232,12 @@ section .add-category .add-additional-category .form_conteiner .form_category .b
   display: flex;
   justify-content: space-between;
 }
+section .add-category .add-menu-category .form_conteiner .form_category .batton_section .btn,
 section .add-category .add-main-category .form_conteiner .form_category .batton_section .btn,
 section .add-category .add-additional-category .form_conteiner .form_category .batton_section .btn {
   width: 200px;
 }
+section .add-category .add-menu-category .form_conteiner .form_category .batton_section .btn:hover,
 section .add-category .add-main-category .form_conteiner .form_category .batton_section .btn:hover,
 section .add-category .add-additional-category .form_conteiner .form_category .batton_section .btn:hover {
   background-color: var(--clr-red);
