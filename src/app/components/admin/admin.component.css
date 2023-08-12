@@ -2,7 +2,7 @@ section {
   height: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center !important;
 }
 section .text-center h1 {
   display: inline-block;

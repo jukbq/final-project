@@ -1,0 +1,40 @@
+<section>
+    <div class="pizza-container" id="pizza-container">
+        <div class="text-left">
+            <h1>Піцца Львів</h1>
+        </div>
+        <ul class="category-menu">
+            <li *ngFor="let category of listCategory" [class.active]="category.link === categoryName"
+                (click)="onSelectItem(category)">
+                <a class="nav-link">{{ category.titel }}</a>
+            </li>
+        </ul>
+        <ul class="goods-container">
+            <li class="goods_block border_animation" *ngFor="let goods of goodsArr">
+
+                <div [routerLink]="[ '/home/'+goods.category.link, goods.id ]" class="goods_image">
+                    <img [src]="goods.images" class="goodsn_image">
+                </div>
+                <a [routerLink]="[ '/home/'+goods.category.link, goods.id ]" class="goods_title" href="#"
+                    itemprop="name">{{goods.name}}</a>
+
+                <div class="goods_desc">
+                    <p>{{ goods.compound}}</p>
+                    <p class="goods_weight">{{goods.weight}} г </p>
+                </div>
+                <div class="goods_controls">
+                    <p class="goods_price">{{goods.price}} г </p>
+
+                    <div class="quantity_goods">
+                        <button (click)="quantity_goods(goods, false)" type="button" class="decrement">-</button>
+                        <input [value]="goods.count" readonly class="goods_qty" tabindex="-1" max="999">
+                        <button (click)="quantity_goods(goods, true)" type="button" class="increment">+</button>
+                    </div>
+                    <button (click)="addToBasket(goods)" class="btn btn-small btn-primary order-btn
+                                    add-to-cart-btn" data-id="32617">Замовити</button>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</section>

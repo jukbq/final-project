@@ -1,13 +1,13 @@
 section .action-conteiner {
   width: 100%;
-  position: relative;
   height: 600px;
+  position: relative;
 }
 section .action-conteiner .banner-decor {
   position: absolute;
   width: 25%;
   top: 0%;
-  left: 4%;
+  left: -4%;
   z-index: 10000;
 }
 section .action-conteiner .banner-decor img {

@@ -28,10 +28,24 @@ import {
   provideRemoteConfig,
   getRemoteConfig,
 } from '@angular/fire/remote-config';
+import { SaladsComponent } from './modules/salads/salads.component';
+import { DessertsComponent } from './modules/desserts/desserts.component';
+import { DrinksComponent } from './modules/drinks/drinks.component';
+
+
 
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, UserComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    UserComponent,
+    SaladsComponent,
+    DessertsComponent,
+    DrinksComponent,
+    
+     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -50,6 +64,7 @@ import {
     providePerformance(() => getPerformance()),
     provideRemoteConfig(() => getRemoteConfig()),
     SharedModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

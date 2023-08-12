@@ -1,7 +1,6 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActionResponse } from 'src/app/shared/interfaces/action';
 import { ActionService } from 'src/app/shared/services/action/action.service';
-import { SlickCarouselComponent } from 'ngx-slick-carousel';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +8,7 @@ import { SlickCarouselComponent } from 'ngx-slick-carousel';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  constructor(private actionService: ActionService, private el: ElementRef) {}
+  constructor(private actionService: ActionService) {}
 
   public slides: Array<ActionResponse> = [];
 
@@ -20,8 +19,6 @@ export class HomeComponent {
   getActions(): void {
     this.actionService.getAll().subscribe((data) => {
       this.slides = data;
-      console.log(this.actionService);
-      console.log(this.slides);
     });
   }
 
@@ -47,7 +44,6 @@ export class HomeComponent {
     const slickdots = document.querySelector('.slick-dots');
     const slicknext = document.querySelector('.slick-next');
 
-    // Перевірка, чи battocontainer є елементом, а не null
     if (battocontainer instanceof Element) {
       slickprev!.innerHTML = `
       <i>
@@ -66,7 +62,6 @@ export class HomeComponent {
       battocontainer.appendChild(slickprev!);
       battocontainer.appendChild(slickdots!);
       battocontainer.appendChild(slicknext!);
-      console.log(battocontainer);
     }
   }
 }

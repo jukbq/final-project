@@ -13,6 +13,8 @@ import { CategoriesService } from 'src/app/shared/services/categories/categories
 import { APCategoryResponse } from 'src/app/shared/interfaces/additionalProductsCategory';
 import { AdditionalProductsService } from 'src/app/shared/services/additional-products/additional-products.service';
 import { ApCategoryService } from 'src/app/shared/services/apCategory/ap-category.service';
+import { MenuResponse } from 'src/app/shared/interfaces/menu';
+import { MenuService } from 'src/app/shared/services/menu/menu.service';
 
 @Component({
   selector: 'app-admin-categories',
@@ -23,10 +25,12 @@ export class AdminCategoriesComponent {
   constructor(
     private categoriesService: CategoriesService,
     private apCategoriesService: ApCategoryService,
+    private menuService: MenuService,
     private formBuild: FormBuilder,
     private storsgeIcon: Storage
   ) {}
 
+  public menu: Array<MenuResponse> = [];
   public category: Array<СategoriesResponse> = [];
   public apCategory: Array<APCategoryResponse> = [];
   public categoryForn!: FormGroup;
@@ -42,10 +46,12 @@ export class AdminCategoriesComponent {
     this.initCategoryForm();
     this.initAPCategoryForm();
     this.getCategory();
+
   }
 
   initCategoryForm(): void {
     this.categoryForn = this.formBuild.group({
+      menu: [null, Validators.required],
       titel: [null, Validators.required],
       link: [null, Validators.required],
       images: [null, Validators.required],
@@ -61,11 +67,18 @@ export class AdminCategoriesComponent {
   getCategory(): void {
     this.categoriesService.getAll().subscribe((data) => {
       this.category = data as СategoriesResponse[];
-    });
+     });
+     
     this.apCategoriesService.getAll().subscribe((data) => {
       this.apCategory = data as APCategoryResponse[];
     });
+
+    this.menuService.getAll().subscribe((data) => {
+      this.menu = data as MenuResponse[];
+    });
+
   }
+
 
   creatCategory() {
     if (this.edit_status) {
@@ -83,7 +96,7 @@ export class AdminCategoriesComponent {
     this.active_form_1 = false;
     this.categoryForn.reset();
   }
-  appCreatCategory(){
+  appCreatCategory() {
     if (this.ap_edit_status) {
       this.apCategoriesService
         .editCategory(this.apCategoryForn.value, this.categoryID as string)
@@ -105,6 +118,7 @@ export class AdminCategoriesComponent {
 
   editCategory(categ: СategoriesResponse) {
     this.categoryForn.patchValue({
+      menu: categ.menu,
       titel: categ.titel,
       link: categ.link,
       images: categ.images,
@@ -171,7 +185,6 @@ export class AdminCategoriesComponent {
     });
   }
   apDelCategory(index: APCategoryResponse) {
- 
     this.apCategoriesService.delCategory(index.id as string).then(() => {
       this.getCategory();
     });

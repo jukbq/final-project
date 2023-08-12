@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { HeaderService } from 'src/app/shared/services/header/header.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  constructor(private el: ElementRef, private router: Router) {}
+  constructor(
+    private el: ElementRef,
+    private router: Router,
+    private headerService: HeaderService
+  ) {}
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any) {
@@ -24,6 +29,10 @@ export class HeaderComponent {
       }
     }
   }
+  handleHeaderClick() {
+    this.headerService.emitHeaderClick();
+    console.log('1111')
+  }
 
   public hamburger_active() {
     const headerTop = this.el.nativeElement.querySelector('.header-top');
@@ -36,5 +45,8 @@ export class HeaderComponent {
       headerMenuList.classList.toggle('active');
       hamburgerInner.classList.toggle('active');
     }
+  }
+  reload() {
+    window.location.href = '/';
   }
 }

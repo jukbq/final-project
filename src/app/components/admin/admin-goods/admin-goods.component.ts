@@ -17,8 +17,10 @@ import {
 import { AdditionalProductsResponse } from 'src/app/shared/interfaces/additional-products';
 import { СategoriesResponse } from 'src/app/shared/interfaces/categories';
 import { GoodsResponse } from 'src/app/shared/interfaces/goods';
+import { MenuResponse } from 'src/app/shared/interfaces/menu';
 import { CategoriesService } from 'src/app/shared/services/categories/categories.service';
 import { GoodsService } from 'src/app/shared/services/goods/goods.service';
+import { MenuService } from 'src/app/shared/services/menu/menu.service';
 
 @Component({
   selector: 'app-admin-goods',
@@ -30,15 +32,10 @@ export class AdminGoodsComponent {
     private formBuilder: FormBuilder,
     private goodsService: GoodsService,
     private categoriesService: CategoriesService,
+    private menuService: MenuService,
     private storsge: Storage
   ) {}
-  public menu: Array<any> = [
-    { menuName: 'Піца', link: 'pizza' },
-    { menuName: 'Салати', link: 'salads' },
-    { menuName: 'Десерти', link: 'desserts' },
-    { menuName: 'Напої', link: 'drinks' },
-  ];
-
+  public menu: Array<MenuResponse> = [];
   public category: Array<СategoriesResponse> = [];
   public goods: Array<GoodsResponse> = [];
   public addProd: Array<AdditionalProductsResponse> = [];
@@ -51,13 +48,14 @@ export class AdminGoodsComponent {
 
   ngOnInit(): void {
     this.getCategory();
+    this.getMenu();
     this.initGoodForm();
     this.getGoods();
   }
 
   initGoodForm(): void {
     this.goodForm = this.formBuilder.group({
-      menu: [null],
+      menu: [null, Validators.required],
       category: [null, Validators.required],
       name: [null, Validators.required],
       compound: [null, Validators.required],
@@ -72,6 +70,12 @@ export class AdminGoodsComponent {
     this.categoriesService.getAll().subscribe((data) => {
       this.category = data as СategoriesResponse[];
       console.log(this.category);
+    });
+  }
+  getMenu(): void {
+    this.menuService.getAll().subscribe((data) => {
+      this.menu = data as MenuResponse[];
+
     });
   }
 
@@ -104,6 +108,7 @@ export class AdminGoodsComponent {
 
   editGood(good: GoodsResponse) {
     this.goodForm.patchValue({
+      menu: good.menu,
       category: good.category,
       name: good.name,
       compound: good.compound,

@@ -1,4 +1,9 @@
+import { MenuResponse } from "./menu";
+
 export interface СategoriesRequest {
+  menu: MenuResponse;
+  menuName: MenuResponse; 
+  menuLink: MenuResponse; 
   titel: string;
   link: string;
   images: string;

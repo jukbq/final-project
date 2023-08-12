@@ -4,7 +4,9 @@ import { MenuResponse } from './menu';
 
 
 export interface GoodsRequest {
-  menuName: MenuResponse;
+  menu: MenuResponse;
+  menuName: СategoriesResponse;
+  menuLink: СategoriesResponse;
   category: СategoriesResponse;
   link: СategoriesResponse;
   titel: СategoriesResponse;

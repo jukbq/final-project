@@ -23,7 +23,7 @@
             <tbody>
                 <tr *ngFor="let good of goods; let i = index">
                     <td>{{ i + 1 }}</td>
-                    <td>{{ good.menuName.menuName}}</td>
+                    <td>{{ good.menu.menuName}}</td>
                     <td>{{ good.category.titel }}</td>
                     <td>{{ good.name }}</td>
                     <td>{{ good.compound }}</td>
@@ -50,7 +50,7 @@
                     <div class="category-selection">
 
                         <select formControlName="menu" name="menu" class="form-select">
-                            <option [ngValue]="menu.menuName" *ngFor="let menu of menu">
+                            <option [ngValue]="menu" *ngFor="let menu of menu">
                                 {{ menu.menuName }}
                             </option>
                         </select>

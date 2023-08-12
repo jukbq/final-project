@@ -36,12 +36,12 @@
     </div>
   </div>
   <div class="header-bottom">
-    <a class="header-logo" [routerLink]="['/home/']">
+    <a class="header-logo" (click)="reload()">
       <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/heder%2Flogo-pizza-red.svg?alt=media&token=78da0861-830a-4dd3-b756-b2d016361e89" alt="" srcset="">
     </a>
     <div class="menu-list">
       <ul>
-        <li class="menu-item"[routerLink]="['/pizza/']">
+        <li class="menu-item" [routerLink]="['/home/pizza']" (click)="handleHeaderClick()">
           <a>Піца
           <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/heder%2Fi-menu-1.svg?alt=media&token=88e2dfff-a0b4-4e9e-a6bb-e14ea3473201" alt="">
           </a>
