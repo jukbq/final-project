@@ -1,0 +1,41 @@
+form {
+  text-align: center;
+}
+form .btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+}
+form input {
+  padding: 16px 0 16px 10px;
+}
+form .login_button {
+  display: flex;
+  flex-direction: column;
+}
+form .login_button .btn {
+  padding: 16px 44px;
+  background: #b5d8f7;
+  transition: 0.35s;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  color: #252525;
+  margin-top: 38px;
+}
+form .login_button .btn:hover {
+  background: none;
+  border: 1px solid #b5d8f7;
+  color: black;
+}
+form .login_button a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+  padding-top: 27px;
+  cursor: pointer;
+}

@@ -64,177 +64,179 @@
 
                         li {
                             margin-right: 0px;
+
+                           
                         }
-                    }
 
-                    &.active {
-                        transform: translateX(0);
-                        bottom: 70px;
-                        opacity: 0;
-                    }
+                        &.active {
+                            transform: translateX(0);
+                            bottom: 70px;
+                            opacity: 0;
+                        }
 
-                    ul li a {
-                        &:hover {
-                            color: var((--clr-green));
+                        ul li a {
+                            &:hover {
+                                color: var((--clr-green));
 
-                            &::before {
-                                width: 0;
+                                &::before {
+                                    width: 0;
+                                }
+                            }
+
+                            img {
+                                display: none;
                             }
                         }
-
-                        img {
-                            display: none;
-                        }
                     }
-                }
 
-                .user-c-wrapper {
-                    transform: translateY(-100%);
-                    top: 48px;
-                    right: 130px;
+                    .user-c-wrapper {
+                        transform: translateY(-100%);
+                        top: 48px;
+                        right: 130px;
 
-                    .user-cabinet {
+                        .user-cabinet {
 
-                        button {
-                            padding: 0;
-                            font-size: 0;
-                            background: transparent;
-                            border: none;
+                            button {
+                                padding: 0;
+                                font-size: 0;
+                                background: transparent;
+                                border: none;
 
-                            svg {
-                                width: 26px;
-                                height: 26px;
-                                stroke: var(--clr-white);
+                                svg {
+                                    width: 26px;
+                                    height: 26px;
+                                    stroke: var(--clr-white);
 
-                                path {
-                                    stroke: var(--clr-black);
+                                    path {
+                                        stroke: var(--clr-black);
+                                    }
                                 }
                             }
                         }
                     }
-                }
 
-                .header-cart {
-                    position: absolute;
-                    min-width: auto;
-                    top: 18px;
-                    right: 70px;
-
-                    i:before {
-                        content: "";
+                    .header-cart {
                         position: absolute;
-                        z-index: -1;
-                        left: 50%;
-                        top: 50%;
-                        transform: translate(-50%, -50%);
-                        width: 24px;
-                        height: 24px;
-                        border-radius: 100%;
-                        background: var(--clr-red);
+                        min-width: auto;
+                        top: 18px;
+                        right: 70px;
+
+                        i:before {
+                            content: "";
+                            position: absolute;
+                            z-index: -1;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 24px;
+                            height: 24px;
+                            border-radius: 100%;
+                            background: var(--clr-red);
+                        }
+
+                        p {
+                            display: none;
+                        }
+
                     }
 
-                    p {
-                        display: none;
-                    }
-
-                }
-
-                .hamburger {
-                    display: inline-block;
-                    position: absolute;
-                    top: 18px;
-                    right: 20px;
-                    cursor: pointer;
-                    transition-property: opacity, filter;
-                    transition-duration: 0.15s;
-                    transition-timing-function: linear;
-                    font: inherit;
-                    color: inherit;
-                    text-transform: none;
-                    background-color: transparent;
-                    border: 0;
-                    margin: 0;
-                    overflow: visible;
-
-                    .hamburger-box {
-                        width: 25px;
-                        height: 16px;
+                    .hamburger {
                         display: inline-block;
-                        position: relative;
+                        position: absolute;
+                        top: 18px;
+                        right: 20px;
+                        cursor: pointer;
+                        transition-property: opacity, filter;
+                        transition-duration: 0.15s;
+                        transition-timing-function: linear;
+                        font: inherit;
+                        color: inherit;
+                        text-transform: none;
+                        background-color: transparent;
+                        border: 0;
+                        margin: 0;
+                        overflow: visible;
 
-
-                        .hamburger-inner {
+                        .hamburger-box {
                             width: 25px;
-                            height: 2px;
-                            display: block;
-                            background-color: var(--clr-black);
-                            margin-top: -1px;
-                            top: 1px;
-                            transition-duration: 0.275s;
-                            transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                            height: 16px;
+                            display: inline-block;
+                            position: relative;
 
-                            &.active {
-                                transform: translate3d(0, 7px, 0) rotate(-135deg);
-                                transition-delay: 0.075s;
+
+                            .hamburger-inner {
+                                width: 25px;
+                                height: 2px;
+                                display: block;
+                                background-color: var(--clr-black);
+                                margin-top: -1px;
                                 top: 1px;
                                 transition-duration: 0.275s;
                                 transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-                            }
-
-                            &.active {
-                                &::before {
-                                    transition-delay: 0s;
-                                    opacity: 0;
-                                }
-
-                                &::after {
-                                    transform: translate3d(0, -14px, 0) rotate(270deg);
+                                &.active {
+                                    transform: translate3d(0, 7px, 0) rotate(-135deg);
                                     transition-delay: 0.075s;
-                                    transition-delay: 0s;
+                                    top: 1px;
+                                    transition-duration: 0.275s;
+                                    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
                                 }
-                            }
 
-                            &:before {
-                                content: "";
-                                display: block;
-                                top: 7px;
-                                transition: opacity 0.125s 0.275s ease;
-                                width: 25px;
-                                height: 2px;
-                                background-color: var(--clr-black);
-                                border-radius: 5px;
-                                position: absolute;
-                                transition-property: -webkit-transform;
-                                transition-property: transform;
-                                transition-duration: 0.15s;
-                                transition-timing-function: ease;
-                                top: 7px;
-                                transition: opacity 0.125s 0.275s ease;
+                                &.active {
+                                    &::before {
+                                        transition-delay: 0s;
+                                        opacity: 0;
+                                    }
 
+                                    &::after {
+                                        transform: translate3d(0, -14px, 0) rotate(270deg);
+                                        transition-delay: 0.075s;
+                                        transition-delay: 0s;
 
-                            }
+                                    }
+                                }
 
-                            &:after {
-                                content: "";
-                                display: block;
-                                top: 14px;
-                                transition: -webkit-transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                                transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                                transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55), -webkit-transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                                width: 25px;
-                                height: 2px;
-                                background-color: var(--clr-black);
-                                border-radius: 5px;
-                                position: absolute;
-                                transition-property: -webkit-transform;
-                                transition-property: transform;
-                                transition-property: transform, -webkit-transform;
-                                transition-duration: 0.15s;
-                                transition-timing-function: ease;
+                                &:before {
+                                    content: "";
+                                    display: block;
+                                    top: 7px;
+                                    transition: opacity 0.125s 0.275s ease;
+                                    width: 25px;
+                                    height: 2px;
+                                    background-color: var(--clr-black);
+                                    border-radius: 5px;
+                                    position: absolute;
+                                    transition-property: -webkit-transform;
+                                    transition-property: transform;
+                                    transition-duration: 0.15s;
+                                    transition-timing-function: ease;
+                                    top: 7px;
+                                    transition: opacity 0.125s 0.275s ease;
 
 
+                                }
+
+                                &:after {
+                                    content: "";
+                                    display: block;
+                                    top: 14px;
+                                    transition: -webkit-transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                                    transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                                    transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55), -webkit-transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                                    width: 25px;
+                                    height: 2px;
+                                    background-color: var(--clr-black);
+                                    border-radius: 5px;
+                                    position: absolute;
+                                    transition-property: -webkit-transform;
+                                    transition-property: transform;
+                                    transition-property: transform, -webkit-transform;
+                                    transition-duration: 0.15s;
+                                    transition-timing-function: ease;
+
+
+                                }
                             }
                         }
                     }
@@ -242,7 +244,6 @@
             }
         }
     }
-}
 
     @media (max-width:524px) {
         header .header-wrapper .container {
@@ -257,3 +258,4 @@
             }
         }
     }
+}

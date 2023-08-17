@@ -3,7 +3,8 @@
     <h1>КАТЕГОРІЇ</h1>
 
 <ul class="category_menu">
-    <li *ngFor="let item of list" (click)="onSelectItem(item.link)" [class.active]="activeSection === item.link">
+    <li *ngFor="let item of list" (click)="onSelectItem(item.link)"
+     [class.active]="activeSection === item.link">
         <p class="nav-link">{{item.name}}</p>
     </li>
 </ul>
@@ -31,7 +32,7 @@
                         <td>{{ i + 1 }}</td>
                         <td>{{ menu.menuindex }}</td>
                         <td>{{ menu.menuName }}</td>
-                        <td>{{ menu.menulink }}</td>
+                        <td>{{ menu.menuLink }}</td>
                         <td class="image">
                             <img [src]="menu.menuImages" />
                         </td>
@@ -50,7 +51,7 @@
                             placeholder="*Порядок меню" aria-label="Порядок меню" />
                         <input formControlName="menuName" type="text" name="menuName" class="form-control"
                             placeholder="*Назва" aria-label="Назва" />
-                        <input formControlName="menulink" type="text" name="menulink" class="form-control" placeholder="*Щлях"
+                        <input formControlName="menuLink" type="text" name="menuLink" class="form-control" placeholder="*Щлях"
                             aria-label="шлях" />
                     </div>
 

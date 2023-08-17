@@ -1,7 +1,7 @@
 export interface MenuRequest {
   menuindex: number;
   menuName: string;
-  menulink: string;
+  menuLink: string;
   menuImages: string;
 }
 export interface MenuResponse extends MenuRequest {

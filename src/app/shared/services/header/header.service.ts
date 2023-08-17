@@ -5,10 +5,10 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class HeaderService {
-  private headerClickSubject = new Subject<void>();
+  private headerClickSubject = new Subject<string>();
   headerClick$ = this.headerClickSubject.asObservable();
 
-  emitHeaderClick() {
-    this.headerClickSubject.next();
+  emitHeaderClick(menuItem: string) {
+    this.headerClickSubject.next(menuItem);
   }
 }

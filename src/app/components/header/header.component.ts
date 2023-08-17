@@ -1,8 +1,12 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { SigninComponent } from 'src/app/modals-win/signin/signin.component';
+import { ROLE } from 'src/app/shared/guards/role.constant';
 import { MenuResponse } from 'src/app/shared/interfaces/menu';
 import { HeaderService } from 'src/app/shared/services/header/header.service';
 import { MenuService } from 'src/app/shared/services/menu/menu.service';
+
 
 @Component({
   selector: 'app-header',
@@ -14,24 +18,28 @@ export class HeaderComponent {
     private el: ElementRef,
     private router: Router,
     private headerService: HeaderService,
-    private menuService: MenuService
+    private menuService: MenuService,
+    public dialog: MatDialog
   ) {}
 
-  public menuAr: Array<MenuResponse> = [];
-  public menuName!: string;
+  public menuArr: Array<MenuResponse> = [];
+  public menuLink = 'pizza';
+  public isLogin = false;
+  public loginUrl = '';
 
   ngOnInit(): void {
     this.getMenu();
   }
 
+  // Отримати меню зі служби меню
   getMenu() {
     this.menuService.getAll().subscribe((data) => {
-      this.menuAr = data as MenuResponse[];
-      this.menuAr.sort((a, b) => a.menuindex - b.menuindex);
-      console.log(this.menuAr);
+      this.menuArr = data as MenuResponse[];
+      this.menuArr.sort((a, b) => a.menuindex - b.menuindex);
     });
   }
 
+  // Відстежування події прокрутки вікна
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any) {
     const headerWrapper =
@@ -41,16 +49,24 @@ export class HeaderComponent {
 
     if (windowWidth > 1240) {
       if (scrollPosition > 0) {
-        headerWrapper.style.top = '-65px';
+        headerWrapper.style.top = '-65px'; // Зміна позиції верху шапки при прокрутці
       } else {
-        headerWrapper.style.top = '0px';
+        headerWrapper.style.top = '0px'; // Повернення шапки на початкову позицію
       }
     }
   }
-  handleHeaderClick() {
-    this.headerService.emitHeaderClick();
+
+  // Вибір пункту меню
+  onSelectItem(item: string): void {
+    this.menuLink = item;
   }
 
+  // Обробник кліку на пункт меню в хедері
+  handleHeaderClick(item: any) {
+    this.headerService.emitHeaderClick(item); // Відправити подію в сервіс
+  }
+
+  // Анімація активного стану гамбургера
   public hamburger_active() {
     const headerTop = this.el.nativeElement.querySelector('.header-top');
     const headerMenuList = this.el.nativeElement.querySelector('.menu-list');
@@ -63,7 +79,37 @@ export class HeaderComponent {
       hamburgerInner.classList.toggle('active');
     }
   }
+
+  changeUserUrl() {
+    const currentUserString = localStorage.getItem('curentUser');
+    if (typeof currentUserString === 'string') {
+      const courentUser = JSON.parse(currentUserString);
+      if (courentUser && courentUser.role == ROLE.ADMIN) {
+        this.isLogin = true;
+        this.loginUrl = 'admin';
+      } else if (courentUser && courentUser.role == ROLE.USER) {
+        this.isLogin = true;
+        this.loginUrl = 'user-cabinet';
+      } else {
+        this.isLogin = false;
+        this.loginUrl = ' ';
+      }
+    }
+  }
+
+  // Перезавантаження сторінки
   reload() {
     window.location.href = '/';
+  }
+
+  sighInModal(): void {
+    let sighIn = this.dialog.open(SigninComponent, {
+      panelClass: 'sigh_maoa_dialog',
+    });
+
+    sighIn.afterClosed().subscribe(() => {
+      this.isLogin = true;
+      this.changeUserUrl();
+    });
   }
 }

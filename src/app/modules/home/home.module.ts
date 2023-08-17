@@ -5,12 +5,12 @@ import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSliderModule } from '@angular/material/slider';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-import { PizzaComponent } from '../pizza/pizza.component';
+
 
 
 
 @NgModule({
-  declarations: [HomeComponent, PizzaComponent],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

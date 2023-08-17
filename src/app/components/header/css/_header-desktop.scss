@@ -11,7 +11,7 @@ header {
 
 
         .container {
-         
+
             display: flex;
             flex-direction: column;
             margin: 0 auto;
@@ -116,6 +116,7 @@ header {
                     height: 100%;
                     display: flex;
                     align-items: center;
+                    cursor: pointer;
 
                     img {
                         width: 100%;
@@ -138,6 +139,7 @@ header {
                             margin-right: 45px;
                             height: 100%;
                             flex: 1 1 130px;
+                            cursor: pointer;
                             text-align: center;
 
                             a {
@@ -168,6 +170,7 @@ header {
                                     transition: var(--transition);
                                 }
 
+
                                 &:hover {
                                     color: var((--clr-green));
 
@@ -180,6 +183,14 @@ header {
                                     width: 30px;
                                     height: 30px;
                                     margin-bottom: 7px;
+                                }
+                            }
+
+                            &.active a {
+                                color: var((--clr-green));
+
+                                &::before {
+                                    width: 100%;
                                 }
                             }
                         }

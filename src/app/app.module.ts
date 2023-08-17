@@ -31,6 +31,9 @@ import {
 import { SaladsComponent } from './modules/salads/salads.component';
 import { DessertsComponent } from './modules/desserts/desserts.component';
 import { DrinksComponent } from './modules/drinks/drinks.component';
+import { SignupComponent } from './modals-win/signup/signup.component';
+import { SigninComponent } from './modals-win/signin/signin.component';
+import { BasketComponent } from './modals-win/basket/basket.component';
 
 
 
@@ -44,6 +47,9 @@ import { DrinksComponent } from './modules/drinks/drinks.component';
     SaladsComponent,
     DessertsComponent,
     DrinksComponent,
+    SignupComponent,
+    SigninComponent,
+    BasketComponent,
     
      ],
   imports: [

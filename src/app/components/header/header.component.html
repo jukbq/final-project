@@ -1,117 +1,126 @@
-
 <header>
   <div class="header-wrapper ">
-   <div class="container">
-  <div class="header-top ">
-    <div class="header-phone">
-      <a href="tel:+380971830618">+38 097 18 306 18 </a>
-      <p>нд-чт 09:30 − 21:00 <br> пт- сб 09:30 − 22:00 <br></p>
-    </div>
-    <ul class="nav header-links">
-      <li class="nav-item ">
-        <a class="nav-link">Про нас</a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link">Доставка та оплата</a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link">Акції</a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link">Контакти</a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link">Вакансії</a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link">Новини</a>
-      </li>
-      <li class="nav-item reviews">
-        <a class="nav-link">Відгук</a>
-      </li>
-    </ul>
-    <div class="header-info">
-      <img src="https://firebasestorage.googleapis.com/v0/b/my-final-project-cbaf4.appspot.com/o/header-img%2Fi-header-top.svg?alt=media&token=7e66843b-dea4-49ff-ab6b-218acb628b64" alt="">
-      <p><b>29 хв</b><span> — середній час доставки</span></p>
-    </div>
-  </div>
-  <div class="header-bottom">
-    <a class="header-logo" (click)="reload()">
-      <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/heder%2Flogo-pizza-red.svg?alt=media&token=78da0861-830a-4dd3-b756-b2d016361e89" alt="" srcset="">
-    </a>
-    <div class="menu-list">
-      <ul >
-        <li class="menu-item" *ngFor="let menu of menuAr; let isFirst = first"
-        [routerLink]="['/home' + menu.menulink]" (click)="handleHeaderClick()"
-          [class.active]="isFirst && !menuName || menu.menulink === menuName" >
-              <a>
-            {{ menu.menuName }}
-            <img src="{{menu.menuImages}}">
-                      </a>
-        </li>
-     </ul>
-    </div>
-
-
-    <div class="user-c-wrapper">
-      <a class="user-fav " href="https://mapizza.com.ua/favorite/">
-        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M10.5166 17.8416C10.2333 17.9416 9.76663 17.9416 9.48329 17.8416C7.06663 17.0166 1.66663 13.5749 1.66663 7.74159C1.66663 5.16659 3.74163 3.08325 6.29996 3.08325C7.81663 3.08325 9.15829 3.81659 9.99996 4.94992C10.8416 3.81659 12.1916 3.08325 13.7 3.08325C16.2583 3.08325 18.3333 5.16659 18.3333 7.74159C18.3333 13.5749 12.9333 17.0166 10.5166 17.8416Z"
-            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-        <i class="num ">0</i>
-        <div class="user_tooltip ">
-          <img src="https://mapizza.com.ua/wp-content/themes/mamma-italiana/img/popup-img-5.svg" alt="">
-          <div class="h6">
-            Список улюблених товарів пустий</div>
+    <div class="container">
+      <div class="header-top ">
+        <div class="header-phone">
+          <a href="tel:+380971830618">+38 097 18 306 18 </a>
+          <p>нд-чт 09:30 − 21:00 <br> пт- сб 09:30 − 22:00 <br></p>
         </div>
-      </a>
-      <div class="user-cabinet">
-        <button [routerLink]="[ '/admin']" class="user-c-btn" data-rel="1">
-          <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M10 10.5001C12.3012 10.5001 14.1667 8.6346 14.1667 6.33341C14.1667 4.03223 12.3012 2.16675 10 2.16675C7.69885 2.16675 5.83337 4.03223 5.83337 6.33341C5.83337 8.6346 7.69885 10.5001 10 10.5001Z"
-              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M17.1583 18.8333C17.1583 15.6083 13.95 13 10 13C6.05001 13 2.84167 15.6083 2.84167 18.8333"
-              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-          Вхід </button>
+        <ul class="nav header-links">
+          <li class="nav-item ">
+            <a class="nav-link">Про нас</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link">Доставка та оплата</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link">Акції</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link">Контакти</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link">Вакансії</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link">Новини</a>
+          </li>
+          <li class="nav-item reviews">
+            <a class="nav-link">Відгук</a>
+          </li>
+        </ul>
+        <div class="header-info">
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/my-final-project-cbaf4.appspot.com/o/header-img%2Fi-header-top.svg?alt=media&token=7e66843b-dea4-49ff-ab6b-218acb628b64"
+            alt="">
+          <p><b>29 хв</b><span> — середній час доставки</span></p>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <a class="header-logo" (click)="reload()">
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/heder%2Flogo-pizza-red.svg?alt=media&token=78da0861-830a-4dd3-b756-b2d016361e89"
+            alt="" srcset="">
+        </a>
+        <div class="menu-list">
+          <ul>
+            <li class="menu-item" *ngFor="let menu of menuArr; 
+             let isFirst = first" [routerLink]="['/home/']" [fragment]="menu.menuLink"
+              (click)="onSelectItem(menu.menuLink)" [class.active]="menuLink === menu.menuLink"
+              (click)="handleHeaderClick(menu.menuLink)">
+
+              <a>
+                {{ menu.menuName }}
+                <img src="{{ menu.menuImages }}">
+              </a>
+            </li>
+          </ul>
+        </div>
+
+
+        <div class="user-c-wrapper">
+          <a class="user-fav " href="https://mapizza.com.ua/favorite/">
+            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10.5166 17.8416C10.2333 17.9416 9.76663 17.9416 9.48329 17.8416C7.06663 17.0166 1.66663 13.5749 1.66663 7.74159C1.66663 5.16659 3.74163 3.08325 6.29996 3.08325C7.81663 3.08325 9.15829 3.81659 9.99996 4.94992C10.8416 3.81659 12.1916 3.08325 13.7 3.08325C16.2583 3.08325 18.3333 5.16659 18.3333 7.74159C18.3333 13.5749 12.9333 17.0166 10.5166 17.8416Z"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <i class="num ">0</i>
+            <div class="user_tooltip ">
+              <img src="https://mapizza.com.ua/wp-content/themes/mamma-italiana/img/popup-img-5.svg" alt="">
+              <div class="h6">
+                Список улюблених товарів пустий</div>
+            </div>
+          </a>
+          <div class="user-cabinet">
+            <button *ngIf="!isLogin" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"  class="user-c-btn btn header_user border_animation" (click)="sighInModal()" data-rel="1">
+              <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 10.5001C12.3012 10.5001 14.1667 8.6346 14.1667 6.33341C14.1667 4.03223 12.3012 2.16675 10 2.16675C7.69885 2.16675 5.83337 4.03223 5.83337 6.33341C5.83337 8.6346 7.69885 10.5001 10 10.5001Z"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M17.1583 18.8333C17.1583 15.6083 13.95 13 10 13C6.05001 13 2.84167 15.6083 2.84167 18.8333"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              Вхід </button>
+          </div>
+        </div>
+        <div class="header-cart">
+          <div class="basket">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M9.375 9.58739V8.37489C9.375 5.56239 11.6375 2.79989 14.45 2.53739C17.8 2.21239 20.625 4.84989 20.625 8.13739V9.86239"
+                stroke="#212721" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                stroke-linejoin="round">
+              </path>
+              <path
+                d="M11.25 27.5H18.75C23.775 27.5 24.675 25.4875 24.9375 23.0375L25.875 15.5375C26.2125 12.4875 25.3375 10 20 10H10C4.66253 10 3.78753 12.4875 4.12503 15.5375L5.06253 23.0375C5.32503 25.4875 6.22503 27.5 11.25 27.5Z"
+                stroke="#212721" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                stroke-linejoin="round">
+              </path>
+              <path d="M19.3694 15H19.3806" stroke="#212721" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path d="M10.6181 15H10.6294" stroke="#212721" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+            <i>0</i>
+          </div>
+          <p><b>0</b> грн</p>
+          <div class="basket_tooltip ">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/heder%2Fpopup-img-6.svg?alt=media&token=39c35d0a-cae2-4d24-82bc-6a66ba62ff10"
+              alt="">
+            <div class="h6">
+              Ваш кошик пустий</div>
+            <div class="text">
+              Наповніть його</div>
+          </div>
+        </div>
+        <div class="hamburger" (click)="hamburger_active()">
+          <div class="hamburger-box">
+            <div class="hamburger-inner"></div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="header-cart">
-      <div class="basket">
-        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M9.375 9.58739V8.37489C9.375 5.56239 11.6375 2.79989 14.45 2.53739C17.8 2.21239 20.625 4.84989 20.625 8.13739V9.86239"
-            stroke="#212721" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round">
-          </path>
-          <path
-            d="M11.25 27.5H18.75C23.775 27.5 24.675 25.4875 24.9375 23.0375L25.875 15.5375C26.2125 12.4875 25.3375 10 20 10H10C4.66253 10 3.78753 12.4875 4.12503 15.5375L5.06253 23.0375C5.32503 25.4875 6.22503 27.5 11.25 27.5Z"
-            stroke="#212721" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round">
-          </path>
-          <path d="M19.3694 15H19.3806" stroke="#212721" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round"></path>
-          <path d="M10.6181 15H10.6294" stroke="#212721" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round"></path>
-        </svg>
-        <i>0</i>
-      </div>
-      <p><b>0</b> грн</p>
-      <div class="basket_tooltip ">
-        <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/heder%2Fpopup-img-6.svg?alt=media&token=39c35d0a-cae2-4d24-82bc-6a66ba62ff10" alt="">
-        <div class="h6">
-          Ваш кошик пустий</div>
-        <div class="text">
-          Наповніть його</div>
-      </div>
-    </div>
-    <div class="hamburger" (click)="hamburger_active()">
-      <div class="hamburger-box">
-        <div class="hamburger-inner"></div>
-      </div>
-    </div>
-  </div>
-   </div>
   </div>
 </header>

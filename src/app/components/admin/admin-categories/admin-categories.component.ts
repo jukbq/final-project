@@ -88,7 +88,7 @@ export class AdminCategoriesComponent {
     this.menuForm = this.formBuild.group({
       menuindex: [null, Validators.required],
       menuName: [null, Validators.required],
-      menulink: [null, Validators.required],
+      menuLink: [null, Validators.required],
       menuImages: [null, Validators.required],
     });
   }
@@ -189,7 +189,7 @@ export class AdminCategoriesComponent {
     this.menuForm.patchValue({
       menuindex: menu.menuindex,
       menuName: menu.menuName,
-      menulink: menu.menulink,
+      menuLink: menu.menuLink,
       menuImages: menu.menuImages,
     });
     this.active_form_3 = true;

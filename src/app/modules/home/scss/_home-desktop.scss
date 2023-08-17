@@ -1,10 +1,12 @@
 section {
     .action-conteiner {
-        width: 100%; 
+        width: 100%;
         height: 600px;
-         position: relative;
-       
-   
+        position: relative;
+
+        &.visible {
+            display: none;
+        }
 
         .banner-decor {
             position: absolute;
@@ -19,7 +21,7 @@ section {
         }
 
         .carusel_container {
-       /*      width: 80%; */
+            /*      width: 80%; */
             margin: 0 auto;
             position: relative;
 

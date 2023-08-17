@@ -119,3 +119,6 @@ body .custom-font {
     padding: 0 3vw;
   }
 }
+.modal-backdrop {
+  filter: blur(2px);
+}
