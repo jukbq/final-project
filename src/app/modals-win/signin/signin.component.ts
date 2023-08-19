@@ -89,6 +89,12 @@ export class SigninComponent implements OnInit, OnDestroy {
       panelClass: 'sigh_maoa_dialog',
     });
   }
+  
+
+  shouldShowError(controlName: string): boolean {
+    const control = this.loginForm.get(controlName);
+    return control?.invalid && (control.dirty || control.touched) || false ;
+  }
 
   close(): void {
     this.dialogRef.close();

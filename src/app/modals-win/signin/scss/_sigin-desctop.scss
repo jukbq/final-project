@@ -1,16 +1,91 @@
-form {
-    max-width: 560px;
+.modal-content {
+    width: 560px;
     text-align: center;
+    display: flex;
+    vertical-align: middle;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    background: var(--clr-white);
+    border-radius: 12px;
+    padding: 40px;
+
 
     .btn-close {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 25px;
+        right: 25px;
         border: none;
+        cursor: pointer;
     }
 
-    input {
-        padding: 16px 0 16px 10px;
+    .title {
+
+        position: relative;
+        margin: 0 auto;
+        font-size: 25px;
+        line-height: 1.33em;
+        font-weight: 600;
+        color: var(--clr-black);
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: -28px;
+            width: 26px;
+            height: 73px;
+            background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            display: block;
+
+        }
+    }
+
+    .modal-body {
+        margin-top: 30px;
+
+        input {
+            padding: 0px 15px;
+            position: relative;
+            font-size: 16px;
+            height: 54px;
+            line-height: 54px;
+            background: var(--clr-white);
+            border: 1px solid var(--clr-grey);
+            border-radius: 12px;
+            text-overflow: ellipsis;
+            transition: var(--transition);
+
+            &.input-error {
+                border-color: var(--clr-red);
+                box-shadow: none;
+
+            }
+
+            &.valid {
+                border-color: var(--clr-grey);
+            }
+        }
+
+        input:focus {
+            border-color: var(--clr-green);
+            box-shadow: none;
+            outline: none;
+
+            &.input-error {
+                border-color: var(--clr-red);
+
+            }
+
+            &.valid {
+                border-color: var(--clr-green);
+
+            }
+
+        }
     }
 
     .login_button {
@@ -18,31 +93,65 @@ form {
         flex-direction: column;
 
         .btn {
-            padding: 16px 44px;
-            background: #b5d8f7;
-            transition: 0.35s;
-            text-transform: uppercase;
-            font-size: 16px;
-            line-height: 20px;
-            font-weight: bold;
-            border-radius: 10px;
-            color: #252525;
-            margin-top: 38px;
+            color: var(--clr-white);
+            background: var(--clr-red);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin-top: 25px;
+
+            &:not(.order-btn) i {
+                display: inline-block;
+                flex-shrink: 0;
+                position: relative;
+                width: 20px;
+                height: 20px;
+                border-radius: 100%;
+                border: 2px solid var(--clr-white);
+                margin-left: 15px;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                    width: 6px;
+                    height: 6px;
+                    margin-left: -1px;
+                    border-right: 2px solid var(--clr-white);
+                    border-bottom: 2px solid var(--clr-white);
+                }
+            }
 
             &:hover {
-                background: none;
-                border: 1px solid #b5d8f7;
-                color: black;
+                background: var(--clr-green);
             }
         }
 
-        a {
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
+        .popup-links-wrapper {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            justify-content: space-between;
             font-size: 16px;
-            padding-top: 27px;
-            cursor: pointer;
+            line-height: 1.5em;
+            color: var(--clr-grey);
+
+            a {
+                display: inline-block;
+                text-decoration: none;
+                cursor: pointer;
+                outline: none;
+                color: inherit;
+                transition: var(--transition);
+                color: var(--clr-grey);
+            }
+
+           div a {
+                color: var(--clr-red);
+            }
         }
     }
 }
