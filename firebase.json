@@ -1,10 +1,13 @@
 {
+  "functions": {
+    "source": "functions"
+  },
   "firestore": {
-    "rules": "y",
+    "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "dist",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",

@@ -22,6 +22,7 @@ const MATERIAL = [MatSliderModule, MatDialogModule, MatFormFieldModule];
     MatButtonModule,
   ],
   exports: [
+    CommonModule,
     ...MATERIAL,
     FormsModule,
     ReactiveFormsModule,

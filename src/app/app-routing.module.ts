@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {HomeComponent} from "./modules/home/home.component";
+import { authGuard } from './shared/guards/auth.guard';
+import { HomeComponent } from './modules/home/home.component';
 import { SignupComponent } from './modals-win/signup/signup.component';
 import { SigninComponent } from './modals-win/signin/signin.component';
 import { BasketComponent } from './modals-win/basket/basket.component';
 
-
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  
+
   { path: 'sighup', component: SignupComponent },
   { path: 'sighin', component: SigninComponent },
   { path: 'basket', component: BasketComponent },
@@ -20,6 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+ 
     loadChildren: () =>
       import('./components/admin/admin.module').then((m) => m.AdminModule),
   },
@@ -27,6 +28,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

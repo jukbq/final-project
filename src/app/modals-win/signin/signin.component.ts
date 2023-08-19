@@ -1,25 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Firestore, docData } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
-import { observable, Subscription } from 'rxjs';
-import {
-  Auth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  UserCredential,
-} from '@angular/fire/auth';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/internal/Subscription';
 import { ROLE } from 'src/app/shared/guards/role.constant';
 import { SignupComponent } from '../signup/signup.component';
+import { doc } from 'firebase/firestore';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css'],
-  
 })
-export class SigninComponent {
+export class SigninComponent implements OnInit, OnDestroy {
   public loginForm!: FormGroup;
   public user: any;
   public loginSubscription!: Subscription;
@@ -33,6 +28,16 @@ export class SigninComponent {
     public dialogRef: MatDialogRef<SigninComponent>
   ) {}
 
+  ngOnInit(): void {
+    this.logFormInit();
+  }
+
+  ngOnDestroy(): void {
+    if (this.loginSubscription) {
+      this.loginSubscription.unsubscribe();
+    }
+  }
+
   logFormInit(): void {
     this.loginForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
@@ -40,37 +45,41 @@ export class SigninComponent {
     });
   }
 
-  ngOnInit(): void {
-    this.logFormInit();
-  }
-
   loginUser(): void {
     const { email, password } = this.loginForm.value;
     this.login(email, password)
-      .then(() => {})
-      .catch((e) => {});
+      .then(() => {
+        console.log('Користувач успішно автроризувався');
+      })
+      .catch((e) => {
+        console.log('Невірний email або пароль');
+      });
   }
 
   async login(email: string, password: string): Promise<void> {
-    const curent = await signInWithEmailAndPassword(this.auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(
+      this.auth,
+      email,
+      password
+    );
 
     this.loginSubscription = docData(
-      doc(this.afs, 'users', curent.user.uid)
+      doc(this.afs, 'users', userCredential.user.uid)
     ).subscribe((user) => {
       this.user = user;
-      const curentUser = { ...user, uid: curent.user.uid };
+      const curentUser = { ...user, uid: userCredential.user.uid };
       localStorage.setItem('curentUser', JSON.stringify(user));
-
       this.actuve();
     });
   }
+
   actuve(): void {
     if (this.user && this.user.role === ROLE.USER) {
       this.close();
       this.router.navigate(['/user-cabinet']);
     } else if (this.user && this.user.role === ROLE.ADMIN) {
       this.close();
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/admin/']);
     }
   }
 
@@ -80,6 +89,7 @@ export class SigninComponent {
       panelClass: 'sigh_maoa_dialog',
     });
   }
+
   close(): void {
     this.dialogRef.close();
   }

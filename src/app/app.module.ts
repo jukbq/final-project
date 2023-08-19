@@ -35,9 +35,6 @@ import { SignupComponent } from './modals-win/signup/signup.component';
 import { SigninComponent } from './modals-win/signin/signin.component';
 import { BasketComponent } from './modals-win/basket/basket.component';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,13 +47,11 @@ import { BasketComponent } from './modals-win/basket/basket.component';
     SignupComponent,
     SigninComponent,
     BasketComponent,
-    
-     ],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    SharedModule,
     BrowserAnimationsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
@@ -66,13 +61,13 @@ import { BasketComponent } from './modals-win/basket/basket.component';
     provideMessaging(() => getMessaging()),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
+    BrowserAnimationsModule,
     ToastrModule.forRoot(),
     providePerformance(() => getPerformance()),
     provideRemoteConfig(() => getRemoteConfig()),
     SharedModule,
-
   ],
-  providers: [],
+  providers: [ScreenTrackingService, UserTrackingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

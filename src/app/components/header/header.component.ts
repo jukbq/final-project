@@ -7,7 +7,6 @@ import { MenuResponse } from 'src/app/shared/interfaces/menu';
 import { HeaderService } from 'src/app/shared/services/header/header.service';
 import { MenuService } from 'src/app/shared/services/menu/menu.service';
 
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -28,6 +27,7 @@ export class HeaderComponent {
   public loginUrl = '';
 
   ngOnInit(): void {
+    this.changeUserUrl();
     this.getMenu();
   }
 
@@ -108,8 +108,9 @@ export class HeaderComponent {
     });
 
     sighIn.afterClosed().subscribe(() => {
-      this.isLogin = true;
       this.changeUserUrl();
     });
   }
+
+
 }

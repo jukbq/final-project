@@ -6,6 +6,7 @@ import { AdminCategoriesComponent } from './admin-categories/admin-categories.co
 import { AdminGoodsComponent } from './admin-goods/admin-goods.component';
 import { AdminOrderComponent } from './admin-order/admin-order.component';
 import { AdminAdditionalProductsComponent } from './admin-additional-products/admin-additional-products.component';
+import { authGuard } from 'src/app/shared/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -16,10 +17,14 @@ const routes: Routes = [
       { path: 'action', component: AdminActionsComponent },
       { path: 'categories', component: AdminCategoriesComponent },
       { path: 'goods', component: AdminGoodsComponent },
-      { path: 'additional-products', component: AdminAdditionalProductsComponent },
+      {
+        path: 'additional-products',
+        component: AdminAdditionalProductsComponent,
+      },
       { path: 'order', component: AdminOrderComponent },
       { path: '', pathMatch: 'full', redirectTo: 'action' },
     ],
+   
   },
 ];
 
