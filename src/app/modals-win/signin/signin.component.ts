@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Firestore, docData } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -18,6 +24,8 @@ export class SigninComponent implements OnInit, OnDestroy {
   public loginForm!: FormGroup;
   public user: any;
   public loginSubscription!: Subscription;
+  public isEntering: boolean = true;
+  public isLeaving: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -76,7 +84,7 @@ export class SigninComponent implements OnInit, OnDestroy {
   actuve(): void {
     if (this.user && this.user.role === ROLE.USER) {
       this.close();
-      this.router.navigate(['/user-cabinet']);
+      this.router.navigate(['/user']);
     } else if (this.user && this.user.role === ROLE.ADMIN) {
       this.close();
       this.router.navigate(['/admin/']);
@@ -88,12 +96,12 @@ export class SigninComponent implements OnInit, OnDestroy {
     this.dialog.open(SignupComponent, {
       panelClass: 'sigh_maoa_dialog',
     });
+    
   }
-  
 
   shouldShowError(controlName: string): boolean {
     const control = this.loginForm.get(controlName);
-    return control?.invalid && (control.dirty || control.touched) || false ;
+    return (control?.invalid && (control.dirty || control.touched)) || false;
   }
 
   close(): void {

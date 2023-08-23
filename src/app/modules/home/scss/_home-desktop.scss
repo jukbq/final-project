@@ -62,55 +62,6 @@ section {
                             font-weight: 400;
                         }
 
-                        .btn {
-                            width: 170px;
-                            position: relative;
-                            display: inline-flex;
-                            align-items: center;
-                            justify-content: center;
-                            color: var(--clr-white);
-                            background: var(--clr-red);
-                            border: none;
-                            border-radius: 12px;
-                            text-align: center;
-                            font-size: 14px;
-                            line-height: 1.45em;
-                            font-weight: 600;
-                            padding: 14px 30px;
-                            text-transform: uppercase;
-                            transition: var(--transition);
-
-                            &:hover {
-                                background: var(--clr-green);
-
-                            }
-
-                            i {
-                                display: inline-block;
-                                flex-shrink: 0;
-                                position: relative;
-                                width: 20px;
-                                height: 20px;
-                                border-radius: 100%;
-                                border: 2px solid var(--clr-white);
-                                margin-left: 15px;
-
-                                &::before {
-                                    content: '';
-                                    position: absolute;
-                                    top: 50%;
-                                    left: 50%;
-                                    transform: translate(-50%, -50%) rotate(-45deg);
-                                    width: 6px;
-                                    height: 6px;
-                                    margin-left: -1px;
-                                    border-right: 2px solid var(--clr-white);
-                                    border-bottom: 2px solid var(--clr-white);
-                                }
-                            }
-                        }
-
-
                     }
 
                     .image_conteiner {

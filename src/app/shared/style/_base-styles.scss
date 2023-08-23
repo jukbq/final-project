@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'Mont Blanc';
+    src: url('https://fonts.cdnfonts.com/css/mont-blanc') format('truetype');
+}
+
+
+
+body {
+    padding: 0 7vw;
+
+    .custom-font {
+        margin: 0;
+        font-family: 'Mont Blanc', sans-serif;
+    }
+}
+
+@media (max-width:524px) {
+    body {
+        padding: 0 3vw;
+    }
+}
+
+.modal-backdrop {
+    filter: blur(2px);
+}
+
+a {
+    text-decoration: none;
+}
+
+:root {
+    --clr-green: #009246;
+    --clr-red: #d22730;
+    --clr-mint: #f5faf2;
+    --clr-white: #fff;
+    --clr-black: #212721;
+    --clr-grey: #636662;
+    --transition: all .3s linear;
+}
+
+
+
+
+.btn {
+    color: var(--clr-white);
+    background: var(--clr-red);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    margin-top: 25px;
+    transition: 0.35s;
+
+    &:not(.order-btn) i {
+        display: inline-block;
+        flex-shrink: 0;
+        position: relative;
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        border: 2px solid var(--clr-white);
+        margin-left: 15px;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            width: 6px;
+            height: 6px;
+            margin-left: -1px;
+            border-right: 2px solid var(--clr-white);
+            border-bottom: 2px solid var(--clr-white);
+        }
+    }
+
+    &:hover {
+        background: var(--clr-green);
+        color: var(--clr-white);
+    }
+}

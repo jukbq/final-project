@@ -1,0 +1,33 @@
+<section>
+    <h3 class="modal-title"><span class="num_list">1</span> Особисті данні</h3>
+
+    <form [formGroup]="sighUoForn" class="modal-content">
+
+        <div class="modal-body">
+            <div class="user_name">
+                <input formControlName="firstname" name="firstname" type="text" class="form-control"
+                    value="{{firstName}}" placeholder="Ваше ім`я:">
+                <input formControlName="lastname" name="lastname" type="text" class="form-control" value="{{lastName}}"
+                    placeholder="Ваше прізвище:">
+            </div>
+            <br>
+            <div class="user_contact">
+                <input formControlName="phone" name="phone" type="number" class="form-control" value="{{phone}}"
+                    placeholder="Ваше телефон:">
+                <br>
+                <input formControlName="email" name="email" type="text" class="form-control" value="{{email}}"
+                    placeholder="Ваш email:">
+            </div>
+            <br>
+        </div>
+    </form>
+
+    <h3 class="modal-title"><span class="num_list">2</span>Адреса</h3>
+    <div class="user_button">
+        <button type="submit" class="btn">Додати адресу</button>
+        <button type="submit" class="btn">Зберегти зміни</button>
+
+
+
+    </div>
+</section>

@@ -1,0 +1,66 @@
+section {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+}
+section .text-center h1 {
+  display: inline-block;
+  position: relative;
+  font-size: 40px;
+  line-height: 1.2em;
+  font-weight: 600;
+  color: var(--clr-black);
+  margin-top: 50px;
+}
+section .text-center h1::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: -50px;
+  width: 64px;
+  height: 54px;
+  background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+section .admin_menu {
+  width: 50%;
+  display: flex;
+  list-style: none;
+  text-align: center;
+  border: 1px solid #D1D9CE;
+  border-radius: 12px;
+  padding: 0;
+  margin-top: 20px;
+}
+section .admin_menu li {
+  width: 20%;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+section .admin_menu li p {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1em;
+  color: var(--clr-grey);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+section .admin_menu li:hover p {
+  color: var(--clr-green);
+}
+section .admin_menu li.active {
+  background-color: var(--clr-red);
+  border-radius: 12px;
+}
+section .admin_menu li.active p {
+  color: var(--clr-white);
+}

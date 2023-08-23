@@ -1,0 +1,188 @@
+.modal-content {
+    width: 560px;
+    text-align: center;
+    display: flex;
+    vertical-align: middle;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    background: var(--clr-white);
+    border-radius: 12px;
+    padding: 40px;
+
+    .btn-close {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .title {
+
+        position: relative;
+        margin: 0 auto;
+        font-size: 25px;
+        line-height: 1.33em;
+        font-weight: 600;
+        color: var(--clr-black);
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: -28px;
+            width: 26px;
+            height: 73px;
+            background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            display: block;
+
+        }
+    }
+
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .user_contact,
+        .user_name {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            input {
+                padding: 0px 15px;
+                position: relative;
+                font-size: 16px;
+                height: 54px;
+                line-height: 54px;
+                background: var(--clr-white);
+                border: 1px solid var(--clr-grey);
+                border-radius: 12px;
+                text-overflow: ellipsis;
+                transition: var(--transition);
+
+                &.input-error {
+                    border-color: var(--clr-red);
+                    box-shadow: none;
+
+                }
+
+                &.valid {
+                    border-color: var(--clr-grey);
+                }
+            }
+
+            input:focus {
+                border-color: var(--clr-green);
+                box-shadow: none;
+                outline: none;
+
+                &.input-error {
+                    border-color: var(--clr-red);
+
+                }
+
+                &.valid {
+                    border-color: var(--clr-green);
+
+                }
+
+            }
+
+            input[type="date"]::-webkit-calendar-picker-indicator {
+                display: none;
+            }
+
+            input[type="date"] {
+                background-image: url('https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fcalendar.svg?alt=media&token=492938e7-56c6-471e-80c4-90d0e324d92b');
+                background-size: 50px 20px;
+                background-repeat: no-repeat;
+                background-position: right center;
+                padding-right: 25px;
+            }
+
+            P {
+                color: var(--clr-grey);
+                font-weight: 300;
+                font-size: 12px;
+                line-height: 1.5em;
+            }
+        }
+
+        .user_name,
+         .user_pass {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            input {
+                width: 45%;
+            }
+
+            span {
+                width: 100%;
+                text-align: center;
+                color: var(--clr-red);
+            }
+        }
+    }
+
+    .checkbox-entry {
+        display: inline-block;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        margin-top: 20px;
+        min-width: 30px;
+        min-height: 20px;
+
+        span {
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 1.5em;
+            color: var(--clr-grey);
+
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 20px;
+                height: 20px;
+                border: 1px solid #d1d9ce;
+                border-radius: 2px;
+                transition: var(--transition);
+
+            }
+
+            a {
+                color: var(--clr-green);
+            }
+        }
+    }
+
+    .popup-links-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 16px;
+        line-height: 1.5em;
+        color: var(--clr-grey);
+        margin-top: 20px;
+
+
+        div a {
+            color: var(--clr-red);
+            cursor: pointer;
+        }
+
+
+    }
+}

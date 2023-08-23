@@ -96,7 +96,6 @@ export class AdminCategoriesComponent {
   // Ініціалізація форми для категорій
   initCategoryForm(): void {
     this.categoryForn = this.formBuild.group({
-      menu: [null, Validators.required],
       titel: [null, Validators.required],
       link: [null, Validators.required],
       images: [null, Validators.required],
@@ -308,11 +307,14 @@ export class AdminCategoriesComponent {
   deleteImage(): void {
     const task1 = ref(this.storsgeIcon, this.valueByControlMenu('menuImages'));
     const task2 = ref(this.storsgeIcon, this.valueByControlCategory('images'));
+    console.log(task1);
+    console.log(task2);
+    
     deleteObject(task1 && task2).then(() => {
       console.log('File deleted');
       this.uploadPercent = 0;
       this.categoryForn.patchValue({
-        images: null,
+        images: '',
       });
     });
   }

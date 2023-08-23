@@ -86,51 +86,26 @@
             }
 
         }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            display: none;
+        }
+
+        /* Додати заміну зображення */
+        input[type="date"] {
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fcalendar.svg?alt=media&token=492938e7-56c6-471e-80c4-90d0e324d92b');
+            background-size: 20px 20px;
+            background-repeat: no-repeat;
+            background-position: right center;
+            padding-right: 25px;
+        }
     }
 
     .login_button {
         display: flex;
         flex-direction: column;
 
-        .btn {
-            color: var(--clr-white);
-            background: var(--clr-red);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            margin-top: 25px;
-
-            &:not(.order-btn) i {
-                display: inline-block;
-                flex-shrink: 0;
-                position: relative;
-                width: 20px;
-                height: 20px;
-                border-radius: 100%;
-                border: 2px solid var(--clr-white);
-                margin-left: 15px;
-
-                &:before {
-                    content: '';
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%) rotate(-45deg);
-                    width: 6px;
-                    height: 6px;
-                    margin-left: -1px;
-                    border-right: 2px solid var(--clr-white);
-                    border-bottom: 2px solid var(--clr-white);
-                }
-            }
-
-            &:hover {
-                background: var(--clr-green);
-            }
-        }
-
-        .popup-links-wrapper {
+       .popup-links-wrapper {
             display: flex;
             align-items: center;
             margin-top: 15px;
@@ -149,7 +124,7 @@
                 color: var(--clr-grey);
             }
 
-           div a {
+            div a {
                 color: var(--clr-red);
             }
         }

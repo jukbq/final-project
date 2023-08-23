@@ -7,7 +7,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserComponent } from './components/user/user.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
@@ -40,7 +39,6 @@ import { BasketComponent } from './modals-win/basket/basket.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    UserComponent,
     SaladsComponent,
     DessertsComponent,
     DrinksComponent,

@@ -11,19 +11,11 @@ section .add_action {
 }
 section .add_action .btn {
   width: 65%;
-  border: 1px solid #D1D9CE;
-  border-radius: 12px;
-  background: rgba(209, 217, 206, 0);
-  transition: 0.35s;
   text-transform: uppercase;
   font-size: 16px;
   line-height: 20px;
   font-weight: bold;
   padding: 16px 22px;
-}
-section .add_action .btn:hover {
-  background-color: var(--clr-red);
-  color: var(--clr-white);
 }
 section .add_action table {
   width: 100%;
@@ -131,9 +123,5 @@ section .add_action .form_conteiner .form_action .batton_section {
   justify-content: space-between;
 }
 section .add_action .form_conteiner .form_action .batton_section .btn {
-  width: 200px;
-}
-section .add_action .form_conteiner .form_action .batton_section .btn:hover {
-  background-color: var(--clr-red);
-  color: var(--clr-white);
+  width: 40%;
 }

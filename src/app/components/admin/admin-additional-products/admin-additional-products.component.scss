@@ -11,20 +11,11 @@ section {
 
         .btn {
             width: 65%;
-            border: 1px solid #D1D9CE;
-            border-radius: 12px;
-            background: #d1d9ce00;
-            transition: 0.35s;
             text-transform: uppercase;
             font-size: 16px;
             line-height: 20px;
             font-weight: bold;
             padding: 16px 22px;
-
-            &:hover {
-                background-color: var(--clr-red);
-                color: var(--clr-white);
-            }
         }
 
         table {
@@ -160,12 +151,8 @@ section {
                     justify-content: space-between;
 
                     .btn {
-                        width: 200px;
+                        width: 40%;
 
-                        &:hover {
-                            background-color: var(--clr-red);
-                            color: var(--clr-white);
-                        }
                     }
                 }
             }

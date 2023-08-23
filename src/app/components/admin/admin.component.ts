@@ -23,13 +23,13 @@ export class AdminComponent {
   ngOnInit(): void {}
 
   onSelectItem(item: string): void {
-    console.log(item)
+    console.log(item);
     this.activeItem = item;
   }
 
   logout() {
     this.router.navigate(['/']);
     localStorage.removeItem('curentUser');
-    window.location.reload();
+    window.location.href = '/';
   }
 }

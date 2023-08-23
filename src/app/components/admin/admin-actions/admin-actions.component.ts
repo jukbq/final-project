@@ -139,7 +139,8 @@ export class AdminActionsComponent {
 
   deleteImage(): void {
     const task = ref(this.storsge, this.valueByControl('images'));
-    deleteObject(task).then(() => {
+    console.log(task);
+        deleteObject(task).then(() => {
       this.uploadPercent = 0;
       this.actionForn.patchValue({
         images: null,

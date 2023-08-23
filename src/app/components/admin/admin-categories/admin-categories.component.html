@@ -2,12 +2,11 @@
 
     <h1>КАТЕГОРІЇ</h1>
 
-<ul class="category_menu">
-    <li *ngFor="let item of list" (click)="onSelectItem(item.link)"
-     [class.active]="activeSection === item.link">
-        <p class="nav-link">{{item.name}}</p>
-    </li>
-</ul>
+    <ul class="category_menu">
+        <li *ngFor="let item of list" (click)="onSelectItem(item.link)" [class.active]="activeSection === item.link">
+            <p class="nav-link">{{item.name}}</p>
+        </li>
+    </ul>
 
     <div class="add-category">
         <div class="add-menu-category" [ngClass]="{ active: activeSection === 'menu' }">
@@ -51,8 +50,8 @@
                             placeholder="*Порядок меню" aria-label="Порядок меню" />
                         <input formControlName="menuName" type="text" name="menuName" class="form-control"
                             placeholder="*Назва" aria-label="Назва" />
-                        <input formControlName="menuLink" type="text" name="menuLink" class="form-control" placeholder="*Щлях"
-                            aria-label="шлях" />
+                        <input formControlName="menuLink" type="text" name="menuLink" class="form-control"
+                            placeholder="*Щлях" aria-label="шлях" />
                     </div>
 
                     <div class="load_file">
@@ -100,9 +99,8 @@
                 <thead>
                     <tr>
                         <th scope="col">№</th>
-                        <th scope="col">Меню</th>
                         <th scope="col">Категорія</th>
-                        <th scope="col">Назва</th>
+                        <th scope="col">Лінк</th>
                         <th scope="col">Картинка</th>
                         <th scope="col">Дії</th>
                     </tr>
@@ -110,7 +108,6 @@
                 <tbody>
                     <tr *ngFor="let categ of category; let i = index">
                         <td>{{ i + 1 }}</td>
-                        <td>{{ categ.menu.menuName }}</td>
                         <td>{{ categ.titel }}</td>
                         <td>{{ categ.link }}</td>
                         <td class="image">
@@ -127,11 +124,6 @@
             <div class="form_conteiner" [ngClass]="{ active: !active_form_1 }">
                 <form [formGroup]="categoryForn" (ngSubmit)="creatCategory()" class="form_category">
                     <div class="input_section">Меню
-                        <select formControlName="menu" name="menu" class="form-select">
-                            <option [ngValue]="menu" *ngFor="let menu of menu">
-                                {{ menu.menuName }}
-                            </option>
-                        </select>
                         <input formControlName="titel" type="text" name="titel" class="form-control"
                             placeholder="*Назва" aria-label="Назва" />
                         <input formControlName="link" type="text" name="link" class="form-control" placeholder="*Щлях"
@@ -139,7 +131,8 @@
                     </div>
 
                     <div class="load_file">
-                        <input class="form-control form-control-lg" type="file" (change)="uploadCategoryImage($event)" />
+                        <input class="form-control form-control-lg" type="file"
+                            (change)="uploadCategoryImage($event)" />
                     </div>
 
                     <div class="progress_line">

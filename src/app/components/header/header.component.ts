@@ -25,6 +25,8 @@ export class HeaderComponent {
   public menuLink = 'pizza';
   public isLogin = false;
   public loginUrl = '';
+  public activeUserMenu = false;
+  public fullName = '';
 
   ngOnInit(): void {
     this.changeUserUrl();
@@ -82,17 +84,23 @@ export class HeaderComponent {
 
   changeUserUrl() {
     const currentUserString = localStorage.getItem('curentUser');
+    console.log(currentUserString);
+
     if (typeof currentUserString === 'string') {
       const courentUser = JSON.parse(currentUserString);
+
       if (courentUser && courentUser.role == ROLE.ADMIN) {
         this.isLogin = true;
         this.loginUrl = 'admin';
-      } else if (courentUser && courentUser.role == ROLE.USER) {
+        this.fullName = `${courentUser.firstName} ${courentUser.lastName}`;
+       } else if (courentUser && courentUser.role == ROLE.USER) {
         this.isLogin = true;
-        this.loginUrl = 'user-cabinet';
+        this.loginUrl = 'user';
+        this.fullName = `${courentUser.firstName} ${courentUser.lastName}`;
       } else {
         this.isLogin = false;
         this.loginUrl = ' ';
+        this.fullName = '';
       }
     }
   }
@@ -112,5 +120,13 @@ export class HeaderComponent {
     });
   }
 
+  activeMenu() {
+    this.activeUserMenu = !this.activeUserMenu;
+  }
 
+  logout() {
+    this.router.navigate(['/']);
+    localStorage.removeItem('curentUser');
+     window.location.href = '/';
+  }
 }

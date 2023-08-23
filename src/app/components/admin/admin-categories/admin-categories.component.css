@@ -67,21 +67,11 @@ section .add-category .add-menu-category .btn,
 section .add-category .add-main-category .btn,
 section .add-category .add-additional-category .btn {
   width: 65%;
-  border: 1px solid #D1D9CE;
-  border-radius: 12px;
-  background: rgba(209, 217, 206, 0);
-  transition: 0.35s;
   text-transform: uppercase;
   font-size: 16px;
   line-height: 20px;
   font-weight: bold;
   padding: 16px 22px;
-}
-section .add-category .add-menu-category .btn:hover,
-section .add-category .add-main-category .btn:hover,
-section .add-category .add-additional-category .btn:hover {
-  background-color: var(--clr-red);
-  color: var(--clr-white);
 }
 section .add-category .add-menu-category table,
 section .add-category .add-main-category table,
@@ -235,13 +225,7 @@ section .add-category .add-additional-category .form_conteiner .form_category .b
 section .add-category .add-menu-category .form_conteiner .form_category .batton_section .btn,
 section .add-category .add-main-category .form_conteiner .form_category .batton_section .btn,
 section .add-category .add-additional-category .form_conteiner .form_category .batton_section .btn {
-  width: 200px;
-}
-section .add-category .add-menu-category .form_conteiner .form_category .batton_section .btn:hover,
-section .add-category .add-main-category .form_conteiner .form_category .batton_section .btn:hover,
-section .add-category .add-additional-category .form_conteiner .form_category .batton_section .btn:hover {
-  background-color: var(--clr-red);
-  color: var(--clr-white);
+  width: 40%;
 }
 section .add-category .add-additional-category {
   width: 40%;
