@@ -1,6 +1,13 @@
 import { Component, Inject } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
+import { Firestore } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adress',
@@ -27,17 +34,16 @@ export class AdressComponent {
   ) {}
 
   ngOnInit(): void {
-    if (this.data.action === 'edit') {
+    if (this.data.action == 'edit') {
       this.activeForm = true;
-      this.userAddressInfo();
       this.addressFormInit();
+      this.userAddressInfo();
     } else {
       this.addressFormInit();
       console.log(this.data.action);
     }
   }
 
-  // Ініціалізація форми адреси
   addressFormInit(): void {
     this.addressForn = this.formBuilder.group({
       type: [null, [Validators.required]],
@@ -50,19 +56,12 @@ export class AdressComponent {
     });
   }
 
-  // Отримання інформації про адреси користувача
   userAddressInfo() {
     this.userAddress = JSON.parse(localStorage.getItem('curentUser') as string);
     if (this.data.id !== undefined) {
       const index = this.data.id;
       if (index >= 0 && index < this.userAddress.address.length) {
         const editAddress = this.userAddress.address[index];
-
-        console.log(editAddress.type);
-        console.log(this.data.id);
-        console.log(this.userAddress);
-
-        // Заповнення форми існуючими даними адреси для редагування
         this.addressForn.patchValue({
           type: editAddress.type,
           city: editAddress.city,
@@ -76,7 +75,6 @@ export class AdressComponent {
     }
   }
 
-  // Додавання нової адреси
   addAddress() {
     this.type = this.addressForn.value.type;
     this.city = this.addressForn.value.city;
@@ -102,33 +100,29 @@ export class AdressComponent {
     this.dialogRef.close();
   }
 
-  // Редагування існуючої адреси
-  editAddress() {
-    const updatedAddress = {
-      type: this.addressForn.value.type,
-      city: this.addressForn.value.city,
-      street: this.addressForn.value.street,
-      houseNumber: this.addressForn.value.houseNumber,
-      entrance: this.addressForn.value.entrance,
-      floor: this.addressForn.value.floor,
-      apartment: this.addressForn.value.apartment,
-    };
-
-    const currentUser = JSON.parse(localStorage.getItem('curentUser') || '{}');
-
-    if (this.data.id !== undefined) {
-      const index = this.data.id;
-
-      if (index >= 0 && index < currentUser.address.length) {
-        currentUser.address[index] = updatedAddress;
-        localStorage.setItem('curentUser', JSON.stringify(currentUser));
-        this.dialogRef.close();
-      }
-    }
-  }
-
-  // Закриття діалогового вікна
   close(): void {
     this.dialogRef.close();
   }
+  editAddress() {
+  const updatedAddress = {
+    type: this.addressForn.value.type,
+    city: this.addressForn.value.city,
+    street: this.addressForn.value.street,
+    houseNumber: this.addressForn.value.houseNumber,
+    entrance: this.addressForn.value.entrance,
+    floor: this.addressForn.value.floor,
+    apartment: this.addressForn.value.apartment,
+  };
+
+  const currentUser = JSON.parse(localStorage.getItem('curentUser') || '{}');
+  if (this.data.id !== undefined) {
+    const index = this.data.id;
+     if (index >= 0 && index < currentUser.address.length) {
+      currentUser.address[index] = updatedAddress;
+       localStorage.setItem('curentUser', JSON.stringify(currentUser));
+            this.dialogRef.close();
+    }
+  }
+}
+
 }

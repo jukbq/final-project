@@ -27,7 +27,7 @@
                 placeholder="№ квартири">
         </div>
 
-        <button class="btn" type="submit">
+        <button [disabled]="addressForn.invalid"  class="btn" type="submit">
             <span>Зберегти</span>
         </button>
     </div>

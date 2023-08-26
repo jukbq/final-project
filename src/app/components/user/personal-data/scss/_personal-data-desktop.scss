@@ -76,6 +76,7 @@ section {
             }
 
             .address-data {
+                width: 100%;
 
                 .btn-address-fields {
                     color: var(--clr-red);
@@ -87,6 +88,7 @@ section {
                     border: 2px solid var(--clr-red);
                     font-size: 12px;
                     padding: 8px 30px;
+                    margin-top: 16px;
 
 
                     svg {
@@ -124,8 +126,8 @@ section {
         border-collapse: collapse;
 
         tbody tr td {
-            border-top: 1px solid #D1D9CE;
-            border-bottom: 1px solid #D1D9CE;
+            border: 1px solid #D1D9CE;
+            /*   border-bottom: 1px solid #D1D9CE; */
             height: 58px;
             padding: 10px 5px;
             vertical-align: middle;
@@ -133,6 +135,10 @@ section {
             line-height: 1.3em;
             font-weight: 400;
             color: var(--clr-black);
+
+            &.address {
+                text-align: left;
+            }
 
             .link-icon {
                 display: inline-flex;
@@ -142,6 +148,8 @@ section {
                 font-size: 14px;
                 font-weight: 600;
                 line-height: 1.5em;
+                border: none;
+                background-color: rgba(255, 255, 255, 0);
                 text-transform: uppercase;
                 color: var(--clr-red);
                 transition: var(--transition);
@@ -151,12 +159,21 @@ section {
                     display: inline-block;
                     width: 20px;
                     height: 20px;
+
                     background-image: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ficon-edit.svg?alt=media&token=0ff90f63-6d82-468f-8d2e-f35d21bae5a6);
                     background-repeat: no-repeat;
                     background-position: center;
                     background-size: contain;
                     margin-left: 8px;
                 }
+            }
+
+            .adaress {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+                cursor: pointer;
+          
             }
         }
     }

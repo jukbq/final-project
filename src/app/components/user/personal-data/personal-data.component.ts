@@ -12,15 +12,16 @@ import { AdressComponent } from 'src/app/modals-win/adress/adress.component';
   styleUrls: ['./personal-data.component.css'],
 })
 export class PersonalDataComponent implements OnInit {
-  public userForn!: FormGroup;
-  public firstName = '';
-  public lastName = '';
-  public birthdate!: number;
-  public phone!: number;
-  public email = '';
-  public password = '';
-  public user: any;
-  public addressArr: any = [];
+  public userForm!: FormGroup; // Форма для введення даних користувача
+  public firstName = ''; // Ім'я користувача
+  public lastName = ''; // Прізвище користувача
+  public birthdate!: number; // Дата народження користувача
+  public phone!: number; // Телефон користувача
+  public email = ''; // Email користувача
+  public password = ''; // Пароль користувача
+  public user: any; // Об'єкт, що зберігає дані користувача
+  public userAddress: any = []; // Адреси користувача
+  public addressArr: any = []; // Масив адрес користувача
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,12 +31,13 @@ export class PersonalDataComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.logFormInit();
-    this.userInfo();
+    this.initForm(); // Ініціалізація форми при завантаженні компонента
+    this.getUserInfo(); // Отримання інформації про користувача
   }
 
-  logFormInit(): void {
-    this.userForn = this.formBuilder.group({
+  // Ініціалізація форми для введення даних користувача
+  initForm(): void {
+    this.userForm = this.formBuilder.group({
       firstname: [null],
       lastname: [null],
       birthdate: [null],
@@ -45,10 +47,11 @@ export class PersonalDataComponent implements OnInit {
     });
   }
 
-  userInfo() {
+  // Отримання інформації про користувача з локального сховища
+  getUserInfo() {
     this.user = JSON.parse(localStorage.getItem('curentUser') as string);
-    let userInfo = this.user;
-    this.addressArr = this.user.address;
+    let userInfo = this.user; // Інформація про користувача
+    this.addressArr = this.user.address; // Масив адрес користувача
     if (userInfo) {
       this.firstName = userInfo.firstName;
       this.lastName = userInfo.lastName;
@@ -56,7 +59,7 @@ export class PersonalDataComponent implements OnInit {
       this.phone = userInfo.phone;
       this.email = userInfo.email;
       this.password = userInfo.password;
-      this.userForn.patchValue({
+      this.userForm.patchValue({
         firstname: this.firstName,
         lastname: this.lastName,
         birthdate: this.birthdate,
@@ -65,15 +68,15 @@ export class PersonalDataComponent implements OnInit {
         password: this.password,
       });
     }
- /*    console.log(this.user);
-    console.log(this.addressArr); */
   }
 
+  // Оновлення даних користувача
   updateUser() {
-    const { email, password } = this.userForn.value;
+    const { email, password } = this.userForm.value;
     this.updateUserData(email, password);
   }
 
+  // Оновлення даних користувача на сервері
   async updateUserData(email: string, password: string): Promise<void> {
     const userCredential = await signInWithEmailAndPassword(
       this.auth,
@@ -81,11 +84,11 @@ export class PersonalDataComponent implements OnInit {
       password
     );
     if (this.user) {
-      this.user.firstName = this.userForn.value.firstname;
-      this.user.lastName = this.userForn.value.lastname;
-      this.user.birthdate = this.userForn.value.birthdate;
-      this.user.phone = this.userForn.value.phone;
-      this.user.email = this.userForn.value.email;
+      this.user.firstName = this.userForm.value.firstname;
+      this.user.lastName = this.userForm.value.lastname;
+      this.user.birthdate = this.userForm.value.birthdate;
+      this.user.phone = this.userForm.value.phone;
+      this.user.email = this.userForm.value.email;
     }
 
     const userDocRef = doc(this.afs, 'users', userCredential.user.uid);
@@ -99,6 +102,7 @@ export class PersonalDataComponent implements OnInit {
       });
   }
 
+  // Відкриття модального вікна для додавання або редагування адреси
   addressModal(action: 'add' | 'edit', id?: number): void {
     const dialogRef = this.dialog.open(AdressComponent, {
       panelClass: 'address_maoa_dialog',
@@ -106,7 +110,23 @@ export class PersonalDataComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(() => {
-      this.userInfo(); // Викликайте метод userInfo після закриття модального вікна
+      this.getUserInfo(); // Оновлення інформації про користувача після закриття модального вікна
+      this.updateUser(); // Оновлення даних користувача на сервері
     });
+  }
+
+  // Видалення адреси користувача
+  delAddres(id?: number): void {
+    this.userAddress = JSON.parse(localStorage.getItem('curentUser') as string);
+    if (id !== undefined) {
+      const index = id;
+      if (index >= 0 && index < this.userAddress.address.length) {
+        const editAddress = this.userAddress.address[index]; // Адреса, яка видаляється
+        this.userAddress.address.splice(index, 1);
+        localStorage.setItem('curentUser', JSON.stringify(this.userAddress));
+        this.getUserInfo(); // Оновлення інформації про користувача після видалення адреси
+        this.updateUser(); // Оновлення даних користувача на сервері
+      }
+    }
   }
 }

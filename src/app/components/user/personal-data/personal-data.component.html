@@ -1,5 +1,5 @@
 <section>
-    <form [formGroup]="userForn" (ngSubmit)="updateUser()">
+    <form [formGroup]="userForm" (ngSubmit)="updateUser()">
 
         <div class="form-body">
             <h4>Особисті данні</h4>
@@ -26,14 +26,19 @@
 
                 <table>
                     <tbody>
-                        <tr    *ngFor="let item of addressArr; let i = index" >
-                            <td>{{ item.type }}</td>
-                            <td>{{ item.city }}
+                        <tr *ngFor="let item of addressArr; let i = index">
+                            <td class="type-address">{{ item.type }}</td>
+                            <td class="address">{{ item.city }}
                                 {{ item.street }}
                                 {{ item.houseNumber }}
                                 {{ item.apartment }}
                             </td>
-                            <td> <button class="link-icon" type="button" (click)="addressModal('edit', i)"></button> </td>
+                            <td>
+                                 <button class="link-icon" type="button" (click)="addressModal('edit', i)">Редагувати </button>
+                            </td>
+                            <td class="del-adaress">
+                                <div type="button" class="btn-close" (click)="delAddres(i)" aria-label="Закрити"></div>
+                            </td>
 
                         </tr>
                     </tbody>
@@ -56,7 +61,7 @@
 
             </div>
         </div>
-        <button type="submit" class="btn save-change">Зберегти
+        <button [disabled]="userForm.invalid" type="submit" class="btn save-change">Зберегти
             зміни</button>
     </form>
 
