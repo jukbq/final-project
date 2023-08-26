@@ -1,5 +1,5 @@
 .modal-content {
-    width: 560px;
+    width: 660px;
     text-align: center;
     display: flex;
     vertical-align: middle;
@@ -48,14 +48,14 @@
         flex-direction: column;
         align-items: center;
 
-        .user_contact,
-        .user_pass,
-        .user_name {
+        .adress1,
+        .adress2 {
             width: 100%;
             display: flex;
             flex-direction: column;
 
-            input {
+            input,
+            select {
                 padding: 0px 15px;
                 position: relative;
                 font-size: 16px;
@@ -66,6 +66,7 @@
                 border-radius: 12px;
                 text-overflow: ellipsis;
                 transition: var(--transition);
+                margin-bottom: 16px;
 
                 &.input-error {
                     border-color: var(--clr-red);
@@ -78,7 +79,8 @@
                 }
             }
 
-            input:focus {
+            select:focus,
+             input:focus {
                 border-color: var(--clr-green);
                 box-shadow: none;
                 outline: none;
@@ -95,95 +97,27 @@
 
             }
 
-            input[type="date"]::-webkit-calendar-picker-indicator {
-                display: none;
-            }
-
-            input[type="date"] {
-                background-image: url('https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fcalendar.svg?alt=media&token=492938e7-56c6-471e-80c4-90d0e324d92b');
-                background-size: 50px 20px;
-                background-repeat: no-repeat;
-                background-position: right center;
-                padding-right: 25px;
-            }
-
-            P {
-                color: var(--clr-grey);
-                font-weight: 300;
-                font-size: 12px;
-                line-height: 1.5em;
-            }
         }
 
-        .user_name,
-        .user_pass {
+
+        .adress2 {
             width: 100%;
             display: flex;
             flex-direction: row;
-            flex-wrap: wrap;
+
             justify-content: space-between;
 
             input {
-                width: 45%;
+                width: 24%;
             }
 
-            span {
-                width: 100%;
-                text-align: center;
-                color: var(--clr-red);
-            }
+
+        }
+
+        button {
+            width: 100%;
         }
     }
 
-    .checkbox-entry {
-        display: inline-block;
-        cursor: pointer;
-        margin: 0;
-        padding: 0;
-        margin-top: 20px;
-        min-width: 30px;
-        min-height: 20px;
 
-        span {
-            font-weight: 300;
-            font-size: 12px;
-            line-height: 1.5em;
-            color: var(--clr-grey);
-
-            &:before {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 20px;
-                height: 20px;
-                border: 1px solid #d1d9ce;
-                border-radius: 2px;
-                transition: var(--transition);
-
-            }
-
-            a {
-                color: var(--clr-green);
-            }
-        }
-    }
-
-    .popup-links-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 16px;
-        line-height: 1.5em;
-        color: var(--clr-grey);
-        margin-top: 20px;
-
-
-        div a {
-            color: var(--clr-red);
-            cursor: pointer;
-        }
-
-
-    }
 }

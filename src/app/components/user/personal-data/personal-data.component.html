@@ -1,33 +1,65 @@
 <section>
-    <h3 class="modal-title"><span class="num_list">1</span> Особисті данні</h3>
+    <form [formGroup]="userForn" (ngSubmit)="updateUser()">
 
-    <form [formGroup]="sighUoForn" class="modal-content">
-
-        <div class="modal-body">
-            <div class="user_name">
+        <div class="form-body">
+            <h4>Особисті данні</h4>
+            <div class="user_data">
                 <input formControlName="firstname" name="firstname" type="text" class="form-control"
-                    value="{{firstName}}" placeholder="Ваше ім`я:">
-                <input formControlName="lastname" name="lastname" type="text" class="form-control" value="{{lastName}}"
+                    placeholder="Ваше ім`я:">
+                <input formControlName="lastname" name="lastname" type="text" class="form-control"
                     placeholder="Ваше прізвище:">
-            </div>
-            <br>
-            <div class="user_contact">
-                <input formControlName="phone" name="phone" type="number" class="form-control" value="{{phone}}"
+
+                <input formControlName="birthdate" name="birthdate" type="date" class="form-control birthdate"
+                    placeholder="Дата народження">
+                <p>Якщо це поле не буде заповнено, то ви не зможете отримувати додаткові бонуси до Дня Вашого народження
+                </p>
+                <input formControlName="phone" name="phone" type="number" class="form-control"
                     placeholder="Ваше телефон:">
                 <br>
-                <input formControlName="email" name="email" type="text" class="form-control" value="{{email}}"
-                    placeholder="Ваш email:">
+                <input formControlName="email" name="email" type="text" class="form-control" placeholder="Ваш email:">
+
             </div>
             <br>
+
+            <h4>Адреса досавки</h4>
+            <div class="address-data">
+
+                <table>
+                    <tbody>
+                        <tr    *ngFor="let item of addressArr; let i = index" >
+                            <td>{{ item.type }}</td>
+                            <td>{{ item.city }}
+                                {{ item.street }}
+                                {{ item.houseNumber }}
+                                {{ item.apartment }}
+                            </td>
+                            <td> <button class="link-icon" type="button" (click)="addressModal('edit', i)"></button> </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <button class="btn-address-fields" type="button" (click)="addressModal('add')">
+                    <span>Додати ще одну адресу</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.0003 18.3333C14.5837 18.3333 18.3337 14.5833 18.3337 9.99996C18.3337 5.41663 14.5837 1.66663 10.0003 1.66663C5.41699 1.66663 1.66699 5.41663 1.66699 9.99996C1.66699 14.5833 5.41699 18.3333 10.0003 18.3333Z"
+                            stroke="#D22730" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M6.66699 10H13.3337" stroke="#D22730" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                        <path d="M10 13.3333V6.66663" stroke="#D22730" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+
+
+            </div>
         </div>
+        <button type="submit" class="btn save-change">Зберегти
+            зміни</button>
     </form>
 
-    <h3 class="modal-title"><span class="num_list">2</span>Адреса</h3>
-    <div class="user_button">
-        <button type="submit" class="btn">Додати адресу</button>
-        <button type="submit" class="btn">Зберегти зміни</button>
 
 
-
-    </div>
 </section>

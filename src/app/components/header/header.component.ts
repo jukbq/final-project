@@ -93,7 +93,7 @@ export class HeaderComponent {
         this.isLogin = true;
         this.loginUrl = 'admin';
         this.fullName = `${courentUser.firstName} ${courentUser.lastName}`;
-       } else if (courentUser && courentUser.role == ROLE.USER) {
+      } else if (courentUser && courentUser.role == ROLE.USER) {
         this.isLogin = true;
         this.loginUrl = 'user';
         this.fullName = `${courentUser.firstName} ${courentUser.lastName}`;
@@ -121,12 +121,16 @@ export class HeaderComponent {
   }
 
   activeMenu() {
-    this.activeUserMenu = !this.activeUserMenu;
+    if (this.loginUrl === 'admin') {
+      this.router.navigate(['admin']);
+    } else {
+      this.activeUserMenu = !this.activeUserMenu;
+    }
   }
 
   logout() {
     this.router.navigate(['/']);
     localStorage.removeItem('curentUser');
-     window.location.href = '/';
+    window.location.href = '/';
   }
 }

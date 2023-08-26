@@ -53,6 +53,7 @@ export class SignupComponent {
       this.enailSighUp(email, password)
         .then(() => {
           console.log('Користувача успішно зареэстровано');
+                this.actuve();
         })
         .catch((e) => {
           console.log('Корситувача з такою адресою вже зареєстровано');
@@ -67,23 +68,22 @@ export class SignupComponent {
       password
     );
     const user = {
+      address: [],
       email: userReg.user.email,
       password: password,
       firstName: this.sighUoForn.value.firstname,
       lastName: this.sighUoForn.value.lastname,
       phone: this.sighUoForn.value.phone,
       birthdate: this.sighUoForn.value.birthdate,
-      adress: '',
       role: 'USER',
     };
-    setDoc(doc(this.afs, 'users', userReg.user.uid), user);
+     await setDoc(doc(this.afs, 'users', userReg.user.uid), user);
     localStorage.setItem('curentUser', JSON.stringify(user));
-    this.user = user.role;
-    this.actuve();
+  
+    
   }
 
   actuve(): void {
-    console.log(this.user);
     this.close();
     window.location.href = '/user';
   }

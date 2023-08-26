@@ -22,7 +22,6 @@ export class UserComponent {
   ngOnInit(): void {}
 
   onSelectItem(item: string): void {
-    console.log(item);
     this.activeItem = item;
   }
 

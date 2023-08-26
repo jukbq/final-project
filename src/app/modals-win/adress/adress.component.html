@@ -1,0 +1,69 @@
+<!-- Форма додавання адреси -->
+<form *ngIf="!activeForm" [formGroup]="addressForn" (ngSubmit)="addAddress()" class="modal-content">
+    <div type="button" class="btn-close" (click)="close()" aria-label="Закрити"></div>
+    <h3 class="modal-title">Додати адресу</h3>
+
+    <div class="modal-body">
+        <div class="adress1">
+            <input formControlName="type" name="type" type="text" class="form-control"
+                placeholder="*Вкажіть назву локації (дім, офіс і т.д.)">
+
+            <select formControlName="city" class="form-control city" name="city" placeholder="*Місто">
+                <option value="" selected disabled>*Місто</option>
+                <option value="Львів">Львів</option>
+                <option value="Зубра">Зубра</option>
+                <option value="Сокільники">Сокільники</option>
+                <option value="Пасіки-Зубрицькі">Пасіки-Зубрицькі</option>
+            </select>
+
+            <input formControlName="street" type="text" class="form-control" name="street" placeholder="*Вулиця">
+        </div>
+        <div class="adress2">
+            <input formControlName="houseNumber" name="houseNumber" type="number" class="form-control"
+                placeholder="*№ будинку">
+            <input formControlName="entrance" name="entrance" type="number" class="form-control" placeholder="Під'їзд">
+            <input formControlName="floor" name="floor" type="number" class="form-control" placeholder="Поверх">
+            <input formControlName="apartment" type="number" class="form-control" name="apartment"
+                placeholder="№ квартири">
+        </div>
+
+        <button class="btn" type="submit">
+            <span>Зберегти</span>
+        </button>
+    </div>
+</form>
+
+<!-- Форма редагування адреси -->
+<form *ngIf="activeForm" [formGroup]="addressForn" (ngSubmit)="editAddress()" class="modal-content">
+    <div type="button" class="btn-close" (click)="close()" aria-label="Закрити"></div>
+    <h3 class="modal-title">Редагувати адресу</h3>
+
+    <div class="modal-body">
+        <div class="adress1">
+            <input formControlName="type" name="type" type="text" class="form-control"
+                placeholder="*Вкажіть назву локації (дім, офіс і т.д.)">
+
+            <select formControlName="city" class="form-control city" name="city" placeholder="*Місто">
+                <option value="" selected disabled>*Місто</option>
+                <option value="Львів">Львів</option>
+                <option value="Зубра">Зубра</option>
+                <option value="Сокільники">Сокільники</option>
+                <option value="Пасіки-Зубрицькі">Пасіки-Зубрицькі</option>
+            </select>
+
+            <input formControlName="street" type="text" class="form-control" name="street" placeholder="*Вулиця">
+        </div>
+        <div class="adress2">
+            <input formControlName="houseNumber" name="houseNumber" type="number" class="form-control"
+                placeholder="*№ будинку">
+            <input formControlName="entrance" name="entrance" type="number" class="form-control" placeholder="Під'їзд">
+            <input formControlName="floor" name="floor" type="number" class="form-control" placeholder="Поверх">
+            <input formControlName="apartment" type="number" class="form-control" name="apartment"
+                placeholder="№ квартири">
+        </div>
+
+        <button class="btn" type="submit">
+            <span>Зберегти</span>
+        </button>
+    </div>
+</form>

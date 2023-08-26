@@ -23,8 +23,7 @@ export class AdminComponent {
   ngOnInit(): void {}
 
   onSelectItem(item: string): void {
-    console.log(item);
-    this.activeItem = item;
+     this.activeItem = item;
   }
 
   logout() {

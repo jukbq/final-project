@@ -88,7 +88,7 @@
               Вхід </button>
           </div>
           <div class="user-cabinet">
-            <button *ngIf="isLogin" [routerLink]="[ '/' + loginUrl]" class="user-c-btn btn header_user border_animation"
+            <button *ngIf="isLogin" class="user-c-btn btn header_user border_animation"
               (click)="activeMenu()">
               <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -102,22 +102,22 @@
               <div class="user-name">{{fullName}}</div>
               <ul class="user-menu-list">
                 <li>
-                  <a href="https://mapizza.com.ua/kabinet/">
+                  <a [routerLink]="['/user/personal-data/']">
                     <p>Персональна інформація</p>
                   </a>
                 </li>
                 <li>
-                  <a href="https://mapizza.com.ua/kabinet/?tab=history-iiko">
+                  <a [routerLink]="['/order-history/']">
                     <p>Історія замовлень</p>
                   </a>
                 </li>
                 <li>
-                  <a href="https://mapizza.com.ua/kabinet/?tab=password">
+                  <a [routerLink]="['/password-change/']">
                     <p>Зміна паролю</p>
                   </a>
                 </li>
                 <li>
-                  <a href="https://mapizza.com.ua/kabinet/?tab=favourites">
+                  <a [routerLink]="['/favorite/']">
                     <p>Улюблені</p>
                   </a>
                 </li>

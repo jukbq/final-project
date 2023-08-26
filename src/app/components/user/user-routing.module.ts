@@ -16,6 +16,7 @@ const routes: Routes = [
       { path: 'order-history', component: OrderHistoryComponent },
       { path: 'password-change', component: PasswordChangeComponent },
       { path: 'favorite', component: FavoriteComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'personal-data' },
     ],
   },
 ];

@@ -33,6 +33,7 @@ import { DrinksComponent } from './modules/drinks/drinks.component';
 import { SignupComponent } from './modals-win/signup/signup.component';
 import { SigninComponent } from './modals-win/signin/signin.component';
 import { BasketComponent } from './modals-win/basket/basket.component';
+import { AdressComponent } from './modals-win/adress/adress.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { BasketComponent } from './modals-win/basket/basket.component';
     SignupComponent,
     SigninComponent,
     BasketComponent,
+    AdressComponent,
   ],
   imports: [
     BrowserModule,

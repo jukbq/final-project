@@ -1,0 +1,112 @@
+.modal-content {
+  width: 660px;
+  text-align: center;
+  display: flex;
+  vertical-align: middle;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  background: var(--clr-white);
+  border-radius: 12px;
+  padding: 40px;
+}
+.modal-content .btn-close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  border: none;
+  cursor: pointer;
+}
+.modal-content .title {
+  position: relative;
+  margin: 0 auto;
+  font-size: 25px;
+  line-height: 1.33em;
+  font-weight: 600;
+  color: var(--clr-black);
+}
+.modal-content .title:before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -28px;
+  width: 26px;
+  height: 73px;
+  background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: block;
+}
+.modal-content .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal-content .modal-body .adress1,
+.modal-content .modal-body .adress2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.modal-content .modal-body .adress1 input,
+.modal-content .modal-body .adress1 select,
+.modal-content .modal-body .adress2 input,
+.modal-content .modal-body .adress2 select {
+  padding: 0px 15px;
+  position: relative;
+  font-size: 16px;
+  height: 54px;
+  line-height: 54px;
+  background: var(--clr-white);
+  border: 1px solid var(--clr-grey);
+  border-radius: 12px;
+  text-overflow: ellipsis;
+  transition: var(--transition);
+  margin-bottom: 16px;
+}
+.modal-content .modal-body .adress1 input.input-error,
+.modal-content .modal-body .adress1 select.input-error,
+.modal-content .modal-body .adress2 input.input-error,
+.modal-content .modal-body .adress2 select.input-error {
+  border-color: var(--clr-red);
+  box-shadow: none;
+}
+.modal-content .modal-body .adress1 input.valid,
+.modal-content .modal-body .adress1 select.valid,
+.modal-content .modal-body .adress2 input.valid,
+.modal-content .modal-body .adress2 select.valid {
+  border-color: var(--clr-grey);
+}
+.modal-content .modal-body .adress1 select:focus,
+.modal-content .modal-body .adress1 input:focus,
+.modal-content .modal-body .adress2 select:focus,
+.modal-content .modal-body .adress2 input:focus {
+  border-color: var(--clr-green);
+  box-shadow: none;
+  outline: none;
+}
+.modal-content .modal-body .adress1 select:focus.input-error,
+.modal-content .modal-body .adress1 input:focus.input-error,
+.modal-content .modal-body .adress2 select:focus.input-error,
+.modal-content .modal-body .adress2 input:focus.input-error {
+  border-color: var(--clr-red);
+}
+.modal-content .modal-body .adress1 select:focus.valid,
+.modal-content .modal-body .adress1 input:focus.valid,
+.modal-content .modal-body .adress2 select:focus.valid,
+.modal-content .modal-body .adress2 input:focus.valid {
+  border-color: var(--clr-green);
+}
+.modal-content .modal-body .adress2 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.modal-content .modal-body .adress2 input {
+  width: 24%;
+}
+.modal-content .modal-body button {
+  width: 100%;
+}

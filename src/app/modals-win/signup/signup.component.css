@@ -44,12 +44,14 @@
   align-items: center;
 }
 .modal-content .modal-body .user_contact,
+.modal-content .modal-body .user_pass,
 .modal-content .modal-body .user_name {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 .modal-content .modal-body .user_contact input,
+.modal-content .modal-body .user_pass input,
 .modal-content .modal-body .user_name input {
   padding: 0px 15px;
   position: relative;
@@ -63,33 +65,40 @@
   transition: var(--transition);
 }
 .modal-content .modal-body .user_contact input.input-error,
+.modal-content .modal-body .user_pass input.input-error,
 .modal-content .modal-body .user_name input.input-error {
   border-color: var(--clr-red);
   box-shadow: none;
 }
 .modal-content .modal-body .user_contact input.valid,
+.modal-content .modal-body .user_pass input.valid,
 .modal-content .modal-body .user_name input.valid {
   border-color: var(--clr-grey);
 }
 .modal-content .modal-body .user_contact input:focus,
+.modal-content .modal-body .user_pass input:focus,
 .modal-content .modal-body .user_name input:focus {
   border-color: var(--clr-green);
   box-shadow: none;
   outline: none;
 }
 .modal-content .modal-body .user_contact input:focus.input-error,
+.modal-content .modal-body .user_pass input:focus.input-error,
 .modal-content .modal-body .user_name input:focus.input-error {
   border-color: var(--clr-red);
 }
 .modal-content .modal-body .user_contact input:focus.valid,
+.modal-content .modal-body .user_pass input:focus.valid,
 .modal-content .modal-body .user_name input:focus.valid {
   border-color: var(--clr-green);
 }
 .modal-content .modal-body .user_contact input[type=date]::-webkit-calendar-picker-indicator,
+.modal-content .modal-body .user_pass input[type=date]::-webkit-calendar-picker-indicator,
 .modal-content .modal-body .user_name input[type=date]::-webkit-calendar-picker-indicator {
   display: none;
 }
 .modal-content .modal-body .user_contact input[type=date],
+.modal-content .modal-body .user_pass input[type=date],
 .modal-content .modal-body .user_name input[type=date] {
   background-image: url("https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fcalendar.svg?alt=media&token=492938e7-56c6-471e-80c4-90d0e324d92b");
   background-size: 50px 20px;
@@ -98,6 +107,7 @@
   padding-right: 25px;
 }
 .modal-content .modal-body .user_contact P,
+.modal-content .modal-body .user_pass P,
 .modal-content .modal-body .user_name P {
   color: var(--clr-grey);
   font-weight: 300;

@@ -1,8 +1,10 @@
 section {
+  width: 65%;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center !important;
+  margin: 0 auto;
 }
 section .text-center h1 {
   display: inline-block;
@@ -25,8 +27,8 @@ section .text-center h1::before {
   background-position: center;
   background-size: contain;
 }
-section .admin_menu {
-  width: 50%;
+section .user_menu {
+  width: 100%;
   display: flex;
   list-style: none;
   text-align: center;
@@ -35,15 +37,15 @@ section .admin_menu {
   padding: 0;
   margin-top: 20px;
 }
-section .admin_menu li {
-  width: 20%;
+section .user_menu li {
+  width: 25%;
   height: 2em;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: var(--transition);
 }
-section .admin_menu li p {
+section .user_menu li p {
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
@@ -54,13 +56,16 @@ section .admin_menu li p {
   margin-top: 0;
   margin-bottom: 0;
 }
-section .admin_menu li:hover p {
+section .user_menu li:hover p {
   color: var(--clr-green);
 }
-section .admin_menu li.active {
+section .user_menu li.active {
   background-color: var(--clr-red);
   border-radius: 12px;
 }
-section .admin_menu li.active p {
+section .user_menu li.active p {
   color: var(--clr-white);
+}
+section .user-category {
+  width: 100%;
 }

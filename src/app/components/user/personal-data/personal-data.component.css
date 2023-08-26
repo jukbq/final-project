@@ -1,0 +1,134 @@
+section {
+  width: 100%;
+  height: auto;
+}
+section form {
+  border: none;
+  text-align: center;
+  margin-bottom: 50px;
+}
+section form .form-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section form .form-body h4 {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.33em;
+}
+section form .form-body .user_data {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+section form .form-body .user_data input {
+  width: 45%;
+  padding: 0px 15px;
+  position: relative;
+  margin-bottom: 16px;
+  font-size: 16px;
+  height: 54px;
+  line-height: 54px;
+  background: var(--clr-white);
+  border: 1px solid var(--clr-grey);
+  border-radius: 12px;
+  text-overflow: ellipsis;
+  transition: var(--transition);
+}
+section form .form-body .user_data input.input-error {
+  border-color: var(--clr-red);
+  box-shadow: none;
+}
+section form .form-body .user_data input.valid {
+  border-color: var(--clr-grey);
+}
+section form .form-body .user_data input[type=date]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+section form .form-body .user_data input[type=date] {
+  width: 100%;
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fcalendar.svg?alt=media&token=492938e7-56c6-471e-80c4-90d0e324d92b");
+  background-size: 50px 20px;
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 25px;
+}
+section form .form-body .user_data P {
+  color: var(--clr-grey);
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 1.5em;
+}
+section form .form-body .address-data .btn-address-fields {
+  color: var(--clr-red);
+  background: var(--clr-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 2px solid var(--clr-red);
+  font-size: 12px;
+  padding: 8px 30px;
+}
+section form .form-body .address-data .btn-address-fields svg {
+  margin-left: 15px;
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+section form .form-body .address-data .btn-address-fields svg path {
+  transition: var(--transition);
+}
+section form .form-body .address-data .btn-address-fields:hover {
+  background: var(--clr-red);
+  color: var(--clr-white);
+}
+section form .form-body .address-data .btn-address-fields:hover svg path {
+  stroke: var(--clr-white);
+}
+section form .save-change {
+  width: 100%;
+}
+section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+section table tbody tr td {
+  border-top: 1px solid #D1D9CE;
+  border-bottom: 1px solid #D1D9CE;
+  height: 58px;
+  padding: 10px 5px;
+  vertical-align: middle;
+  font-size: 16px;
+  line-height: 1.3em;
+  font-weight: 400;
+  color: var(--clr-black);
+}
+section table tbody tr td .link-icon {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5em;
+  text-transform: uppercase;
+  color: var(--clr-red);
+  transition: var(--transition);
+}
+section table tbody tr td .link-icon:after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ficon-edit.svg?alt=media&token=0ff90f63-6d82-468f-8d2e-f35d21bae5a6);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin-left: 8px;
+}
