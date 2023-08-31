@@ -1,5 +1,5 @@
 <section>
-    <div class="action-conteiner" >
+    <div class="action-conteiner">
 
         <div class="banner-decor">
             <img src="https://mapizza.com.ua/wp-content/uploads/2022/03/banner-decor.svg" alt="">
@@ -38,10 +38,11 @@
         <ul class="filters-list">
 
             <li *ngFor="let category of listCategory; 
-                let isFirst = first"
+                let isFirst = first" 
                 [class.active]="isFirst && !categoryName || category.link === categoryName"
                 (click)="onSelectItem(category)">
-                
+             
+
                 <img src="{{category.images}}" alt="">
                 <a class="nav-link">{{ category.titel }}</a>
             </li>
@@ -49,21 +50,21 @@
 
         <ul class="products-wrapper">
             <li *ngFor="let goods of goodsArr">
-               
+
                 <div class="product_top-right">
                     <button class="fav-btn " data-id="37723">
                         <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path class="fill-anime"
                                 d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48342 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15842 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z"
                                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                       
-                            </svg>
+
+                        </svg>
                     </button>
                 </div>
                 <div [routerLink]="[ '/home/'+goods.category.link, goods.id ]" class="goods_image">
                     <img [src]="goods.images">
                 </div>
-            
+
                 <a [routerLink]="[ '/home/'+goods.category.link, goods.id ]" class="goods_title" href="#"
                     itemprop="name">
                     <b>{{goods.name}}</b>
@@ -122,5 +123,5 @@
 
     </div>
 
-    
+
 </section>

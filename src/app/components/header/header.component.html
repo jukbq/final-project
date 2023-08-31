@@ -45,10 +45,11 @@
         <div class="menu-list">
           <ul>
             <li class="menu-item" *ngFor="let menu of menuArr; 
-             let isFirst = first" [routerLink]="['/home/']" [fragment]="menu.menuLink"
-              (click)="onSelectItem(menu.menuLink)" [class.active]="menuLink === menu.menuLink"
-              (click)="handleHeaderClick(menu.menuLink)">
-
+             let isFirst = first"
+              [routerLink]="[menu.menuLink]" 
+               [fragment]="menu.menuLink"
+              (click)="onSelectItem(menu.menuLink)" 
+              [class.active]="menuLink === menu.menuLink">
               <a>
                 {{ menu.menuName }}
                 <img src="{{ menu.menuImages }}">
@@ -137,11 +138,11 @@
 
             </div>
           </div>
-          <!--****************************************************-->
+          <!---->
 
 
         </div>
-        <div class="header-cart">
+        <div class="header-cart" (click)="basketOpen()">
           <div class="basket">
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path

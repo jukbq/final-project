@@ -35,6 +35,7 @@ export class AdminGoodsComponent {
     private menuService: MenuService,
     private storsge: Storage
   ) {}
+  
   public menu: Array<MenuResponse> = [];
   public category: Array<СategoriesResponse> = [];
   public goods: Array<GoodsResponse> = [];
@@ -75,14 +76,12 @@ export class AdminGoodsComponent {
   getMenu(): void {
     this.menuService.getAll().subscribe((data) => {
       this.menu = data as MenuResponse[];
-
     });
   }
 
   getGoods(): void {
     this.goodsService.getAll().subscribe((data) => {
       this.goods = data as GoodsResponse[];
-      console.log(this.goods);
     });
   }
 

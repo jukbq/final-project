@@ -34,12 +34,17 @@ import { SignupComponent } from './modals-win/signup/signup.component';
 import { SigninComponent } from './modals-win/signin/signin.component';
 import { BasketComponent } from './modals-win/basket/basket.component';
 import { AdressComponent } from './modals-win/adress/adress.component';
+import { PizzaComponent } from './modules/pizza/pizza.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    PizzaComponent,
     SaladsComponent,
     DessertsComponent,
     DrinksComponent,
@@ -65,6 +70,8 @@ import { AdressComponent } from './modals-win/adress/adress.component';
     ToastrModule.forRoot(),
     providePerformance(() => getPerformance()),
     provideRemoteConfig(() => getRemoteConfig()),
+    MatSliderModule,
+    SlickCarouselModule,
     SharedModule,
   ],
   providers: [ScreenTrackingService, UserTrackingService],

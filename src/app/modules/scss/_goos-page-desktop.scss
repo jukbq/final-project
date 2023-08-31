@@ -1,0 +1,57 @@
+section {
+    .titel-container {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-bottom: 25px;
+
+        .c-title-wrapper {
+            background: var(--clr-mint);
+            border-radius: 16px;
+            margin-top: 60px;
+
+            .row {
+                min-height: 160px;
+
+                .align-self-center {
+                    align-self: center !important;
+
+                    .h1 {
+                        position: relative;
+                        font-size: 48px;
+                        line-height: 1.2em;
+                        margin-left: 70px;
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            top: -30px;
+                            left: -50px;
+                            width: 64px;
+                            height: 54px;
+                            background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5);
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: contain;
+
+                        }
+                    }
+                }
+
+                .col-lg-6 {
+                    flex: 0 0 auto;
+                    width: 50%;
+
+                    .c-title-img {
+                        margin-top: 16px;
+
+                        img {
+                            display: block;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

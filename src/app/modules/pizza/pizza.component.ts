@@ -8,11 +8,11 @@ import { GoodsService } from 'src/app/shared/services/goods/goods.service';
 import { HeaderService } from 'src/app/shared/services/header/header.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-pizza',
+  templateUrl: './pizza.component.html',
+  styleUrls: ['./pizza.component.css'],
 })
-export class HomeComponent {
+export class PizzaComponent {
   constructor(
     private actionService: ActionService,
     private route: ActivatedRoute,
@@ -46,24 +46,21 @@ export class HomeComponent {
         }
       });
     }
+      const pageInfo = {
+        title: this.activeSection,
+     };
+
+      this.headerService.emitPageInfo(pageInfo);
 
     this.addInitialAllCategory();
     this.getActions();
-
-    // Отримати список категорій
-    this.getCategory();
-
     // Отримати список товарів
     this.getGoods();
+    // Отримати список категорій
+    this.getCategory();
   }
 
-  // Отримати список категорій
-  getCategory() {
-    this.categoriesService.getAll().subscribe((data) => {
-      this.listCategory = [...this.listCategory, ...data];
-    });
-  }
-
+  //ТОВАРИ
   // Отримати список товарів
   getGoods(): void {
     this.goodsService.getAll().subscribe((data) => {
@@ -71,6 +68,44 @@ export class HomeComponent {
         (item) => item.menu.menuLink === this.activeSection
       );
     });
+  }
+
+  //КАТЕГОРІЇ
+  // Створити об'єкт для "Всі категорії"
+  createAllCategoriesObject(): any {
+    const allCategory = {
+      link: 'all',
+      titel: 'Всі',
+      id: 0,
+      images: '',
+      menu: {
+        menuLink: 'pizza',
+        menuName: 'Піца',
+        id: 0,
+      },
+    };
+
+    return allCategory;
+  }
+
+  // Отримати список категорій
+  getCategory() {
+    this.categoriesService.getAll().subscribe((data) => {
+      for (const category of data) {
+        const hasGoodsWithCategory = this.goodsArr.some(
+          (goods) => goods.category && goods.category.link === category['link']
+        );
+        if (hasGoodsWithCategory) {
+          this.listCategory.push(category);
+        }
+      }
+    });
+  }
+
+  categoryHasGoods(categoryLink: string): boolean {
+    return this.goodsArr.some(
+      (goods) => goods.category && goods.category.link === categoryLink
+    );
   }
 
   // Отримати товари за обраною категорією
@@ -85,13 +120,24 @@ export class HomeComponent {
     });
   }
 
-  // Отримати список акцій
-  getActions(): void {
-    this.actionService.getAll().subscribe((data) => {
-      this.slides = data;
-    });
+  // Вибрати категорію
+  onSelectItem(category: any): void {
+    this.activeItem = category;
+    this.categoryName = category.link;
+    if (this.categoryName === 'all') {
+      this.getGoods();
+    } else {
+      this.getGoodsByCategory(this.categoryName);
+    }
   }
 
+  // Додати початковий елемент "Всі категорії"
+  addInitialAllCategory() {
+    const allCategory = this.createAllCategoriesObject();
+    this.listCategory.push(allCategory);
+  }
+
+  //КОШИК
   // Зміна кількості товарів в кошику
   quantity_goods(good: GoodsResponse, value: boolean): void {
     if (value) {
@@ -120,6 +166,14 @@ export class HomeComponent {
 
     localStorage.setItem('basket', JSON.stringify(basket));
     goods.count = 1;
+  }
+
+  //АКЦІЇ
+  // Отримати список акцій
+  getActions(): void {
+    this.actionService.getAll().subscribe((data) => {
+      this.slides = data;
+    });
   }
 
   // Налаштування слайдера
@@ -171,7 +225,7 @@ export class HomeComponent {
   }
 
   // Прокрутка до контейнера піци
-  scrollToPizzaContainer(menuItem: any) {
+  async scrollToPizzaContainer(menuItem: any) {
     this.activeSection = menuItem;
     const goodsContainer: HTMLElement =
       this.el.nativeElement.querySelector('#goods');
@@ -197,39 +251,5 @@ export class HomeComponent {
         behavior: 'smooth',
       });
     }
-  }
-
-  // Вибрати категорію
-  onSelectItem(category: any): void {
-    this.activeItem = category;
-    this.categoryName = category.link;
-    if (this.categoryName === 'all') {
-      this.getGoods();
-    } else {
-      this.getGoodsByCategory(this.categoryName);
-    }
-  }
-
-  // Додати початковий елемент "Всі категорії"
-  addInitialAllCategory() {
-    const allCategory = this.createAllCategoriesObject();
-    this.listCategory.push(allCategory);
-  }
-
-  // Створити об'єкт для "Всі категорії"
-  createAllCategoriesObject(): any {
-    const allCategory = {
-      link: 'all',
-      titel: 'Всі',
-      id: 0,
-      images: '',
-      menu: {
-        menuLink: 'pizza',
-        menuName: 'Піца',
-        id: 0,
-      },
-    };
-
-    return allCategory;
   }
 }

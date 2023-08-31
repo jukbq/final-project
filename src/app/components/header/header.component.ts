@@ -1,7 +1,9 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { BasketComponent } from 'src/app/modals-win/basket/basket.component';
 import { SigninComponent } from 'src/app/modals-win/signin/signin.component';
+import { PizzaComponent } from 'src/app/modules/pizza/pizza.component';
 import { ROLE } from 'src/app/shared/guards/role.constant';
 import { MenuResponse } from 'src/app/shared/interfaces/menu';
 import { HeaderService } from 'src/app/shared/services/header/header.service';
@@ -31,6 +33,13 @@ export class HeaderComponent {
   ngOnInit(): void {
     this.changeUserUrl();
     this.getMenu();
+    this.headerService.pageInfo$.subscribe((pageInfo) => {
+   this.menuLink = pageInfo.title;
+      console.log(pageInfo.title);
+    
+    });
+    console.log(this.menuLink);
+    
   }
 
   // Отримати меню зі служби меню
@@ -61,11 +70,7 @@ export class HeaderComponent {
   // Вибір пункту меню
   onSelectItem(item: string): void {
     this.menuLink = item;
-  }
-
-  // Обробник кліку на пункт меню в хедері
-  handleHeaderClick(item: any) {
-    this.headerService.emitHeaderClick(item); // Відправити подію в сервіс
+    this.headerService.emitHeaderClick(item);
   }
 
   // Анімація активного стану гамбургера
@@ -84,7 +89,7 @@ export class HeaderComponent {
 
   changeUserUrl() {
     const currentUserString = localStorage.getItem('curentUser');
-    console.log(currentUserString);
+    /*  console.log(currentUserString); */
 
     if (typeof currentUserString === 'string') {
       const courentUser = JSON.parse(currentUserString);
@@ -132,5 +137,11 @@ export class HeaderComponent {
     this.router.navigate(['/']);
     localStorage.removeItem('curentUser');
     window.location.href = '/';
+  }
+
+  basketOpen() {
+    let basket = this.dialog.open(BasketComponent, {
+      data: { panelClass: 'active' },
+    });
   }
 }

@@ -8,6 +8,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {RouterModule} from "@angular/router";
 import { MatButtonModule } from '@angular/material/button';
 
+
 const MATERIAL = [MatSliderModule, MatDialogModule, MatFormFieldModule];
 
 @NgModule({
@@ -20,6 +21,7 @@ const MATERIAL = [MatSliderModule, MatDialogModule, MatFormFieldModule];
     HttpClientModule,
     RouterModule,
     MatButtonModule,
+  
   ],
   exports: [
     CommonModule,
@@ -29,6 +31,7 @@ const MATERIAL = [MatSliderModule, MatDialogModule, MatFormFieldModule];
     HttpClientModule,
     RouterModule,
     MatButtonModule,
+  
   ],
   providers: [{ provide: MatDialogRef, useValue: {} }],
 })

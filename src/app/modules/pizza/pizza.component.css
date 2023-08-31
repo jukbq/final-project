@@ -124,7 +124,6 @@ section .action-conteiner .carusel_container .carousel .slide .image_conteiner i
 }
 section .goods-container {
   position: relative;
-  margin-top: -80px;
 }
 section .goods-container .text-left h1 {
   display: inline-block;
