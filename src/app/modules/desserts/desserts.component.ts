@@ -43,8 +43,11 @@ export class DessertsComponent {
   quantity_goods(good: GoodsResponse, value: boolean): void {
     if (value) {
       ++good.count;
+      good.newPrice = true;
+      good.priceTogether = good.price * good.count;
     } else if (!value && good.count > 1) {
       --good.count;
+      good.priceTogether -= good.price;
     }
   }
 

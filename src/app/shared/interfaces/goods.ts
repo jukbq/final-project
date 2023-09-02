@@ -13,7 +13,9 @@ export interface GoodsRequest {
   name: string;
   compound: string;
   weight: string;
+  newPrice: boolean;
   price: number;
+  priceTogether: number;
   images: string;
   count: number;
 }

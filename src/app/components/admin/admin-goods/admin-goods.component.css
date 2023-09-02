@@ -16,6 +16,49 @@ section .add_goods .btn {
   line-height: 20px;
   font-weight: bold;
   padding: 16px 22px;
+  margin-bottom: 16px;
+}
+section .add_goods .filter {
+  width: 90%;
+  display: flex;
+  list-style: none;
+  text-align: center;
+  border: 1px solid #D1D9CE;
+  border-radius: 12px;
+  padding: 0;
+  margin-top: 20px;
+}
+section .add_goods .filter li {
+  width: 20%;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1em;
+  color: var(--clr-grey);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+section .add_goods .filter li:hover {
+  color: var(--clr-green);
+}
+section .add_goods .filter li.active {
+  background-color: var(--clr-red);
+  color: var(--clr-white);
+}
+section .add_goods .filter li.active:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 15px;
+}
+section .add_goods .filter li.active:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 section .add_goods table {
   width: 100%;

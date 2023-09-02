@@ -29,6 +29,8 @@ export class PizzaComponent {
   public categoryName!: string;
   public activeItem: any;
   public menuName: any;
+  public newPrice = false;
+
 
   ngOnInit(): void {
     // Підписка на подію кліку в хедері
@@ -46,11 +48,11 @@ export class PizzaComponent {
         }
       });
     }
-      const pageInfo = {
-        title: this.activeSection,
-     };
+    const pageInfo = {
+      title: this.activeSection,
+    };
 
-      this.headerService.emitPageInfo(pageInfo);
+    this.headerService.emitPageInfo(pageInfo);
 
     this.addInitialAllCategory();
     this.getActions();
@@ -142,8 +144,11 @@ export class PizzaComponent {
   quantity_goods(good: GoodsResponse, value: boolean): void {
     if (value) {
       ++good.count;
+      good.newPrice = true;
+      good.priceTogether = good.price * good.count; 
     } else if (!value && good.count > 1) {
       --good.count;
+      good.priceTogether -= good.price 
     }
   }
 

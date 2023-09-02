@@ -35,7 +35,7 @@ export class AdminGoodsComponent {
     private menuService: MenuService,
     private storsge: Storage
   ) {}
-  
+
   public menu: Array<MenuResponse> = [];
   public category: Array<СategoriesResponse> = [];
   public goods: Array<GoodsResponse> = [];
@@ -46,6 +46,8 @@ export class AdminGoodsComponent {
   public edit_status = false;
   public uploadPercent!: number;
   public link = '';
+  public selectedMenu: MenuResponse[] = [];
+  public selectedCategories: СategoriesResponse[] = [];
 
   ngOnInit(): void {
     this.getCategory();
@@ -57,20 +59,33 @@ export class AdminGoodsComponent {
   initGoodForm(): void {
     this.goodForm = this.formBuilder.group({
       menu: [null, Validators.required],
-      category: [null, Validators.required],
+      category: [{ value: null, disabled: true }],
       name: [null, Validators.required],
       compound: [null, Validators.required],
       weight: [null, Validators.required],
       price: [null, Validators.required],
       images: [null, Validators.required],
-      count: [1],
+      newPrice: false,
+      priceTogether: 0,
+      count: 1,
+    });
+    this.goodForm.get('menu')?.valueChanges.subscribe((menu) => {
+      const categoryControl = this.goodForm.get('category');
+      if (menu.menuLink === 'pizza' || menu.menuLink === 'salads') {
+        categoryControl?.enable(); // Активуємо поле категорій
+        categoryControl?.setValidators([Validators.required]);
+      } else {
+        categoryControl?.disable(); // Вимикаємо поле категорій
+        categoryControl?.clearValidators();
+      }
+
+      categoryControl?.updateValueAndValidity();
     });
   }
 
   getCategory(): void {
     this.categoriesService.getAll().subscribe((data) => {
       this.category = data as СategoriesResponse[];
-      console.log(this.category);
     });
   }
   getMenu(): void {
@@ -82,6 +97,19 @@ export class AdminGoodsComponent {
   getGoods(): void {
     this.goodsService.getAll().subscribe((data) => {
       this.goods = data as GoodsResponse[];
+      if (this.selectedMenu.length > 0) {
+        this.goods = this.goods.filter((good) =>
+          this.selectedMenu.some((menu) => menu.id === good.menu.id)
+        );
+      }
+
+      if (this.selectedCategories.length > 0) {
+        this.goods = this.goods.filter((good) =>
+          this.selectedCategories.some(
+            (category) => category.id === good.category.id
+          )
+        );
+      }
     });
   }
 
@@ -183,5 +211,33 @@ export class AdminGoodsComponent {
     return this.goodForm.get(control)?.value;
   }
 
-  onFilterChange() {}
+  selectMenu(menu: MenuResponse | null): void {
+    if (menu === null) {
+      this.selectedMenu = [];
+      this.getGoods();
+    } else {
+      if (this.selectedMenu.includes(menu)) {
+        this.selectedMenu = this.selectedMenu.filter((c) => c.id !== menu.id);
+      } else {
+        this.selectedMenu.push(menu);
+      }
+      this.getGoods();
+    }
+  }
+
+  selectCategory(category: СategoriesResponse | null): void {
+    if (category === null) {
+      this.selectedCategories = [];
+       this.getGoods();
+    } else {
+      if (this.selectedCategories.includes(category)) {
+        this.selectedCategories = this.selectedCategories.filter(
+          (c) => c.id !== category.id
+        );
+      } else {
+        this.selectedCategories.push(category);
+      }
+    }
+    this.getGoods();
+  }
 }

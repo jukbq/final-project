@@ -230,11 +230,16 @@ section .goods-container .products-wrapper li a img {
   margin-left: 10px;
 }
 section .goods-container .products-wrapper li .product_desc {
-  overflow: hidden;
-  min-height: 4.5em;
+  line-height: 1.5em;
+  max-height: 4.5em;
+  -webkit-box-orient: vertical;
+  display: block;
+  display: -webkit-box;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
   color: var(--clr-grey);
   font-size: 16px;
-  line-height: 1.5em;
   margin-bottom: 10px;
 }
 section .goods-container .products-wrapper li .product_controls {
@@ -283,33 +288,11 @@ section .goods-container .products-wrapper li .product_controls .thumb-input-num
   height: 46px;
   cursor: pointer;
   background: none;
-  font-size: 0;
+  font-weight: 600;
   transition: var(--transition);
   border: 0;
   font-size: 100%;
   vertical-align: baseline;
-}
-section .goods-container .products-wrapper li .product_controls .thumb-input-number button::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 10px;
-  height: 2px;
-  background: #636662;
-  transition: var(--transition);
-}
-section .goods-container .products-wrapper li .product_controls .thumb-input-number .increment::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 2px;
-  height: 10px;
-  background: #636662;
-  transition: var(--transition);
 }
 section .goods-container .products-wrapper li .product_controls .thumb-input-number input {
   width: 46px;

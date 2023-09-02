@@ -78,7 +78,9 @@
                 <div class="product_controls">
                     <div class="product_price-wrap">
                         <div class="product_pricehidden">
-                            <b class="price-old">{{goods.price}}</b>
+                            <b *ngIf="!goods.newPrice" class="price-old">{{goods.price}} </b>
+                            <b *ngIf="goods.newPrice" class="price-old">{{goods.priceTogether}} </b>
+                            
                             грн
                         </div>
                     </div>
@@ -92,12 +94,12 @@
                     <div class="w-100"></div>
 
                     <div class="thumb-input-number">
-                        <button type="button" class="decrement" data-key="">-</button>
-                        <input class="product-qty" value="1" readonly="" tabindex="-1" max="" data-id="640" data-key="">
-                        <button type="button" class="increment" data-key="">+</button>
+                        <button (click)="quantity_goods(goods, false)" type="button" class="decrement" data-key="">-</button>
+                        <input [value]="goods.count" class="product-qty" value="1" readonly="" tabindex="-1" max="" data-id="640" data-key="">
+                        <button  (click)="quantity_goods(goods, true)"  type="button" class="increment" data-key="">+</button>
                     </div>
 
-                    <button class="order-btn">
+                    <button class="order-btn" (click)="addToBasket(goods)">
                         <span>замовити</span>
                         <i>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"

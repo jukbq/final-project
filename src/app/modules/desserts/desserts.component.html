@@ -44,30 +44,32 @@
                 <div class="product_controls">
                     <div class="product_price-wrap">
                         <div class="product_pricehidden">
-                            <b class="price-old">{{goods.price}}</b>
+                            <b *ngIf="!goods.newPrice" class="price-old">{{goods.price}} </b>
+                            <b *ngIf="goods.newPrice" class="price-old">{{goods.priceTogether}} </b>
+                
                             грн
                         </div>
                     </div>
                     <div class="product_size">/
                         <span class="size">{{goods.weight}}</span> г
                     </div>
-
+                
                     <div class="bonus_calculate">
                         +8 грн бонусів </div>
-
+                
                     <div class="w-100"></div>
-
+                
                     <div class="thumb-input-number">
-                        <button type="button" class="decrement" data-key="">-</button>
-                        <input class="product-qty" value="1" readonly="" tabindex="-1" max="" data-id="640" data-key="">
-                        <button type="button" class="increment" data-key="">+</button>
+                        <button (click)="quantity_goods(goods, false)" type="button" class="decrement" data-key="">-</button>
+                        <input [value]="goods.count" class="product-qty" value="1" readonly="" tabindex="-1" max="" data-id="640"
+                            data-key="">
+                        <button (click)="quantity_goods(goods, true)" type="button" class="increment" data-key="">+</button>
                     </div>
-
-                    <button class="order-btn">
+                
+                    <button class="order-btn" (click)="addToBasket(goods)">
                         <span>замовити</span>
                         <i>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M6.25 6.39167V5.58334C6.25 3.70834 7.75833 1.86667 9.63333 1.69167C11.8667 1.47501 13.75 3.23334 13.75 5.42501V6.57501"
                                     stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
