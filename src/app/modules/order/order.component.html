@@ -1,0 +1,415 @@
+<div class="container">
+            <h1 class="title title-decor h1">Оформлення замовлення</h1>
+ <img class="img-decor" src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fdecor-img-6.svg?alt=media&token=8bc059eb-ca21-41b6-a856-9b93a4962808" alt="">
+    <div class="spacer-xs"></div>
+
+    <div class="row checkout-row justify-content-center">
+        <div class="col-lg-6 col-xxl-5">
+            <div class="checkout-products">
+                <div class="thank-total-bonus-product">
+                    <span>Нарахується бонусів:</span>
+                    <span class="cart_bonus-wrap"><b class="all-product-bonus-start">9</b> грн</span>
+                </div>
+
+
+
+
+                <div class="prod_horiz js-product cart-product" data-id="15372" data-sku="02049" data-price="315"
+                    data-cats="Піца" data-key="9f3ad7a14cd3d1cf5d73e8ec7205e7f1">
+                    <a class="prod_horiz-img" href="https://mapizza.com.ua/z-krevetkamy/">
+                        <img class="img imgLoaded"
+                            src="https://mapizza.com.ua/wp-content/uploads/2022/10/z-krevetkamy-2-125x125.jpg"
+                            data-i-src="https://mapizza.com.ua/wp-content/uploads/2022/10/z-krevetkamy-2-125x125.jpg">
+                    </a>
+                    <div class="prod_horiz-desc">
+                        <div class="prod-title-wrap">
+                            <a class="title h5" href="https://mapizza.com.ua/z-krevetkamy/">З креветками</a>
+                            <button class="btn-close remove-product"
+                                data-key="9f3ad7a14cd3d1cf5d73e8ec7205e7f1"></button>
+                        </div>
+
+                        <div class="prod_horiz-controls">
+                            <div class="price_default">
+                                <b>315</b> грн
+                            </div>
+
+                            <div class="thumb-input-number">
+                                <button type="button" class="decrement in-cart"
+                                    data-key="9f3ad7a14cd3d1cf5d73e8ec7205e7f1">-</button>
+                                <input class="product-qty" value="1" readonly="" tabindex="-1" max="999" data-id="15372"
+                                    data-key="9f3ad7a14cd3d1cf5d73e8ec7205e7f1">
+                                <button type="button" class="increment in-cart"
+                                    data-key="9f3ad7a14cd3d1cf5d73e8ec7205e7f1">+</button>
+                            </div>
+
+                            <div class="price-wrap">
+                                <b class="price">315</b> грн
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-xxl-5">
+            <form class="delivery-form b-shadow" id="checkout-form">
+
+
+                <div class="form-group">
+                    <div class="form-title title h4">Контактні дані</div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <input class="input" type="text" name="first_name" placeholder="*Вашe ім’я" value="Олена"
+                                autocomplete="new-password">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input class="input inputmask" name="phone" type="text" value="0991785623"
+                                placeholder="*Телефон" inputmode="numeric"
+                                data-inputmask="'mask': '+38 (0x9) 999 99 99'" data-inputmask-placeholder="x"
+                                autocomplete="new-password">
+                        </div>
+                        <div class="col-12">
+                            <input class="input" value="goeva83@gmail.com" type="email" name="email"
+                                placeholder="Email (для отримання копії замовлення)" autocomplete="new-password">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="form-title title h4">Інформація про доставку</div>
+
+
+                    <div class="checkbox-entry-wrap"> <label class="checkbox-entry radio">
+                            <input id="driveDelivery" type="radio" name="delivery_method" class="toggle-block-control"
+                                data-min-amount="" data-discount-percent="" data-block="2" data-rel="4" checked=""
+                                value="courier">
+
+                            <span>Адресна доставка</span>
+                        </label>
+                        <label class="checkbox-entry radio">
+                            <input id="driveDelivery" type="radio" name="delivery_method" class="toggle-block-control"
+                                data-min-amount="" data-discount-percent="15" data-block="2" data-rel="1"
+                                value="local_pickup">
+
+                            <span>Самовивіз</span>
+                        </label>
+                    </div>
+
+              
+
+
+                    
+
+                    <div class="checkbox-entry-wrap time_wrapper">
+
+                        <label class="checkbox-entry radio">
+                            <input type="radio" class="toggle-block-control" name="delivery-time" data-block="1"
+                                data-rel="0" checked="" value="as_possible">
+                            <span>Доставити якомога швидше</span>
+                        </label>
+                        <label class="checkbox-entry radio">
+                            <input type="radio" class="toggle-block-control" name="delivery-time" data-block="1"
+                                data-rel="1" value="as_hour">
+                            <span>На час</span>
+                        </label>
+                    </div>
+
+
+                    <div class="row wrapper_time_block" style="padding-bottom: 15px; display: none;">
+                        <div class="col-sm-6">
+                            <input type="text" class="input calendar" name="at_time_date" placeholder="Дата доставки"
+                                value="02.09.2023">
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="sumoselect-wrapp">
+                                <div class="SumoSelect sumo_at_time_time" tabindex="0" role="button"
+                                    aria-expanded="false"><select name="at_time_time" class="SelectBox SumoUnder"
+                                        tabindex="-1">
+                                        <option value="" selected="" disabled="">*Час</option>
+                                        <option value="11:45 - 12:00">11:45 - 12:00</option>
+                                        <option value="12:00 - 12:15">12:00 - 12:15</option>
+                                        <option value="12:15 - 12:30">12:15 - 12:30</option>
+                                        <option value="12:30 - 12:45">12:30 - 12:45</option>
+                                        <option value="12:45 - 13:00">12:45 - 13:00</option>
+                                        <option value="13:00 - 13:15">13:00 - 13:15</option>
+                                        <option value="13:15 - 13:30">13:15 - 13:30</option>
+                                        <option value="13:30 - 13:45">13:30 - 13:45</option>
+                                        <option value="13:45 - 14:00">13:45 - 14:00</option>
+                                        <option value="14:00 - 14:15">14:00 - 14:15</option>
+                                        <option value="14:15 - 14:30">14:15 - 14:30</option>
+                                        <option value="14:30 - 14:45">14:30 - 14:45</option>
+                                        <option value="14:45 - 15:00">14:45 - 15:00</option>
+                                        <option value="15:00 - 15:15">15:00 - 15:15</option>
+                                        <option value="15:15 - 15:30">15:15 - 15:30</option>
+                                        <option value="15:30 - 15:45">15:30 - 15:45</option>
+                                        <option value="15:45 - 16:00">15:45 - 16:00</option>
+                                        <option value="16:00 - 16:15">16:00 - 16:15</option>
+                                        <option value="16:15 - 16:30">16:15 - 16:30</option>
+                                        <option value="16:30 - 16:45">16:30 - 16:45</option>
+                                        <option value="16:45 - 17:00">16:45 - 17:00</option>
+                                        <option value="17:00 - 17:15">17:00 - 17:15</option>
+                                        <option value="17:15 - 17:30">17:15 - 17:30</option>
+                                        <option value="17:30 - 17:45">17:30 - 17:45</option>
+                                        <option value="17:45 - 18:00">17:45 - 18:00</option>
+                                        <option value="18:00 - 18:15">18:00 - 18:15</option>
+                                        <option value="18:15 - 18:30">18:15 - 18:30</option>
+                                        <option value="18:30 - 18:45">18:30 - 18:45</option>
+                                        <option value="18:45 - 19:00">18:45 - 19:00</option>
+                                        <option value="19:00 - 19:15">19:00 - 19:15</option>
+                                        <option value="19:15 - 19:30">19:15 - 19:30</option>
+                                        <option value="19:30 - 19:45">19:30 - 19:45</option>
+                                        <option value="19:45 - 20:00">19:45 - 20:00</option>
+                                        <option value="20:00 - 20:15">20:00 - 20:15</option>
+                                        <option value="20:15 - 20:30">20:15 - 20:30</option>
+                                        <option value="20:30 - 20:45">20:30 - 20:45</option>
+                                        <option value="20:45 - 21:00">20:45 - 21:00</option>
+                                        <option value="21:00 - 21:15">21:00 - 21:15</option>
+                                        <option value="21:15 - 21:30">21:15 - 21:30</option>
+                                        <option value="21:30 - 21:45">21:30 - 21:45</option>
+                                        <option value="21:45 - 22:00">21:45 - 22:00</option>
+                                        <option value="22:00 - 22:15">22:00 - 22:15</option>
+                                        <option value="22:15 - 22:30">22:15 - 22:30</option>
+                                    </select>
+                                    <p class="CaptionCont SelectBox SelectBox" title=" *Час"><span class="placeholder">
+                                            *Час</span><label><i></i></label></p>
+                                    <div class="optWrapper">
+                                        <ul class="options">
+                                            <li class="opt disabled selected"><label>*Час</label></li>
+                                            <li class="opt"><label>11:45 - 12:00</label></li>
+                                            <li class="opt"><label>12:00 - 12:15</label></li>
+                                            <li class="opt"><label>12:15 - 12:30</label></li>
+                                            <li class="opt"><label>12:30 - 12:45</label></li>
+                                            <li class="opt"><label>12:45 - 13:00</label></li>
+                                            <li class="opt"><label>13:00 - 13:15</label></li>
+                                            <li class="opt"><label>13:15 - 13:30</label></li>
+                                            <li class="opt"><label>13:30 - 13:45</label></li>
+                                            <li class="opt"><label>13:45 - 14:00</label></li>
+                                            <li class="opt"><label>14:00 - 14:15</label></li>
+                                            <li class="opt"><label>14:15 - 14:30</label></li>
+                                            <li class="opt"><label>14:30 - 14:45</label></li>
+                                            <li class="opt"><label>14:45 - 15:00</label></li>
+                                            <li class="opt"><label>15:00 - 15:15</label></li>
+                                            <li class="opt"><label>15:15 - 15:30</label></li>
+                                            <li class="opt"><label>15:30 - 15:45</label></li>
+                                            <li class="opt"><label>15:45 - 16:00</label></li>
+                                            <li class="opt"><label>16:00 - 16:15</label></li>
+                                            <li class="opt"><label>16:15 - 16:30</label></li>
+                                            <li class="opt"><label>16:30 - 16:45</label></li>
+                                            <li class="opt"><label>16:45 - 17:00</label></li>
+                                            <li class="opt"><label>17:00 - 17:15</label></li>
+                                            <li class="opt"><label>17:15 - 17:30</label></li>
+                                            <li class="opt"><label>17:30 - 17:45</label></li>
+                                            <li class="opt"><label>17:45 - 18:00</label></li>
+                                            <li class="opt"><label>18:00 - 18:15</label></li>
+                                            <li class="opt"><label>18:15 - 18:30</label></li>
+                                            <li class="opt"><label>18:30 - 18:45</label></li>
+                                            <li class="opt"><label>18:45 - 19:00</label></li>
+                                            <li class="opt"><label>19:00 - 19:15</label></li>
+                                            <li class="opt"><label>19:15 - 19:30</label></li>
+                                            <li class="opt"><label>19:30 - 19:45</label></li>
+                                            <li class="opt"><label>19:45 - 20:00</label></li>
+                                            <li class="opt"><label>20:00 - 20:15</label></li>
+                                            <li class="opt"><label>20:15 - 20:30</label></li>
+                                            <li class="opt"><label>20:30 - 20:45</label></li>
+                                            <li class="opt"><label>20:45 - 21:00</label></li>
+                                            <li class="opt"><label>21:00 - 21:15</label></li>
+                                            <li class="opt"><label>21:15 - 21:30</label></li>
+                                            <li class="opt"><label>21:30 - 21:45</label></li>
+                                            <li class="opt"><label>21:45 - 22:00</label></li>
+                                            <li class="opt"><label>22:00 - 22:15</label></li>
+                                            <li class="opt"><label>22:15 - 22:30</label></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="organizationID" value="51f577b7-a595-4bc4-9609-eedc6a00c184">
+                </div>
+
+                <!-- 3 step -->
+                <div class="form-group pay-part">
+                    <div class="form-title title h4">Параметри оплати</div>
+
+                    <div class="checkbox-entry-wrap">
+                        <label class="checkbox-entry radio">
+                            <input type="radio" class="toggle-block-control" id="payment_method_cod" data-block="3"
+                                data-rel="cod" name="payment_method" checked="" value="cod">
+                            <span>Готівка</span>
+                        </label>
+
+                        <label class="checkbox-entry radio">
+                            <input type="radio" class="toggle-block-control" id="payment_method_liqpay" data-block="3"
+                                data-rel="liqpay" name="payment_method" value="liqpay">
+                            <span>Онлайн оплата</span>
+                        </label>
+
+                        <label class="checkbox-entry radio">
+                            <input type="radio" class="toggle-block-control" id="payment_method_bacs" data-block="3"
+                                data-rel="bacs" name="payment_method" value="bacs">
+                            <span>Оплата через термінал</span>
+                        </label>
+                    </div>
+                    <div class="toggle-block" data-block="3" data-rel="cod" style="display: block">
+                        <div class="moneychange-input">
+                            <div class="text">Підготувати решту з:</div>
+                            <input class="input" type="number" placeholder="Введіть суму" name="user_sum">
+                            <label class="checkbox-entry">
+                                <input type="checkbox" name="without_rest"><span>Без решти</span>
+                            </label>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="btn_check_user_bonus btn-primary">
+                        Перевірити наявність бонусів </div>
+                    <div class="col-12 bonus_wrapper_block">
+                        <label class="checkbox-entry bonus">
+                            <input type="checkbox" class="toggle-block-control" data-block="4" data-rel="0"
+                                name="use-bonus">
+                            <span>Використати бонуси ( Доступно: <b>0</b> )</span>
+                        </label>
+                    </div>
+                    <div class="wrapper_not_bonus"></div>
+                    <div class="row">
+                        <div class="toggle-block" data-block="4" data-rel="0">
+                            <div class="row" style="padding-top: 15px">
+                                <div class="col-sm-8">
+                                    <input class="input" type="number" placeholder="Скільки використати?" name="bonus">
+                                </div>
+                                <div class="col-sm-4 align-self-center">
+                                    <div class="btn btn-secondary btn-block apply_bonus">
+                                        <span>ЗАСТОСУВАТИ</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bonuses_code_message"></div>
+                        </div>
+
+                        <div class="toggle-block" data-block="4" data-rel="1">
+                            <div class="row" style="padding-top: 15px">
+                                <div class="col-sm-8">
+                                    <input class="input" type="text" placeholder="Введіть промокод"
+                                        name="use-promo-input">
+                                </div>
+                                <div class="col-sm-4 align-self-center">
+                                    <div class="btn btn-secondary btn-block">
+                                        <span>ЗАСТОСУВАТИ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="select_action_use ">
+
+                        <div class="text">Вибір акції</div>
+                        <div class="SumoSelect sumo_select_action_use" tabindex="0" role="button" aria-expanded="false">
+                            <select name="select_action_use" class="SelectBox SumoUnder" data-prev-change="0"
+                                tabindex="-1">
+                                <option value="0" selected="">Виберіть акцію</option>
+                                <option value="localPickup">-15% на самовивіз</option>
+                            </select>
+                            <p class="CaptionCont SelectBox SelectBox" title=" Виберіть акцію"><span> Виберіть
+                                    акцію</span><label><i></i></label></p>
+                            <div class="optWrapper">
+                                <ul class="options">
+                                    <li class="opt selected"><label>Виберіть акцію</label></li>
+                                    <li class="opt"><label>-15% на самовивіз</label></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+                <div class="thank-total-wrap">
+
+                    <div class="deliveryWarning">
+                        <div class="errorMsg empty-address">
+                            Введіть Вашу адресу та номер будинку </div>
+                        <div class="errorMsg lowOrder minimum-order alert alert-success">
+                            Мінімальна сума замовлення у вашу зону доставки складає <b class="js-zone-min-price"></b>
+                            грн </div>
+                        <div class="errorMsg lowOrderDelivery alert alert-success">
+                            Мінімальна сума замовлення для безкоштовної доставки у вашу зону складає <b
+                                class="js-zone-min-price"></b> грн </div>
+                    </div>
+
+
+
+                    <div class="thank-total-item product_price_total" style="display: none;">
+                        <div>Сума замовлення:</div>
+                        <div><b class="all-product-price-el" data-total="315">315</b> грн</div>
+                    </div>
+
+                    <div class="thank-total-item last-item-border price-delivery" style="display: none;">
+                        <div>Доставка:</div>
+                        <div><b id="all-products-delivery"></b> грн</div>
+                    </div>
+
+                    <div class="thank-total-item last-item-border price-bonuses" style="display: none;">
+                        <div>Бонуси:</div>
+                        <div>-<b id="all-products-bonuses">0</b> грн</div>
+                    </div>
+
+                    <div class="thank-total-item last-item-border price-action" style="display: none;">
+                        <div>Знижка:</div>
+                        <div>-<b id="all-products-discount-action">0</b> грн</div>
+                    </div>
+
+                    <div class="thank-total-item  thank-total-cost not_visble_border">
+                        <div>Загальна вартість:</div>
+                        <div><b class="all-product-price">315</b> грн</div>
+                    </div>
+
+                    <div class="thank-total-item thank-total-bonus ">
+                        <div>Нарахується бонусів:</div>
+                        <div class="cart_bonus-wrap"><b class="all-product-bonus">9</b> грн</div>
+                    </div>
+                </div>
+
+
+                <div class="checkbox-entry-wrap">
+                    <label class="checkbox-entry">
+                        <input type="checkbox" name="no_call">
+                        <span>Зателефонуйте мені для уточнення замовлення</span>
+                    </label>
+                </div>
+
+                <!--  5 toggle-block -->
+                <div class="checkbox-entry-wrap">
+                    <label class="checkbox-entry">
+                        <input type="checkbox" name="addComment" class="toggle-block-control" data-block="5"
+                            data-rel="0"><span>Додати коментар</span>
+                    </label>
+                </div>
+                <div class="toggle-block" data-block="5" data-rel="0" style="padding-bottom: 15px">
+                    <textarea name="comment" class="input" placeholder="Ваш коментар" spellcheck="false"></textarea>
+                </div>
+
+
+
+                <button class="btn btn-primary btn-block main-order-button" type="submit">
+                    <span>Підтвердити замовлення</span>
+                </button>
+
+            </form>
+        </div>
+    </div>
+</div>

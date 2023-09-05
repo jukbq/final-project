@@ -30,6 +30,7 @@
     "ngx-toastr": "^17.0.2",
     "rxjs": "~7.8.0",
     "slick-carousel": "^1.8.1",
+    "toastr": "^2.1.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },

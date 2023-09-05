@@ -1,66 +1,48 @@
-section .action-conteiner {
+section .titel-container {
   width: 100%;
-  height: 600px;
-  position: relative;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 25px;
 }
-section .action-conteiner.visible {
-  display: none;
-}
-section .action-conteiner .banner-decor {
-  position: absolute;
-  width: 25%;
-  top: 0%;
-  left: -4%;
-  z-index: 100;
-}
-section .action-conteiner .banner-decor img {
-  width: 100%;
-}
-section .action-conteiner .carusel_container {
-  /*      width: 80%; */
-  margin: 0 auto;
-  position: relative;
-}
-section .action-conteiner .carusel_container .carousel {
-  display: block;
-  width: 100%;
-  height: 100%;
-  margin-top: 20px;
-}
-section .action-conteiner .carusel_container .carousel .slide {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
+section .titel-container .c-title-wrapper {
   background: var(--clr-mint);
   border-radius: 16px;
-  margin: 0 auto;
+  margin-top: 60px;
 }
-section .action-conteiner .carusel_container .carousel .slide .title_container {
-  width: 45%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0px 50px;
+section .titel-container .c-title-wrapper .row {
+  min-height: 160px;
 }
-section .action-conteiner .carusel_container .carousel .slide .title_container h1 {
-  font-size: 40px;
-  font-weight: 600;
+section .titel-container .c-title-wrapper .row .align-self-center {
+  align-self: center !important;
 }
-section .action-conteiner .carusel_container .carousel .slide .title_container p {
-  font-size: 16px;
-  line-height: 1.5em;
-  color: var(--clr-grey);
-  font-weight: 400;
+section .titel-container .c-title-wrapper .row .align-self-center .h1 {
+  position: relative;
+  font-size: 48px;
+  line-height: 1.2em;
+  margin-left: 70px;
 }
-section .action-conteiner .carusel_container .carousel .slide .image_conteiner {
-  width: 55%;
-  height: 100%;
+section .titel-container .c-title-wrapper .row .align-self-center .h1::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: -50px;
+  width: 64px;
+  height: 54px;
+  background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
-section .action-conteiner .carusel_container .carousel .slide .image_conteiner img {
+section .titel-container .c-title-wrapper .row .col-lg-6 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+section .titel-container .c-title-wrapper .row .col-lg-6 .c-title-img {
+  margin-top: 16px;
+}
+section .titel-container .c-title-wrapper .row .col-lg-6 .c-title-img img {
+  display: block;
   width: 100%;
-  height: auto;
-  overflow: hidden;
 }
 
 @media (max-width: 1028px) {
@@ -320,6 +302,10 @@ section .goods-container .products-wrapper li .product_controls .thumb-input-num
   border: none;
   border-left: 1px solid #d1d9ce;
   border-right: 1px solid #d1d9ce;
+}
+section .goods-container .products-wrapper li .product_controls .thumb-input-number input:focus {
+  outline: none;
+  border: none;
 }
 section .goods-container .products-wrapper li .product_controls .order-btn {
   width: 58%;

@@ -198,7 +198,7 @@ section {
                         overflow: hidden;
                         color: var(--clr-black);
                         font-size: 16px;
-                                              line-height: 1;
+                        line-height: 1;
                         border: 1px solid #d1d9ce;
                         border-radius: 12px;
                         align-self: center;
@@ -210,16 +210,12 @@ section {
                             height: 46px;
                             cursor: pointer;
                             background: none;
-                           font-weight: 600;
+                            font-weight: 600;
                             transition: var(--transition);
                             border: 0;
                             font-size: 100%;
                             vertical-align: baseline;
                         }
-
-                   
-
-
 
                         input {
                             width: 46px;
@@ -230,7 +226,10 @@ section {
                             border-left: 1px solid #d1d9ce;
                             border-right: 1px solid #d1d9ce;
 
-
+                            &:focus {
+                                outline: none;
+                                border: none;
+                            }
                         }
                     }
 

@@ -1,5 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ActionResponse } from 'src/app/shared/interfaces/action';
 import { GoodsResponse } from 'src/app/shared/interfaces/goods';
 import { ActionService } from 'src/app/shared/services/action/action.service';
@@ -19,7 +20,8 @@ export class PizzaComponent {
     private el: ElementRef,
     private headerService: HeaderService,
     private categoriesService: CategoriesService,
-    private goodsService: GoodsService
+    private goodsService: GoodsService,
+    private toastr: ToastrService
   ) {}
 
   public listCategory: any[] = [];
@@ -30,7 +32,7 @@ export class PizzaComponent {
   public activeItem: any;
   public menuName: any;
   public newPrice = false;
-
+  public user = '';
 
   ngOnInit(): void {
     // Підписка на подію кліку в хедері
@@ -60,6 +62,7 @@ export class PizzaComponent {
     this.getGoods();
     // Отримати список категорій
     this.getCategory();
+    this.currentUser();
   }
 
   //ТОВАРИ
@@ -70,6 +73,18 @@ export class PizzaComponent {
         (item) => item.menu.menuLink === this.activeSection
       );
     });
+  }
+
+  currentUser() {
+    const currentUserString = localStorage.getItem('curentUser');
+
+    console.log(currentUserString);
+
+    if (currentUserString) {
+      const userRole = JSON.parse(currentUserString);
+      this.user = userRole.role;
+      console.log(this.user);
+    }
   }
 
   //КАТЕГОРІЇ
@@ -145,32 +160,39 @@ export class PizzaComponent {
     if (value) {
       ++good.count;
       good.newPrice = true;
-      good.priceTogether = good.price * good.count; 
+      good.priceTogether = good.price * good.count;
+      good.bonusTogether = good.bonus * good.count;
     } else if (!value && good.count > 1) {
       --good.count;
-      good.priceTogether -= good.price 
+      good.priceTogether -= good.price;
+      good.bonusTogether -= good.bonus;
     }
   }
 
   // Додавання товару до кошика
   addToBasket(goods: GoodsResponse): void {
     let basket: Array<GoodsResponse> = [];
+    if (this.user === 'ADMIN') {
+      this.toastr.warning(
+        'Адміністратор не може робити замовлення, увійдіть або зареєструйтесь '
+      );
+    } else {
+      if (localStorage.length > 0 && localStorage.getItem('basket')) {
+        basket = JSON.parse(localStorage.getItem('basket') as string);
 
-    if (localStorage.length > 0 && localStorage.getItem('basket')) {
-      basket = JSON.parse(localStorage.getItem('basket') as string);
-
-      if (basket.some((good) => good.id === goods.id)) {
-        const index = basket.findIndex((good) => good.id === goods.id);
-        basket[index].count += goods.count;
+        if (basket.some((good) => good.id === goods.id)) {
+          const index = basket.findIndex((good) => good.id === goods.id);
+          basket[index].count += goods.count;
+        } else {
+          basket.push(goods);
+        }
       } else {
         basket.push(goods);
       }
-    } else {
-      basket.push(goods);
-    }
 
-    localStorage.setItem('basket', JSON.stringify(basket));
-    goods.count = 1;
+      localStorage.setItem('basket', JSON.stringify(basket));
+      goods.count = 1;
+    }
   }
 
   //АКЦІЇ

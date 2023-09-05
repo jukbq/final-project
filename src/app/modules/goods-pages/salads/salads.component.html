@@ -5,15 +5,32 @@
             <div class="row">
                 <div class="col-lg-6 align-self-center">
                     <h1 class="title title-decor h1">
-                        Десерти від МА
+                        Салати від МА
                     </h1>
                 </div>
-                         </div>
+                <div class="col-lg-6">
+
+                    <div class="c-title-img">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fc-title-img.png?alt=media&token=87e18928-e7a2-4879-80a0-7c16ce3c6a99" alt="">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="goods-container" id="goods">
-      
+        <ul class="filters-list">
+
+            <li *ngFor="let category of listCategory; 
+                let isFirst = first" [class.active]="isFirst && !categoryName || category.link === categoryName"
+                (click)="onSelectItem(category)">
+
+
+                <img src="{{category.images}}" alt="">
+                <a class="nav-link">{{ category.titel }}</a>
+            </li>
+        </ul>
+
         <ul class="products-wrapper">
             <li *ngFor="let goods of goodsArr">
 
@@ -54,8 +71,10 @@
                         <span class="size">{{goods.weight}}</span> г
                     </div>
                 
-                    <div class="bonus_calculate">
-                        +8 грн бонусів </div>
+                <div class="bonus_calculate">
+                    <b *ngIf="!goods.newPrice" class="price-old">{{goods.bonus}} грн бонусів </b>
+                    <b *ngIf="goods.newPrice" class="price-old">{{goods.bonusTogether}} грн бонусів </b>
+                </div>
                 
                     <div class="w-100"></div>
                 

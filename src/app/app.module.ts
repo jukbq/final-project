@@ -27,16 +27,17 @@ import {
   provideRemoteConfig,
   getRemoteConfig,
 } from '@angular/fire/remote-config';
-import { SaladsComponent } from './modules/salads/salads.component';
-import { DessertsComponent } from './modules/desserts/desserts.component';
-import { DrinksComponent } from './modules/drinks/drinks.component';
 import { SignupComponent } from './modals-win/signup/signup.component';
 import { SigninComponent } from './modals-win/signin/signin.component';
 import { BasketComponent } from './modals-win/basket/basket.component';
 import { AdressComponent } from './modals-win/adress/adress.component';
-import { PizzaComponent } from './modules/pizza/pizza.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { PizzaComponent } from './modules/goods-pages/pizza/pizza.component';
+import { DessertsComponent } from './modules/goods-pages/desserts/desserts.component';
+import { DrinksComponent } from './modules/goods-pages/drinks/drinks.component';
+import { SaladsComponent } from './modules/goods-pages/salads/salads.component';
+import { OrderComponent } from './modules/order/order.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     SigninComponent,
     BasketComponent,
     AdressComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,

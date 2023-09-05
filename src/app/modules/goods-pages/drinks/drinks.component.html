@@ -1,52 +1,18 @@
 <section>
-    <div class="action-conteiner">
 
-        <div class="banner-decor">
-            <img src="https://mapizza.com.ua/wp-content/uploads/2022/03/banner-decor.svg" alt="">
-        </div>
-        <div class="carusel_container">
-            <div class="batton-container"></div>
-
-            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
-                (init)="onCarouselInit($event)">
-
-                <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-
-                    <div class="title_container">
-                        <h1>{{ slide.title }}</h1>
-                        <p>{{ slide.description }}</p>
-                        <a class="btn" href="{{ slide.link }}">
-                            <span>Замовити</span>
-                            <i></i>
-                        </a>
-
-                    </div>
-                    <div class="image_conteiner">
-                        <img src="{{ slide.images }}" alt="">
-                    </div>
+    <div class="titel-container">
+        <div class="c-title-wrapper">
+            <div class="row">
+                <div class="col-lg-6 align-self-center">
+                    <h1 class="title title-decor h1">
+                        Десерти від МА
+                    </h1>
                 </div>
-
-            </ngx-slick-carousel>
+            </div>
         </div>
     </div>
 
     <div class="goods-container" id="goods">
-        <div class="text-left">
-            <h1>Піцца Львів</h1>
-        </div>
-
-        <ul class="filters-list">
-
-            <li *ngFor="let category of listCategory; 
-                let isFirst = first" 
-                [class.active]="isFirst && !categoryName || category.link === categoryName"
-                (click)="onSelectItem(category)">
-             
-
-                <img src="{{category.images}}" alt="">
-                <a class="nav-link">{{ category.titel }}</a>
-            </li>
-        </ul>
 
         <ul class="products-wrapper">
             <li *ngFor="let goods of goodsArr">
@@ -80,30 +46,31 @@
                         <div class="product_pricehidden">
                             <b *ngIf="!goods.newPrice" class="price-old">{{goods.price}} </b>
                             <b *ngIf="goods.newPrice" class="price-old">{{goods.priceTogether}} </b>
-                            
+                
                             грн
                         </div>
                     </div>
                     <div class="product_size">/
                         <span class="size">{{goods.weight}}</span> г
                     </div>
-
                     <div class="bonus_calculate">
-                        +8 грн бонусів </div>
-
+                        <b *ngIf="!goods.newPrice" class="price-old">{{goods.bonus}} грн бонусів </b>
+                        <b *ngIf="goods.newPrice" class="price-old">{{goods.bonusTogether}} грн бонусів </b>
+                    </div>
+                
                     <div class="w-100"></div>
-
+                
                     <div class="thumb-input-number">
                         <button (click)="quantity_goods(goods, false)" type="button" class="decrement" data-key="">-</button>
-                        <input [value]="goods.count" class="product-qty" value="1" readonly="" tabindex="-1" max="" data-id="640" data-key="">
-                        <button  (click)="quantity_goods(goods, true)"  type="button" class="increment" data-key="">+</button>
+                        <input [value]="goods.count" class="product-qty" value="1" readonly="" tabindex="-1" max="" data-id="640"
+                            data-key="">
+                        <button (click)="quantity_goods(goods, true)" type="button" class="increment" data-key="">+</button>
                     </div>
-
+                
                     <button class="order-btn" (click)="addToBasket(goods)">
                         <span>замовити</span>
                         <i>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M6.25 6.39167V5.58334C6.25 3.70834 7.75833 1.86667 9.63333 1.69167C11.8667 1.47501 13.75 3.23334 13.75 5.42501V6.57501"
                                     stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"

@@ -1,4 +1,4 @@
-.cart {
+.basket {
     position: fixed;
     z-index: 120;
     right: 0;
@@ -7,29 +7,34 @@
     width: 540px;
     margin: 15px;
     border-radius: 12px;
+    padding: 16px;
     background-color: var(--clr-white);
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     flex-direction: column;
     transform: translateX(130%);
-
     transition: 0.5s;
 
     &.active {
         transform: translateX(0);
     }
 
-    .cart_title {
+
+
+    .basket_title {
+        position: relative;
         padding: 20px 20px;
         border-bottom: 1px solid #D1D9CE;
         text-align: center;
         height: 74px;
 
+
         .title {
             position: relative;
             display: inline-block;
             vertical-align: middle;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--clr-black);
 
             &::before {
                 content: '';
@@ -44,12 +49,171 @@
                 background-size: contain;
             }
         }
+
+        .btn-close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            border: none !important;
+            cursor: pointer;
+
+        }
     }
 
-    .cart_bottom {
-        padding: 15px 20px;
+    .basket_order {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        list-style: none;
+        padding-left: 0px;
+
+        .order_good {
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-shrink: 0;
+            padding: 20px 0px;
+            border-bottom: 1px solid #d1d9ce;
+
+            .btn-close {
+                position: absolute;
+                top: 25px;
+                right: 25px;
+                border: none;
+                cursor: pointer;
+            }
+
+            .prod_img {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 120px;
+                height: 120px;
+                border: none !important;
+                cursor: pointer;
+
+
+                img {
+
+                    width: 100%;
+                    vertical-align: top;
+                }
+            }
+
+            .prod_desc {
+                width: 70%;
+                display: flex;
+                flex-direction: column;
+                padding: 0 0 0 15px;
+
+
+
+                .gods_name {
+                    width: 100%;
+                    position: relative;
+                    padding-right: 30px;
+
+                    .title {
+                        position: relative;
+                        display: -webkit-box;
+                        overflow: hidden;
+                        max-height: 3em;
+                        font-size: 18px;
+                        line-height: 1.33em;
+                        font-weight: 600;
+                        color: var(--clr-black);
+                    }
+                }
+
+                .count_price {
+                    width: 100%;
+                    position: relative;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    height: 36px;
+                    margin-top: 10px;
+
+                    .quantity_goods {
+                        display: inline-flex;
+                        align-items: center;
+                        overflow: hidden;
+                        color: var(--clr-black);
+                        font-size: 16px;
+                        line-height: 1;
+                        border: 1px solid #d1d9ce;
+                        border-radius: 12px;
+                        align-self: center;
+                        margin-top: 10px;
+
+                        button {
+                            position: relative;
+                            width: 46px;
+                            height: 46px;
+                            cursor: pointer;
+                            background: none;
+                            font-weight: 600;
+                            transition: var(--transition);
+                            border: 0 !important;
+                            font-size: 100%;
+                            vertical-align: baseline;
+
+                            &:focus {
+                                outline: none;
+                                border: none;
+                            }
+                        }
+
+                        input {
+                            width: 46px;
+                            height: 28px;
+                            font-weight: 400;
+                            text-align: center;
+                            border: none;
+                            border-left: 1px solid #d1d9ce;
+                            border-right: 1px solid #d1d9ce;
+
+                            &:focus {
+                                outline: none;
+                                border: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    .basket_bottom {
+        width: 100%;
         height: 84px;
-        margin-top: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.06);
+
+        .cart_price {
+            flex-direction: column;
+
+            .summ_prise {
+                font-size: 20px;
+                color: var(--clr-grey);
+            }
+
+            .aumm_bonus {
+                font-size: 14px;
+                color: #009246;
+                font-weight: 700;
+                margin-top: -10px;
+            }
+        }
     }
 }

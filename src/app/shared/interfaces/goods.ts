@@ -16,6 +16,8 @@ export interface GoodsRequest {
   newPrice: boolean;
   price: number;
   priceTogether: number;
+  bonus: number;
+  bonusTogether: number;
   images: string;
   count: number;
 }

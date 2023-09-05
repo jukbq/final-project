@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { GoodsResponse } from 'src/app/shared/interfaces/goods';
 import { CategoriesService } from 'src/app/shared/services/categories/categories.service';
 import { GoodsService } from 'src/app/shared/services/goods/goods.service';
@@ -13,7 +14,8 @@ export class SaladsComponent {
   constructor(
     private categoriesService: CategoriesService,
     private goodsService: GoodsService,
-    private headerService: HeaderService
+    private headerService: HeaderService,
+    private toastr: ToastrService
   ) {}
 
   public activeSection = 'salads';
@@ -21,6 +23,7 @@ export class SaladsComponent {
   public listCategory: any[] = [];
   public activeItem: any;
   public categoryName!: string;
+  public user = '';
 
   ngOnInit(): void {
     this.addInitialAllCategory();
@@ -118,30 +121,37 @@ export class SaladsComponent {
       ++good.count;
       good.newPrice = true;
       good.priceTogether = good.price * good.count;
+      good.bonusTogether = good.bonus * good.count;
     } else if (!value && good.count > 1) {
       --good.count;
       good.priceTogether -= good.price;
+      good.bonusTogether -= good.bonus;
     }
   }
 
   // Додавання товару до кошика
   addToBasket(goods: GoodsResponse): void {
     let basket: Array<GoodsResponse> = [];
+    if (this.user === 'ADMIN') {
+      this.toastr.warning(
+        'Адміністратор не може робити замовлення, увійдіть або зареєструйтесь '
+      );
+    } else {
+      if (localStorage.length > 0 && localStorage.getItem('basket')) {
+        basket = JSON.parse(localStorage.getItem('basket') as string);
 
-    if (localStorage.length > 0 && localStorage.getItem('basket')) {
-      basket = JSON.parse(localStorage.getItem('basket') as string);
-
-      if (basket.some((good) => good.id === goods.id)) {
-        const index = basket.findIndex((good) => good.id === goods.id);
-        basket[index].count += goods.count;
+        if (basket.some((good) => good.id === goods.id)) {
+          const index = basket.findIndex((good) => good.id === goods.id);
+          basket[index].count += goods.count;
+        } else {
+          basket.push(goods);
+        }
       } else {
         basket.push(goods);
       }
-    } else {
-      basket.push(goods);
-    }
 
-    localStorage.setItem('basket', JSON.stringify(basket));
-    goods.count = 1;
+      localStorage.setItem('basket', JSON.stringify(basket));
+      goods.count = 1;
+    }
   }
 }

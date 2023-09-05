@@ -8,12 +8,12 @@
                         Десерти від МА
                     </h1>
                 </div>
-            </div>
+                         </div>
         </div>
     </div>
 
     <div class="goods-container" id="goods">
-
+      
         <ul class="products-wrapper">
             <li *ngFor="let goods of goodsArr">
 
@@ -55,7 +55,9 @@
                     </div>
                 
                     <div class="bonus_calculate">
-                        +8 грн бонусів </div>
+                        <b *ngIf="!goods.newPrice" class="price-old">{{goods.bonus}} грн бонусів </b>
+                        <b *ngIf="goods.newPrice" class="price-old">{{goods.bonusTogether}} грн бонусів </b>
+                    </div>
                 
                     <div class="w-100"></div>
                 

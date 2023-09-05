@@ -4,10 +4,12 @@ import { authGuard } from './shared/guards/auth.guard';
 import { SignupComponent } from './modals-win/signup/signup.component';
 import { SigninComponent } from './modals-win/signin/signin.component';
 import { BasketComponent } from './modals-win/basket/basket.component';
-import { PizzaComponent } from './modules/pizza/pizza.component';
-import { SaladsComponent } from './modules/salads/salads.component';
-import { DessertsComponent } from './modules/desserts/desserts.component';
-import { DrinksComponent } from './modules/drinks/drinks.component';
+import { PizzaComponent } from './modules/goods-pages/pizza/pizza.component';
+import { SaladsComponent } from './modules/goods-pages/salads/salads.component';
+import { DessertsComponent } from './modules/goods-pages/desserts/desserts.component';
+import { DrinksComponent } from './modules/goods-pages/drinks/drinks.component';
+import { OrderComponent } from './modules/order/order.component';
+
 
 const routes: Routes = [
   { path: '', component: PizzaComponent },
@@ -18,6 +20,7 @@ const routes: Routes = [
   { path: 'sighup', component: SignupComponent },
   { path: 'sighin', component: SigninComponent },
   { path: 'basket', component: BasketComponent },
+  { path: 'order', component: OrderComponent },
 
   {
     path: 'admin',

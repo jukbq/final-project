@@ -9,6 +9,7 @@ import {
 } from '@angular/fire/storage';
 import {
   FormBuilder,
+  FormControl,
   FormGroup,
   NgForm,
   NumberValueAccessor,
@@ -48,6 +49,8 @@ export class AdminGoodsComponent {
   public link = '';
   public selectedMenu: MenuResponse[] = [];
   public selectedCategories: СategoriesResponse[] = [];
+  public bonusControl: FormControl = new FormControl(0);
+
 
   ngOnInit(): void {
     this.getCategory();
@@ -67,6 +70,8 @@ export class AdminGoodsComponent {
       images: [null, Validators.required],
       newPrice: false,
       priceTogether: 0,
+      bonus: this.bonusControl,
+      bonusTogether: 0,
       count: 1,
     });
     this.goodForm.get('menu')?.valueChanges.subscribe((menu) => {
@@ -80,6 +85,10 @@ export class AdminGoodsComponent {
       }
 
       categoryControl?.updateValueAndValidity();
+    });
+    this.goodForm.get('price')?.valueChanges.subscribe((price) => {
+      const bonus = Math.round(price * 0.03); 
+      this.bonusControl.setValue(bonus, { emitEvent: false });
     });
   }
 
@@ -228,7 +237,7 @@ export class AdminGoodsComponent {
   selectCategory(category: СategoriesResponse | null): void {
     if (category === null) {
       this.selectedCategories = [];
-       this.getGoods();
+      this.getGoods();
     } else {
       if (this.selectedCategories.includes(category)) {
         this.selectedCategories = this.selectedCategories.filter(

@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BasketComponent } from 'src/app/modals-win/basket/basket.component';
 import { SigninComponent } from 'src/app/modals-win/signin/signin.component';
-import { PizzaComponent } from 'src/app/modules/pizza/pizza.component';
 import { ROLE } from 'src/app/shared/guards/role.constant';
 import { MenuResponse } from 'src/app/shared/interfaces/menu';
 import { HeaderService } from 'src/app/shared/services/header/header.service';

@@ -1,21 +1,51 @@
-<div class="cart modal-content">
-    <div class="cart_title">
-        <div class="h4 title title-decor">Кошик</div>
+<div class="basket modal-content">
+
+    <div class="basket_title">
+        <h4 class="title">Кошик</h4>
+        <div class="btn-close" (click)="close()" aria-label="Закрити"></div>
     </div>
-    <div class="cart-popup-out">
-        <div class="cart_items">
-       </div>
-        <div class="cart_bottom">
-            <div class="cart_bottom_flex">
-                <div class="cart_price-wrap">
-                    Сума: <b id="card-total-price" class="card-total-price">268</b> грн </div>
-                <a class="btn btn-primary" id="cart-submit">Оформити
-                    замовлення</a>
+    <ul class="basket_order">
+        <li class="order_good" *ngFor="let order of basket">
+            <div class="btn-close" (click)="delOrder(order)"></div>
+            <div class="prod_img" target="_blank">
+                <img [src]="order.images">
             </div>
-            <div class="cart_bonus-wrap">
-                Нарахується бонусів: <b>8 </b>
+            <div class="prod_desc">
+                <div class="gods_name">
+                    <a class="title" target="_blank">
+                        {{order.name}}
+                    </a>
+                </div>
+                <div class="count_price">
+                    <div class="price_default">
+                        <b class="price">{{order.price}}</b> грн
+                    </div>
+
+                    <div class="quantity_goods">
+                        <button (click)="quantity_goods(order, false)" type="button" class="decrement">-</button>
+                        <input [value]="order.count" readonly class="goods_qty" tabindex="-1" max="999">
+                        <button (click)="quantity_goods(order, true)" type="button" class="increment">+</button>
+                    </div>
+
+                    <div class="summ_price">
+                        <b *ngIf="!order.newPrice" class="price-old">{{order.price}} </b>
+                        <b *ngIf="order.newPrice" class="price-old">{{order.priceTogether}} </b>
+                    </div>
+
+                </div>
             </div>
+        </li>
+    </ul>
+
+    <div class="basket_bottom">
+        <div class="cart_price">
+            <p class="summ_prise">Сума: <b>{{summ}}</b> грн</p>
+            <p class="aumm_bonus">Нарахується бонусів: <b>{{bonus}} </b></p>
         </div>
+        <a (click)="addOrder()" class="btn btn-primary">Оформити
+            замовлення</a>
+
+
     </div>
-    <button class="btn-close cart-close"></button>
+
 </div>

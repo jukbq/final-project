@@ -244,6 +244,10 @@ section .goods-container .products-wrapper li .product_controls .thumb-input-num
   border-left: 1px solid #d1d9ce;
   border-right: 1px solid #d1d9ce;
 }
+section .goods-container .products-wrapper li .product_controls .thumb-input-number input:focus {
+  outline: none;
+  border: none;
+}
 section .goods-container .products-wrapper li .product_controls .order-btn {
   width: 58%;
   position: relative;
