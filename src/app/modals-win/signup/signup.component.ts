@@ -39,6 +39,7 @@ export class SignupComponent {
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
       password2: [null, [Validators.required]],
+      userBonus: [0],
     });
   }
 
@@ -53,7 +54,7 @@ export class SignupComponent {
       this.enailSighUp(email, password)
         .then(() => {
           console.log('Користувача успішно зареэстровано');
-                this.actuve();
+                this.active();
         })
         .catch((e) => {
           console.log('Корситувача з такою адресою вже зареєстровано');
@@ -76,6 +77,7 @@ export class SignupComponent {
       phone: this.sighUoForn.value.phone,
       birthdate: this.sighUoForn.value.birthdate,
       role: 'USER',
+      userBonus: 0,
     };
      await setDoc(doc(this.afs, 'users', userReg.user.uid), user);
     localStorage.setItem('curentUser', JSON.stringify(user));
@@ -83,7 +85,7 @@ export class SignupComponent {
     
   }
 
-  actuve(): void {
+  active(): void {
     this.close();
     window.location.href = '/user';
   }

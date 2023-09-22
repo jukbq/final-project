@@ -38,7 +38,7 @@ import { DessertsComponent } from './modules/goods-pages/desserts/desserts.compo
 import { DrinksComponent } from './modules/goods-pages/drinks/drinks.component';
 import { SaladsComponent } from './modules/goods-pages/salads/salads.component';
 import { OrderComponent } from './modules/order/order.component';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -69,12 +69,14 @@ import { OrderComponent } from './modules/order/order.component';
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
     BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
     ToastrModule.forRoot(),
     providePerformance(() => getPerformance()),
     provideRemoteConfig(() => getRemoteConfig()),
     MatSliderModule,
     SlickCarouselModule,
     SharedModule,
+    
   ],
   providers: [ScreenTrackingService, UserTrackingService],
   bootstrap: [AppComponent],

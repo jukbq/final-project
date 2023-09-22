@@ -7,9 +7,23 @@ import {MatSliderModule} from "@angular/material/slider";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {RouterModule} from "@angular/router";
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-const MATERIAL = [MatSliderModule, MatDialogModule, MatFormFieldModule];
+
+const MATERIAL = [
+  MatSliderModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+ 
+];
 
 @NgModule({
   declarations: [],
@@ -21,7 +35,8 @@ const MATERIAL = [MatSliderModule, MatDialogModule, MatFormFieldModule];
     HttpClientModule,
     RouterModule,
     MatButtonModule,
-  
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     CommonModule,
@@ -31,7 +46,8 @@ const MATERIAL = [MatSliderModule, MatDialogModule, MatFormFieldModule];
     HttpClientModule,
     RouterModule,
     MatButtonModule,
-  
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [{ provide: MatDialogRef, useValue: {} }],
 })

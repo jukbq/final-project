@@ -76,7 +76,7 @@ export class SigninComponent implements OnInit, OnDestroy {
     ).subscribe((user) => {
       this.user = user;
       const curentUser = { ...user, uid: userCredential.user.uid };
-      localStorage.setItem('curentUser', JSON.stringify(user));
+      localStorage.setItem('curentUser', JSON.stringify(curentUser));
       this.actuve();
     });
   }
@@ -86,6 +86,7 @@ export class SigninComponent implements OnInit, OnDestroy {
       this.close();
       this.router.navigate(['/user']);
     } else if (this.user && this.user.role === ROLE.ADMIN) {
+       localStorage.removeItem('basket');
       this.close();
       this.router.navigate(['/admin/']);
     }
@@ -103,6 +104,8 @@ export class SigninComponent implements OnInit, OnDestroy {
     const control = this.loginForm.get(controlName);
     return (control?.invalid && (control.dirty || control.touched)) || false;
   }
+
+  
 
   close(): void {
     this.dialogRef.close();

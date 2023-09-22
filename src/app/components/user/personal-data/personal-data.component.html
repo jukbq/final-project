@@ -5,18 +5,18 @@
             <h4>Особисті данні</h4>
             <div class="user_data">
                 <input formControlName="firstname" name="firstname" type="text" class="form-control"
-                    placeholder="Ваше ім`я:">
+                    placeholder="Ваше ім`я:" [class.input-error]="shouldShowError('firstname')">
                 <input formControlName="lastname" name="lastname" type="text" class="form-control"
-                    placeholder="Ваше прізвище:">
+                    placeholder="Ваше прізвище:"  [class.input-error]="shouldShowError('lastname')">
 
                 <input formControlName="birthdate" name="birthdate" type="date" class="form-control birthdate"
-                    placeholder="Дата народження">
+                    placeholder="Дата народження" [class.input-error]="shouldShowError('birthdate')">
                 <p>Якщо це поле не буде заповнено, то ви не зможете отримувати додаткові бонуси до Дня Вашого народження
                 </p>
                 <input formControlName="phone" name="phone" type="number" class="form-control"
-                    placeholder="Ваше телефон:">
+                    placeholder="Ваше телефон:" [class.input-error]="shouldShowError('phone')">
                 <br>
-                <input formControlName="email" name="email" type="text" class="form-control" placeholder="Ваш email:">
+                <input formControlName="email" name="email" type="text" class="form-control" placeholder="Ваш email:" [class.input-error]="shouldShowError('email')">
 
             </div>
             <br>

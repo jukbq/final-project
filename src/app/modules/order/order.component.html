@@ -1,415 +1,318 @@
 <div class="container">
-            <h1 class="title title-decor h1">Оформлення замовлення</h1>
- <img class="img-decor" src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fdecor-img-6.svg?alt=media&token=8bc059eb-ca21-41b6-a856-9b93a4962808" alt="">
-    <div class="spacer-xs"></div>
+    <!-- Заголовок сторінки -->
+    <h1 class="title title-decor h1">Оформлення замовлення</h1>
 
-    <div class="row checkout-row justify-content-center">
-        <div class="col-lg-6 col-xxl-5">
-            <div class="checkout-products">
-                <div class="thank-total-bonus-product">
-                    <span>Нарахується бонусів:</span>
-                    <span class="cart_bonus-wrap"><b class="all-product-bonus-start">9</b> грн</span>
+    <!-- Зображення для декорації -->
+    <img class="img-decor"
+        src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fdecor-img-6.svg?alt=media&token=8bc059eb-ca21-41b6-a856-9b93a4962808"
+        alt="">
+
+    <div class="order_body">
+        <!-- Блок для списку товарів -->
+        <div class="goods_list">
+            <!-- Блок для бонусів -->
+            <div class="bonus">
+                <!-- Коментар перед бонусами -->
+                <p class="summ_bonus">Нарахується бонусів: <b>{{bonus}} грн. </b></p>
+            </div>
+
+            <!-- Список товарів -->
+            <ul class="order_list">
+                <!-- Один товар в списку, повторюється для кожного товару в кошику -->
+                <li class="order_good" *ngFor="let order of basket">
+                    <!-- Зображення товару -->
+                    <div class="prod_img" target="_blank">
+                        <img [src]="order.images">
+                    </div>
+                    <!-- Опис товару -->
+                    <div class="prod_desc">
+                        <div class="gods_name">
+                            <a class="title" target="_blank">
+                                {{order.name}}
+                            </a>
+                            <!-- Кнопка для видалення товару з кошика -->
+                            <div class="btn-close" (click)="delOrder(order)"></div>
+                        </div>
+                        <div class="count_price">
+                            <!-- Ціна товару -->
+                            <p> {{order.price}} грн</p>
+
+                            <!-- Кількість товару -->
+                            <div class="quantity_goods">
+                                <button (click)="quantity_goods(order, false)" type="button"
+                                    class="decrement">-</button>
+                                <input [value]="order.count" readonly class="goods_qty" tabindex="-1" max="999">
+                                <button (click)="quantity_goods(order, true)" type="button" class="increment">+</button>
+                            </div>
+
+                            <!-- Стара ціна товару -->
+                            <p *ngIf="!order.newPrice" class="price-old">{{order.price}} грн </p>
+                            <p *ngIf="order.newPrice" class="price-old">{{order.priceTogether}} грн </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Форма для введення даних покупця -->
+        <form [formGroup]="customerForm" (ngSubmit)="checkout()" class="delivery-form">
+            <div class="form-group">
+                <!-- Заголовок для контактних даних -->
+                <h4>Контактні дані</h4>
+                <div class="user_data">
+                    <!-- Поле для імені -->
+                    <input formControlName="firstname" name="firstname" type="text" class="form-control"
+                        placeholder="Ваше ім`я:">
+                    <!-- Поле для телефону -->
+                    <input formControlName="phone" name="phone" type="number" class="form-control"
+                        placeholder="Ваше телефон:">
+                    <!-- Поле для електронної пошти -->
+                    <input formControlName="email" name="email" type="text" class="form-control email"
+                        placeholder="Ваш email:">
                 </div>
+            </div>
 
-
-
-
-                <div class="prod_horiz js-product cart-product" data-id="15372" data-sku="02049" data-price="315"
-                    data-cats="Піца" data-key="9f3ad7a14cd3d1cf5d73e8ec7205e7f1">
-                    <a class="prod_horiz-img" href="https://mapizza.com.ua/z-krevetkamy/">
-                        <img class="img imgLoaded"
-                            src="https://mapizza.com.ua/wp-content/uploads/2022/10/z-krevetkamy-2-125x125.jpg"
-                            data-i-src="https://mapizza.com.ua/wp-content/uploads/2022/10/z-krevetkamy-2-125x125.jpg">
-                    </a>
-                    <div class="prod_horiz-desc">
-                        <div class="prod-title-wrap">
-                            <a class="title h5" href="https://mapizza.com.ua/z-krevetkamy/">З креветками</a>
-                            <button class="btn-close remove-product"
-                                data-key="9f3ad7a14cd3d1cf5d73e8ec7205e7f1"></button>
+            <!-- Заголовок для інформації про доставку -->
+            <div class="form-group">
+                <h4>Інформація про доставку</h4>
+                <div class="radio_box">
+                    <!-- Вибір методу доставки: адресна доставка -->
+                    <label class="checkbox-entry radio">
+                        <input type="radio" name="delivery_method" class="toggle-block-control"
+                            (click)="choiseDeliveryMethod('courier')" checked value="courier">
+                        <span>Адресна доставка</span>
+                    </label>
+                    <!-- Вибір методу доставки: самовивіз -->
+                    <label class="checkbox-entry radio">
+                        <input type="radio" name="delivery_method" class="toggle-block-control"
+                            (click)="choiseDeliveryMethod('local_pickup')" data-discount-percent="15" data-block="2"
+                            data-rel="1" value="local_pickup">
+                        <span>Самовивіз</span>
+                    </label>
+                </div>
+                <div class="delivery_address" *ngIf="!deliveryMethod">
+                    <!-- Поля для адреси доставки (якщо вибрана адресна доставка) -->
+                    <div *ngIf="!registeredUser" class="delivery_address">
+                        <div class="adress1">
+                            <input formControlName="type" name="type" type="text" class="form-control"
+                                placeholder="*Вкажіть назву локації (дім, офіс і т.д.)">
+                            <select formControlName="city" name="city" class="form-control city" placeholder="*Місто">
+                                <option value="" selected disabled>*Місто</option>
+                                <option value="Львів">Львів</option>
+                                <option value="Зубра">Зубра</option>
+                                <option value="Сокільники">Сокільники</option>
+                                <option value="Пасіки-Зубрицькі">Пасіки-Зубрицькі</option>
+                            </select>
+                            <input formControlName="street" name="street" type="text" class="form-control"
+                                placeholder="*Вулиця">
                         </div>
-
-                        <div class="prod_horiz-controls">
-                            <div class="price_default">
-                                <b>315</b> грн
-                            </div>
-
-                            <div class="thumb-input-number">
-                                <button type="button" class="decrement in-cart"
-                                    data-key="9f3ad7a14cd3d1cf5d73e8ec7205e7f1">-</button>
-                                <input class="product-qty" value="1" readonly="" tabindex="-1" max="999" data-id="15372"
-                                    data-key="9f3ad7a14cd3d1cf5d73e8ec7205e7f1">
-                                <button type="button" class="increment in-cart"
-                                    data-key="9f3ad7a14cd3d1cf5d73e8ec7205e7f1">+</button>
-                            </div>
-
-                            <div class="price-wrap">
-                                <b class="price">315</b> грн
-                            </div>
+                        <div class="adress2">
+                            <input formControlName="houseNumber" name="houseNumber" type="number" class="form-control"
+                                placeholder="*№ будинку">
+                            <input formControlName="entrance" name="entrance" type="number" class="form-control"
+                                placeholder="Під'їзд">
+                            <input formControlName="floor" name="floor" type="number" class="form-control"
+                                placeholder="Поверх">
+                            <input formControlName="apartment" name="apartment" type="number" class="form-control"
+                                placeholder="№ квартири">
                         </div>
+                    </div>
+                    <!-- Вибір зареєстрованої адреси доставки (якщо користувач зареєстрований) -->
+                    <div *ngIf="registeredUser" class="address-data">
+                        <table>
+                            <tbody>
+                                <tr *ngFor="let item of addressArr; let i = index">
+                                    <td class="radio">
+                                        <label class="checkbox-entry radio">
+                                            <input (click)="addressSelection(i)" type="radio" name="address"
+                                                class="toggle-block-control">
+                                            <span></span>
+                                        </label>
+                                    </td>
+                                    <td class="type-address">{{ item.type }}</td>
+                                    <td class="address">{{ item.city }}
+                                        {{ item.street }}
+                                        {{ item.houseNumber }}
+                                        {{ item.apartment }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Вибір адреси самовивозу (якщо вибрана самовивіз) -->
+                <div class="delivery_address" *ngIf="deliveryMethod">
+                    <div class="toggle-block">
+                        <select name="self_delivery_address" (change)="localPickupAddress($event)"
+                            class="SelectBox SumoUnder">
+                            <option value="" selected="" disabled="">*Виберіть адресу самовивозу
+                            </option>
+                            <option value="Залізнична, 19  " data-organization="e64cfb0d-14f2-416a-9ad0-04f4bcf2463a">
+                                Залізнична, 19 </option>
+                            <option value="Малоголосківська, 16 "
+                                data-organization="edc29a6c-24c1-4380-b8ee-888629c35df3">
+                                Малоголосківська, 16 </option>
+                            <option value="Пулюя, 12 " data-organization="1c171517-f597-4972-a8ab-da40938aa0ef">Пулюя,
+                                12
+                            </option>
+                            <option value="Китайська, 10 " data-organization="51f577b7-a595-4bc4-9609-eedc6a00c184">
+                                Китайська, 10 </option>
+                            <option value="Івана Франка, 71" data-organization="db6a67f8-d834-4add-8815-9d746e0d1403">
+                                Івана
+                                Франка, 71</option>
+                            <option value="Червоної Калини, 60"
+                                data-organization="b216e959-6b3f-422c-9ec8-d48a1548a787">
+                                Червоної Калини, 60</option>
+                            <option value="Пасічна, 181" data-organization="549bbdd3-007a-48b4-a612-107a8aaf73dd">
+                                Пасічна,
+                                181</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Вибір часу доставки -->
+                <div class="radio_box">
+                    <label class="checkbox-entry radio">
+                        <input (click)="timeWrapper('as_possible')" type="radio" class="toggle-block-control"
+                            name="delivery-time" checked>
+                        <span>Доставити якомога швидше</span>
+                    </label>
+                    <label class="checkbox-entry radio">
+                        <input (click)="timeWrapper('as_time')" type="radio" class="toggle-block-control"
+                            name="delivery-time">
+                        <span>На час</span>
+                    </label>
+                </div>
+                <!-- Вибір дати та часу доставки (якщо вибрано доставку на час) -->
+                <div *ngIf="deliveryForTime" class="wrapper_time_block">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="deliveryDate" formControlName="deliveryDate"
+                            bsDatepicker [bsConfig]="bsConfig">
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="deliveryTime" formControlName="deliveryTime"
+                            name="deliveryTime">
+                            <option value="" selected disabled value="*Час доставки">*Час доставки</option>
+                            <option *ngFor="let timeOption of timeOptions" [value]="timeOption">{{ timeOption }}
+                            </option>
+                        </select>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-6 col-xxl-5">
-            <form class="delivery-form b-shadow" id="checkout-form">
-
-
-                <div class="form-group">
-                    <div class="form-title title h4">Контактні дані</div>
-
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <input class="input" type="text" name="first_name" placeholder="*Вашe ім’я" value="Олена"
-                                autocomplete="new-password">
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <input class="input inputmask" name="phone" type="text" value="0991785623"
-                                placeholder="*Телефон" inputmode="numeric"
-                                data-inputmask="'mask': '+38 (0x9) 999 99 99'" data-inputmask-placeholder="x"
-                                autocomplete="new-password">
-                        </div>
-                        <div class="col-12">
-                            <input class="input" value="goeva83@gmail.com" type="email" name="email"
-                                placeholder="Email (для отримання копії замовлення)" autocomplete="new-password">
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <div class="form-title title h4">Інформація про доставку</div>
-
-
-                    <div class="checkbox-entry-wrap"> <label class="checkbox-entry radio">
-                            <input id="driveDelivery" type="radio" name="delivery_method" class="toggle-block-control"
-                                data-min-amount="" data-discount-percent="" data-block="2" data-rel="4" checked=""
-                                value="courier">
-
-                            <span>Адресна доставка</span>
-                        </label>
-                        <label class="checkbox-entry radio">
-                            <input id="driveDelivery" type="radio" name="delivery_method" class="toggle-block-control"
-                                data-min-amount="" data-discount-percent="15" data-block="2" data-rel="1"
-                                value="local_pickup">
-
-                            <span>Самовивіз</span>
-                        </label>
-                    </div>
-
-              
-
-
-                    
-
-                    <div class="checkbox-entry-wrap time_wrapper">
-
-                        <label class="checkbox-entry radio">
-                            <input type="radio" class="toggle-block-control" name="delivery-time" data-block="1"
-                                data-rel="0" checked="" value="as_possible">
-                            <span>Доставити якомога швидше</span>
-                        </label>
-                        <label class="checkbox-entry radio">
-                            <input type="radio" class="toggle-block-control" name="delivery-time" data-block="1"
-                                data-rel="1" value="as_hour">
-                            <span>На час</span>
-                        </label>
-                    </div>
-
-
-                    <div class="row wrapper_time_block" style="padding-bottom: 15px; display: none;">
-                        <div class="col-sm-6">
-                            <input type="text" class="input calendar" name="at_time_date" placeholder="Дата доставки"
-                                value="02.09.2023">
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="sumoselect-wrapp">
-                                <div class="SumoSelect sumo_at_time_time" tabindex="0" role="button"
-                                    aria-expanded="false"><select name="at_time_time" class="SelectBox SumoUnder"
-                                        tabindex="-1">
-                                        <option value="" selected="" disabled="">*Час</option>
-                                        <option value="11:45 - 12:00">11:45 - 12:00</option>
-                                        <option value="12:00 - 12:15">12:00 - 12:15</option>
-                                        <option value="12:15 - 12:30">12:15 - 12:30</option>
-                                        <option value="12:30 - 12:45">12:30 - 12:45</option>
-                                        <option value="12:45 - 13:00">12:45 - 13:00</option>
-                                        <option value="13:00 - 13:15">13:00 - 13:15</option>
-                                        <option value="13:15 - 13:30">13:15 - 13:30</option>
-                                        <option value="13:30 - 13:45">13:30 - 13:45</option>
-                                        <option value="13:45 - 14:00">13:45 - 14:00</option>
-                                        <option value="14:00 - 14:15">14:00 - 14:15</option>
-                                        <option value="14:15 - 14:30">14:15 - 14:30</option>
-                                        <option value="14:30 - 14:45">14:30 - 14:45</option>
-                                        <option value="14:45 - 15:00">14:45 - 15:00</option>
-                                        <option value="15:00 - 15:15">15:00 - 15:15</option>
-                                        <option value="15:15 - 15:30">15:15 - 15:30</option>
-                                        <option value="15:30 - 15:45">15:30 - 15:45</option>
-                                        <option value="15:45 - 16:00">15:45 - 16:00</option>
-                                        <option value="16:00 - 16:15">16:00 - 16:15</option>
-                                        <option value="16:15 - 16:30">16:15 - 16:30</option>
-                                        <option value="16:30 - 16:45">16:30 - 16:45</option>
-                                        <option value="16:45 - 17:00">16:45 - 17:00</option>
-                                        <option value="17:00 - 17:15">17:00 - 17:15</option>
-                                        <option value="17:15 - 17:30">17:15 - 17:30</option>
-                                        <option value="17:30 - 17:45">17:30 - 17:45</option>
-                                        <option value="17:45 - 18:00">17:45 - 18:00</option>
-                                        <option value="18:00 - 18:15">18:00 - 18:15</option>
-                                        <option value="18:15 - 18:30">18:15 - 18:30</option>
-                                        <option value="18:30 - 18:45">18:30 - 18:45</option>
-                                        <option value="18:45 - 19:00">18:45 - 19:00</option>
-                                        <option value="19:00 - 19:15">19:00 - 19:15</option>
-                                        <option value="19:15 - 19:30">19:15 - 19:30</option>
-                                        <option value="19:30 - 19:45">19:30 - 19:45</option>
-                                        <option value="19:45 - 20:00">19:45 - 20:00</option>
-                                        <option value="20:00 - 20:15">20:00 - 20:15</option>
-                                        <option value="20:15 - 20:30">20:15 - 20:30</option>
-                                        <option value="20:30 - 20:45">20:30 - 20:45</option>
-                                        <option value="20:45 - 21:00">20:45 - 21:00</option>
-                                        <option value="21:00 - 21:15">21:00 - 21:15</option>
-                                        <option value="21:15 - 21:30">21:15 - 21:30</option>
-                                        <option value="21:30 - 21:45">21:30 - 21:45</option>
-                                        <option value="21:45 - 22:00">21:45 - 22:00</option>
-                                        <option value="22:00 - 22:15">22:00 - 22:15</option>
-                                        <option value="22:15 - 22:30">22:15 - 22:30</option>
-                                    </select>
-                                    <p class="CaptionCont SelectBox SelectBox" title=" *Час"><span class="placeholder">
-                                            *Час</span><label><i></i></label></p>
-                                    <div class="optWrapper">
-                                        <ul class="options">
-                                            <li class="opt disabled selected"><label>*Час</label></li>
-                                            <li class="opt"><label>11:45 - 12:00</label></li>
-                                            <li class="opt"><label>12:00 - 12:15</label></li>
-                                            <li class="opt"><label>12:15 - 12:30</label></li>
-                                            <li class="opt"><label>12:30 - 12:45</label></li>
-                                            <li class="opt"><label>12:45 - 13:00</label></li>
-                                            <li class="opt"><label>13:00 - 13:15</label></li>
-                                            <li class="opt"><label>13:15 - 13:30</label></li>
-                                            <li class="opt"><label>13:30 - 13:45</label></li>
-                                            <li class="opt"><label>13:45 - 14:00</label></li>
-                                            <li class="opt"><label>14:00 - 14:15</label></li>
-                                            <li class="opt"><label>14:15 - 14:30</label></li>
-                                            <li class="opt"><label>14:30 - 14:45</label></li>
-                                            <li class="opt"><label>14:45 - 15:00</label></li>
-                                            <li class="opt"><label>15:00 - 15:15</label></li>
-                                            <li class="opt"><label>15:15 - 15:30</label></li>
-                                            <li class="opt"><label>15:30 - 15:45</label></li>
-                                            <li class="opt"><label>15:45 - 16:00</label></li>
-                                            <li class="opt"><label>16:00 - 16:15</label></li>
-                                            <li class="opt"><label>16:15 - 16:30</label></li>
-                                            <li class="opt"><label>16:30 - 16:45</label></li>
-                                            <li class="opt"><label>16:45 - 17:00</label></li>
-                                            <li class="opt"><label>17:00 - 17:15</label></li>
-                                            <li class="opt"><label>17:15 - 17:30</label></li>
-                                            <li class="opt"><label>17:30 - 17:45</label></li>
-                                            <li class="opt"><label>17:45 - 18:00</label></li>
-                                            <li class="opt"><label>18:00 - 18:15</label></li>
-                                            <li class="opt"><label>18:15 - 18:30</label></li>
-                                            <li class="opt"><label>18:30 - 18:45</label></li>
-                                            <li class="opt"><label>18:45 - 19:00</label></li>
-                                            <li class="opt"><label>19:00 - 19:15</label></li>
-                                            <li class="opt"><label>19:15 - 19:30</label></li>
-                                            <li class="opt"><label>19:30 - 19:45</label></li>
-                                            <li class="opt"><label>19:45 - 20:00</label></li>
-                                            <li class="opt"><label>20:00 - 20:15</label></li>
-                                            <li class="opt"><label>20:15 - 20:30</label></li>
-                                            <li class="opt"><label>20:30 - 20:45</label></li>
-                                            <li class="opt"><label>20:45 - 21:00</label></li>
-                                            <li class="opt"><label>21:00 - 21:15</label></li>
-                                            <li class="opt"><label>21:15 - 21:30</label></li>
-                                            <li class="opt"><label>21:30 - 21:45</label></li>
-                                            <li class="opt"><label>21:45 - 22:00</label></li>
-                                            <li class="opt"><label>22:00 - 22:15</label></li>
-                                            <li class="opt"><label>22:15 - 22:30</label></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <input type="hidden" name="organizationID" value="51f577b7-a595-4bc4-9609-eedc6a00c184">
-                </div>
-
-                <!-- 3 step -->
-                <div class="form-group pay-part">
-                    <div class="form-title title h4">Параметри оплати</div>
-
-                    <div class="checkbox-entry-wrap">
-                        <label class="checkbox-entry radio">
-                            <input type="radio" class="toggle-block-control" id="payment_method_cod" data-block="3"
-                                data-rel="cod" name="payment_method" checked="" value="cod">
-                            <span>Готівка</span>
-                        </label>
-
-                        <label class="checkbox-entry radio">
-                            <input type="radio" class="toggle-block-control" id="payment_method_liqpay" data-block="3"
-                                data-rel="liqpay" name="payment_method" value="liqpay">
-                            <span>Онлайн оплата</span>
-                        </label>
-
-                        <label class="checkbox-entry radio">
-                            <input type="radio" class="toggle-block-control" id="payment_method_bacs" data-block="3"
-                                data-rel="bacs" name="payment_method" value="bacs">
-                            <span>Оплата через термінал</span>
-                        </label>
-                    </div>
-                    <div class="toggle-block" data-block="3" data-rel="cod" style="display: block">
-                        <div class="moneychange-input">
-                            <div class="text">Підготувати решту з:</div>
-                            <input class="input" type="number" placeholder="Введіть суму" name="user_sum">
-                            <label class="checkbox-entry">
-                                <input type="checkbox" name="without_rest"><span>Без решти</span>
-                            </label>
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-
-
-                    <div class="btn_check_user_bonus btn-primary">
-                        Перевірити наявність бонусів </div>
-                    <div class="col-12 bonus_wrapper_block">
-                        <label class="checkbox-entry bonus">
-                            <input type="checkbox" class="toggle-block-control" data-block="4" data-rel="0"
-                                name="use-bonus">
-                            <span>Використати бонуси ( Доступно: <b>0</b> )</span>
-                        </label>
-                    </div>
-                    <div class="wrapper_not_bonus"></div>
-                    <div class="row">
-                        <div class="toggle-block" data-block="4" data-rel="0">
-                            <div class="row" style="padding-top: 15px">
-                                <div class="col-sm-8">
-                                    <input class="input" type="number" placeholder="Скільки використати?" name="bonus">
-                                </div>
-                                <div class="col-sm-4 align-self-center">
-                                    <div class="btn btn-secondary btn-block apply_bonus">
-                                        <span>ЗАСТОСУВАТИ</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bonuses_code_message"></div>
-                        </div>
-
-                        <div class="toggle-block" data-block="4" data-rel="1">
-                            <div class="row" style="padding-top: 15px">
-                                <div class="col-sm-8">
-                                    <input class="input" type="text" placeholder="Введіть промокод"
-                                        name="use-promo-input">
-                                </div>
-                                <div class="col-sm-4 align-self-center">
-                                    <div class="btn btn-secondary btn-block">
-                                        <span>ЗАСТОСУВАТИ</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="select_action_use ">
-
-                        <div class="text">Вибір акції</div>
-                        <div class="SumoSelect sumo_select_action_use" tabindex="0" role="button" aria-expanded="false">
-                            <select name="select_action_use" class="SelectBox SumoUnder" data-prev-change="0"
-                                tabindex="-1">
-                                <option value="0" selected="">Виберіть акцію</option>
-                                <option value="localPickup">-15% на самовивіз</option>
-                            </select>
-                            <p class="CaptionCont SelectBox SelectBox" title=" Виберіть акцію"><span> Виберіть
-                                    акцію</span><label><i></i></label></p>
-                            <div class="optWrapper">
-                                <ul class="options">
-                                    <li class="opt selected"><label>Виберіть акцію</label></li>
-                                    <li class="opt"><label>-15% на самовивіз</label></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-
-
-
-                <div class="thank-total-wrap">
-
-                    <div class="deliveryWarning">
-                        <div class="errorMsg empty-address">
-                            Введіть Вашу адресу та номер будинку </div>
-                        <div class="errorMsg lowOrder minimum-order alert alert-success">
-                            Мінімальна сума замовлення у вашу зону доставки складає <b class="js-zone-min-price"></b>
-                            грн </div>
-                        <div class="errorMsg lowOrderDelivery alert alert-success">
-                            Мінімальна сума замовлення для безкоштовної доставки у вашу зону складає <b
-                                class="js-zone-min-price"></b> грн </div>
-                    </div>
-
-
-
-                    <div class="thank-total-item product_price_total" style="display: none;">
-                        <div>Сума замовлення:</div>
-                        <div><b class="all-product-price-el" data-total="315">315</b> грн</div>
-                    </div>
-
-                    <div class="thank-total-item last-item-border price-delivery" style="display: none;">
-                        <div>Доставка:</div>
-                        <div><b id="all-products-delivery"></b> грн</div>
-                    </div>
-
-                    <div class="thank-total-item last-item-border price-bonuses" style="display: none;">
-                        <div>Бонуси:</div>
-                        <div>-<b id="all-products-bonuses">0</b> грн</div>
-                    </div>
-
-                    <div class="thank-total-item last-item-border price-action" style="display: none;">
-                        <div>Знижка:</div>
-                        <div>-<b id="all-products-discount-action">0</b> грн</div>
-                    </div>
-
-                    <div class="thank-total-item  thank-total-cost not_visble_border">
-                        <div>Загальна вартість:</div>
-                        <div><b class="all-product-price">315</b> грн</div>
-                    </div>
-
-                    <div class="thank-total-item thank-total-bonus ">
-                        <div>Нарахується бонусів:</div>
-                        <div class="cart_bonus-wrap"><b class="all-product-bonus">9</b> грн</div>
-                    </div>
-                </div>
-
-
-                <div class="checkbox-entry-wrap">
-                    <label class="checkbox-entry">
-                        <input type="checkbox" name="no_call">
-                        <span>Зателефонуйте мені для уточнення замовлення</span>
+            <!-- Параметри оплати -->
+            <div class="form-group ">
+                <!-- Заголовок для параметрів оплати -->
+                <h4>Параметри оплати</h4>
+                <div class="radio_box">
+                    <!-- Вибір методу оплати: готівка -->
+                    <label class="checkbox-entry radio">
+                        <input (click)="choosingPaymentMethod('cash')" type="radio" class="toggle-block-control"
+                            name="change" checked value="cash">
+                        <span>Готівка</span>
+                    </label>
+                    <!-- Вибір методу оплати: онлайн оплата -->
+                    <label class="checkbox-entry radio">
+                        <input (click)="choosingPaymentMethod('payment')" type="radio" class="toggle-block-control"
+                            name="change" value="payment">
+                        <span>Онлайн оплата</span>
+                    </label>
+                    <!-- Вибір методу оплати: оплата через термінал -->
+                    <label class="checkbox-entry radio">
+                        <input (click)="choosingPaymentMethod('terminal')" type="radio" class="toggle-block-control"
+                            name="change" value="terminal">
+                        <span>Оплата через термінал</span>
                     </label>
                 </div>
-
-                <!--  5 toggle-block -->
-                <div class="checkbox-entry-wrap">
-                    <label class="checkbox-entry">
-                        <input type="checkbox" name="addComment" class="toggle-block-control" data-block="5"
-                            data-rel="0"><span>Додати коментар</span>
-                    </label>
+                <div class="moneychange-input">
+                    <!-- Введення суми для решти (якщо вибрана оплата готівкою) -->
+                    <div class="cash" *ngIf="paymentMethod === 'cash'">
+                        <div class="change">
+                            <p class="text">Підготувати решту з:</p>
+                            <input [disabled]="calculateChangetDisabled" class="inputChange" type="number"
+                                placeholder="Введіть суму" (input)="calculateChanget($event)">
+                        </div>
+                        <label class="checkbox-entry">
+                            <input [disabled]="noChangeDisabled" name="change" type="checkbox" value="noChange"
+                                (change)="toggleInputChange($event)"><span>Без решти</span>
+                        </label>
+                    </div>
+                    <!-- Онлайн оплата (якщо вибрана онлайн оплата) -->
+                    <div class="payment" *ngIf="paymentMethod === 'payment'">
+                        <!-- Вставити код для онлайн оплати тут -->
+                    </div>
+                    <!-- Оплата через термінал (якщо вибрана оплата через термінал) -->
+                    <div class="terminal" *ngIf="paymentMethod === 'terminal'">
+                        <!-- Вставити код для оплати через термінал тут -->
+                    </div>
                 </div>
-                <div class="toggle-block" data-block="5" data-rel="0" style="padding-bottom: 15px">
-                    <textarea name="comment" class="input" placeholder="Ваш коментар" spellcheck="false"></textarea>
-                </div>
+            </div>
 
-
-
-                <button class="btn btn-primary btn-block main-order-button" type="submit">
-                    <span>Підтвердити замовлення</span>
+            <!-- Перевірка бонусів -->
+            <div class="check_bonuses">
+                <button class="btn" (click)="activebonus()" type="button">
+                    Перевірити наявність бонусів
                 </button>
+                <div [class.open]="noBonuses" class="no_bonuses">
+                    Наразі у вас немає бонусів.
+                </div>
+                <div [class.open]="thereAreBonuses" class="bonus_block">
+                    <!-- Вибір використання бонусів -->
+                    <label class="checkbox-entry bonus">
+                        <input (change)="useBonus($event)" type="checkbox" class="chekBonus" name="use-bonus">
+                        <span>Використати бонуси ( Доступно: <b>{{userBonus}}</b> )</span>
+                    </label>
+                    <br>
+                    <!-- Введення суми бонусів для використання -->
+                    <div class="toggle-block">
+                        <input [disabled]="inputBonus" (input)="inputUserBonus($event)" class="userBonusInput"
+                            type="number" placeholder="Скільки використати?" name="bonus">
+                        <button [disabled]="applyBonus" (click)="applyBonusAction()" type="button"
+                            class="btn btn-secondary btn-block apply_bonus">
+                            ЗАСТОСУВАТИ
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-            </form>
-        </div>
+            <!-- Вартість та бонуси -->
+            <div class="thank-total-wrap">
+                <!-- Загальна вартість замовлення -->
+                <div class="total cost">
+                    <p>Загальна вартість:</p>
+                    <p><b>{{summ}}</b> грн</p>
+                </div>
+                <!-- Сума нарахованих бонусів -->
+                <div class="total bonus ">
+                    <p>Нарахується бонусів:</p>
+                    <p><b>{{bonus}}</b> грн</p>
+                </div>
+            </div>
+
+            <!-- Зателефонуйте мені -->
+            <div class="checkbox-entry-wrap">
+                <label class="checkbox-entry">
+                    <input type="checkbox" name="no_call" (change)="callMe($event)">
+                    <span>Зателефонуйте мені для уточнення замовлення</span>
+                </label>
+            </div>
+
+            <!-- Додавання коментаря -->
+            <div class="checkbox-entry-wrap">
+                <label class="checkbox-entry">
+                    <input (change)="openComment($event)" type="checkbox" name="addComment"
+                        class="toggle-block-control">
+                    <span>Додати коментар</span>
+                </label>
+                <!-- Текстове поле для коментаря -->
+                <textarea [class.open]="commentAreaOpen" (input)="onTextareaChange($event)" name="comment" class="input"
+                    placeholder="Ваш коментар" spellcheck="false"></textarea>
+            </div>
+
+            <!-- Кнопка для підтвердження замовлення -->
+            <button [class.open]="commentAreaOpen" [disabled]="customerForm.invalid" class="btn confirm_order"
+                type="submit">
+                <span>Підтвердити замовлення</span>
+            </button>
+        </form>
     </div>
 </div>

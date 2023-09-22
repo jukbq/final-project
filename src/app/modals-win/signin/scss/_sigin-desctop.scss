@@ -46,59 +46,6 @@
 
     .modal-body {
         margin-top: 30px;
-
-        input {
-            padding: 0px 15px;
-            position: relative;
-            font-size: 16px;
-            height: 54px;
-            line-height: 54px;
-            background: var(--clr-white);
-            border: 1px solid var(--clr-grey);
-            border-radius: 12px;
-            text-overflow: ellipsis;
-            transition: var(--transition);
-
-            &.input-error {
-                border-color: var(--clr-red);
-                box-shadow: none;
-
-            }
-
-            &.valid {
-                border-color: var(--clr-grey);
-            }
-        }
-
-        input:focus {
-            border-color: var(--clr-green);
-            box-shadow: none;
-            outline: none;
-
-            &.input-error {
-                border-color: var(--clr-red);
-
-            }
-
-            &.valid {
-                border-color: var(--clr-green);
-
-            }
-
-        }
-
-        input[type="date"]::-webkit-calendar-picker-indicator {
-            display: none;
-        }
-
-        /* Додати заміну зображення */
-        input[type="date"] {
-            background-image: url('https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fcalendar.svg?alt=media&token=492938e7-56c6-471e-80c4-90d0e324d92b');
-            background-size: 20px 20px;
-            background-repeat: no-repeat;
-            background-position: right center;
-            padding-right: 25px;
-        }
     }
 
     .login_button {

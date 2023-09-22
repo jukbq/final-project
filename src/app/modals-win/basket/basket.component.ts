@@ -18,7 +18,7 @@ import { OrderService } from 'src/app/shared/services/order/order.service';
 export class BasketComponent implements OnInit {
   public basket: Array<GoodsResponse> = [];
   public summ = 0;
-  public count = 0;
+  public  count= 0;
   public bonus = 0;
 
   constructor(
@@ -37,10 +37,8 @@ export class BasketComponent implements OnInit {
     }
     this.addToBasket();
     this.updateBasket();
-    this.summPrice();
     this.orderService.chageBasket.subscribe(() => {
       this.addToBasket();
-      this.summPrice();
     });
   }
 
@@ -48,8 +46,12 @@ export class BasketComponent implements OnInit {
     const basketData = localStorage.getItem('basket');
     if (basketData && basketData !== 'null') {
       this.basket = JSON.parse(basketData);
-      this.summPrice();
       console.log(this.basket);
+      
+        Promise.resolve().then(() => {
+          this.summPrice();
+        });
+     
     }
   }
 
@@ -72,22 +74,27 @@ export class BasketComponent implements OnInit {
   }
 
   summPrice(): void {
+        this.count = this.basket.reduce(
+          (totalCount: number, goods: GoodsResponse) =>
+            totalCount + goods.count,
+          0
+        );
+        console.log(this.count);
+
     this.summ = this.basket.reduce(
       (totalSum: number, good: GoodsResponse) =>
         totalSum + good.count * good.price,
       0
     );
-    this.count = this.basket.reduce(
-      (totalCount: number, goods: GoodsResponse) => totalCount + goods.count,
-      0
-    );
+      console.log(this.summ);
+
     this.bonus = this.basket.reduce(
       (totalBonus: number, good: GoodsResponse) =>
         totalBonus + good.count * good.bonus,
       0
     );
-  
-  }
+        console.log(this.bonus);
+    }
 
   delOrder(order: any) {
     let index = this.basket.findIndex((item) => item.id === order.id);
