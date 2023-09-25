@@ -8,6 +8,7 @@ import {
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { GoodsResponse } from 'src/app/shared/interfaces/goods';
+import { HeaderService } from 'src/app/shared/services/header/header.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
@@ -18,7 +19,7 @@ import { OrderService } from 'src/app/shared/services/order/order.service';
 export class BasketComponent implements OnInit {
   public basket: Array<GoodsResponse> = [];
   public summ = 0;
-  public  count= 0;
+  public count = 0;
   public bonus = 0;
 
   constructor(
@@ -27,7 +28,8 @@ export class BasketComponent implements OnInit {
     private el: ElementRef,
     private orderService: OrderService,
     public dialogRef: MatDialogRef<BasketComponent>,
-    private router: Router
+    private router: Router,
+    private headerService: HeaderService
   ) {}
 
   ngOnInit(): void {
@@ -46,13 +48,22 @@ export class BasketComponent implements OnInit {
     const basketData = localStorage.getItem('basket');
     if (basketData && basketData !== 'null') {
       this.basket = JSON.parse(basketData);
-      console.log(this.basket);
-      
-        Promise.resolve().then(() => {
-          this.summPrice();
-        });
-     
+      Promise.resolve().then(() => {
+        this.summPrice();
+      });
+      this.headerService.updateBasketData(this.basket);
+    } else {
+      this.headerService.updateBasketData(this.basket);
+      this.summ = 0;
+      this.count = 0;
+      this.bonus = 0;
     }
+  }
+
+  //посилання на товар
+  productInfo(poduct: any): void {
+    const productId = poduct.id;
+    this.router.navigate(['/product-info', { id: productId }]);
   }
 
   updateBasket(): void {
@@ -74,27 +85,23 @@ export class BasketComponent implements OnInit {
   }
 
   summPrice(): void {
-        this.count = this.basket.reduce(
-          (totalCount: number, goods: GoodsResponse) =>
-            totalCount + goods.count,
-          0
-        );
-        console.log(this.count);
+    this.count = this.basket.reduce(
+      (totalCount: number, goods: GoodsResponse) => totalCount + goods.count,
+      0
+    );
 
     this.summ = this.basket.reduce(
       (totalSum: number, good: GoodsResponse) =>
         totalSum + good.count * good.price,
       0
     );
-      console.log(this.summ);
 
     this.bonus = this.basket.reduce(
       (totalBonus: number, good: GoodsResponse) =>
         totalBonus + good.count * good.bonus,
       0
     );
-        console.log(this.bonus);
-    }
+  }
 
   delOrder(order: any) {
     let index = this.basket.findIndex((item) => item.id === order.id);

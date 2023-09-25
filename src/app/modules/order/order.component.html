@@ -21,13 +21,13 @@
                 <!-- Один товар в списку, повторюється для кожного товару в кошику -->
                 <li class="order_good" *ngFor="let order of basket">
                     <!-- Зображення товару -->
-                    <div class="prod_img" target="_blank">
+                    <div (click)="productInfo(order)"  class="prod_img" target="_blank">
                         <img [src]="order.images">
                     </div>
                     <!-- Опис товару -->
                     <div class="prod_desc">
                         <div class="gods_name">
-                            <a class="title" target="_blank">
+                            <a (click)="productInfo(order)" class="title" target="_blank">
                                 {{order.name}}
                             </a>
                             <!-- Кнопка для видалення товару з кошика -->

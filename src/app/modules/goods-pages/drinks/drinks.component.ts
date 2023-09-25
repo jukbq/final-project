@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import { Firestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+
 import { ToastrService } from 'ngx-toastr';
 import { GoodsResponse } from 'src/app/shared/interfaces/goods';
+import { FavoritesService } from 'src/app/shared/services/favorites/favorites.service';
 import { GoodsService } from 'src/app/shared/services/goods/goods.service';
 import { HeaderService } from 'src/app/shared/services/header/header.service';
 
@@ -10,16 +14,21 @@ import { HeaderService } from 'src/app/shared/services/header/header.service';
   styleUrls: ['./drinks.component.scss'],
 })
 export class DrinksComponent {
-  constructor(
-    private goodsService: GoodsService,
-    private headerService: HeaderService,
-    private toastr: ToastrService
-  ) {}
-
+  public uid!: string;
+  public favoriteProducts: string[] = [];
   public activeSection = 'drinks';
   public goodsArr: Array<GoodsResponse> = [];
   public activeItem: any;
   public user = '';
+
+  constructor(
+    private goodsService: GoodsService,
+    private headerService: HeaderService,
+    private toastr: ToastrService,
+    private router: Router,
+    private afs: Firestore,
+    private favoritesService: FavoritesService
+  ) {}
 
   ngOnInit(): void {
     // Отримати список товарів
@@ -29,6 +38,17 @@ export class DrinksComponent {
       title: this.activeSection,
     };
     this.headerService.emitPageInfo(pageInfo);
+
+    //Отримання ID користувача
+    const customer = JSON.parse(localStorage.getItem('curentUser') as string);
+    this.uid = customer.uid;
+
+    this.favoritesService
+      .getFavoritesByUser(this.uid)
+      .subscribe((favorites) => {
+        this.favoriteProducts = favorites.map((favorite) => favorite.productId);
+        console.log(this.favoriteProducts);
+      });
   }
 
   //ТОВАРИ
@@ -39,6 +59,36 @@ export class DrinksComponent {
         (item) => item.menu.menuLink === this.activeSection
       );
     });
+  }
+
+  //посилання на товар
+  productInfo(poduct: any): void {
+    const productId = poduct.id;
+    this.router.navigate(['/product-info', { id: productId }]);
+  }
+
+  // Перевірка, чи є товар у списку улюблених користувача
+  isFavorite(product: any): boolean {
+    return this.favoriteProducts.includes(product.id);
+  }
+
+  //додати в обране
+  addFavorites(poduct: any): void {
+    const productId = poduct.id;
+
+    if (this.isFavorite(poduct)) {
+         this.favoritesService
+        .removeFromFavorites(this.uid, productId)
+        .then(() => {
+          this.favoriteProducts = this.favoriteProducts.filter(
+            (favProductId) => favProductId !== productId
+          );
+        });
+    } else {
+          this.favoritesService.addToFavorites(this.uid, productId).then(() => {
+        this.favoriteProducts.push(productId);
+      });
+    }
   }
 
   //КОШИК
@@ -75,6 +125,7 @@ export class DrinksComponent {
         }
       } else {
         basket.push(goods);
+        this.headerService.updateBasketData(basket);
       }
 
       localStorage.setItem('basket', JSON.stringify(basket));

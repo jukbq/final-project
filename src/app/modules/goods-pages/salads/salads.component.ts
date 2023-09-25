@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { Firestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { GoodsResponse } from 'src/app/shared/interfaces/goods';
 import { CategoriesService } from 'src/app/shared/services/categories/categories.service';
+import { FavoritesService } from 'src/app/shared/services/favorites/favorites.service';
 import { GoodsService } from 'src/app/shared/services/goods/goods.service';
 import { HeaderService } from 'src/app/shared/services/header/header.service';
 
@@ -11,19 +14,24 @@ import { HeaderService } from 'src/app/shared/services/header/header.service';
   styleUrls: ['./salads.component.scss'],
 })
 export class SaladsComponent {
-  constructor(
-    private categoriesService: CategoriesService,
-    private goodsService: GoodsService,
-    private headerService: HeaderService,
-    private toastr: ToastrService
-  ) {}
-
+  public uid!: string;
+  public favoriteProducts: string[] = [];
   public activeSection = 'salads';
   public goodsArr: Array<GoodsResponse> = [];
   public listCategory: any[] = [];
   public activeItem: any;
   public categoryName!: string;
   public user = '';
+
+  constructor(
+    private categoriesService: CategoriesService,
+    private goodsService: GoodsService,
+    private headerService: HeaderService,
+    private toastr: ToastrService,
+    private router: Router,
+    private afs: Firestore,
+    private favoritesService: FavoritesService
+  ) {}
 
   ngOnInit(): void {
     this.addInitialAllCategory();
@@ -36,6 +44,16 @@ export class SaladsComponent {
     };
 
     this.headerService.emitPageInfo(pageInfo);
+
+    //Отримання ID користувача
+    const customer = JSON.parse(localStorage.getItem('curentUser') as string);
+    this.uid = customer.uid;
+
+    this.favoritesService
+      .getFavoritesByUser(this.uid)
+      .subscribe((favorites) => {
+        this.favoriteProducts = favorites.map((favorite) => favorite.productId);
+            });
   }
 
   //ТОВАРИ
@@ -46,6 +64,35 @@ export class SaladsComponent {
         (item) => item.menu.menuLink === this.activeSection
       );
     });
+  }
+
+  productInfo(poduct: any): void {
+    const productId = poduct.id;
+    this.router.navigate(['/product-info', { id: productId }]);
+  }
+
+  // Перевірка, чи є товар у списку улюблених користувача
+  isFavorite(product: any): boolean {
+    return this.favoriteProducts.includes(product.id);
+  }
+
+  //додати в обране
+  addFavorites(poduct: any): void {
+    const productId = poduct.id;
+
+    if (this.isFavorite(poduct)) {
+      this.favoritesService
+        .removeFromFavorites(this.uid, productId)
+        .then(() => {
+          this.favoriteProducts = this.favoriteProducts.filter(
+            (favProductId) => favProductId !== productId
+          );
+        });
+    } else {
+      this.favoritesService.addToFavorites(this.uid, productId).then(() => {
+        this.favoriteProducts.push(productId);
+      });
+    }
   }
 
   //КАТЕГОРІЇ
@@ -152,6 +199,7 @@ export class SaladsComponent {
 
       localStorage.setItem('basket', JSON.stringify(basket));
       goods.count = 1;
+      this.headerService.updateBasketData(basket);
     }
   }
 }

@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { GoodsResponse } from '../../interfaces/goods';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeaderService {
+  private basketDataSubject = new BehaviorSubject<Array<GoodsResponse>>([]);
+  basketData$ = this.basketDataSubject.asObservable();
+
   private headerClickSubject = new Subject<string>();
   headerClick$ = this.headerClickSubject.asObservable();
 
@@ -18,4 +22,9 @@ export class HeaderService {
   emitPageInfo(pageInfo: any) {
     this.pageInfoSubject.next(pageInfo);
   }
+
+  updateBasketData(newData: Array<GoodsResponse>) {
+     console.log(newData);
+    this.basketDataSubject.next(newData);
+    }
 }

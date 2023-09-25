@@ -68,13 +68,12 @@ section {
 
             li {
                 width: 32%;
-                max-height: 750px;
+                min-height: 750px;
                 position: relative;
                 overflow: hidden;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                padding: 0 10px 10px;
                 margin: 5px 5px;
                 border: 1px solid #d1d9ce;
                 border-radius: 16px;
@@ -112,16 +111,55 @@ section {
                     }
                 }
 
-                .goods_image {
+                .image_block {
+                    position: relative;
                     width: 100%;
                     height: 60%;
                     margin-bottom: 10px;
 
-                    img {
-                        width: 100%;
+                    .fav_btn {
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                        z-index: 2;
+                        border: none;
+                        background: none;
 
-                        object-fit: contain;
-                        transition: 0.5s;
+                        svg {
+                            display: block;
+                            max-width: 100%;
+                            max-height: 100%;
+
+                            .fill-anime {
+                                fill: transparent;
+                                stroke: var(--clr-red);
+                                transition: var(--transition);
+                            }
+                        }
+
+                        &:hover {
+                            svg .fill-anime {
+                                stroke: var(--clr-green);
+                                fill: var(--clr-green);
+                            }
+                        }
+
+                        &.active {
+                            svg .fill-anime {
+                                fill: var(--clr-red);
+                            }
+                        }
+                    }
+
+                    .goods_image {
+                        width: 100%;
+                        height: 100%;
+
+                        img {
+                            width: 100%;
+                            object-fit: contain;
+                            transition: 0.5s;
+                        }
                     }
                 }
 
@@ -132,7 +170,7 @@ section {
                     color: inherit;
                     text-decoration: none;
                     transition: var(--transition);
-                    margin-bottom: 10px;
+                    margin: 0 10px 10px 10px;
 
                     &:hover {
                         color: var(--clr-green);
@@ -146,15 +184,13 @@ section {
                 .product_desc {
                     line-height: 1.5em;
                     max-height: 4.5em;
-                    -webkit-box-orient: vertical;
                     display: block;
                     display: -webkit-box;
                     overflow: hidden !important;
                     text-overflow: ellipsis;
-                    -webkit-line-clamp: 3;
                     color: var(--clr-grey);
                     font-size: 16px;
-                    margin-bottom: 10px;
+                    margin: 0 10px 10px 10px;
                 }
 
                 .product_controls {
@@ -165,6 +201,7 @@ section {
                     flex-wrap: wrap;
                     justify-content: space-between;
                     align-items: center;
+                    margin: 0 10px 10px 10px;
 
                     .product_price-wrap {
                         position: relative;

@@ -1,0 +1,45 @@
+section {
+  width: 65%;
+  padding: 20px 40px;
+  margin: 0 auto;
+}
+section table {
+  width: 100%;
+  margin-top: 20px;
+}
+section table tbody tr {
+  border-top: 1px solid #D1D9CE;
+  border-bottom: 1px solid #D1D9CE;
+}
+section table tbody tr td {
+  padding: 8px;
+  border-left: 1px solid #D1D9CE;
+  border-right: 1px solid #D1D9CE;
+}
+section table tbody tr .order_dte {
+  width: 5%;
+}
+section table tbody tr .menu_name {
+  width: 5%;
+}
+section table tbody tr .title {
+  width: 10%;
+}
+section table tbody tr .name {
+  width: 30%;
+}
+section table tbody tr .count {
+  width: 5%;
+}
+section table tbody tr .price {
+  width: 10%;
+}
+section table tbody tr .image {
+  width: 35%;
+  width: 80px;
+  height: 70px;
+  overflow: hidden;
+}
+section table tbody tr .image img {
+  height: 100%;
+}

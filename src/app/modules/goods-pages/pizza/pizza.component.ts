@@ -1,10 +1,13 @@
 import { Component, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Firestore } from '@angular/fire/firestore';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { ToastrService } from 'ngx-toastr';
 import { ActionResponse } from 'src/app/shared/interfaces/action';
 import { GoodsResponse } from 'src/app/shared/interfaces/goods';
 import { ActionService } from 'src/app/shared/services/action/action.service';
 import { CategoriesService } from 'src/app/shared/services/categories/categories.service';
+import { FavoritesService } from 'src/app/shared/services/favorites/favorites.service';
 import { GoodsService } from 'src/app/shared/services/goods/goods.service';
 import { HeaderService } from 'src/app/shared/services/header/header.service';
 
@@ -14,16 +17,8 @@ import { HeaderService } from 'src/app/shared/services/header/header.service';
   styleUrls: ['./pizza.component.css'],
 })
 export class PizzaComponent {
-  constructor(
-    private actionService: ActionService,
-    private route: ActivatedRoute,
-    private el: ElementRef,
-    private headerService: HeaderService,
-    private categoriesService: CategoriesService,
-    private goodsService: GoodsService,
-    private toastr: ToastrService
-  ) {}
-
+  public uid!: string;
+  public favoriteProducts: string[] = [];
   public listCategory: any[] = [];
   public slides: Array<ActionResponse> = [];
   public goodsArr: Array<GoodsResponse> = [];
@@ -33,6 +28,19 @@ export class PizzaComponent {
   public menuName: any;
   public newPrice = false;
   public user = '';
+
+  constructor(
+    private actionService: ActionService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private el: ElementRef,
+    private headerService: HeaderService,
+    private categoriesService: CategoriesService,
+    private goodsService: GoodsService,
+    private toastr: ToastrService,
+    private afs: Firestore,
+    private favoritesService: FavoritesService
+  ) {}
 
   ngOnInit(): void {
     // Підписка на подію кліку в хедері
@@ -46,7 +54,6 @@ export class PizzaComponent {
         if (fragment) {
           this.scrollToPizzaContainer(fragment);
           this.getGoods();
-          console.log('fragment', fragment);
         }
       });
     }
@@ -63,6 +70,17 @@ export class PizzaComponent {
     // Отримати список категорій
     this.getCategory();
     this.currentUser();
+
+    //Отримання ID користувача
+    const customer = JSON.parse(localStorage.getItem('curentUser') as string);
+    this.uid = customer.uid;
+
+    this.favoritesService
+      .getFavoritesByUser(this.uid)
+      .subscribe((favorites) => {
+        this.favoriteProducts = favorites.map((favorite) => favorite.productId);
+        console.log(this.favoriteProducts);
+      });
   }
 
   //ТОВАРИ
@@ -74,16 +92,41 @@ export class PizzaComponent {
       );
     });
   }
+  productInfo(poduct: any): void {
+    const productId = poduct.id;
+    this.router.navigate(['/product-info', { id: productId }]);
+  }
 
   currentUser() {
     const currentUserString = localStorage.getItem('curentUser');
 
-    console.log(currentUserString);
-
     if (currentUserString) {
       const userRole = JSON.parse(currentUserString);
       this.user = userRole.role;
-      console.log(this.user);
+    }
+  }
+
+  // Перевірка, чи є товар у списку улюблених користувача
+  isFavorite(product: any): boolean {
+    return this.favoriteProducts.includes(product.id);
+  }
+
+  //додати в обране
+  addFavorites(poduct: any): void {
+    const productId = poduct.id;
+
+    if (this.isFavorite(poduct)) {
+      this.favoritesService
+        .removeFromFavorites(this.uid, productId)
+        .then(() => {
+          this.favoriteProducts = this.favoriteProducts.filter(
+            (favProductId) => favProductId !== productId
+          );
+        });
+    } else {
+      this.favoritesService.addToFavorites(this.uid, productId).then(() => {
+        this.favoriteProducts.push(productId);
+      });
     }
   }
 
@@ -192,6 +235,7 @@ export class PizzaComponent {
 
       localStorage.setItem('basket', JSON.stringify(basket));
       goods.count = 1;
+      this.headerService.updateBasketData(basket);
     }
   }
 

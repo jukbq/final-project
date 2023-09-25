@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import { Firestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+import { collection } from 'firebase/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { GoodsResponse } from 'src/app/shared/interfaces/goods';
+import { FavoritesService } from 'src/app/shared/services/favorites/favorites.service';
 import { GoodsService } from 'src/app/shared/services/goods/goods.service';
 import { HeaderService } from 'src/app/shared/services/header/header.service';
 
@@ -10,16 +14,21 @@ import { HeaderService } from 'src/app/shared/services/header/header.service';
   styleUrls: ['./desserts.component.scss'],
 })
 export class DessertsComponent {
-  constructor(
-    private goodsService: GoodsService,
-    private headerService: HeaderService,
-    private toastr: ToastrService
-  ) {}
-
+  public uid!: string;
+  public favoriteProducts: string[] = [];
   public activeSection = 'desserts';
   public goodsArr: Array<GoodsResponse> = [];
   public activeItem: any;
   public user = '';
+
+  constructor(
+    private goodsService: GoodsService,
+    private headerService: HeaderService,
+    private toastr: ToastrService,
+    private router: Router,
+    private afs: Firestore,
+    private favoritesService: FavoritesService
+  ) {}
 
   ngOnInit(): void {
     // Отримати список товарів
@@ -28,7 +37,19 @@ export class DessertsComponent {
     const pageInfo = {
       title: this.activeSection,
     };
+
     this.headerService.emitPageInfo(pageInfo);
+
+    //Отримання ID користувача
+    const customer = JSON.parse(localStorage.getItem('curentUser') as string);
+    this.uid = customer.uid;
+
+    this.favoritesService
+      .getFavoritesByUser(this.uid)
+      .subscribe((favorites) => {
+        this.favoriteProducts = favorites.map((favorite) => favorite.productId);
+        console.log(this.favoriteProducts);
+      });
   }
 
   //ТОВАРИ
@@ -39,6 +60,38 @@ export class DessertsComponent {
         (item) => item.menu.menuLink === this.activeSection
       );
     });
+  }
+
+  //посилання на прдукт
+  productInfo(poduct: any): void {
+    const productId = poduct.id;
+    this.router.navigate(['/product-info', { id: productId }]);
+  }
+
+  // Перевірка, чи є товар у списку улюблених користувача
+  isFavorite(product: any): boolean {
+    return this.favoriteProducts.includes(product.id);
+  }
+
+  //додати в обране
+  addFavorites(poduct: any): void {
+    const productId = poduct.id;
+
+    if (this.isFavorite(poduct)) {
+      // Якщо товар вже є у списку улюблених, видаляємо його
+      this.favoritesService
+        .removeFromFavorites(this.uid, productId)
+        .then(() => {
+          this.favoriteProducts = this.favoriteProducts.filter(
+            (favProductId) => favProductId !== productId
+          );
+        });
+    } else {
+      // Якщо товар не є у списку улюблених, додаємо його
+      this.favoritesService.addToFavorites(this.uid, productId).then(() => {
+        this.favoriteProducts.push(productId);
+      });
+    }
   }
 
   //КОШИК
@@ -79,6 +132,7 @@ export class DessertsComponent {
 
       localStorage.setItem('basket', JSON.stringify(basket));
       goods.count = 1;
+      this.headerService.updateBasketData(basket);
     }
   }
 }

@@ -1,5 +1,5 @@
 section {
-  width: 65%;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@ section .text-center h1::before {
   background-size: contain;
 }
 section .user_menu {
-  width: 100%;
+  width: 65%;
   display: flex;
   list-style: none;
   text-align: center;

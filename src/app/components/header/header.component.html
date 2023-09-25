@@ -60,13 +60,13 @@
 
 
         <div class="user-c-wrapper">
-          <a class="user-fav " href="#/">
+          <a [routerLink]="'user/favorite'" class="user-fav " href="#/">
             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M10.5166 17.8416C10.2333 17.9416 9.76663 17.9416 9.48329 17.8416C7.06663 17.0166 1.66663 13.5749 1.66663 7.74159C1.66663 5.16659 3.74163 3.08325 6.29996 3.08325C7.81663 3.08325 9.15829 3.81659 9.99996 4.94992C10.8416 3.81659 12.1916 3.08325 13.7 3.08325C16.2583 3.08325 18.3333 5.16659 18.3333 7.74159C18.3333 13.5749 12.9333 17.0166 10.5166 17.8416Z"
                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
-            <i class="num ">0</i>
+            <i class="num ">{{favoritGoods}}</i>
             <div class="user_tooltip ">
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/heder%2Fpopup-img-5.svg?alt=media&token=a836f36a-03e4-4f4c-832a-9c53fa2c9e84"
@@ -103,22 +103,22 @@
               <div class="user-name">{{fullName}}</div>
               <ul class="user-menu-list">
                 <li>
-                  <a [routerLink]="['/user/personal-data/']">
+                  <a [routerLink]="['/user/personal-data/']" (click)="closrUserMenu()">
                     <p>Персональна інформація</p>
                   </a>
                 </li>
                 <li>
-                  <a [routerLink]="['/order-history/']">
+                  <a [routerLink]="['/user/order-history/']" (click)="closrUserMenu()">
                     <p>Історія замовлень</p>
                   </a>
                 </li>
                 <li>
-                  <a [routerLink]="['/password-change/']">
+                  <a [routerLink]="['/user/password-change/']" (click)="closrUserMenu()">
                     <p>Зміна паролю</p>
                   </a>
                 </li>
                 <li>
-                  <a [routerLink]="['/favorite/']">
+                  <a [routerLink]="['/user/favorite/']" (click)="closrUserMenu()">
                     <p>Улюблені</p>
                   </a>
                 </li>
@@ -160,10 +160,10 @@
               <path d="M10.6181 15H10.6294" stroke="#212721" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round"></path>
             </svg>
-            <i>0</i>
+            <i>{{count}}</i>
           </div>
-          <p><b>0</b> грн</p>
-          <div class="basket_tooltip ">
+          <p><b>{{summ}}</b> грн</p>
+          <div class="basket_tooltip " [ngClass]="{'visible-tooltip': summ === 0 && count === 0}">
             <img
               src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/heder%2Fpopup-img-6.svg?alt=media&token=39c35d0a-cae2-4d24-82bc-6a66ba62ff10"
               alt="">

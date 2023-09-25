@@ -456,7 +456,7 @@ header .header-wrapper .container .header-bottom .header-cart .basket_tooltip::a
   border-left-width: 7px;
   border-bottom: 7px solid var(--clr-white);
 }
-header .header-wrapper .container .header-bottom .header-cart:hover .basket_tooltip {
+header .header-wrapper .container .header-bottom .header-cart:hover .visible-tooltip {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(10px);

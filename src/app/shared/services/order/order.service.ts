@@ -17,7 +17,7 @@ import {
 })
 export class OrderService {
   public chageBasket = new Subject<boolean>();
-  private orderCollection: string = 'order';
+  private orderCollection: string = 'orders';
 
   constructor(private afs: Firestore) {}
 

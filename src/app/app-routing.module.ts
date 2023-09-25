@@ -9,6 +9,7 @@ import { SaladsComponent } from './modules/goods-pages/salads/salads.component';
 import { DessertsComponent } from './modules/goods-pages/desserts/desserts.component';
 import { DrinksComponent } from './modules/goods-pages/drinks/drinks.component';
 import { OrderComponent } from './modules/order/order.component';
+import { ProductInfoComponent } from './modules/product-info/product-info.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,10 @@ const routes: Routes = [
   { path: 'sighin', component: SigninComponent },
   { path: 'basket', component: BasketComponent },
   { path: 'order', component: OrderComponent },
+  {
+    path: 'product-info', component: ProductInfoComponent,
+    
+  },
 
   {
     path: 'admin',

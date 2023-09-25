@@ -39,6 +39,8 @@ import { DrinksComponent } from './modules/goods-pages/drinks/drinks.component';
 import { SaladsComponent } from './modules/goods-pages/salads/salads.component';
 import { OrderComponent } from './modules/order/order.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { HeaderService } from './shared/services/header/header.service';
+import { ProductInfoComponent } from './modules/product-info/product-info.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     BasketComponent,
     AdressComponent,
     OrderComponent,
+    ProductInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,7 +81,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     SharedModule,
     
   ],
-  providers: [ScreenTrackingService, UserTrackingService],
+  providers: [ScreenTrackingService, UserTrackingService, HeaderService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

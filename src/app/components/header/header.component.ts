@@ -1,10 +1,14 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
+import { Firestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { BasketComponent } from 'src/app/modals-win/basket/basket.component';
 import { SigninComponent } from 'src/app/modals-win/signin/signin.component';
 import { ROLE } from 'src/app/shared/guards/role.constant';
+import { GoodsResponse } from 'src/app/shared/interfaces/goods';
 import { MenuResponse } from 'src/app/shared/interfaces/menu';
+import { FavoritesService } from 'src/app/shared/services/favorites/favorites.service';
 import { HeaderService } from 'src/app/shared/services/header/header.service';
 import { MenuService } from 'src/app/shared/services/menu/menu.service';
 
@@ -14,31 +18,61 @@ import { MenuService } from 'src/app/shared/services/menu/menu.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  constructor(
-    private el: ElementRef,
-    private router: Router,
-    private headerService: HeaderService,
-    private menuService: MenuService,
-    public dialog: MatDialog
-  ) {}
-
+  private basket: Array<GoodsResponse> = [];
+  private basketSubscription!: Subscription;
+  public uid!: string;
+  public favoriteProducts: string[] = [];
+  public favoritGoods = 0
   public menuArr: Array<MenuResponse> = [];
   public menuLink = 'pizza';
   public isLogin = false;
   public loginUrl = '';
   public activeUserMenu = false;
   public fullName = '';
+  public summ = 0;
+  public count = 0;
+
+  constructor(
+    private el: ElementRef,
+    private router: Router,
+    private headerService: HeaderService,
+    private menuService: MenuService,
+    public dialog: MatDialog,
+    private afs: Firestore,
+    private favoritesService: FavoritesService
+  ) {}
 
   ngOnInit(): void {
     this.changeUserUrl();
     this.getMenu();
+    this.addToBasket();
     this.headerService.pageInfo$.subscribe((pageInfo) => {
-   this.menuLink = pageInfo.title;
-      console.log(pageInfo.title);
-    
+      this.menuLink = pageInfo.title;
     });
-    console.log(this.menuLink);
-    
+
+    this.basketSubscription = this.headerService.basketData$.subscribe(
+      (newBasketData) => {
+        if (newBasketData.length !== 0) {
+          this.basket = newBasketData;
+          this.summPrice();
+        } else {
+          console.log('0', newBasketData);
+          this.basket = newBasketData;
+          this.summ = 0;
+          this.count = 0;
+        }
+      }
+    );
+
+    this.favoritesService.favorites$.subscribe((favorites) => {
+      this.favoriteProducts = favorites;
+      this.favoritGoods = this.favoriteProducts.length;
+      console.log(this.favoritGoods);
+      
+    });
+      
+   
+      
   }
 
   // Отримати меню зі служби меню
@@ -86,6 +120,36 @@ export class HeaderComponent {
     }
   }
 
+  ngOnDestroy(): void {
+    this.basketSubscription.unsubscribe();
+  }
+
+  updateBasketData(newBasketData: Array<GoodsResponse>): void {
+    localStorage.setItem('basket', JSON.stringify(newBasketData));
+  }
+
+  addToBasket(): void {
+    const basketData = localStorage.getItem('basket');
+    if (basketData && basketData !== 'null') {
+      this.basket = JSON.parse(basketData);
+      this.summPrice();
+      this.headerService.updateBasketData(this.basket);
+    }
+  }
+
+  // Розрахунок загальної суми та бонусів
+  summPrice(): void {
+    this.summ = this.basket.reduce(
+      (totalSum: number, good: GoodsResponse) =>
+        totalSum + good.count * good.price,
+      0
+    );
+    this.count = this.basket.reduce(
+      (totalCount: number, goods: GoodsResponse) => totalCount + goods.count,
+      0
+    );
+  }
+
   changeUserUrl() {
     const currentUserString = localStorage.getItem('curentUser');
     /*  console.log(currentUserString); */
@@ -130,6 +194,9 @@ export class HeaderComponent {
     } else {
       this.activeUserMenu = !this.activeUserMenu;
     }
+  }
+  closrUserMenu() {
+    this.activeUserMenu = false;
   }
 
   logout() {

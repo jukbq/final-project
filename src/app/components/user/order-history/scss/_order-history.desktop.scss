@@ -1,0 +1,58 @@
+section {
+    width: 65%;
+    padding: 20px 40px;
+    margin: 0 auto;
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+
+        tbody tr {
+            border-top: 1px solid #D1D9CE;
+            border-bottom: 1px solid #D1D9CE;
+          
+
+            td {
+                padding: 8px;
+                border-left: 1px solid #D1D9CE;
+                border-right: 1px solid #D1D9CE;
+            }
+
+            .order_dte {
+                width: 5%;
+
+            }
+
+            .menu_name {
+                width: 5%;
+            }
+
+            .title {
+                width: 10%;
+            }
+
+            .name {
+                width: 30%;
+            }
+
+            .count {
+                width: 5%;
+            }
+
+            .price {
+                width: 10%;
+            }
+
+            .image {
+                width: 35%;
+                width: 80px;
+                height: 70px;
+                overflow: hidden;
+
+                img {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

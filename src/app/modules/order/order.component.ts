@@ -14,6 +14,7 @@ import {
 import { Firestore, setDoc, updateDoc } from '@angular/fire/firestore';
 import { addDoc, collection, doc } from 'firebase/firestore';
 import { Router } from '@angular/router';
+import { HeaderService } from 'src/app/shared/services/header/header.service';
 
 @Component({
   selector: 'app-order',
@@ -70,6 +71,7 @@ export class OrderComponent {
     private orderService: OrderService,
     private formBuilder: FormBuilder,
     private afs: Firestore,
+    private headerService: HeaderService,
     private router: Router
   ) {
     this.customerForm = this.formBuilder.group({
@@ -157,6 +159,12 @@ export class OrderComponent {
     if (basketData && basketData !== 'null') {
       this.basket = JSON.parse(basketData);
       this.summPrice();
+      this.headerService.updateBasketData(this.basket);
+    } else {
+      this.headerService.updateBasketData(this.basket);
+      this.summ = 0;
+      this.count = 0;
+      this.bonus = 0;
     }
   }
 
@@ -175,6 +183,11 @@ export class OrderComponent {
     this.updateLocalStorage();
   }
 
+//посилання на товар
+  productInfo(poduct: any): void {
+    const productId = poduct.id;
+    this.router.navigate(['/product-info', { id: productId }]);
+  }
   // Розрахунок загальної суми та бонусів
   summPrice(): void {
     this.summ = this.basket.reduce(
@@ -387,7 +400,7 @@ export class OrderComponent {
     }
   }
 
-//Внесеня кількості бонусів користувачем
+  //Внесеня кількості бонусів користувачем
   inputUserBonus(event: any) {
     const inputValue = event.target.value;
 
@@ -421,7 +434,7 @@ export class OrderComponent {
     }
   }
 
-  //Застосування введеної кількості бонусів 
+  //Застосування введеної кількості бонусів
   applyBonusAction() {
     const bonusInput = document.querySelector(
       '.userBonusInput'
@@ -480,12 +493,27 @@ export class OrderComponent {
       this.apartment = this.customerForm.get('apartment')?.value;
     }
 
+    //перетворення дати в стрічку
+    let dateToString = this.customerForm.get('deliveryDate')?.value;
+    if (dateToString instanceof Date) {
+      const day = dateToString.getDate();
+      const month = dateToString.getMonth() + 1;
+      const year = dateToString.getFullYear();
+      const formattedDate = `${day.toString().padStart(2, '0')}.${month
+        .toString()
+        .padStart(2, '0')}.${year}`;
+
+      dateToString = formattedDate;
+    } else {
+      dateToString = 'Дата не встановлена';
+    }
+
     // Визначаємо вибрану дату та час доставки
     if (this.deliveryForTime === false) {
-      this.selectedDate = this.customerForm.get('deliveryDate')?.value;
+      this.selectedDate = dateToString;
       this.selectedTime = 'Доставити якомога швидше';
     } else {
-      this.selectedDate = this.customerForm.get('deliveryDate')?.value;
+      this.selectedDate = dateToString;
       this.selectedTime = this.customerForm.get('deliveryTime')?.value;
     }
 
@@ -544,6 +572,7 @@ export class OrderComponent {
 
     // Очищаємо кошик та перенаправляємо користувача на іншу сторінку
     localStorage.removeItem('basket');
-    this.router.navigate(['/']);
+
+    window.location.href = '/';
   }
 }

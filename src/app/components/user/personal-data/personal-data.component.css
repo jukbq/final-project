@@ -156,8 +156,9 @@ input[type=date] {
 }
 
 section {
-  width: 100%;
+  width: 65%;
   height: auto;
+  margin: 0 auto;
 }
 section form {
   border: none;

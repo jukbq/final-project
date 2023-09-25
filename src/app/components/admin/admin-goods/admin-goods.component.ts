@@ -51,12 +51,25 @@ export class AdminGoodsComponent {
   public selectedCategories: СategoriesResponse[] = [];
   public bonusControl: FormControl = new FormControl(0);
 
-
   ngOnInit(): void {
+    this.initGoodForm();
     this.getCategory();
     this.getMenu();
-    this.initGoodForm();
     this.getGoods();
+
+    // Добавляем подписку на изменения поля menu
+    this.goodForm.get('menu')?.valueChanges.subscribe((menu) => {
+      const categoryControl = this.goodForm.get('category');
+      if (menu && (menu.menuLink === 'pizza' || menu.menuLink === 'salads')) {
+        categoryControl?.enable(); // Активируем поле категорий
+        categoryControl?.setValidators([Validators.required]);
+      } else {
+        categoryControl?.disable(); // Выключаем поле категорий
+        categoryControl?.clearValidators();
+      }
+
+      categoryControl?.updateValueAndValidity();
+    });
   }
 
   initGoodForm(): void {
@@ -74,9 +87,9 @@ export class AdminGoodsComponent {
       bonusTogether: 0,
       count: 1,
     });
-    this.goodForm.get('menu')?.valueChanges.subscribe((menu) => {
+/*     this.goodForm.get('menu')?.valueChanges.subscribe((menu) => {
       const categoryControl = this.goodForm.get('category');
-      if (menu.menuLink === 'pizza' || menu.menuLink === 'salads') {
+      if ((menu && menu.menuLink === 'pizza') || menu.menuLink === 'salads') {
         categoryControl?.enable(); // Активуємо поле категорій
         categoryControl?.setValidators([Validators.required]);
       } else {
@@ -85,9 +98,9 @@ export class AdminGoodsComponent {
       }
 
       categoryControl?.updateValueAndValidity();
-    });
+    }); */
     this.goodForm.get('price')?.valueChanges.subscribe((price) => {
-      const bonus = Math.round(price * 0.03); 
+      const bonus = Math.round(price * 0.03);
       this.bonusControl.setValue(bonus, { emitEvent: false });
     });
   }
@@ -124,22 +137,24 @@ export class AdminGoodsComponent {
 
   creatGoods() {
     if (this.edit_status) {
-      this.goodsService
-        .editGoods(this.goodForm.value, this.goodID as string)
-        .then(() => {
+        this.goodsService
+          .editGoods(this.goodForm.value, this.goodID as string)
+          .then(() => {
+            this.getGoods();
+            this.uploadPercent = 0;
+          });
+      
+    } else {
+        this.goodsService.addGoods(this.goodForm.value).then(() => {
           this.getGoods();
           this.uploadPercent = 0;
         });
-    } else {
-      this.goodsService.addGoods(this.goodForm.value).then(() => {
-        this.getGoods();
-        this.uploadPercent = 0;
-      });
+      
     }
 
+    this.goodForm.reset();
     this.edit_status = false;
     this.good_form = false;
-    this.goodForm.reset();
   }
 
   editGood(good: GoodsResponse) {

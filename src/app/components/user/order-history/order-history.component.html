@@ -1,1 +1,30 @@
-<p>order-history works!</p>
+<section>
+<table>
+    <thead>
+      <!--   <tr>
+            <th>Дата</th>
+            <th>Меню</th>
+            <th>Категорія</th>
+            <th>Назва</th>
+            <th>Кількість</th>
+            <th>Сума</th>
+            <th>Зображення</th>
+        </tr>
+    </thead> -->
+    <tbody>
+        <ng-container *ngFor="let order of userOrders; let firstRow = first">
+            <tr *ngFor="let orderItem of order.orderedItems; let isFirstItem = first">
+                <td class="order_dte" *ngIf="isFirstItem" [attr.rowspan]="order.orderedItems.length">
+                    {{ order.deliveryDate }}</td>
+                <td class="menu_name">{{ orderItem.menu.menuName }}</td>
+                <td class="title">{{ orderItem.category.titel }}</td>
+                <td class="name">{{ orderItem.name }}</td>
+                <td class="count">{{ orderItem.count }}</td>
+                <td class="price">{{ orderItem.price }}</td>
+                <td class="image"><img [src]="orderItem.images" alt="{{ orderItem.name }}"></td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
+
+</section>
