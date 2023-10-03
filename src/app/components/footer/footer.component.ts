@@ -25,6 +25,13 @@ export class FooterComponent {
   getMenu() {
     this.menuService.getAll().subscribe((data) => {
       this.menuArr = data as MenuResponse[];
+
+      this.menuArr.forEach((menu) => {
+          menu.menuName =
+          menu.menuName.charAt(0).toUpperCase() +
+          menu.menuName.slice(1).toLowerCase();
+      });
+
       this.menuArr.sort((a, b) => a.menuindex - b.menuindex);
     });
   }

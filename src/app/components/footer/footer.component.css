@@ -145,6 +145,7 @@ footer .container .footer-top .row .footer-menu .footer-menu-list {
 }
 footer .container .footer-top .row .footer-menu .footer-menu-list li {
   margin-bottom: 10px;
+  cursor: pointer;
 }
 footer .container .footer-top .row .footer-menu .footer-menu-list li a {
   color: var(--clr-grey);
