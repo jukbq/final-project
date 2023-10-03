@@ -41,14 +41,19 @@ export class DrinksComponent {
 
     //Отримання ID користувача
     const customer = JSON.parse(localStorage.getItem('curentUser') as string);
-    this.uid = customer.uid;
-
-    this.favoritesService
-      .getFavoritesByUser(this.uid)
-      .subscribe((favorites) => {
-        this.favoriteProducts = favorites.map((favorite) => favorite.productId);
-        console.log(this.favoriteProducts);
-      });
+    if (customer && customer.uid) {
+      this.uid = customer.uid;
+    }
+    if (this.uid) {
+      this.favoritesService
+        .getFavoritesByUser(this.uid)
+        .subscribe((favorites) => {
+          this.favoriteProducts = favorites.map(
+            (favorite) => favorite.productId
+          );
+          console.log(this.favoriteProducts);
+        });
+    }
   }
 
   //ТОВАРИ
@@ -77,7 +82,7 @@ export class DrinksComponent {
     const productId = poduct.id;
 
     if (this.isFavorite(poduct)) {
-         this.favoritesService
+      this.favoritesService
         .removeFromFavorites(this.uid, productId)
         .then(() => {
           this.favoriteProducts = this.favoriteProducts.filter(
@@ -85,7 +90,7 @@ export class DrinksComponent {
           );
         });
     } else {
-          this.favoritesService.addToFavorites(this.uid, productId).then(() => {
+      this.favoritesService.addToFavorites(this.uid, productId).then(() => {
         this.favoriteProducts.push(productId);
       });
     }

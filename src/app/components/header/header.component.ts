@@ -1,7 +1,8 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, HostListener } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BasketComponent } from 'src/app/modals-win/basket/basket.component';
 import { SigninComponent } from 'src/app/modals-win/signin/signin.component';
@@ -20,9 +21,8 @@ import { MenuService } from 'src/app/shared/services/menu/menu.service';
 export class HeaderComponent {
   private basket: Array<GoodsResponse> = [];
   private basketSubscription!: Subscription;
-  public uid!: string;
   public favoriteProducts: string[] = [];
-  public favoritGoods = 0
+  public favoritGoods = 0;
   public menuArr: Array<MenuResponse> = [];
   public menuLink = 'pizza';
   public isLogin = false;
@@ -39,7 +39,8 @@ export class HeaderComponent {
     private menuService: MenuService,
     public dialog: MatDialog,
     private afs: Firestore,
-    private favoritesService: FavoritesService
+    private favoritesService: FavoritesService,
+    private viewportScroller: ViewportScroller
   ) {}
 
   ngOnInit(): void {
@@ -56,23 +57,20 @@ export class HeaderComponent {
           this.basket = newBasketData;
           this.summPrice();
         } else {
-          console.log('0', newBasketData);
           this.basket = newBasketData;
           this.summ = 0;
           this.count = 0;
         }
       }
     );
+    const customer = JSON.parse(localStorage.getItem('curentUser') as string);
 
     this.favoritesService.favorites$.subscribe((favorites) => {
       this.favoriteProducts = favorites;
       this.favoritGoods = this.favoriteProducts.length;
       console.log(this.favoritGoods);
-      
     });
-      
-   
-      
+
   }
 
   // Отримати меню зі служби меню
@@ -99,11 +97,13 @@ export class HeaderComponent {
       }
     }
   }
+  
 
   // Вибір пункту меню
   onSelectItem(item: string): void {
     this.menuLink = item;
     this.headerService.emitHeaderClick(item);
+     this.viewportScroller.scrollToPosition([0, 0]);
   }
 
   // Анімація активного стану гамбургера
@@ -182,6 +182,7 @@ export class HeaderComponent {
     let sighIn = this.dialog.open(SigninComponent, {
       panelClass: 'sigh_maoa_dialog',
     });
+    console.log(sighIn);
 
     sighIn.afterClosed().subscribe(() => {
       this.changeUserUrl();

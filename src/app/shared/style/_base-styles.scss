@@ -83,3 +83,42 @@ a {
 
 
 }
+
+.accordion-item {
+    .mat-expansion-indicator {
+        position: relative;
+        width: 16px;
+        height: 16px;
+        border: 2px solid var(--clr-black);
+        border-radius: 100%;
+        transition: var(--transition);
+
+        &::after {
+            position: absolute;
+            padding: 0px !important;
+            top: 50%;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            margin-top: -1px;
+            border-right: 2px solid var(--clr-black);
+            border-bottom: 2px solid var(--clr-black);
+            transform: translate(-50%, -50%) rotate(45deg) !important;
+            transition: var(--transition);
+
+
+
+        }
+    }
+
+    &:hover {
+        .mat-expansion-indicator {
+            border: 2px solid var(--clr-green);
+
+            &::after {
+                border-right: 2px solid var(--clr-green);
+                border-bottom: 2px solid var(--clr-green);
+            }
+        }
+    }
+}

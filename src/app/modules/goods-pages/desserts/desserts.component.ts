@@ -42,14 +42,19 @@ export class DessertsComponent {
 
     //Отримання ID користувача
     const customer = JSON.parse(localStorage.getItem('curentUser') as string);
-    this.uid = customer.uid;
-
-    this.favoritesService
-      .getFavoritesByUser(this.uid)
-      .subscribe((favorites) => {
-        this.favoriteProducts = favorites.map((favorite) => favorite.productId);
-        console.log(this.favoriteProducts);
-      });
+    if (customer && customer.uid) {
+      this.uid = customer.uid;
+    }
+    if (this.uid) {
+      this.favoritesService
+        .getFavoritesByUser(this.uid)
+        .subscribe((favorites) => {
+          this.favoriteProducts = favorites.map(
+            (favorite) => favorite.productId
+          );
+          console.log(this.favoriteProducts);
+        });
+    }
   }
 
   //ТОВАРИ

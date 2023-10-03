@@ -38,10 +38,9 @@
         <ul class="filters-list">
 
             <li *ngFor="let category of listCategory; 
-                let isFirst = first" 
-                [class.active]="isFirst && !categoryName || category.link === categoryName"
+                let isFirst = first" [class.active]="isFirst && !categoryName || category.link === categoryName"
                 (click)="onSelectItem(category)">
-             
+
 
                 <img src="{{category.images}}" alt="">
                 <a class="nav-link">{{ category.titel }}</a>
@@ -75,8 +74,7 @@
                     </div>
                 </div>
 
-                <a (click)="productInfo(goods)"  class="goods_title" href="#"
-                    itemprop="name">
+                <a (click)="productInfo(goods)" class="goods_title" href="#" itemprop="name">
                     <b>{{goods.name}}</b>
                     <img src="{{goods.category.images}}" alt="">
                 </a>
@@ -90,7 +88,7 @@
                         <div class="product_pricehidden">
                             <b *ngIf="!goods.newPrice" class="price-old">{{goods.price}} </b>
                             <b *ngIf="goods.newPrice" class="price-old">{{goods.priceTogether}} </b>
-                            
+
                             грн
                         </div>
                     </div>
@@ -101,14 +99,17 @@
                     <div class="bonus_calculate">
                         <b *ngIf="!goods.newPrice" class="price-old">{{goods.bonus}} грн бонусів </b>
                         <b *ngIf="goods.newPrice" class="price-old">{{goods.bonusTogether}} грн бонусів </b>
-                      </div>
+                    </div>
 
                     <div class="w-100"></div>
 
                     <div class="thumb-input-number">
-                        <button (click)="quantity_goods(goods, false)" type="button" class="decrement" data-key="">-</button>
-                        <input [value]="goods.count" class="product-qty" value="1" readonly="" tabindex="-1" max="" data-id="640" data-key="">
-                        <button  (click)="quantity_goods(goods, true)"  type="button" class="increment" data-key="">+</button>
+                        <button (click)="quantity_goods(goods, false)" type="button" class="decrement"
+                            data-key="">-</button>
+                        <input [value]="goods.count" class="product-qty" value="1" readonly="" tabindex="-1" max=""
+                            data-id="640" data-key="">
+                        <button (click)="quantity_goods(goods, true)" type="button" class="increment"
+                            data-key="">+</button>
                     </div>
 
                     <button class="order-btn" (click)="addToBasket(goods)">
@@ -136,6 +137,196 @@
         </ul>
 
     </div>
+
+    <div class="info_block">
+
+        <div class="container">
+            <div class="benefits-wrapper">
+                <img class="decor-img"
+                    src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fdecor-img-6.svg?alt=media&token=8bc059eb-ca21-41b6-a856-9b93a4962808&_gl=1*19x35er*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjE2MjgyMy4yOTYuMS4xNjk2MTYyOTg1LjQ3LjAuMA.."
+                    alt="">
+
+                <div class="row benefits-row hide-on-mobile justify-content-center ">
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="benefits-item">
+                            <div class="benefits-img">
+                                <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/benefits-img-1.svg" alt="">
+                            </div>
+                            <div class="title h5">
+                                Італійські продукти найвищої якості </div>
+                            <div class="benefits-info">
+                                МА імпортує продукти топових європейських брендів </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="benefits-item">
+                            <div class="benefits-img">
+                                <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/benefits-img-2.svg" alt="">
+                            </div>
+                            <div class="title h5">
+                                Неймовірний смак та&nbsp;хрустка скоринка </div>
+                            <div class="benefits-info">
+                                МА готує тісто для піци лише на італійському борошні Caputo </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="benefits-item">
+                            <div class="benefits-img">
+                                <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/benefits-img-3.svg" alt="">
+                            </div>
+                            <div class="title h5">
+                                Професійні кухарі та&nbsp;піцейоли майстри своєї справи </div>
+                            <div class="benefits-info">
+                                У МА працюють найкращі! Вболіваємо за розвиток кожного працівника! </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="benefits-item">
+                            <div class="benefits-img">
+                                <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/benefits-img-4.svg" alt="">
+                            </div>
+                            <div class="title h5">
+                                Безкоштовна та&nbsp;швидка доставка у будь-який куточок Львова </div>
+                            <div class="benefits-info">
+                                Середній час доставки у зеленій зоні – 29 хв. </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="about-block-wrapper">
+                <img class="decor-img"
+                    src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fdecor-img-7.svg?alt=media&token=3278f89d-1b83-4a95-a06b-053942f15d6d&_gl=1*pwu6t5*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjE2MjgyMy4yOTYuMS4xNjk2MTY0Nzg0LjExLjAuMA.."
+                    alt="">
+                <div class="about-block-inner">
+                    <div class="about-block-info">
+                        <h2 class="title">Трішки про нас </h2>
+
+                        <div class="text text-lg">
+                            <p>Ми не італійці, в нашій команді немає іменитих шефів чи розкручених учасників кулінарних
+                                шоу.&nbsp; Проте, ми обожнюємо гастрономічні традиції Італії та експерименти на кухні, а
+                                ще ми з
+                                великою повагою ставимося до їжі, яку готуємо нашим клієнтам.</p>
+                            <p><strong>Наша мета – дати можливість усім і кожному закохатися у справжню італійську піцу.
+                                    МА
+                                    готує піцу з якісних імпортних інгредієнтів на італійському борошні Caputo. Тоненьке
+                                    тісто,
+                                    хрумкі бортики, багато начинки – «кусь» і Ви в Італії!</strong></p>
+                        </div>
+
+                        <a class="btn btn-primary" href="/about">
+                            <b>Дізнатися більше</b>
+                            <i></i>
+                        </a>
+                    </div>
+                    <div class="about-block-img">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/info-page%2Fczikavi-fakty-pro-piczu-scaled-890x594.jpg?alt=media&token=da0d0489-8a3d-49a6-8e52-97c10446040b&_gl=1*1u9vdj6*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjE2MjgyMy4yOTYuMS4xNjk2MTY1NTA4LjIwLjAuMA.."
+                            alt="MA Pizza">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="inst-block-wrapper">
+                <div class="inst-block-inner">
+                    <div class="inst-block-img">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/info-page%2Fsalyami-686x392.jpg?alt=media&token=ef502cf5-61ed-490b-9a5b-5aaf274720b5&_gl=1*5bza3p*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjE3MDE3MS4yOTcuMS4xNjk2MTcwMTgzLjQ4LjAuMA.."
+                            alt="">
+                    </div>
+                    <div class="inst-block-info">
+                        <h2 class="title">
+                            Підпишись на наш Інстаграм </h2>
+
+                        <div class="text text-lg">
+                            <p></p>
+                            <p>Серфите в Інстаграмі? Ми теж! Ма розуміє, що створити кращий контент, ніж відосики з
+                                котиками та
+                                песиками – складно, втім ми стараємося, щоб вам було цікаво. Підписуйтеся на нашу
+                                сторінку, щоб
+                                бачити, як справи у МА та які смачні пропозиції вона для вас підготувала.</p>
+                            <p></p>
+                        </div>
+
+                        <a class="btn btn-primary" href="https://www.instagram.com/_mapizza_/?igshid=NmNmNjAwNzg%3D">
+                            <b>@MA Pizza</b>
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9 1.6207C11.4047 1.6207 11.6895 1.63125 12.6352 1.67344C13.5141 1.71211 13.9887 1.85977 14.3051 1.98281C14.7234 2.14453 15.0258 2.34141 15.3387 2.6543C15.6551 2.9707 15.8484 3.26953 16.0102 3.68789C16.1332 4.0043 16.2809 4.48242 16.3195 5.35781C16.3617 6.30703 16.3723 6.5918 16.3723 8.99297C16.3723 11.3977 16.3617 11.6824 16.3195 12.6281C16.2809 13.507 16.1332 13.9816 16.0102 14.298C15.8484 14.7164 15.6516 15.0188 15.3387 15.3316C15.0223 15.648 14.7234 15.8414 14.3051 16.0031C13.9887 16.1262 13.5105 16.2738 12.6352 16.3125C11.6859 16.3547 11.4012 16.3652 9 16.3652C6.59531 16.3652 6.31055 16.3547 5.36484 16.3125C4.48594 16.2738 4.01133 16.1262 3.69492 16.0031C3.27656 15.8414 2.97422 15.6445 2.66133 15.3316C2.34492 15.0152 2.15156 14.7164 1.98984 14.298C1.8668 13.9816 1.71914 13.5035 1.68047 12.6281C1.63828 11.6789 1.62773 11.3941 1.62773 8.99297C1.62773 6.58828 1.63828 6.30352 1.68047 5.35781C1.71914 4.47891 1.8668 4.0043 1.98984 3.68789C2.15156 3.26953 2.34844 2.96719 2.66133 2.6543C2.97773 2.33789 3.27656 2.14453 3.69492 1.98281C4.01133 1.85977 4.48945 1.71211 5.36484 1.67344C6.31055 1.63125 6.59531 1.6207 9 1.6207ZM9 0C6.55664 0 6.25078 0.0105469 5.29102 0.0527344C4.33477 0.0949219 3.67734 0.249609 3.10781 0.471094C2.51367 0.703125 2.01094 1.00898 1.51172 1.51172C1.00898 2.01094 0.703125 2.51367 0.471094 3.1043C0.249609 3.67734 0.0949219 4.33125 0.0527344 5.2875C0.0105469 6.25078 0 6.55664 0 9C0 11.4434 0.0105469 11.7492 0.0527344 12.709C0.0949219 13.6652 0.249609 14.3227 0.471094 14.8922C0.703125 15.4863 1.00898 15.9891 1.51172 16.4883C2.01094 16.9875 2.51367 17.2969 3.1043 17.5254C3.67734 17.7469 4.33125 17.9016 5.2875 17.9438C6.24727 17.9859 6.55312 17.9965 8.99648 17.9965C11.4398 17.9965 11.7457 17.9859 12.7055 17.9438C13.6617 17.9016 14.3191 17.7469 14.8887 17.5254C15.4793 17.2969 15.982 16.9875 16.4813 16.4883C16.9805 15.9891 17.2898 15.4863 17.5184 14.8957C17.7398 14.3227 17.8945 13.6688 17.9367 12.7125C17.9789 11.7527 17.9895 11.4469 17.9895 9.00352C17.9895 6.56016 17.9789 6.2543 17.9367 5.29453C17.8945 4.33828 17.7398 3.68086 17.5184 3.11133C17.2969 2.51367 16.991 2.01094 16.4883 1.51172C15.9891 1.0125 15.4863 0.703125 14.8957 0.474609C14.3227 0.253125 13.6688 0.0984375 12.7125 0.05625C11.7492 0.0105469 11.4434 0 9 0Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M9 4.37695C6.44766 4.37695 4.37695 6.44766 4.37695 9C4.37695 11.5523 6.44766 13.623 9 13.623C11.5523 13.623 13.623 11.5523 13.623 9C13.623 6.44766 11.5523 4.37695 9 4.37695ZM9 11.9988C7.34414 11.9988 6.00117 10.6559 6.00117 9C6.00117 7.34414 7.34414 6.00117 9 6.00117C10.6559 6.00117 11.9988 7.34414 11.9988 9C11.9988 10.6559 10.6559 11.9988 9 11.9988Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M14.8852 4.19453C14.8852 4.79219 14.4 5.27383 13.8059 5.27383C13.2082 5.27383 12.7266 4.78867 12.7266 4.19453C12.7266 3.59688 13.2117 3.11523 13.8059 3.11523C14.4 3.11523 14.8852 3.60039 14.8852 4.19453Z"
+                                    fill="white"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="faq-block-wrapper">
+                <h2 class="title">FAQ</h2>
+
+
+                <div class="accordion">
+                    <mat-accordion class="accordion-panel">
+                        <mat-expansion-panel class="accordion-item">
+                            <mat-expansion-panel-header class="accordion-title">
+                                <mat-panel-title class="panel-title">
+                                    <h5>⭕ Скільки коштує доставка?</h5>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p>Доставка піци є безкоштовною при замовленні від 300 грн у зеленій зоні та 400 грн у
+                                жовтій.</p>
+                        </mat-expansion-panel>
+
+                        <mat-expansion-panel class="accordion-item">
+                            <mat-expansion-panel-header class="accordion-title ">
+                                <mat-panel-title>
+                                    <h5>⭕ Який час прийому замовлень?</h5>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p>Замовляти піцу в MA, можна з 9:30 до 21:00 нд- чт, та 9:30-22:00 пт-сб</p>
+                        </mat-expansion-panel>
+
+                        <mat-expansion-panel class="accordion-item">
+                            <mat-expansion-panel-header class="accordion-title ">
+                                <mat-panel-title>
+                                    <h5>⭕ Які у вас є акції?</h5>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p>Акція "2+1" - отримуєте 3 піци, а платите всього за дві. Акція "3+1" - отримуєте 4 піци,
+                                а платите всього за
+                                три.</p>
+                        </mat-expansion-panel>
+
+                        <mat-expansion-panel class="accordion-item">
+                            <mat-expansion-panel-header class="accordion-title ">
+                                <mat-panel-title>
+                                    <h5>⭕ Піца відрізняється від фото на сайті</h5>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p>Так, піца яку ви отримаєте, може мати трохи інший вигляд, ніж та, що ви бачите на наших
+                                фото. Проте, склад і
+                                смак є незмінним.</p>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+
+            
+            </div>
+        </div>
+    </div>
+
+
 
 
 </section>

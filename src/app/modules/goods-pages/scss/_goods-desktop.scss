@@ -60,7 +60,7 @@ section {
             position: relative;
             display: flex;
             flex-wrap: wrap;
-            align-items: flex-start;
+        /*     align-items: flex-start; */
             justify-content: last baseline;
             list-style: none;
             overflow: hidden;
@@ -68,7 +68,7 @@ section {
 
             li {
                 width: 32%;
-                min-height: 750px;
+                min-height: 650px;
                 position: relative;
                 overflow: hidden;
                 display: flex;

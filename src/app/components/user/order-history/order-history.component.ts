@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Firestore, collection, getDocs, query, where } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import { doc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { GoodsResponse } from 'src/app/shared/interfaces/goods';
@@ -14,11 +15,13 @@ export class OrderHistoryComponent {
   public userOrders: any = [];
   public orderArray: any = [];
 
-  constructor(private afs: Firestore) {}
+  constructor(private afs: Firestore, private router: Router) {}
 
   ngOnInit(): void {
     this.userInfo();
     this.getUserOrders();
+    console.log(this.userOrders);
+    
   }
 
   //Отримання uid користувача
@@ -39,10 +42,18 @@ export class OrderHistoryComponent {
         const orders = orderData['orderedItems'];
         this.userOrders.push(orderData);
         this.orderArray.push(orders);
-        console.log(this.orderArray);
+      
       });
     } catch (error) {
       console.error('Помилка при отриманні замовлень:', error);
     }
+  }
+
+  productInfo(poduct: any): void {
+    console.log(poduct);
+    
+    const productId = poduct.id;
+     console.log(productId);
+    this.router.navigate(['/product-info', { id: productId }]);
   }
 }

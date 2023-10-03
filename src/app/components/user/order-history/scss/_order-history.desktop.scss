@@ -7,52 +7,36 @@ section {
         width: 100%;
         margin-top: 20px;
 
-        tbody tr {
-            border-top: 1px solid #D1D9CE;
-            border-bottom: 1px solid #D1D9CE;
-          
+        thead,
+        tbody {
+            width: 100&;
+            border-bottom: 3px solid var(--clr-green);
 
+
+            th,
             td {
-                padding: 8px;
-                border-left: 1px solid #D1D9CE;
-                border-right: 1px solid #D1D9CE;
-            }
-
-            .order_dte {
-                width: 5%;
+                font-size: 14px;
+                line-height: 1.2em;
+                padding:5px 15px;
 
             }
 
-            .menu_name {
-                width: 5%;
+            .number_order,
+            .date_time,
+            .status {
+                width: 14%;
+                border-bottom: 1px solid #D1D9CE;
             }
 
-            .title {
-                width: 10%;
+            .delivery_type,
+            .payment {
+                width: 29%;
+                border-bottom: 1px solid #D1D9CE;
             }
+        }
 
-            .name {
-                width: 30%;
-            }
-
-            .count {
-                width: 5%;
-            }
-
-            .price {
-                width: 10%;
-            }
-
-            .image {
-                width: 35%;
-                width: 80px;
-                height: 70px;
-                overflow: hidden;
-
-                img {
-                    height: 100%;
-                }
-            }
+        tbody {
+            border-bottom: none;
         }
     }
 }

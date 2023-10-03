@@ -1,1 +1,84 @@
-<p>admin-order works!</p>
+<section>
+
+    <ul class="category_menu">
+        <li *ngFor="let item of list" (click)="onSelectItem(item.name)" [class.active]="activeSection === item.name">
+            <p class="nav-link">{{item.name}}</p>
+        </li>
+    </ul>
+
+    <table>
+        <thead>
+            <tr>
+                <th class="number_order">№</th>
+                <th class="date_time">Дата та час доставки</th>
+                <th class="delivery_type">Замовник та доставка</th>
+                <th class="payment">Сума, решта і тип оплати</th>
+                <th class="comment">Коментар до замовлення</th>
+                <th class="order_produkts">Список замовлення</th>
+                <th class="image_produkts">Зображення</th>
+                <th class="status">Статус</th>
+                <th class="status">Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let order of userOrders">
+                <tr *ngFor="let orderItem of order.orderedItems; let isFirstItem = first">
+                    <td class="number_order" *ngIf="isFirstItem" [attr.rowspan]="order.orderedItems.length">
+                        {{order.orderNumber}}
+                    </td>
+                    <td class="date_time" *ngIf="isFirstItem" [attr.rowspan]="order.orderedItems.length">
+                        {{ order.deliveryDate + ','}}<br>
+                        {{ order.deliveryTime + ',' }}
+
+                    </td>
+
+                    <td class="delivery_type" *ngIf="isFirstItem" [attr.rowspan]="order.orderedItems.length">
+                        {{ order.firstName + ','}}<br>
+                        {{ order.email + ','}}<br>
+                        {{ order.phone + ','}}<br>
+                        {{ order.type + ', '}}<br>
+                        {{order.city +','}}<br>
+                        {{order.street + ','}}<br>
+                        {{'будтнок -' + order.houseNumber + ','}}<br>
+                        {{'підїзд -' + (order.entrance || 0) + ','}}<br>
+                        {{'поверх -' + (order.floor ||+ ' ' + 0) + ','}}<br>
+                        {{'квартира -' + (order.apartment || 0) + ','}}<br>
+                    </td>
+                    <td class="payment" *ngIf="isFirstItem" [attr.rowspan]="order.orderedItems.length">
+                        {{'використано бонусів - ' + order.bonusToUse + ','}}<br>
+                        {{'сума до сплати - '  + order.summ + ','}}<br>
+                        {{'підггтувати решту- '  + (order.change || 0) + ','}}<br>
+                        {{'метод оплати - ' + order.payment}}
+                    </td>
+                    <td class="comment" *ngIf="isFirstItem" [attr.rowspan]="order.orderedItems.length">
+                        {{order.comment || 'Без коментарів' }}<br>
+                        {{order.callCustomer || 'Не предзвонювати'}}
+                    </td>
+
+                    <!--  -->
+                    <td class="order_produkts">
+                        {{ orderItem.name + ',' }}<br>
+                        {{ orderItem.count + ',' }}<br>
+                        {{ orderItem.price }}
+                    </td>
+
+                    <td class="image"><img [src]="orderItem.images" alt="{{ orderItem.name }}"></td>
+                    <td class="status" *ngIf="isFirstItem" [attr.rowspan]="order.orderedItems.length">
+                        {{order.status}}
+                    </td>
+                    <td class="status" *ngIf="isFirstItem" [attr.rowspan]="order.orderedItems.length">
+                        <button (click)="confirmOrder(order.orderNumber)" [disabled]="order.status === 'Виконано'"
+                            class="btn" type="button">
+                            Виконано
+                        </button>
+                        <button (click)="deleteOrder(order.orderNumber)" [disabled]="order.status === 'Виконано'"
+                            class="btn" type="button">
+                            Видалити
+                        </button>
+                    </td>
+
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</section>

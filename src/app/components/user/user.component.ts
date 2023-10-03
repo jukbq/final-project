@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FavoritesService } from 'src/app/shared/services/favorites/favorites.service';
 
 const LIST: any[] = [
   { name: 'ОСОБИСТІ ДАНІ', link: 'personal-data' },
@@ -17,13 +18,17 @@ export class UserComponent {
   public list: any[] = LIST;
   public activeItem: any;
 
-  constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  constructor(
+    private router: Router,
+ 
+  ) {}
+
+  ngOnInit(): void {
+   
+  }
 
   onSelectItem(item: string): void {
     this.activeItem = item;
   }
-
-  
 }

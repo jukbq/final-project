@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { doc } from 'firebase/firestore';
 import { AdressComponent } from 'src/app/modals-win/adress/adress.component';
+import { FavoritesService } from 'src/app/shared/services/favorites/favorites.service';
 
 @Component({
   selector: 'app-personal-data',

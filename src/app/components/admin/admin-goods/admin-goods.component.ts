@@ -87,18 +87,6 @@ export class AdminGoodsComponent {
       bonusTogether: 0,
       count: 1,
     });
-/*     this.goodForm.get('menu')?.valueChanges.subscribe((menu) => {
-      const categoryControl = this.goodForm.get('category');
-      if ((menu && menu.menuLink === 'pizza') || menu.menuLink === 'salads') {
-        categoryControl?.enable(); // Активуємо поле категорій
-        categoryControl?.setValidators([Validators.required]);
-      } else {
-        categoryControl?.disable(); // Вимикаємо поле категорій
-        categoryControl?.clearValidators();
-      }
-
-      categoryControl?.updateValueAndValidity();
-    }); */
     this.goodForm.get('price')?.valueChanges.subscribe((price) => {
       const bonus = Math.round(price * 0.03);
       this.bonusControl.setValue(bonus, { emitEvent: false });

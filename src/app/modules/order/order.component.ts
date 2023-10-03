@@ -11,8 +11,8 @@ import {
   transition,
   keyframes,
 } from '@angular/animations';
-import { Firestore, setDoc, updateDoc } from '@angular/fire/firestore';
-import { addDoc, collection, doc } from 'firebase/firestore';
+import { Firestore, getDocs, setDoc, updateDoc, where } from '@angular/fire/firestore';
+import { addDoc, collection, doc, query } from 'firebase/firestore';
 import { Router } from '@angular/router';
 import { HeaderService } from 'src/app/shared/services/header/header.service';
 
@@ -37,9 +37,9 @@ export class OrderComponent {
   public city = '';
   public street = '';
   public houseNumber!: number;
-  public entrance!: number;
-  public floor!: number;
-  public apartment!: number;
+  public entrance = 0;
+  public floor = 0;
+  public apartment = 0;
   public selectedDate = '';
   public selectedTime = '';
   public summ = 0;
@@ -183,7 +183,7 @@ export class OrderComponent {
     this.updateLocalStorage();
   }
 
-//посилання на товар
+  //посилання на товар
   productInfo(poduct: any): void {
     const productId = poduct.id;
     this.router.navigate(['/product-info', { id: productId }]);
@@ -476,6 +476,9 @@ export class OrderComponent {
     this.comment = textareaValue;
   }
 
+
+ 
+
   // Збереження замовлення
   async checkout() {
     // Перевіряємо, чи користувач є зареєстрованим
@@ -535,9 +538,28 @@ export class OrderComponent {
         console.error('Помилка під час оновлення документа:', error);
       }
     }
+    // Генеруємо унікальний номер замовлення
+     const min = 100000000;
+     const max = 999999999;
+    let orderNumber;
+    const ordersCollectionRef = collection(this.afs, 'orders');
+      do {
+        orderNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        console.log(orderNumber);
+
+        const querySnapshot = await getDocs(
+          query(ordersCollectionRef, where('orderNumber', '==', orderNumber))
+        );
+
+        if (querySnapshot.empty) {
+          break; 
+        }
+      } while (true);
+
 
     // Підготовлюємо об'єкт замовлення
     const order = {
+      orderNumber: orderNumber,
       orderedItems: this.basket,
       uid: this.uid,
       firstName: this.firstName,
@@ -559,10 +581,11 @@ export class OrderComponent {
       bonus: this.bonus,
       callCustomer: this.callCustomer,
       comment: this.comment,
+      status: 'В обробці',
     };
 
     // Зберігаємо замовлення у базі даних
-    const ordersCollectionRef = collection(this.afs, 'orders');
+ 
     try {
       const docRef = await addDoc(ordersCollectionRef, order);
       console.log('Документ успішно додано з ID:', docRef.id);
@@ -571,8 +594,8 @@ export class OrderComponent {
     }
 
     // Очищаємо кошик та перенаправляємо користувача на іншу сторінку
-    localStorage.removeItem('basket');
+  localStorage.removeItem('basket');
 
-    window.location.href = '/';
+    window.location.href = '/'; 
   }
 }

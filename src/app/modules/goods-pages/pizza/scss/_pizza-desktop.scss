@@ -80,4 +80,252 @@ section {
             }
         }
     }
+
+    .info_block {
+        width: 100%;
+        margin-top: 96px;
+
+        .container {
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+
+            .benefits-wrapper {
+                position: relative;
+                background: #ffffff;
+                border: 1px solid #d1d9ce;
+                border-radius: 25px;
+                padding: 45px 60px;
+                box-shadow: 20px 20px 0px #f2faf2;
+
+                .decor-img {
+                    position: absolute;
+                    top: -150px;
+                    left: -140px;
+                    z-index: -1;
+                    max-width: 240px;
+                    max-height: 240px;
+                    transform: translate3d(0px, 16px, 0px);
+                }
+            }
+
+            .about-block-wrapper {
+                position: relative;
+                background: var(--clr-white);
+                border: 1px solid #d1d9ce;
+                border-radius: 30px;
+                margin-top: 70px;
+                box-shadow: 20px 20px 0px #f2faf2;
+
+                .decor-img {
+                    position: absolute;
+                    top: -45px;
+                    left: -160px;
+                    z-index: -1;
+                    transform: translate3d(0px, -46px, 0px);
+                }
+
+                .about-block-inner {
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .about-block-info {
+                        width: 46%;
+                        padding: 0px 60px 0px 110px;
+
+                        h2 {
+                            font-size: 40px;
+                            line-height: 1.2em;
+                            display: inline-block;
+                            position: relative;
+                            font-weight: 600;
+                            color: var(--clr-black);
+
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                top: -30px;
+                                left: -50px;
+                                width: 64px;
+                                height: 54px;
+                                background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5&_gl=1*1daideo*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjE2MjgyMy4yOTYuMS4xNjk2MTY1ODQ0LjQyLjAuMA..);
+                                background-repeat: no-repeat;
+                                background-position: center;
+                                background-size: contain;
+                            }
+                        }
+                    }
+
+                    .about-block-img {
+                        flex-shrink: 0;
+                        position: relative;
+                        overflow: hidden;
+                        padding-top: 25%;
+                        width: 53%;
+                        border-radius: 25px;
+                        max-width: 100%;
+
+                        max-height: 100%;
+
+                        img {
+                            position: absolute;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+
+
+                        }
+                    }
+                }
+            }
+
+            .inst-block-wrapper {
+                position: relative;
+                background: var(--clr-white);
+                border: 1px solid #d1d9ce;
+                border-radius: 30px;
+                margin-top: 70px;
+                box-shadow: 20px 20px 0px #f2faf2;
+
+                .inst-block-inner {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .inst-block-img {
+                        flex-shrink: 0;
+                        position: relative;
+                        overflow: hidden;
+                        width: 53%;
+                        border-radius: 25px;
+                        min-height: 390px;
+
+                        .inst-block-img img {
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .inst-block-info {
+                        padding: 25px 60px 25px 110px;
+                        align-self: center;
+
+                        h2 {
+                            font-size: 40px;
+                            line-height: 1.2em;
+                            display: inline-block;
+                            position: relative;
+                            font-weight: 600;
+                            color: var(--clr-black);
+
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                top: -30px;
+                                left: -50px;
+                                width: 64px;
+                                height: 54px;
+                                background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5&_gl=1*1daideo*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjE2MjgyMy4yOTYuMS4xNjk2MTY1ODQ0LjQyLjAuMA..);
+                                background-repeat: no-repeat;
+                                background-position: center;
+                                background-size: contain;
+                            }
+                        }
+
+                        .text {
+                            font-size: 16px;
+                            line-height: 1.5em;
+                            color: var(--clr-grey);
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+
+            .faq-block-wrapper {
+                flex-shrink: 0;
+                width: 100%;
+                max-width: 100%;
+                margin-top: 70px;
+
+                h2 {
+                    font-size: 40px;
+                    line-height: 1.2em;
+                    display: inline-block;
+                    position: relative;
+                    font-weight: 600;
+                    color: var(--clr-black);
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: -30px;
+                        left: -50px;
+                        width: 64px;
+                        height: 54px;
+                        background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5&_gl=1*1daideo*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjE2MjgyMy4yOTYuMS4xNjk2MTY1ODQ0LjQyLjAuMA..);
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-size: contain;
+                    }
+                }
+
+                .accordion {
+                    width: 60%;
+                    margin: 0 auto;
+
+                    .accordion-panel .accordion-item {
+                        border: none;
+                        border-radius: 0px;
+                        box-shadow: none;
+                        background-color: #ffffff00;
+                        border-top: 1px solid #D1D9CE;
+                        border-bottom: 1px solid #D1D9CE;
+
+                        .accordion-title {
+                            position: relative;
+                            padding: 30px 0;
+                            cursor: pointer;
+                            padding-right: 60px;
+                            color: var(--clr-black);
+
+                            h5 {
+                                font-size: 18px;
+                                line-height: 1.3em;
+                                font-weight: 600;
+                                color: var(--clr-black);
+                                transition: var(--transition);
+                            }
+
+                        }
+
+                        p {
+                            font-size: 16px;
+                            line-height: 1.5em;
+                            color: var(--clr-grey);
+                            font-weight: 400;
+                        }
+
+                        &:hover {
+                            .accordion-title h5 {
+                                color: var(--clr-green);
+                            }
+
+                            .mat-expansion-indicator {
+                                border: 2px solid var(--clr-green);
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
 }

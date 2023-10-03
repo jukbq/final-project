@@ -1,0 +1,121 @@
+section {
+    width: 100%;
+    padding: 20px 40px;
+    margin: 0 auto;
+
+    .category_menu {
+        width: 50%;
+        display: flex;
+        list-style: none;
+        text-align: center;
+        border: 1px solid #D1D9CE;
+        border-radius: 12px;
+        padding: 0;
+        margin-top: 20px;
+        margin: 0 auto;
+
+
+        li {
+            width: 33%;
+            height: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+
+            p {
+                cursor: pointer;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 1em;
+                color: var(--clr-grey);
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                margin-top: 0;
+                margin-bottom: 0;
+
+            }
+
+            &:hover {
+                p {
+                    color: var(--clr-green);
+                }
+            }
+
+
+
+            &.active {
+                background-color: var(--clr-red);
+                border-radius: 12px;
+
+                p {
+                    color: var(--clr-white);
+                }
+
+
+
+            }
+
+
+        }
+
+
+    }
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+
+        thead,
+        tbody {
+            width: 100&;
+            border-bottom: 3px solid var(--clr-green);
+
+
+            th,
+            td {
+                font-size: 14px;
+                line-height: 1.2em;
+                padding: 5px 15px;
+
+            }
+
+            .number_order,
+            .date_time,
+            .status {
+                width: 14%;
+
+            }
+
+            .delivery_type,
+            .payment,
+            .order_produkts,
+            .image_produkts,
+            .comment {
+                width: 29%;
+                border-bottom: 1px solid #D1D9CE;
+            }
+
+            .image {
+                width: 29%;
+                height: 50px;
+                display: flex;
+                align-items: center;
+
+                img {
+                    height: 100%;
+                    object-fit: contain;
+                }
+
+            }
+
+            tr {
+                border-bottom: 1px solid #D1D9CE;
+            }
+        }
+
+        tbody {
+            border-bottom: none;
+        }
+    }
+}

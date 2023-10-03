@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="header-bottom">
-        <a class="header-logo" (click)="reload()">
+        <a class="header-logo" (click)="reload()"> 
           <img
             src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/heder%2Flogo-pizza-red.svg?alt=media&token=78da0861-830a-4dd3-b756-b2d016361e89"
             alt="" srcset="">
@@ -48,7 +48,7 @@
              let isFirst = first"
               [routerLink]="[menu.menuLink]" 
                [fragment]="menu.menuLink"
-              (click)="onSelectItem(menu.menuLink)" 
+              (click)="onSelectItem(menu.menuLink); " 
               [class.active]="menuLink === menu.menuLink">
               <a>
                 {{ menu.menuName }}

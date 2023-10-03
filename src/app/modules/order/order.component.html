@@ -21,7 +21,7 @@
                 <!-- Один товар в списку, повторюється для кожного товару в кошику -->
                 <li class="order_good" *ngFor="let order of basket">
                     <!-- Зображення товару -->
-                    <div (click)="productInfo(order)"  class="prod_img" target="_blank">
+                    <div (click)="productInfo(order)" class="prod_img" target="_blank">
                         <img [src]="order.images">
                     </div>
                     <!-- Опис товару -->
@@ -96,13 +96,17 @@
                         <div class="adress1">
                             <input formControlName="type" name="type" type="text" class="form-control"
                                 placeholder="*Вкажіть назву локації (дім, офіс і т.д.)">
-                            <select formControlName="city" name="city" class="form-control city" placeholder="*Місто">
-                                <option value="" selected disabled>*Місто</option>
-                                <option value="Львів">Львів</option>
-                                <option value="Зубра">Зубра</option>
-                                <option value="Сокільники">Сокільники</option>
-                                <option value="Пасіки-Зубрицькі">Пасіки-Зубрицькі</option>
-                            </select>
+                            <div class="toggle-block">
+                                <select name="self_delivery_address" (change)="localPickupAddress($event)"
+                                    class="SelectBox SumoUnder">
+                                    <option value="" selected="" disabled="">*Виберіть місто
+                                    </option>
+                                    <option value="Львів">Львів</option>
+                                    <option value="Зубра">Зубра</option>
+                                    <option value="Сокільники">Сокільники</option>
+                                    <option value="Пасіки-Зубрицькі">Пасіки-Зубрицькі</option>
+                                </select>
+                            </div>
                             <input formControlName="street" name="street" type="text" class="form-control"
                                 placeholder="*Вулиця">
                         </div>
@@ -169,6 +173,7 @@
                         </select>
                     </div>
                 </div>
+
                 <!-- Вибір часу доставки -->
                 <div class="radio_box">
                     <label class="checkbox-entry radio">
@@ -182,6 +187,7 @@
                         <span>На час</span>
                     </label>
                 </div>
+                
                 <!-- Вибір дати та часу доставки (якщо вибрано доставку на час) -->
                 <div *ngIf="deliveryForTime" class="wrapper_time_block">
                     <div class="form-group">
@@ -189,7 +195,7 @@
                             bsDatepicker [bsConfig]="bsConfig">
                     </div>
                     <div class="form-group">
-                        <select class="form-control" id="deliveryTime" formControlName="deliveryTime"
+                         <select class="SelectBox SumoUnder" id="deliveryTime" formControlName="deliveryTime"
                             name="deliveryTime">
                             <option value="" selected disabled value="*Час доставки">*Час доставки</option>
                             <option *ngFor="let timeOption of timeOptions" [value]="timeOption">{{ timeOption }}

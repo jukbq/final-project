@@ -1,0 +1,103 @@
+section {
+  width: 100%;
+  padding: 20px 40px;
+  margin: 0 auto;
+}
+section .category_menu {
+  width: 50%;
+  display: flex;
+  list-style: none;
+  text-align: center;
+  border: 1px solid #D1D9CE;
+  border-radius: 12px;
+  padding: 0;
+  margin-top: 20px;
+  margin: 0 auto;
+}
+section .category_menu li {
+  width: 33%;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+section .category_menu li p {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1em;
+  color: var(--clr-grey);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+section .category_menu li:hover p {
+  color: var(--clr-green);
+}
+section .category_menu li.active {
+  background-color: var(--clr-red);
+  border-radius: 12px;
+}
+section .category_menu li.active p {
+  color: var(--clr-white);
+}
+section table {
+  width: 100%;
+  margin-top: 20px;
+}
+section table thead,
+section table tbody {
+  width: 100 section table thead, section table tbody;
+  border-bottom: 3px solid var(--clr-green);
+}
+section table thead th,
+section table thead td,
+section table tbody th,
+section table tbody td {
+  font-size: 14px;
+  line-height: 1.2em;
+  padding: 5px 15px;
+}
+section table thead .number_order,
+section table thead .date_time,
+section table thead .status,
+section table tbody .number_order,
+section table tbody .date_time,
+section table tbody .status {
+  width: 14%;
+}
+section table thead .delivery_type,
+section table thead .payment,
+section table thead .order_produkts,
+section table thead .image_produkts,
+section table thead .comment,
+section table tbody .delivery_type,
+section table tbody .payment,
+section table tbody .order_produkts,
+section table tbody .image_produkts,
+section table tbody .comment {
+  width: 29%;
+  border-bottom: 1px solid #D1D9CE;
+}
+section table thead .image,
+section table tbody .image {
+  width: 29%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+section table thead .image img,
+section table tbody .image img {
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+section table thead tr,
+section table tbody tr {
+  border-bottom: 1px solid #D1D9CE;
+}
+section table tbody {
+  border-bottom: none;
+}

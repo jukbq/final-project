@@ -24,15 +24,17 @@ export class FavoritesService {
   }
 
   // Отримати список улюблених товарів для користувача
-  loadFavorites() {
+  async loadFavorites() {
     const customer = JSON.parse(localStorage.getItem('curentUser') as string);
-    const userId = customer.uid;
-
-    this.getFavoritesByUser(userId).subscribe((favorites) => {
-      this.favoritesSubject.next(
-        favorites.map((favorite) => favorite.productId)
-      );
-    });
+    if (customer && customer.uid) {
+      const userId = customer.uid;
+      console.log(userId);
+      this.getFavoritesByUser(userId).subscribe((favorites) => {
+        this.favoritesSubject.next(
+          favorites.map((favorite) => favorite.productId)
+        );
+      });
+    }
   }
 
   // Додати товар до списку улюблених

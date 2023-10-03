@@ -7,39 +7,35 @@ section table {
   width: 100%;
   margin-top: 20px;
 }
-section table tbody tr {
-  border-top: 1px solid #D1D9CE;
+section table thead,
+section table tbody {
+  width: 100 section table thead, section table tbody;
+  border-bottom: 3px solid var(--clr-green);
+}
+section table thead th,
+section table thead td,
+section table tbody th,
+section table tbody td {
+  font-size: 14px;
+  line-height: 1.2em;
+  padding: 5px 15px;
+}
+section table thead .number_order,
+section table thead .date_time,
+section table thead .status,
+section table tbody .number_order,
+section table tbody .date_time,
+section table tbody .status {
+  width: 14%;
   border-bottom: 1px solid #D1D9CE;
 }
-section table tbody tr td {
-  padding: 8px;
-  border-left: 1px solid #D1D9CE;
-  border-right: 1px solid #D1D9CE;
+section table thead .delivery_type,
+section table thead .payment,
+section table tbody .delivery_type,
+section table tbody .payment {
+  width: 29%;
+  border-bottom: 1px solid #D1D9CE;
 }
-section table tbody tr .order_dte {
-  width: 5%;
-}
-section table tbody tr .menu_name {
-  width: 5%;
-}
-section table tbody tr .title {
-  width: 10%;
-}
-section table tbody tr .name {
-  width: 30%;
-}
-section table tbody tr .count {
-  width: 5%;
-}
-section table tbody tr .price {
-  width: 10%;
-}
-section table tbody tr .image {
-  width: 35%;
-  width: 80px;
-  height: 70px;
-  overflow: hidden;
-}
-section table tbody tr .image img {
-  height: 100%;
+section table tbody {
+  border-bottom: none;
 }
