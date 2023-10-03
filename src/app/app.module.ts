@@ -41,6 +41,13 @@ import { OrderComponent } from './modules/order/order.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { HeaderService } from './shared/services/header/header.service';
 import { ProductInfoComponent } from './modules/product-info/product-info.component';
+import { AboutUsComponent } from './modules/about-company-pages/about-us/about-us/about-us.component';
+import { DeliveryAndPaymentComponent } from './modules/about-company-pages/delivery-and-payment/delivery-and-payment.component';
+import { SharesComponent } from './modules/about-company-pages/shares/shares.component';
+import { ActionsComponent } from './modules/about-company-pages/actions/actions.component';
+import { ContactsComponent } from './modules/about-company-pages/contacts/contacts.component';
+import { VacanciesComponent } from './modules/about-company-pages/vacancies/vacancies.component';
+import { NewsComponent } from './modules/about-company-pages/news/news.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +64,13 @@ import { ProductInfoComponent } from './modules/product-info/product-info.compon
     AdressComponent,
     OrderComponent,
     ProductInfoComponent,
+    AboutUsComponent,
+    DeliveryAndPaymentComponent,
+    SharesComponent,
+    ActionsComponent,
+    ContactsComponent,
+    VacanciesComponent,
+    NewsComponent,
   ],
   imports: [
     BrowserModule,
