@@ -1,5 +1,5 @@
 footer {
-  height: 706px;
+  margin-top: 100px;
 }
 footer .container {
   width: 100%;
@@ -7,7 +7,7 @@ footer .container {
 }
 footer .container .footer-top {
   position: relative;
-  background: var(---clr-mint);
+  background: var(--clr-mint);
   border-radius: 16px;
   padding: 60px 120px;
 }
@@ -145,10 +145,30 @@ footer .container .footer-top .row .footer-menu .footer-menu-list {
 }
 footer .container .footer-top .row .footer-menu .footer-menu-list li {
   margin-bottom: 10px;
-  cursor: pointer;
 }
-footer .container .footer-top .row .footer-menu .footer-menu-list li a {
+footer .container .footer-top .row .footer-menu .footer-menu-list li a,
+footer .container .footer-top .row .footer-menu .footer-menu-list li p {
   color: var(--clr-grey);
   font-size: 16px;
   line-height: 1.5em;
+  cursor: pointer;
+}
+footer .container .footer-top .row .footer-menu .footer-menu-list li p {
+  cursor: auto;
+}
+footer .container .footer-bottom {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 120px;
+}
+footer .container .footer-bottom .footer-item {
+  color: var(--clr-grey);
+  font-weight: 400;
+  font-size: 14px;
+}
+footer .container .footer-bottom .footer-item a {
+  color: var(--clr-grey);
 }

@@ -10,6 +10,12 @@ import { DessertsComponent } from './modules/goods-pages/desserts/desserts.compo
 import { DrinksComponent } from './modules/goods-pages/drinks/drinks.component';
 import { OrderComponent } from './modules/order/order.component';
 import { ProductInfoComponent } from './modules/product-info/product-info.component';
+import { AboutUsComponent } from './modules/about-company-pages/about-us/about-us.component';
+import { ActionsComponent } from './modules/about-company-pages/actions/actions.component';
+import { ContactsComponent } from './modules/about-company-pages/contacts/contacts.component';
+import { DeliveryAndPaymentComponent } from './modules/about-company-pages/delivery-and-payment/delivery-and-payment.component';
+import { NewsComponent } from './modules/about-company-pages/news/news.component';
+import { VacanciesComponent } from './modules/about-company-pages/vacancies/vacancies.component';
 
 
 const routes: Routes = [
@@ -22,9 +28,15 @@ const routes: Routes = [
   { path: 'sighin', component: SigninComponent },
   { path: 'basket', component: BasketComponent },
   { path: 'order', component: OrderComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'actions', component: ActionsComponent },
+  { path: 'contacts', component: ContactsComponent },
+  { path: 'delivery-and-payment', component: DeliveryAndPaymentComponent },
+  { path: 'news', component: NewsComponent },
+  { path: 'vacancies', component: VacanciesComponent },
   {
-    path: 'product-info', component: ProductInfoComponent,
-    
+    path: 'product-info',
+    component: ProductInfoComponent,
   },
 
   {
@@ -39,6 +51,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./components/user/user.module').then((m) => m.UserModule),
   },
+ 
 ];
 
 @NgModule({

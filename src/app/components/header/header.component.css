@@ -53,6 +53,7 @@ header .header-wrapper .container .header-top .header-links li a {
   font-weight: 400;
   color: var(--clr-black);
   cursor: pointer;
+  text-decoration: none;
 }
 header .header-wrapper .container .header-top .header-links li a:hover {
   color: var(--clr-green);

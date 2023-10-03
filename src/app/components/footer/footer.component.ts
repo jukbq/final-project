@@ -4,6 +4,16 @@ import { MenuResponse } from 'src/app/shared/interfaces/menu';
 import { HeaderService } from 'src/app/shared/services/header/header.service';
 import { MenuService } from 'src/app/shared/services/menu/menu.service';
 
+const LIST: any[] = [
+  { name: 'Про нас', link: 'about-us' },
+  { name: 'Доставка та оплата', link: 'delivery-and-payment' },
+  { name: 'Акції', link: 'actions' },
+  { name: 'Контакти', link: 'contacts' },
+  { name: 'Вакансії', link: 'vacancies' },
+  { name: 'Новини', link: 'news' },
+];
+
+
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -11,6 +21,7 @@ import { MenuService } from 'src/app/shared/services/menu/menu.service';
 })
 export class FooterComponent {
   public menuArr: Array<MenuResponse> = [];
+  public list: any[] = LIST;
 
   constructor(
     private menuService: MenuService,
@@ -27,7 +38,7 @@ export class FooterComponent {
       this.menuArr = data as MenuResponse[];
 
       this.menuArr.forEach((menu) => {
-          menu.menuName =
+        menu.menuName =
           menu.menuName.charAt(0).toUpperCase() +
           menu.menuName.slice(1).toLowerCase();
       });

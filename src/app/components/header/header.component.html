@@ -7,24 +7,11 @@
           <p>нд-чт 09:30 − 21:00 <br> пт- сб 09:30 − 22:00 <br></p>
         </div>
         <ul class="nav header-links">
-          <li class="nav-item ">
-            <a class="nav-link">Про нас</a>
+          <li *ngFor="let item of list" [routerLink]="[item.link]" [fragment]="item.link"
+            (click)="onSelectItem(item.link)">
+            <a class="nav-link">{{item.name}}</a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link">Доставка та оплата</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link">Акції</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link">Контакти</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link">Вакансії</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link">Новини</a>
-          </li>
+
           <li class="nav-item reviews">
             <a class="nav-link">Відгук</a>
           </li>
@@ -37,7 +24,7 @@
         </div>
       </div>
       <div class="header-bottom">
-        <a class="header-logo" (click)="reload()"> 
+        <a class="header-logo" (click)="reload()">
           <img
             src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/heder%2Flogo-pizza-red.svg?alt=media&token=78da0861-830a-4dd3-b756-b2d016361e89"
             alt="" srcset="">
@@ -45,11 +32,8 @@
         <div class="menu-list">
           <ul>
             <li class="menu-item" *ngFor="let menu of menuArr; 
-             let isFirst = first"
-              [routerLink]="[menu.menuLink]" 
-               [fragment]="menu.menuLink"
-              (click)="onSelectItem(menu.menuLink); " 
-              [class.active]="menuLink === menu.menuLink">
+             let isFirst = first" [routerLink]="[menu.menuLink]" [fragment]="menu.menuLink"
+              (click)="onSelectItem(menu.menuLink); " [class.active]="menuLink === menu.menuLink">
               <a>
                 {{ menu.menuName }}
                 <img src="{{ menu.menuImages }}">
@@ -89,8 +73,7 @@
               Вхід </button>
           </div>
           <div class="user-cabinet">
-            <button *ngIf="isLogin" class="user-c-btn btn header_user border_animation"
-              (click)="activeMenu()">
+            <button *ngIf="isLogin" class="user-c-btn btn header_user border_animation" (click)="activeMenu()">
               <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M10 10.5001C12.3012 10.5001 14.1667 8.6346 14.1667 6.33341C14.1667 4.03223 12.3012 2.16675 10 2.16675C7.69885 2.16675 5.83337 4.03223 5.83337 6.33341C5.83337 8.6346 7.69885 10.5001 10 10.5001Z"

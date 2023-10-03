@@ -13,12 +13,23 @@ import { FavoritesService } from 'src/app/shared/services/favorites/favorites.se
 import { HeaderService } from 'src/app/shared/services/header/header.service';
 import { MenuService } from 'src/app/shared/services/menu/menu.service';
 
+const LIST: any[] = [
+  { name: 'Про нас', link: 'about-us' },
+  { name: 'Доставка та оплата', link: 'delivery-and-payment' },
+  { name: 'Акції', link: 'actions' },
+  { name: 'Контакти', link: 'contacts' },
+  { name: 'Вакансії', link: 'vacancies' },
+  { name: 'Новини', link: 'news' },
+];
+
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  public list: any[] = LIST;
   private basket: Array<GoodsResponse> = [];
   private basketSubscription!: Subscription;
   public favoriteProducts: string[] = [];
@@ -70,7 +81,6 @@ export class HeaderComponent {
       this.favoritGoods = this.favoriteProducts.length;
       console.log(this.favoritGoods);
     });
-
   }
 
   // Отримати меню зі служби меню
@@ -97,13 +107,12 @@ export class HeaderComponent {
       }
     }
   }
-  
 
   // Вибір пункту меню
   onSelectItem(item: string): void {
     this.menuLink = item;
     this.headerService.emitHeaderClick(item);
-     this.viewportScroller.scrollToPosition([0, 0]);
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 
   // Анімація активного стану гамбургера
