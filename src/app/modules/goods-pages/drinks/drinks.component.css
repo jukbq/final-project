@@ -1,46 +1,30 @@
 section .titel-container {
   width: 100%;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-bottom: 25px;
-}
-section .titel-container .c-title-wrapper {
+  min-height: 160px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: var(--clr-mint);
   border-radius: 16px;
   margin-top: 60px;
+  margin-bottom: 60px;
 }
-section .titel-container .c-title-wrapper .row {
-  min-height: 160px;
-}
-section .titel-container .c-title-wrapper .row .align-self-center {
-  align-self: center !important;
-}
-section .titel-container .c-title-wrapper .row .align-self-center .h1 {
+section .titel-container h1 {
   position: relative;
   font-size: 48px;
-  line-height: 1.2em;
+  margin-top: 0px;
   margin-left: 70px;
 }
-section .titel-container .c-title-wrapper .row .align-self-center .h1::before {
-  content: "";
-  position: absolute;
+section .titel-container h1::before {
   top: -30px;
   left: -50px;
-  width: 64px;
-  height: 54px;
-  background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
 }
-section .titel-container .c-title-wrapper .row .col-lg-6 {
+section .titel-container .c-title-img {
   flex: 0 0 auto;
   width: 50%;
-}
-section .titel-container .c-title-wrapper .row .col-lg-6 .c-title-img {
   margin-top: 16px;
 }
-section .titel-container .c-title-wrapper .row .col-lg-6 .c-title-img img {
+section .titel-container .c-title-img img {
   display: block;
   width: 100%;
 }
@@ -48,26 +32,9 @@ section .titel-container .c-title-wrapper .row .col-lg-6 .c-title-img img {
 section .goods-container {
   position: relative;
 }
-section .goods-container .text-left h1 {
-  display: inline-block;
-  position: relative;
-  font-size: 40px;
-  line-height: 1.2em;
-  font-weight: 600;
-  color: var(--clr-black);
-  margin-top: 50px;
-}
 section .goods-container .text-left h1::before {
-  content: "";
-  position: absolute;
-  top: -30px;
-  left: -50px;
+  left: -41px;
   width: 64px;
-  height: 54px;
-  background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
 }
 section .goods-container .filters-list {
   display: flex;

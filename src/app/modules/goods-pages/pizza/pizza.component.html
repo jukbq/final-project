@@ -13,9 +13,9 @@
                 <div ngxSlickItem *ngFor="let slide of slides" class="slide">
 
                     <div class="title_container">
-                        <h1>{{ slide.title }}</h1>
-                        <p>{{ slide.description }}</p>
-                        <a class="btn" href="{{ slide.link }}">
+                        <div class="action_title">{{ slide.title }}</div>
+                        <p>{{ slide.motto }}</p>
+                        <a class="btn" href="#">
                             <span>Замовити</span>
                             <i></i>
                         </a>
@@ -203,7 +203,7 @@
                     alt="">
                 <div class="about-block-inner">
                     <div class="about-block-info">
-                        <h2 class="title">Трішки про нас </h2>
+                        <h2 class="h2_title">Трішки про нас </h2>
 
                         <div class="text text-lg">
                             <p>Ми не італійці, в нашій команді немає іменитих шефів чи розкручених учасників кулінарних
@@ -238,7 +238,7 @@
                             alt="">
                     </div>
                     <div class="inst-block-info">
-                        <h2 class="title">
+                        <h2 class="h2_title">
                             Підпишись на наш Інстаграм </h2>
 
                         <div class="text text-lg">
@@ -273,10 +273,8 @@
 
         <div class="container">
             <div class="faq-block-wrapper">
-                <h2 class="title">FAQ</h2>
-
-
                 <div class="accordion">
+                    <h2 class="h2_title">FAQ</h2>
                     <mat-accordion class="accordion-panel">
                         <mat-expansion-panel class="accordion-item">
                             <mat-expansion-panel-header class="accordion-title">
@@ -321,7 +319,7 @@
                     </mat-accordion>
                 </div>
 
-            
+
             </div>
         </div>
     </div>

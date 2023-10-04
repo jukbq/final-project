@@ -1,0 +1,79 @@
+   section {
+       width: 100%;
+       margin-top: 40px;
+
+       ul {
+           list-style: none;
+
+           li {
+               display: inline-block;
+               font-size: 12px;
+               font-weight: 400;
+               line-height: 1.6em;
+
+               a {
+                   color: inherit;
+                   text-decoration: none;
+                   transition: var(--transition);
+
+                   span {
+                       color: var(--clr-black);
+                       transition: var(--transition);
+                   }
+               }
+
+               &:after {
+                   content: '';
+                   display: inline-block;
+                   width: 4px;
+                   height: 4px;
+                   border-radius: 50%;
+                   background: var(--clr-green);
+                   margin: 2px 15px;
+                   transition: var(--transition);
+               }
+           }
+       }
+
+       .banner-align {
+           width: 100%;
+           height: 500px;
+           vertical-align: bottom;
+           position: relative;
+           overflow: hidden;
+           padding: 30px 0;
+           z-index: 1;
+           border-radius: 16px;
+           background-image: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/About%20the%20company%2Fbanner-img.jpg?alt=media&token=aa941b78-27e5-4568-ba62-8feea153c114&_gl=1*x565zy*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjQ0NDM3MS4zMTQuMS4xNjk2NDQ0NDA2LjI1LjAuMA..);
+           transform: translate3d(0px, -11px, 0px);
+           background-position: 50% 50%;
+           background-repeat: no-repeat;
+           background-attachment: scroll;
+           background-size: cover;
+
+           .banner_title {
+               width: 100%;
+               position: absolute;
+               bottom: 30px;
+               font-size: 48px;
+               color: var(--clr-white);
+               line-height: 1.2em;
+               font-weight: 600;
+               text-align: center;
+           }
+
+
+
+
+       }
+
+       .text {
+           width: 70%;
+           font-size: 20px;
+           line-height: 1.5em;
+           color: var(--clr-grey);
+           font-weight: 400;
+           margin: 0 auto;
+           margin-top: 30px;
+       }
+   }

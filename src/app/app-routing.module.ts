@@ -16,6 +16,7 @@ import { ContactsComponent } from './modules/about-company-pages/contacts/contac
 import { DeliveryAndPaymentComponent } from './modules/about-company-pages/delivery-and-payment/delivery-and-payment.component';
 import { NewsComponent } from './modules/about-company-pages/news/news.component';
 import { VacanciesComponent } from './modules/about-company-pages/vacancies/vacancies.component';
+import { ActionInfoComponent } from './modules/action-info/action-info.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,8 @@ const routes: Routes = [
   { path: 'delivery-and-payment', component: DeliveryAndPaymentComponent },
   { path: 'news', component: NewsComponent },
   { path: 'vacancies', component: VacanciesComponent },
+  { path: 'action-info', component: ActionInfoComponent },
+
   {
     path: 'product-info',
     component: ProductInfoComponent,
@@ -51,7 +54,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./components/user/user.module').then((m) => m.UserModule),
   },
- 
 ];
 
 @NgModule({

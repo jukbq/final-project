@@ -47,6 +47,7 @@ import { ContactsComponent } from './modules/about-company-pages/contacts/contac
 import { VacanciesComponent } from './modules/about-company-pages/vacancies/vacancies.component';
 import { NewsComponent } from './modules/about-company-pages/news/news.component';
 import { AboutUsComponent } from './modules/about-company-pages/about-us/about-us.component';
+import { ActionInfoComponent } from './modules/action-info/action-info.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,8 @@ import { AboutUsComponent } from './modules/about-company-pages/about-us/about-u
     ContactsComponent,
     VacanciesComponent,
     NewsComponent,
+    ActionInfoComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -10,8 +10,8 @@
             <thead>
                 <tr>
                     <th scope="col">Заголовок</th>
+                    <th scope="col">Гасло</th>
                     <th scope="col">Опис</th>
-                    <!--  <th scope="col">Посилання</th> -->
                     <th scope="col">Картинка</th>
                     <th scope="col">Дії</th>
                 </tr>
@@ -19,9 +19,9 @@
             <tbody>
                 <tr *ngFor="let actions of actions; let i = index">
                     <td>{{ actions.title }}</td>
+                    <td>{{ actions.motto }}</td>
                     <td>{{ actions.description }}</td>
-                    <!--   <td>{{ actions.link }}</td> -->
-                    <td class="image">
+                                     <td class="image">
                         <img [src]="actions.images" />
                     </td>
                     <td class="btn_tr">
@@ -38,8 +38,8 @@
                 <div class="input_section">
                     <input formControlName="title" type="text" name="title" class="form-control"
                         placeholder="*Заголовок" aria-label="Заголовок" />
-                    <input formControlName="link" type="text" name="link" class="form-control" placeholder="*Посилання"
-                        aria-label="Посилання" />
+                    <textarea formControlName="motto" class="form-control" name="motto" placeholder="*Гасло"
+                        id="floatingTextarea1" style="height: 20px"></textarea>
                     <textarea formControlName="description" class="form-control" name="description" placeholder="*Опис"
                         id="floatingTextarea2" style="height: 100px"></textarea>
 

@@ -1,7 +1,7 @@
 export interface ActionRequest {
   title: string;
+  motto: string;
   description: string;
-  link: string;
   images: string;
 }
 

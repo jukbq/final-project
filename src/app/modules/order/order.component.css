@@ -389,23 +389,6 @@
   width: 100%;
   position: relative;
   transition: var(--transition);
-  /*        &.animateClass {
-      animation: slideUpDown 1s ease-in-out;
-
-  }
-
-  @keyframes slideUpDown {
-
-      0%,
-      100% {
-          transform: translateY(0);
-      }
-
-      50% {
-          transform: translateY(-100px);
-
-      }
-  } */
 }
 .container .order_body .delivery-form .check_bonuses .btn {
   margin-bottom: 16px;
@@ -514,7 +497,8 @@
   transition: var(--transition);
 }
 
-input {
+input,
+textarea {
   padding: 0px 15px;
   position: relative;
   font-size: 16px;
@@ -526,22 +510,27 @@ input {
   text-overflow: ellipsis;
   transition: var(--transition);
 }
-input.input-error {
+input.input-error,
+textarea.input-error {
   border-color: var(--clr-red);
   box-shadow: none;
 }
-input.valid {
+input.valid,
+textarea.valid {
   border-color: var(--clr-grey);
 }
 
+textarea:focus,
 input:focus {
   border-color: var(--clr-green);
   box-shadow: none;
   outline: none;
 }
+textarea:focus.input-error,
 input:focus.input-error {
   border-color: var(--clr-red);
 }
+textarea:focus.valid,
 input:focus.valid {
   border-color: var(--clr-green);
 }

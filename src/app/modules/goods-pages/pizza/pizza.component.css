@@ -43,9 +43,10 @@ section .action-conteiner .carusel_container .carousel .slide .title_container {
   justify-content: center;
   padding: 0px 50px;
 }
-section .action-conteiner .carusel_container .carousel .slide .title_container h1 {
+section .action-conteiner .carusel_container .carousel .slide .title_container .action_title {
   font-size: 40px;
   font-weight: 600;
+  line-height: 1.2em;
 }
 section .action-conteiner .carusel_container .carousel .slide .title_container p {
   font-size: 16px;
@@ -112,27 +113,14 @@ section .info_block .container .about-block-wrapper .about-block-inner {
 }
 section .info_block .container .about-block-wrapper .about-block-inner .about-block-info {
   width: 46%;
-  padding: 0px 60px 0px 110px;
+  padding: 0px 60px 35px 110px;
 }
 section .info_block .container .about-block-wrapper .about-block-inner .about-block-info h2 {
-  font-size: 40px;
-  line-height: 1.2em;
-  display: inline-block;
-  position: relative;
-  font-weight: 600;
-  color: var(--clr-black);
+  margin-top: 0px;
 }
 section .info_block .container .about-block-wrapper .about-block-inner .about-block-info h2::before {
-  content: "";
-  position: absolute;
-  top: -30px;
-  left: -50px;
-  width: 64px;
-  height: 54px;
-  background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5&_gl=1*1daideo*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjE2MjgyMy4yOTYuMS4xNjk2MTY1ODQ0LjQyLjAuMA..);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  top: -18px;
+  left: -37px;
 }
 section .info_block .container .about-block-wrapper .about-block-inner .about-block-img {
   flex-shrink: 0;
@@ -172,7 +160,7 @@ section .info_block .container .inst-block-wrapper .inst-block-inner .inst-block
   border-radius: 25px;
   min-height: 390px;
 }
-section .info_block .container .inst-block-wrapper .inst-block-inner .inst-block-img .inst-block-img img {
+section .info_block .container .inst-block-wrapper .inst-block-inner .inst-block-img img {
   position: absolute;
   left: 0;
   top: 0;
@@ -185,25 +173,9 @@ section .info_block .container .inst-block-wrapper .inst-block-inner .inst-block
   padding: 25px 60px 25px 110px;
   align-self: center;
 }
-section .info_block .container .inst-block-wrapper .inst-block-inner .inst-block-info h2 {
-  font-size: 40px;
-  line-height: 1.2em;
-  display: inline-block;
-  position: relative;
-  font-weight: 600;
-  color: var(--clr-black);
-}
 section .info_block .container .inst-block-wrapper .inst-block-inner .inst-block-info h2::before {
-  content: "";
-  position: absolute;
-  top: -30px;
   left: -50px;
   width: 64px;
-  height: 54px;
-  background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5&_gl=1*1daideo*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjE2MjgyMy4yOTYuMS4xNjk2MTY1ODQ0LjQyLjAuMA..);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
 }
 section .info_block .container .inst-block-wrapper .inst-block-inner .inst-block-info .text {
   font-size: 16px;
@@ -217,29 +189,13 @@ section .info_block .container .faq-block-wrapper {
   max-width: 100%;
   margin-top: 70px;
 }
-section .info_block .container .faq-block-wrapper h2 {
-  font-size: 40px;
-  line-height: 1.2em;
-  display: inline-block;
-  position: relative;
-  font-weight: 600;
-  color: var(--clr-black);
-}
-section .info_block .container .faq-block-wrapper h2::before {
-  content: "";
-  position: absolute;
-  top: -30px;
-  left: -50px;
-  width: 64px;
-  height: 54px;
-  background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5&_gl=1*1daideo*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjE2MjgyMy4yOTYuMS4xNjk2MTY1ODQ0LjQyLjAuMA..);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
 section .info_block .container .faq-block-wrapper .accordion {
   width: 60%;
   margin: 0 auto;
+}
+section .info_block .container .faq-block-wrapper .accordion h2::before {
+  top: -30px;
+  left: -50px;
 }
 section .info_block .container .faq-block-wrapper .accordion .accordion-panel .accordion-item {
   border: none;
@@ -293,7 +249,7 @@ section .info_block .container .faq-block-wrapper .accordion .accordion-panel .a
     justify-content: flex-start;
     padding: 20px 10px;
   }
-  section .carusel_container .carousel .slide .title_container h1 {
+  section .carusel_container .carousel .slide .title_container .action_title {
     font-size: 30px;
   }
 }
@@ -315,7 +271,7 @@ section .info_block .container .faq-block-wrapper .accordion .accordion-panel .a
     order: 2;
     margin-bottom: 80px;
   }
-  section .action-conteiner .carusel_container .carousel .slide .title_container h1 {
+  section .action-conteiner .carusel_container .carousel .slide .title_container .action_title {
     font-size: 30px;
   }
   section .action-conteiner .carusel_container .carousel .slide .image_conteiner {
@@ -338,26 +294,9 @@ section .info_block .container .faq-block-wrapper .accordion .accordion-panel .a
 section .goods-container {
   position: relative;
 }
-section .goods-container .text-left h1 {
-  display: inline-block;
-  position: relative;
-  font-size: 40px;
-  line-height: 1.2em;
-  font-weight: 600;
-  color: var(--clr-black);
-  margin-top: 50px;
-}
 section .goods-container .text-left h1::before {
-  content: "";
-  position: absolute;
-  top: -30px;
-  left: -50px;
+  left: -41px;
   width: 64px;
-  height: 54px;
-  background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
 }
 section .goods-container .filters-list {
   display: flex;

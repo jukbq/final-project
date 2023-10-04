@@ -46,8 +46,8 @@ export class AdminActionsComponent {
   initActionFoen(): void {
     this.actionForn = this.formBuilder.group({
       title: [null, Validators.required],
+      motto: [null, Validators.required],
       description: [null, Validators.required],
-      link: [null, Validators.required],
       images: [null, Validators.required],
     });
   }
@@ -80,8 +80,8 @@ export class AdminActionsComponent {
   editAction(action: ActionResponse) {
     this.actionForn.patchValue({
       title: action.title,
+      motto: action.motto,
       description: action.description,
-      link: action.link,
       images: action.images,
     });
     this.action_form = true;

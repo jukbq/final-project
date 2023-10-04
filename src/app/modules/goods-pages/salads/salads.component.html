@@ -1,23 +1,16 @@
 <section>
 
     <div class="titel-container">
-        <div class="c-title-wrapper">
-            <div class="row">
-                <div class="col-lg-6 align-self-center">
-                    <h1 class="title title-decor h1">
-                        Салати від МА
-                    </h1>
-                </div>
-                <div class="col-lg-6">
-
-                    <div class="c-title-img">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fc-title-img.png?alt=media&token=87e18928-e7a2-4879-80a0-7c16ce3c6a99"
-                            alt="">
-                    </div>
-                </div>
-            </div>
+        <h1 class="title">
+            Салати від МА
+        </h1>
+        <div class="c-title-img">
+            <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fc-title-img.png?alt=media&token=87e18928-e7a2-4879-80a0-7c16ce3c6a99"
+                alt="">
         </div>
     </div>
+
+
 
     <div class="goods-container" id="goods">
         <ul class="filters-list">
@@ -45,7 +38,7 @@
                         </svg>
                     </button>
                 </div>
-                
+
                 <div class="image_block">
                     <button (click)="addFavorites(goods)" [ngClass]="{ 'active': isFavorite(goods) }" class="fav_btn">
                         <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">

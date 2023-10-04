@@ -1,26 +1,9 @@
 section .goods-container {
   position: relative;
 }
-section .goods-container .text-left h1 {
-  display: inline-block;
-  position: relative;
-  font-size: 40px;
-  line-height: 1.2em;
-  font-weight: 600;
-  color: var(--clr-black);
-  margin-top: 50px;
-}
 section .goods-container .text-left h1::before {
-  content: "";
-  position: absolute;
-  top: -30px;
-  left: -50px;
+  left: -41px;
   width: 64px;
-  height: 54px;
-  background: url(https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Ftitle-decor.svg?alt=media&token=4f1d068e-62ba-4382-bd06-fa329a6710f5);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
 }
 section .goods-container .filters-list {
   display: flex;
