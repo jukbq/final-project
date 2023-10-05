@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Firestore, doc, setDoc } from '@angular/fire/firestore';
+import { Firestore,} from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { addDoc, collection } from 'firebase/firestore';
 
@@ -28,6 +28,8 @@ export class AboutUsComponent {
       comment: [null],
     });
   }
+
+
   onFileChange(event: any) {
     const fileList: FileList = event.target.files;
     if (fileList.length > 0) {
@@ -45,18 +47,18 @@ export class AboutUsComponent {
 
   async checkout() {
    
-    const faq = {
+    const vacancy = {
       firstname: this.customerForm.value.firstname,
       phone: this.customerForm.value.phone,
       email: this.customerForm.value.email,
       comment: this.customerForm.value.comment,
       selectedFile: this.selectedFile || null,
     };
-     const faqCollectionRef = collection(this.afs, 'faq');
-     console.log(faqCollectionRef);
+     const vacancyCollectionRef = collection(this.afs, 'vacancy');
+     console.log(vacancyCollectionRef);
      
    try {
-     const docRef = await addDoc(faqCollectionRef, faq);
+     const docRef = await addDoc(vacancyCollectionRef, vacancy);
      console.log('Документ успешно добавлен с ID:', docRef.id);
    } catch (error) {
      console.error('Ошибка при добавлении документа:', error);
