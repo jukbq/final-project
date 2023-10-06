@@ -5,7 +5,7 @@
             <img src="https://mapizza.com.ua/wp-content/uploads/2022/03/banner-decor.svg" alt="">
         </div>
         <div class="carusel_container">
-            <div class="batton-container"></div>
+          
 
             <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
                 (init)="onCarouselInit($event)">
@@ -13,20 +13,28 @@
                 <div ngxSlickItem *ngFor="let slide of slides" class="slide">
 
                     <div class="title_container">
-                        <div class="action_title">{{ slide.title }}</div>
+                        <div class="action_title">
+                            {{ slide.title }}
+                        </div>
+                        <div class="action_mptto">
                         <p>{{ slide.motto }}</p>
+                        </div>
+                        <div class="ation_batton">
                         <a class="btn" href="#">
                             <span>Замовити</span>
                             <i></i>
                         </a>
-
+                        </div>
                     </div>
+
                     <div class="image_conteiner">
                         <img src="{{ slide.images }}" alt="">
                     </div>
                 </div>
 
             </ngx-slick-carousel>
+
+            <div class="batton-container"></div>
         </div>
     </div>
 
