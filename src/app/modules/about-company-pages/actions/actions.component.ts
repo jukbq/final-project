@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActionResponse } from 'src/app/shared/interfaces/action';
@@ -12,7 +13,11 @@ export class ActionsComponent {
   public actions: Array<ActionResponse> = [];
   public actionName = '';
 
-  constructor(private actionService: ActionService, private router: Router) {}
+  constructor(
+    private actionService: ActionService,
+    private router: Router,
+    private viewportScroller: ViewportScroller
+  ) {}
 
   ngOnInit(): void {
     this.getActions();
@@ -25,12 +30,14 @@ export class ActionsComponent {
   }
 
   actionInfo(action: any): void {
-    if (action !== 'Бонусна програма'){
-    this.actionName = action.id;
-    this.router.navigate(['/action-info', { id: this.actionName }]);
-    }else{
+    if (action !== 'Бонусна програма') {
+      this.actionName = action.id;
+      this.router.navigate(['/action-info', { id: this.actionName }]);
+       this.viewportScroller.scrollToPosition([0, 0]);
+    } else {
       this.actionName = action;
-       this.router.navigate(['/action-info', { id: this.actionName }]);
-        }
+      this.router.navigate(['/action-info', { id: this.actionName }]);
+       this.viewportScroller.scrollToPosition([0, 0]);
+    }
   }
 }

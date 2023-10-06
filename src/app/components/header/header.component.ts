@@ -101,9 +101,10 @@ export class HeaderComponent {
 
     if (windowWidth > 1240) {
       if (scrollPosition > 0) {
-        headerWrapper.style.top = '-65px'; // Зміна позиції верху шапки при прокрутці
+        headerWrapper.style.top = '-65px'; 
+     
       } else {
-        headerWrapper.style.top = '0px'; // Повернення шапки на початкову позицію
+        headerWrapper.style.top = '0px'; 
       }
     }
   }
@@ -116,7 +117,8 @@ export class HeaderComponent {
   }
 
   // Анімація активного стану гамбургера
-  public hamburger_active() {
+ hamburger_active() {
+
     const headerTop = this.el.nativeElement.querySelector('.header-top');
     const headerMenuList = this.el.nativeElement.querySelector('.menu-list');
     const hamburgerInner =

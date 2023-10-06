@@ -502,8 +502,10 @@ header .header-wrapper .container .header-bottom .hamburger {
   }
   header .header-wrapper .container .header-top.active {
     right: 0px;
+    margin-top: 40px;
   }
   header .header-wrapper .container .header-bottom {
+    position: relative;
     height: 65px;
     border-radius: 0px;
     z-index: 2;
@@ -523,6 +525,9 @@ header .header-wrapper .container .header-bottom .hamburger {
   header .header-wrapper .container .header-bottom .menu-list ul li {
     margin-right: 0px;
   }
+  header .header-wrapper .container .header-bottom .menu-list ul li a img {
+    display: none;
+  }
   header .header-wrapper .container .header-bottom .menu-list ul.active {
     transform: translateX(0);
     bottom: 70px;
@@ -534,35 +539,36 @@ header .header-wrapper .container .header-bottom .hamburger {
   header .header-wrapper .container .header-bottom .menu-list ul ul li a:hover::before {
     width: 0;
   }
-  header .header-wrapper .container .header-bottom .menu-list ul ul li a img {
-    display: none;
-  }
-  header .header-wrapper .container .header-bottom .menu-list .user-c-wrapper {
+  header .header-wrapper .container .header-bottom .user-c-wrapper {
     transform: translateY(-100%);
-    top: 48px;
-    right: 130px;
+    top: 39px;
+    right: 161px;
   }
-  header .header-wrapper .container .header-bottom .menu-list .user-c-wrapper .user-cabinet button {
+  header .header-wrapper .container .header-bottom .user-c-wrapper .user-cabinet button {
     padding: 0;
     font-size: 0;
     background: transparent;
     border: none;
+    margin-top: 0px;
   }
-  header .header-wrapper .container .header-bottom .menu-list .user-c-wrapper .user-cabinet button svg {
+  header .header-wrapper .container .header-bottom .user-c-wrapper .user-cabinet button svg {
     width: 26px;
     height: 26px;
     stroke: var(--clr-white);
   }
-  header .header-wrapper .container .header-bottom .menu-list .user-c-wrapper .user-cabinet button svg path {
+  header .header-wrapper .container .header-bottom .user-c-wrapper .user-cabinet button svg path {
     stroke: var(--clr-black);
   }
-  header .header-wrapper .container .header-bottom .menu-list .header-cart {
+  header .header-wrapper .container .header-bottom .header-cart {
     position: absolute;
     min-width: auto;
-    top: 18px;
-    right: 70px;
+    top: 9px;
+    right: 22px;
   }
-  header .header-wrapper .container .header-bottom .menu-list .header-cart i:before {
+  header .header-wrapper .container .header-bottom .header-cart .basket i {
+    left: 16px;
+  }
+  header .header-wrapper .container .header-bottom .header-cart .basket i:before {
     content: "";
     position: absolute;
     z-index: -1;
@@ -570,14 +576,14 @@ header .header-wrapper .container .header-bottom .hamburger {
     top: 50%;
     transform: translate(-50%, -50%);
     width: 24px;
-    height: 24px;
+    left: -109%;
     border-radius: 100%;
     background: var(--clr-red);
   }
-  header .header-wrapper .container .header-bottom .menu-list .header-cart p {
+  header .header-wrapper .container .header-bottom .header-cart p {
     display: none;
   }
-  header .header-wrapper .container .header-bottom .menu-list .hamburger {
+  header .header-wrapper .container .header-bottom .hamburger {
     display: inline-block;
     position: absolute;
     top: 18px;
@@ -594,13 +600,13 @@ header .header-wrapper .container .header-bottom .hamburger {
     margin: 0;
     overflow: visible;
   }
-  header .header-wrapper .container .header-bottom .menu-list .hamburger .hamburger-box {
+  header .header-wrapper .container .header-bottom .hamburger .hamburger-box {
     width: 25px;
     height: 16px;
     display: inline-block;
     position: relative;
   }
-  header .header-wrapper .container .header-bottom .menu-list .hamburger .hamburger-box .hamburger-inner {
+  header .header-wrapper .container .header-bottom .hamburger .hamburger-box .hamburger-inner {
     width: 25px;
     height: 2px;
     display: block;
@@ -610,23 +616,23 @@ header .header-wrapper .container .header-bottom .hamburger {
     transition-duration: 0.275s;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
-  header .header-wrapper .container .header-bottom .menu-list .hamburger .hamburger-box .hamburger-inner.active {
+  header .header-wrapper .container .header-bottom .hamburger .hamburger-box .hamburger-inner.active {
     transform: translate3d(0, 7px, 0) rotate(-135deg);
     transition-delay: 0.075s;
     top: 1px;
     transition-duration: 0.275s;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
-  header .header-wrapper .container .header-bottom .menu-list .hamburger .hamburger-box .hamburger-inner.active::before {
+  header .header-wrapper .container .header-bottom .hamburger .hamburger-box .hamburger-inner.active::before {
     transition-delay: 0s;
     opacity: 0;
   }
-  header .header-wrapper .container .header-bottom .menu-list .hamburger .hamburger-box .hamburger-inner.active::after {
+  header .header-wrapper .container .header-bottom .hamburger .hamburger-box .hamburger-inner.active::after {
     transform: translate3d(0, -14px, 0) rotate(270deg);
     transition-delay: 0.075s;
     transition-delay: 0s;
   }
-  header .header-wrapper .container .header-bottom .menu-list .hamburger .hamburger-box .hamburger-inner:before {
+  header .header-wrapper .container .header-bottom .hamburger .hamburger-box .hamburger-inner:before {
     content: "";
     display: block;
     top: 7px;
@@ -642,7 +648,7 @@ header .header-wrapper .container .header-bottom .hamburger {
     top: 7px;
     transition: opacity 0.125s 0.275s ease;
   }
-  header .header-wrapper .container .header-bottom .menu-list .hamburger .hamburger-box .hamburger-inner:after {
+  header .header-wrapper .container .header-bottom .hamburger .hamburger-box .hamburger-inner:after {
     content: "";
     display: block;
     top: 14px;
@@ -657,7 +663,7 @@ header .header-wrapper .container .header-bottom .hamburger {
     transition-timing-function: ease;
   }
 }
-@media (max-width: 1240px) and (max-width: 524px) {
+@media (max-width: 524px) {
   header .header-wrapper .container {
     width: 100vw;
     padding: 0;
