@@ -52,7 +52,6 @@ export class DessertsComponent {
           this.favoriteProducts = favorites.map(
             (favorite) => favorite.productId
           );
-          console.log(this.favoriteProducts);
         });
     }
   }

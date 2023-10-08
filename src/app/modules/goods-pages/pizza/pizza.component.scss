@@ -1,4 +1,6 @@
-
 @import './scss/pizza-desktop';
 @import './scss/pizza-adaptive';
-@import '../scss/goods-desktop';
+
+@import '../../../shared/style/product-card-styles/product-page-desktop';
+@import '../../../shared/style/product-card-styles/product-desktop';
+@import '../../../shared/style/product-card-styles/product-adaptive';

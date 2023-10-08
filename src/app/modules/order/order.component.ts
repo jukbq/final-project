@@ -483,8 +483,7 @@ export class OrderComponent {
   async checkout() {
     // Перевіряємо, чи користувач є зареєстрованим
     if (this.uid === '') {
-      console.log(this.uid);
-      this.firstName = this.customerForm.get('firstname')?.value;
+         this.firstName = this.customerForm.get('firstname')?.value;
       this.phone = this.customerForm.get('phone')?.value;
       this.email = this.customerForm.get('email')?.value;
       this.type = this.customerForm.get('type')?.value;

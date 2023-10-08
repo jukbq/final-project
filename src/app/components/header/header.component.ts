@@ -22,7 +22,6 @@ const LIST: any[] = [
   { name: 'Новини', link: 'news' },
 ];
 
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -79,7 +78,6 @@ export class HeaderComponent {
     this.favoritesService.favorites$.subscribe((favorites) => {
       this.favoriteProducts = favorites;
       this.favoritGoods = this.favoriteProducts.length;
-      console.log(this.favoritGoods);
     });
   }
 
@@ -101,10 +99,9 @@ export class HeaderComponent {
 
     if (windowWidth > 1240) {
       if (scrollPosition > 0) {
-        headerWrapper.style.top = '-65px'; 
-     
+        headerWrapper.style.top = '-65px';
       } else {
-        headerWrapper.style.top = '0px'; 
+        headerWrapper.style.top = '0px';
       }
     }
   }
@@ -113,12 +110,14 @@ export class HeaderComponent {
   onSelectItem(item: string): void {
     this.menuLink = item;
     this.headerService.emitHeaderClick(item);
-    this.viewportScroller.scrollToPosition([0, 0]);
+    console.log(item);
+    if (item !== 'pizza') {
+      this.viewportScroller.scrollToPosition([0, 0]);
+    }
   }
 
   // Анімація активного стану гамбургера
- hamburger_active() {
-
+  hamburger_active() {
     const headerTop = this.el.nativeElement.querySelector('.header-top');
     const headerMenuList = this.el.nativeElement.querySelector('.menu-list');
     const hamburgerInner =

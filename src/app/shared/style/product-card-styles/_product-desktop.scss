@@ -1,6 +1,8 @@
 section {
     .goods-container {
+        width: 100%;
         position: relative;
+        margin-top: 0px;
 
         .text-left h1 {
             &::before {
@@ -12,8 +14,24 @@ section {
 
         .filters-list {
             display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 0 15px 5px;
+
+            &::-webkit-scrollbar {
+                width: 4px;
+                height: 4px;
+
+            }
+
+            &::-webkit-scrollbar-thumb {
+                border-radius: 4px;
+                background: var(--clr-green);
+
+            }
 
             li {
+                display: inline-block;
                 position: relative;
                 margin-right: 5px;
                 cursor: pointer;
@@ -38,60 +56,28 @@ section {
 
         .products-wrapper {
             width: 100%;
-            min-height: 100vh;
             position: relative;
             display: flex;
             flex-wrap: wrap;
-            /*     align-items: flex-start; */
             justify-content: last baseline;
             list-style: none;
             overflow: hidden;
             transition: var(--transition);
+            padding-left: 0rem;
 
             li {
                 width: 32%;
-                min-height: 650px;
+                height: 650px;
                 position: relative;
                 overflow: hidden;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
+                justify-content: flex-start;
                 margin: 5px 5px;
                 border: 1px solid #d1d9ce;
                 border-radius: 16px;
                 background: var(--clr-white);
                 transition: var(--transition);
-
-                .product_top-right {
-                    top: 10px;
-                    right: 10px;
-                    position: absolute;
-
-                    .fav-btn {
-                        width: 40px;
-                        height: 40px;
-                        line-height: 30px;
-                        display: inline-flex;
-                        align-items: center;
-                        justify-content: center;
-                        cursor: pointer;
-                        border: none;
-                        background: none;
-
-
-                        svg {
-                            display: block;
-                            max-width: 100%;
-                            max-height: 100%;
-
-                            path {
-                                fill: transparent;
-                                stroke: var(--clr-red);
-                                transition: var(--transition);
-                            }
-                        }
-                    }
-                }
 
                 .image_block {
                     position: relative;
@@ -134,19 +120,25 @@ section {
                     }
 
                     .goods_image {
+                        position: relative;
                         width: 100%;
                         height: 100%;
+                        cursor: pointer;
+                        overflow: hidden;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
 
                         img {
-                            width: 100%;
-                            object-fit: contain;
-                            transition: 0.5s;
+                            max-width: 100%;
+                            max-height: 100%;
+                            object-fit: cover;
                         }
                     }
                 }
 
                 a {
-                    max-height: 2.6em;
+                    height: 2.6em;
                     position: relative;
                     overflow: hidden;
                     color: inherit;
@@ -165,11 +157,13 @@ section {
 
                 .product_desc {
                     line-height: 1.5em;
-                    max-height: 4.5em;
+                    height: 4.5em;
                     display: block;
                     display: -webkit-box;
                     overflow: hidden !important;
                     text-overflow: ellipsis;
+                    -webkit-line-clamp: 5;
+                    -webkit-box-orient: vertical;
                     color: var(--clr-grey);
                     font-size: 16px;
                     margin: 0 10px 10px 10px;
@@ -177,8 +171,6 @@ section {
 
                 .product_controls {
                     height: 20%;
-                    display: -webkit-box;
-                    display: -ms-flexbox;
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-between;
@@ -187,8 +179,6 @@ section {
 
                     .product_price-wrap {
                         position: relative;
-                        display: -webkit-box;
-                        display: -ms-flexbox;
                         display: flex;
                         align-items: flex-end;
                         flex-wrap: wrap;
@@ -274,27 +264,29 @@ section {
 
                             background: var(--clr-green);
                         }
-                    }
 
-                    span {
-                        margin-right: 10px;
-                        color: var(--clr-white);
-                    }
+                        span {
+                            margin-right: 10px;
+                            color: var(--clr-white);
+                        }
 
-                    i {
-                        position: relative;
-                        width: 20px;
-                        height: 20px;
-
-                        svg {
+                        i {
+                            position: relative;
                             width: 20px;
                             height: 20px;
-                            position: absolute;
-                            top: 50%;
-                            left: 50%;
-                            transform: translate(-50%, -50%);
+
+                            svg {
+                                width: 20px;
+                                height: 20px;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                            }
                         }
                     }
+
+
 
                 }
             }

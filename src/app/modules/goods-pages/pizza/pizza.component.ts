@@ -28,6 +28,9 @@ export class PizzaComponent {
   public menuName: any;
   public newPrice = false;
   public user = '';
+  public isExpanded = false;
+  public scrool = '';
+  public benefits = false;
 
   constructor(
     private actionService: ActionService,
@@ -73,20 +76,28 @@ export class PizzaComponent {
 
     //Отримання ID користувача
     const customer = JSON.parse(localStorage.getItem('curentUser') as string);
-  
 
     if (customer && customer.uid) {
       this.uid = customer.uid;
     }
-    if(this.uid ){
-      console.log(this.uid);
-      
-    this.favoritesService
-      .getFavoritesByUser(this.uid)
-      .subscribe((favorites) => {
-        this.favoriteProducts = favorites.map((favorite) => favorite.productId);
-        console.log(this.favoriteProducts);
-      });
+    if (this.uid) {
+      this.favoritesService
+        .getFavoritesByUser(this.uid)
+        .subscribe((favorites) => {
+          this.favoriteProducts = favorites.map(
+            (favorite) => favorite.productId
+          );
+        });
+    }
+
+    const windowWidth = window.innerWidth;
+
+    if (windowWidth <= 524) {
+      this.benefits = true;
+      console.log(this.benefits);
+    } else {
+      this.benefits = false;
+      console.log(this.benefits);
     }
   }
 
@@ -267,6 +278,17 @@ export class PizzaComponent {
     swipe: true,
   };
 
+  benefitsConfig = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    fade: true,
+    autoplay: false,
+    dots: true,
+    arrows: true,
+    swipe: true,
+  };
+
   // Видалення слайда
   removeSlide() {
     this.slides.length = this.slides.length - 1;
@@ -309,13 +331,17 @@ export class PizzaComponent {
       this.el.nativeElement.querySelector('#goods');
     const actionСonteiner: HTMLElement | null =
       document.querySelector('.action-conteiner');
+    const headerBottom: HTMLElement | null =
+      document.querySelector('.header-bottom');
 
-    if (menuItem === 'pizza' && actionСonteiner) {
+    if (menuItem === 'pizza' && actionСonteiner && headerBottom) {
       const actionrHeight = actionСonteiner.offsetHeight;
+      const headerBottomHeight = headerBottom.offsetHeight;
+      console.log(headerBottomHeight);
+
       const winScrool = window.scrollY;
-      const scrool = actionrHeight - winScrool;
+      const scrool = headerBottomHeight + actionrHeight - winScrool;
       actionСonteiner.classList.remove('visible');
-      goodsContainer.style.marginTop = '-80px';
       goodsContainer.style.transition = `transform var(--transition)`;
       window.scrollBy({
         top: scrool,
@@ -329,5 +355,9 @@ export class PizzaComponent {
         behavior: 'smooth',
       });
     }
+  }
+
+  toggleContent() {
+    this.isExpanded = !this.isExpanded;
   }
 }

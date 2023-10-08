@@ -51,7 +51,6 @@ export class DrinksComponent {
           this.favoriteProducts = favorites.map(
             (favorite) => favorite.productId
           );
-          console.log(this.favoriteProducts);
         });
     }
   }

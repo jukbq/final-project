@@ -72,9 +72,7 @@ export class ProductInfoComponent {
         });
     } else {
       this.favoritesService.addToFavorites(this.uid, productId).then(() => {
-        console.log(this.uid);
-
-        this.favoriteProducts.push(productId);
+           this.favoriteProducts.push(productId);
       });
     }
   }

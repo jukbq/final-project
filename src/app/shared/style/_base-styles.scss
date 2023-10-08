@@ -147,3 +147,40 @@ h1,
         background-size: contain;
     }
 }
+
+.swiper-slide {
+    .slick-dots {
+        position: relative;
+        width: 3%;
+        display: flex;
+        justify-content: space-between;
+        bottom: 0;
+        margin: 0 auto;
+
+        .slick-active {
+            background: var(--clr-red);
+
+            &:hover {
+                border: 1px solid var(--clr-red);
+
+            }
+        }
+
+        li {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 1px solid #d1d9ce;
+
+            button::before {
+                content: none;
+            }
+
+            &:hover {
+                background: var(--clr-green);
+
+            }
+        }
+    }
+}

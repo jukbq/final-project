@@ -73,13 +73,11 @@
 
 @media (max-width: 524px) {
     .action-conteiner {
-        margin-bottom: 200px;
-
-        .carusel_container .batton-container {
+          .carusel_container .batton-container {
             position: absolute;
            margin-left: 120px;
             margin-right: -120px;
-          bottom: -120px;
+    
 
 
             .slick-prev,
