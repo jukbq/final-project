@@ -1,6 +1,7 @@
 section .titel-container {
   width: 100%;
-  min-height: 160px;
+  height: 160px;
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,75 +23,165 @@ section .titel-container h1::before {
 section .titel-container .c-title-img {
   flex: 0 0 auto;
   width: 50%;
-  margin-top: 16px;
+  margin-bottom: 26px;
 }
 section .titel-container .c-title-img img {
   display: block;
   width: 100%;
 }
+section .container {
+  width: 100%;
+  position: relative;
+}
+section .container .content {
+  position: relative;
+  width: 60%;
+  overflow: hidden;
+  margin: 0 auto;
+  transition: var(--transition);
+}
+section .container .content.salats {
+  height: 280px;
+}
+section .container .content.dessert {
+  height: 260px;
+}
+section .container .content h3 {
+  font-size: 26px;
+  line-height: 1.2em;
+  color: var(--clr-black);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+section .container .content p {
+  margin-bottom: 15px;
+}
+section .container .content table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+section .container .content table td {
+  border: 1px solid #d1d9ce;
+  padding: 10px 15px;
+}
+section .container .content.expanded {
+  height: auto;
+}
+section .container .decor-img {
+  position: absolute;
+  z-index: 1;
+  max-width: 220px;
+  max-height: 220px;
+}
+section .container .decor-img.left {
+  top: 0;
+  left: -127px;
+  transform: translate3d(0px, -54px, 0px);
+}
+section .container .decor-img.right {
+  bottom: -97px;
+  right: -57px;
+  transform: translate3d(0px, 1px, 0px);
+}
+section .container .btn-more {
+  width: 60%;
+  margin: 0 auto;
+}
+section .container .btn-more .read-more {
+  margin: 0 auto;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 1.1em;
+  font-weight: 600;
+  color: var(--clr-red);
+  letter-spacing: 0.05em;
+  padding-right: 25px;
+  transition: var(--transition);
+}
+section .container .btn-more .read-more:hover {
+  color: var(--clr-green);
+}
+section .container .btn-more .read-more:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  width: 5px;
+  height: 5px;
+  border-top: 2px solid var(--clr-red);
+  border-right: 2px solid var(--clr-red);
+  transform: rotate(135deg);
+  transition: var(--transition);
+}
+section .container .btn-more .read-more:after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 0;
+  width: 17px;
+  height: 17px;
+  border: 2px solid var(--clr-red);
+  border-radius: 100%;
+  transition: var(--transition);
+}
+section .container .btn-more .read-more.expanded::before {
+  transform: rotate(-45deg);
+  top: 6px;
+}
 
 @media (max-width: 1028px) {
-  section {
-    margin: 0 auto;
+  section .titel-container {
+    justify-content: space-between;
+    padding: 0;
+    height: 120px;
   }
-  section .action-conteiner {
+  section .titel-container .title {
+    font-size: 30px;
+    margin-left: 14px;
+  }
+  section .titel-container .title::before {
+    content: none;
+  }
+  section .titel-container .c-title-img {
+    margin-bottom: 3px;
+  }
+  section .container .content {
     width: 100%;
   }
-  section .action-conteiner .banner-decor {
+  section .container .content.salats {
+    height: 240px;
+  }
+  section .container .content.dessert {
+    height: 210px;
+  }
+  section .container .decor-img {
     display: none;
   }
-  section .batton-container {
-    bottom: 5%;
-  }
-  section .carusel_container .carousel .slide .title_container {
-    justify-content: flex-start;
-    padding: 20px 10px;
-  }
-  section .carusel_container .carousel .slide .title_container h1 {
-    font-size: 30px;
+  section .container .btn-more {
+    width: 100%;
   }
 }
-@media (max-width: 986px) {
-  section .action-conteiner {
-    width: 100%;
+@media (max-width: 780px) {
+  section .titel-container {
+    background: none;
     height: auto;
-    align-items: center;
-    justify-content: center;
+    margin: 0px;
   }
-  section .action-conteiner .carusel_container .carousel .slide {
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  section .titel-container .c-title-img {
+    display: none;
   }
-  section .action-conteiner .carusel_container .carousel .slide .title_container {
-    width: 100%;
-    order: 2;
-    margin-bottom: 80px;
-  }
-  section .action-conteiner .carusel_container .carousel .slide .title_container h1 {
-    font-size: 30px;
-  }
-  section .action-conteiner .carusel_container .carousel .slide .image_conteiner {
-    width: 100%;
-    order: 1;
-    margin-bottom: 20px;
-  }
-  section .action-conteiner .carusel_container .carousel .slide .image_conteiner {
-    padding: 20px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  section .action-conteiner .carusel_container .carousel .slide .image_conteiner img {
-    width: 80%;
-    height: auto;
-    overflow: hidden;
+  section .container .content.salats {
+    height: 250px;
   }
 }
 section .goods-container {
   width: 100%;
   position: relative;
+  margin-top: 0px;
 }
 section .goods-container .text-left h1::before {
   left: -41px;
@@ -132,7 +223,6 @@ section .goods-container .filters-list li img {
 }
 section .goods-container .products-wrapper {
   width: 100%;
-  min-height: 100vh;
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -140,6 +230,7 @@ section .goods-container .products-wrapper {
   list-style: none;
   overflow: hidden;
   transition: var(--transition);
+  padding-left: 0rem;
 }
 section .goods-container .products-wrapper li {
   width: 32%;

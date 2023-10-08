@@ -1,5 +1,4 @@
 <section>
-
     <div class="titel-container">
         <h1 class="title">
             Салати від МА
@@ -12,7 +11,7 @@
 
 
 
-    <div class="goods-container" >
+    <div class="goods-container">
         <ul class="filters-list">
 
             <li *ngFor="let category of listCategory; 
@@ -28,7 +27,7 @@
         <ul class="products-wrapper">
             <li *ngFor="let goods of goodsArr">
 
-            
+
 
                 <div class="image_block">
                     <button (click)="addFavorites(goods)" [ngClass]="{ 'active': isFavorite(goods) }" class="fav_btn">
@@ -104,6 +103,80 @@
                 </div>
             </li>
         </ul>
+
+    </div>
+
+    <div class="container">
+        <img class="decor-img left" data-rellax-speed="1"
+            src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fdecor-img-3.svg?alt=media&token=f53318dd-7fb4-49ad-91be-391df09903d7&_gl=1*u4g58h*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5Njc1MzA2Ny4zMjcuMC4xNjk2NzUzMDY3LjYwLjAuMA.."
+            alt="">
+        <div class="content salats" [ngClass]="{ 'expanded': isExpanded }">
+            <h3>Салати у Львові</h3>
+            <p><span style="font-weight: 400">Салати у м. Львів – це універсальна страва, що може стати
+                    сніданком, обідом, вечерею або ж навіть родзинкою свята. Завжди нове, неповторне
+                    поєднання інгредієнтів дозволяє експериментувати, винаходити нові, ще кращі закуски. А
+                    доставка завжди доречних, ситних, освіжаючих салатів у м. Львів максимально
+                    швидка.&nbsp;</span></p>
+            <div class="more-text">
+                <div class="text text-lg">
+                    <p><span style="font-weight: 400">У спекотний літній день, коли зовсім не хочеться
+                            жирних, калорійних страв, на допомогу приходять салати від MA Pizza у м.
+                            Львів.&nbsp; Завдяки найкращим, соковитим овочам та зелені можна чудово
+                            освіжитись. А у поєднанні з іншими інгредієнтами ситний перекус додасть вам
+                            сили, енергії. Навіть найвибагливіші гурмани не можуть відірватись від
+                            неповторних, вишуканих салатів.&nbsp;</span></p>
+                    <h2><b>Чому варто замовити салат від MA Pizza у м. Львів?&nbsp;</b></h2>
+                    <ol>
+                        <li style="font-weight: 400"><span style="font-weight: 400">Майстерні кухарі
+                                використовують найкращі продукти з Італії, Польщі, Іспанії, Німеччини та
+                                створюють справжні мистецькі шедеври на тарілці;</span></li>
+                        <li style="font-weight: 400"><span style="font-weight: 400">Смачні, ситні салати
+                                дарують енергію без зайвого переїдання, освіжають, додають сили, гарний
+                                настрій;</span></li>
+                        <li style="font-weight: 400"><span style="font-weight: 400">Смачні салати можуть
+                                урізноманітнити буденне меню, коли зовсім немає часу стояти на кухні;</span>
+                        </li>
+                        <li style="font-weight: 400"><span style="font-weight: 400">Салати – оригінальне
+                                доповнення до піци Mamma Italiano у м. Львів;</span></li>
+                        <li style="font-weight: 400"><span style="font-weight: 400">Приготовані з любов’ю до
+                                кожного клієнта, салати MA Pizza у м. Львів дивують неповторними смаками,
+                                дарують особливу насолоду.</span></li>
+                    </ol>
+                    <p><span style="font-weight: 400">Відчуваєте цей чарівний аромат смаженої курочки під
+                            пікантним соусом? &nbsp; Або ж хочете спробувати щось особливе, неповторне,
+                            таке, що раніше не куштували? Пікантна груша з сиром Дор Блю</span><span
+                            style="font-weight: 400">,</span><span style="font-weight: 400"> артишоки з
+                            каперсами й свіжими овочами – чи не такі страви ви давно мріяли скуштувати?
+                            Поєднання унікальних інгредієнтів у єдиній страві робить справжній вибух нових
+                            смаків.&nbsp;</span></p>
+                    <h2><b>Найсмачніші салати у Львові</b></h2>
+                    <h2><b>Замовити салат у м. Львів</b><span style="font-weight: 400">&nbsp;</span></h2>
+                    <p><span style="font-weight: 400">Доставка салатів у м. Львів є легкою, доступною. Вам
+                            достатньо обрати на сайті улюблений салат, тип доставки, спосіб оплати. Як
+                            тільки замовлення буде прийнято, наші кухарі миттєво візьмуться до роботи.
+                            Швидка доставка їжі від MA Pizza, зокрема салатів, дозволяє смачно перекусити
+                            вдома, на роботі чи навіть під час прогулянки у м. Львів.&nbsp;</span></p>
+                    <p><span style="font-weight: 400">А якщо не впевнені, який салат краще обрати,
+                            зателефонуйте до нашого кол-центру. Консультанти допоможуть вам визначитись зі
+                            стравою, швидко її замовити. Вже через кілька хвилин ви не зможете відірватись
+                            від апетитних салатів MA Pizza.&nbsp;</span></p>
+                    <p><em><b>Апетитний вигляд, спокусливий аромат, чудовий смак – це все про салати MA
+                                Pizza у м. Львів!</b></em></p>
+                </div>
+                <div class="read-more" data-read-more="Читати більше" data-read-less="Згорнути">
+                    Читати більше </div>
+            </div>
+        </div>
+        <img class="decor-img right" data-rellax-speed="-1"
+            src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fdecor-img-4.svg?alt=media&token=1978bb5c-9e25-4906-b4c5-30bb947c36af&_gl=1*1570fbj*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5Njc1MDU5Ny4zMjYuMS4xNjk2NzUwNjQ3LjEwLjAuMA.."
+            alt="">
+
+        <div class="btn-more">
+            <div class="read-more" (click)="toggleContent()">
+                {{ isExpanded ? 'ЗГОРНУТИ' : 'ЧИТАТИ БІЛЬШЕ' }}
+            </div>
+        </div>
+
 
     </div>
 

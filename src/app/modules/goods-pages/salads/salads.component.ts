@@ -22,6 +22,7 @@ export class SaladsComponent {
   public activeItem: any;
   public categoryName!: string;
   public user = '';
+  public isExpanded = false;
 
   constructor(
     private categoriesService: CategoriesService,
@@ -206,5 +207,9 @@ export class SaladsComponent {
       goods.count = 1;
       this.headerService.updateBasketData(basket);
     }
+  }
+
+  toggleContent() {
+    this.isExpanded = !this.isExpanded;
   }
 }

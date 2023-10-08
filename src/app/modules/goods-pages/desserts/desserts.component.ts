@@ -20,6 +20,7 @@ export class DessertsComponent {
   public goodsArr: Array<GoodsResponse> = [];
   public activeItem: any;
   public user = '';
+  public isExpanded = false;
 
   constructor(
     private goodsService: GoodsService,
@@ -138,5 +139,9 @@ export class DessertsComponent {
       goods.count = 1;
       this.headerService.updateBasketData(basket);
     }
+  }
+
+  toggleContent() {
+    this.isExpanded = !this.isExpanded;
   }
 }
