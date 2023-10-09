@@ -257,6 +257,10 @@ a {
   --transition: all .3s linear;
 }
 
+ul {
+  padding-left: 0rem;
+}
+
 .btn {
   color: var(--clr-white);
   background: var(--clr-red);

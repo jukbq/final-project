@@ -221,3 +221,13 @@
         }
     }
 }
+
+@media (max-width: 524px) {
+    .basket {
+        width: 100vw;
+        max-height: 100vh;
+        margin: 0px;
+        border-radius: 0px;
+
+    }
+}
