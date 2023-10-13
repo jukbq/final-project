@@ -2,6 +2,15 @@ section {
   width: 65%;
   padding: 20px 40px;
   margin: 0 auto;
+  overflow-x: auto;
+}
+section::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+section::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--clr-green);
 }
 section table {
   width: 100%;
@@ -9,7 +18,7 @@ section table {
 }
 section table thead,
 section table tbody {
-  width: 100 section table thead, section table tbody;
+  width: 100%;
   border-bottom: 3px solid var(--clr-green);
 }
 section table thead th,
@@ -38,4 +47,47 @@ section table tbody .payment {
 }
 section table tbody {
   border-bottom: none;
+}
+
+@media (max-width: 1028px) {
+  section {
+    width: 100%;
+    padding: 10px 20px;
+  }
+  section table {
+    width: 100%;
+    margin-top: 20px;
+  }
+  section table thead,
+  section table tbody {
+    width: 100%;
+    border-bottom: 3px solid var(--clr-green);
+  }
+  section table thead th,
+  section table thead td,
+  section table tbody th,
+  section table tbody td {
+    font-size: 14px;
+    line-height: 1.2em;
+    padding: 5px 15px;
+  }
+  section table thead .number_order,
+  section table thead .date_time,
+  section table thead .status,
+  section table tbody .number_order,
+  section table tbody .date_time,
+  section table tbody .status {
+    width: 14%;
+    border-bottom: 1px solid #D1D9CE;
+  }
+  section table thead .delivery_type,
+  section table thead .payment,
+  section table tbody .delivery_type,
+  section table tbody .payment {
+    width: 29%;
+    border-bottom: 1px solid #D1D9CE;
+  }
+  section table tbody {
+    border-bottom: none;
+  }
 }

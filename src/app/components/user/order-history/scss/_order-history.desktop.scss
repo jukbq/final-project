@@ -2,6 +2,19 @@ section {
     width: 65%;
     padding: 20px 40px;
     margin: 0 auto;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background: var(--clr-green);
+
+    }
 
     table {
         width: 100%;
@@ -9,7 +22,7 @@ section {
 
         thead,
         tbody {
-            width: 100&;
+            width: 100%;
             border-bottom: 3px solid var(--clr-green);
 
 
@@ -17,7 +30,7 @@ section {
             td {
                 font-size: 14px;
                 line-height: 1.2em;
-                padding:5px 15px;
+                padding: 5px 15px;
 
             }
 
@@ -37,6 +50,50 @@ section {
 
         tbody {
             border-bottom: none;
+        }
+    }
+}
+
+@media (max-width: 1028px) {
+    section {
+        width: 100%;
+        padding: 10px 20px;
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+
+            thead,
+            tbody {
+                width: 100%;
+                border-bottom: 3px solid var(--clr-green);
+
+
+                th,
+                td {
+                    font-size: 14px;
+                    line-height: 1.2em;
+                    padding: 5px 15px;
+
+                }
+
+                .number_order,
+                .date_time,
+                .status {
+                    width: 14%;
+                    border-bottom: 1px solid #D1D9CE;
+                }
+
+                .delivery_type,
+                .payment {
+                    width: 29%;
+                    border-bottom: 1px solid #D1D9CE;
+                }
+            }
+
+            tbody {
+                border-bottom: none;
+            }
         }
     }
 }

@@ -33,7 +33,6 @@ export class GoodsService {
     >;
   }
   getOneGoods(id: string) {
-    console.log('id продукта', id);
     const goodsDocumentReference = doc(this.afs, `goods/${id}`);
     return docData(goodsDocumentReference, { idField: 'id' });
   }

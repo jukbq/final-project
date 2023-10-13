@@ -196,13 +196,14 @@ export class SaladsComponent {
         if (basket.some((good) => good.id === goods.id)) {
           const index = basket.findIndex((good) => good.id === goods.id);
           basket[index].count += goods.count;
+          basket[index].priceTogether = goods.price * basket[index].count;
         } else {
           basket.push(goods);
         }
       } else {
         basket.push(goods);
       }
-
+      goods.priceTogether = goods.price;
       localStorage.setItem('basket', JSON.stringify(basket));
       goods.count = 1;
       this.headerService.updateBasketData(basket);

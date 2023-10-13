@@ -1,9 +1,12 @@
-section {
+@import '../../shared/style/input_style';
 
+section {
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center !important;
+    margin: 0 auto;
 
     .text-center h1 {
         &::before {
@@ -67,6 +70,41 @@ section {
 
         }
 
+
+    }
+}
+
+.aadmin_category {
+    width: 100%;
+}
+
+@media (max-width: 1028px) {
+    section {
+        width: 100%;
+
+        .text-center h1 {
+            &::before {
+                content: none;
+            }
+        }
+
+        .admin_menu {
+            width: 100%;
+
+        }
+    }
+}
+
+@media (max-width: 524px) {
+    section {
+        .admin_menu {
+            flex-wrap: wrap;
+
+            li {
+                width: 50%;
+            }
+
+        }
 
     }
 }

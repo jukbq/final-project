@@ -17,18 +17,24 @@ const LIST: any[] = [
 export class UserComponent {
   public list: any[] = LIST;
   public activeItem: any;
+  public isSmallScreen = false;
 
-
-  constructor(
-    private router: Router,
- 
-  ) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-   
+ const windowWidth = window.innerWidth;
+     if (windowWidth <= 524) {
+       this.isSmallScreen = true;
+     } else {
+       this.isSmallScreen = false;
+     }
   }
 
   onSelectItem(item: string): void {
-    this.activeItem = item;
+      this.activeItem = item;
+   
+   
   }
+
+
 }

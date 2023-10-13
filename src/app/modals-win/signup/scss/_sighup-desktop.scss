@@ -142,3 +142,30 @@
 
     }
 }
+
+@media (max-width:524px) {
+    .modal-content {
+        width: 100%;
+        height: 90vh;
+        overflow: auto;
+        padding: 16px;
+
+
+        .modal-body {
+
+            .user_name,
+            .user_pass {
+                flex-wrap: nowrap;
+                flex-direction: column;
+
+                input {
+                    width: 100% !important;
+                    margin-top: 16px;
+                }
+
+            }
+        }
+
+
+    }
+}

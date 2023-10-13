@@ -1,3 +1,5 @@
+@import '../../shared/style/input_style';
+
 section {
     width: 100%;
     height: auto;
@@ -58,9 +60,43 @@ section {
                 }
             }
         }
+
     }
 
-    .user-category {
-        width: 100%;
+}
+
+.user-category {
+    width: 100%;
+}
+
+
+@media (max-width: 1028px) {
+    section {
+        .text-center h1 {
+            font-size: 26px;
+
+            &::before {
+                content: none;
+            }
+        }
+
+        .user_menu {
+            width: 100%;
+        }
+
+    }
+}
+
+@media (max-width: 524px) {
+    section {
+        .user_menu {
+            flex-wrap: wrap;
+
+            li {
+                width: 50%;
+            }
+
+        }
+
     }
 }

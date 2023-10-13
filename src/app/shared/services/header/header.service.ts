@@ -24,7 +24,6 @@ export class HeaderService {
   }
 
   updateBasketData(newData: Array<GoodsResponse>) {
-     console.log(newData);
-    this.basketDataSubject.next(newData);
+     this.basketDataSubject.next(newData);
     }
 }

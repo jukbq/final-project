@@ -80,7 +80,7 @@
             }
 
             select:focus,
-             input:focus {
+            input:focus {
                 border-color: var(--clr-green);
                 box-shadow: none;
                 outline: none;
@@ -120,4 +120,42 @@
     }
 
 
+}
+
+@media (max-width: 780px) {
+    .modal-content {
+        width: 500px;
+        padding: 16px;
+        overflow: auto;
+
+
+        .modal-body {
+            .adress2 {
+                flex-wrap: wrap;
+
+
+
+                input {
+                    width: 49%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 524px) {
+    .modal-content {
+        width: 100%;
+        overflow: auto;
+
+        .modal-body {
+            .adress2 {
+                flex-direction: column;
+
+                input {
+                    width: 100%;
+                }
+            }
+        }
+    }
 }

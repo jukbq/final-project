@@ -18,51 +18,72 @@ section {
             padding: 16px 22px;
         }
 
-        table {
+        .table_block {
             width: 100%;
-            margin-top: 20px;
+            overflow-x: auto;
 
-            thead {
+            &::-webkit-scrollbar {
+                width: 4px;
+                height: 4px;
+
+            }
+
+            &::-webkit-scrollbar-thumb {
+                border-radius: 4px;
+                background: var(--clr-green);
+
+            }
+
+            table {
                 width: 100%;
+                margin-top: 20px;
 
-                tr {
-                    border-bottom: var(--clr-grey);
-                }
+                thead {
+                    width: 100%;
 
-            }
-
-            &.active {
-                display: none;
-            }
-
-            tbody {
-                tr {
-                    .image {
-                        width: 80px;
-                        height: 70px;
-                        overflow: hidden;
-
-                        img {
-                            height: 100%;
-                        }
+                    tr {
+                        border-bottom: var(--clr-grey);
                     }
 
-                    .btn_tr {
-                        width: 40px;
-                        display: flex;
-                        flex-direction: column;
+                }
 
-                        a {
-                            text-decoration: none;
-                            color: #b5d8f7;
-                            font-size: 18px;
-                            font-weight: 500;
+                &.active {
+                    display: none;
+                }
+
+                tbody {
+                    tr {
+                        .image {
+                            width: 80px;
+                            height: 70px;
+                            overflow: hidden;
+
+                            img {
+                                height: 100%;
+                            }
+                        }
+
+                        .btn_tr {
+                            width: 45px;
+
+                            display: flex;
+                            flex-direction: column;
+                            border-bottom: none;
+
+                            a {
+                                padding: 5px;
+                                overflow: hidden;
+
+                                img {
+                                    width: 20px;
+                                    height: 20px;
+                                }
+                            }
                         }
                     }
                 }
             }
         }
-
 
         .form_conteiner {
             &.active {
@@ -158,6 +179,32 @@ section {
             }
 
 
+        }
+    }
+}
+
+@media (max-width: 1028px) {
+    section {
+        width: 100%;
+        padding: 0px;
+
+        .add_ap {
+            width: 100%;
+
+
+
+
+
+
+            .form_conteiner {
+                .form_addProd {
+                    width: 100%;
+
+
+                }
+
+
+            }
         }
     }
 }

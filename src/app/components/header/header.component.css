@@ -183,6 +183,7 @@ header .header-wrapper .container .header-bottom .user-c-wrapper .user-fav {
   color: inherit;
   text-decoration: none;
   transition: var(--transition);
+  cursor: pointer;
 }
 header .header-wrapper .container .header-bottom .user-c-wrapper .user-fav svg {
   width: 100%;

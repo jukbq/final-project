@@ -204,4 +204,16 @@
      line-height: 1;
      color: var(--clr-black);
 
+
+
+ }
+
+ .select_user_menu {
+
+     background: none;
+     text-align: center;
+
+     &.active {
+         color: var(--clr-red);
+     }
  }

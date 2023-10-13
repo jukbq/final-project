@@ -1,6 +1,19 @@
 section {
     width: 80vw;
     padding: 20px 40px;
+    /*    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background: var(--clr-green);
+
+    } */
 
     .add_goods {
         width: 75%;
@@ -52,61 +65,84 @@ section {
 
 
                 &.active {
-                   background-color: var(--clr-red);
-                   color: var(--clr-white);
-                   &:first-child{
-                    border-top-left-radius: 12px;
-                    border-bottom-left-radius: 15px;
-                   }
-                   &:last-child{
-                    border-top-right-radius: 12px;
-                    border-bottom-right-radius: 12px;
-                   }
+                    background-color: var(--clr-red);
+                    color: var(--clr-white);
+
+                    &:first-child {
+                        border-top-left-radius: 12px;
+                        border-bottom-left-radius: 15px;
+                    }
+
+                    &:last-child {
+                        border-top-right-radius: 12px;
+                        border-bottom-right-radius: 12px;
+                    }
                 }
 
 
             }
         }
 
-        table {
+        .table_block {
             width: 100%;
-            margin-top: 20px;
+            overflow-x: auto;
 
-            thead {
+            &::-webkit-scrollbar {
+                width: 4px;
+                height: 4px;
+
+            }
+
+            &::-webkit-scrollbar-thumb {
+                border-radius: 4px;
+                background: var(--clr-green);
+
+            }
+
+            table {
                 width: 100%;
+                margin-top: 20px;
 
-                tr {
-                    border-bottom: var(--clr-grey);
-                }
+                thead {
+                    width: 100%;
 
-            }
-
-            &.active {
-                display: none;
-            }
-
-            tbody {
-                tr {
-                    .image {
-                        width: 80px;
-                        height: 70px;
-                        overflow: hidden;
-
-                        img {
-                            height: 100%;
-                        }
+                    tr {
+                        border-bottom: var(--clr-grey);
                     }
 
-                    .btn_tr {
-                        width: 40px;
-                        display: flex;
-                        flex-direction: column;
+                }
 
-                        a {
-                            text-decoration: none;
-                            color: #b5d8f7;
-                            font-size: 18px;
-                            font-weight: 500;
+                &.active {
+                    display: none;
+                }
+
+                tbody {
+                    tr {
+                        .image {
+                            width: 80px;
+                            height: 70px;
+                            overflow: hidden;
+
+                            img {
+                                height: 100%;
+                            }
+                        }
+
+                        .btn_tr {
+                            width: 45px;
+                            display: flex;
+                            flex-direction: column;
+                            border-bottom: none;
+
+                            a {
+                                padding: 5px;
+                                overflow: hidden;
+
+                                img {
+                                    width: 20px;
+                                    height: 20px;
+                                }
+                            }
                         }
                     }
                 }
@@ -224,6 +260,55 @@ section {
                 }
             }
 
+
+        }
+    }
+}
+
+
+@media (max-width: 1028px) {
+    section {
+        width: 100%;
+        padding: 0px;
+
+        .add_goods {
+            width: 100%;
+
+            .btn {
+                width: 80%;
+
+            }
+
+
+            .filter {
+                flex-wrap: wrap;
+
+            }
+
+
+            .form_conteiner {
+
+                .form_goods {
+                    width: 100%;
+                }
+
+
+            }
+        }
+    }
+}
+
+@media (max-width: 524px) {
+    section {
+        .add_goods {
+            .filter {
+                flex-wrap: wrap;
+
+                li {
+                    width: 50%;
+                }
+
+            }
 
         }
     }

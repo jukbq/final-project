@@ -62,60 +62,121 @@ section {
 
     }
 
-    table {
+    .table_block {
         width: 100%;
-        margin-top: 20px;
+        overflow-x: auto;
 
-        thead,
-        tbody {
-            width: 100&;
-            border-bottom: 3px solid var(--clr-green);
+        &::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
 
-
-            th,
-            td {
-                font-size: 14px;
-                line-height: 1.2em;
-                padding: 5px 15px;
-
-            }
-
-            .number_order,
-            .date_time,
-            .status {
-                width: 14%;
-
-            }
-
-            .delivery_type,
-            .payment,
-            .order_produkts,
-            .image_produkts,
-            .comment {
-                width: 29%;
-                border-bottom: 1px solid #D1D9CE;
-            }
-
-            .image {
-                width: 29%;
-                height: 50px;
-                display: flex;
-                align-items: center;
-
-                img {
-                    height: 100%;
-                    object-fit: contain;
-                }
-
-            }
-
-            tr {
-                border-bottom: 1px solid #D1D9CE;
-            }
         }
 
-        tbody {
-            border-bottom: none;
+        &::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background: var(--clr-green);
+
+        }
+
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+
+            thead,
+            tbody {
+                width: 100&;
+                border-bottom: 3px solid var(--clr-green);
+
+
+                th,
+                td {
+                    font-size: 14px;
+                    line-height: 1.2em;
+                    padding: 5px 15px;
+
+                }
+
+                .number_order,
+                .date_time,
+                .status {
+                    width: 14%;
+
+                    button {
+                        width: 100%;
+                        border: none;
+                        padding: 5px;
+
+
+                        img {
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+
+                }
+
+                .delivery_type,
+                .payment,
+                .order_produkts,
+                .image_produkts,
+                .comment {
+                    width: 29%;
+                    border-bottom: 1px solid #D1D9CE;
+                }
+
+                .image {
+                    width: 29%;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+
+                    img {
+                        height: 100%;
+                        object-fit: contain;
+                    }
+
+                }
+
+             
+
+                tr {
+                    border-bottom: 1px solid #D1D9CE;
+                }
+            }
+
+            tbody {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 1028px) {
+    section {
+        padding: 0px;
+
+
+        .category_menu {
+            width: 100%;
+        }
+
+        .table_block {
+            width: 100%;
+            overflow-x: auto;
+
+            &::-webkit-scrollbar {
+                width: 4px;
+                height: 4px;
+
+            }
+
+            &::-webkit-scrollbar-thumb {
+                border-radius: 4px;
+                background: var(--clr-green);
+
+            }
+
         }
     }
 }

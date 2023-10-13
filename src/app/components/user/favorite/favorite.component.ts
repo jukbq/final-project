@@ -30,6 +30,7 @@ export class FavoriteComponent {
   ngOnInit(): void {
     const customer = JSON.parse(localStorage.getItem('curentUser') as string);
     this.uid = customer.uid;
+    this.user = customer.role;
     this.getFavoritList();
    
   }
@@ -115,8 +116,10 @@ getFavoritList(){
         this.headerService.updateBasketData(basket);
       }
 
-      localStorage.setItem('basket', JSON.stringify(basket));
-      goods.count = 1;
+         goods.priceTogether = goods.price;
+         localStorage.setItem('basket', JSON.stringify(basket));
+         goods.count = 1;
+         this.headerService.updateBasketData(basket);
     }
   }
 }

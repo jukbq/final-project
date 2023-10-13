@@ -19,7 +19,7 @@ const LIST: any[] = [
   { name: 'Акції', link: 'actions' },
   { name: 'Контакти', link: 'contacts' },
   { name: 'Вакансії', link: 'vacancies' },
-  { name: 'Новини', link: 'news' },
+
 ];
 
 @Component({
@@ -41,6 +41,7 @@ export class HeaderComponent {
   public fullName = '';
   public summ = 0;
   public count = 0;
+
 
   constructor(
     private el: ElementRef,
@@ -108,9 +109,9 @@ export class HeaderComponent {
 
   // Вибір пункту меню
   onSelectItem(item: string): void {
+   
     this.menuLink = item;
     this.headerService.emitHeaderClick(item);
-    console.log(item);
     if (item !== 'pizza') {
       this.viewportScroller.scrollToPosition([0, 0]);
     }
@@ -118,7 +119,7 @@ export class HeaderComponent {
 
   // Анімація активного стану гамбургера
   hamburger_active() {
-    const headerTop = this.el.nativeElement.querySelector('.header-top');
+       const headerTop = this.el.nativeElement.querySelector('.header-top');
     const headerMenuList = this.el.nativeElement.querySelector('.menu-list');
     const hamburgerInner =
       this.el.nativeElement.querySelector('.hamburger-inner');
@@ -220,5 +221,16 @@ export class HeaderComponent {
     let basket = this.dialog.open(BasketComponent, {
       data: { panelClass: 'active' },
     });
+  }
+
+  userFav() {
+    if (this.isLogin === true) {
+      console.log('user', this.isLogin);
+
+      this.router.navigate(['/user/favorite']);
+    } else {
+      console.log('user', this.isLogin);
+      this.router.navigate(['/']);
+    }
   }
 }

@@ -30,42 +30,7 @@ section {
 
                 input {
                     width: 45%;
-                    padding: 0px 15px;
-                    position: relative;
-                    margin-bottom: 16px;
-                    font-size: 16px;
-                    height: 54px;
-                    line-height: 54px;
-                    background: var(--clr-white);
-                    border: 1px solid var(--clr-grey);
-                    border-radius: 12px;
-                    text-overflow: ellipsis;
-                    transition: var(--transition);
-
-                    &.input-error {
-                        border-color: var(--clr-red);
-                        box-shadow: none;
-
-                    }
-
-                    &.valid {
-                        border-color: var(--clr-grey);
-                    }
-
-
-                }
-
-                input[type="date"]::-webkit-calendar-picker-indicator {
-                    display: none;
-                }
-
-                input[type="date"] {
-                    width: 100%;
-                    background-image: url('https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fcalendar.svg?alt=media&token=492938e7-56c6-471e-80c4-90d0e324d92b');
-                    background-size: 50px 20px;
-                    background-repeat: no-repeat;
-                    background-position: right center;
-                    padding-right: 25px;
+                    margin-top: 16px;
                 }
 
                 P {
@@ -170,11 +135,40 @@ section {
             }
 
             .adaress {
-              display: flex;
-              align-items: center;
-              justify-content: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 cursor: pointer;
-          
+
+            }
+        }
+    }
+}
+
+@media (max-width: 1028px) {
+    section {
+        width: 100%;
+
+    }
+}
+
+@media (max-width: 524px) {
+    section {
+        form {
+            .form-body {
+                h4 {
+                    font-size: 20px;
+                }
+
+                .user_data {
+                    flex-wrap: nowrap;
+                    flex-direction: column;
+
+                    input {
+                        width: 100%;
+                        margin-top: 16px;
+                    }
+                }
             }
         }
     }

@@ -6,6 +6,7 @@
         </li>
     </ul>
 
+<div class="table_block">
     <table>
         <thead>
             <tr>
@@ -65,20 +66,24 @@
                     <td class="image"><img [src]="orderItem.images" alt="{{ orderItem.name }}"></td>
                     <td class="status" *ngIf="isFirstItem" [attr.rowspan]="order.orderedItems.length">
                         {{order.status}}
-                    </td>
+                    </td >
                     <td class="status" *ngIf="isFirstItem" [attr.rowspan]="order.orderedItems.length">
-                        <button (click)="confirmOrder(order.orderNumber)" [disabled]="order.status === 'Виконано'"
-                            class="btn" type="button">
-                            Виконано
+                        <button (click)="confirmOrder(order.orderNumber)" [disabled]="order.status === 'Виконано'" class="edit" type="button">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/icon%2Fedit.svg?alt=media&token=2c3ab95d-c6f0-4f36-9127-626674e9d9ab&_gl=1*96vw8j*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjkyMDIxNS4zMzAuMS4xNjk2OTIwMjcyLjMuMC4w"
+                                alt="">
                         </button>
-                        <button (click)="deleteOrder(order.orderNumber)" [disabled]="order.status === 'Виконано'"
-                            class="btn" type="button">
-                            Видалити
+                        <button (click)="deleteOrder(order.orderNumber)" [disabled]="order.status === 'Виконано'" class="dell" type="button">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/icon%2Fdel.svg?alt=media&token=5765a105-be2a-4537-b99e-b5f0447c88a4&_gl=1*12xf5iz*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjkyMDIxNS4zMzAuMS4xNjk2OTIwNDI2LjYwLjAuMA.."
+                                alt="">
                         </button>
-                    </td>
+                    </td >
+             
 
                 </tr>
             </ng-container>
         </tbody>
     </table>
+</div>
+
+
 </section>

@@ -3,14 +3,12 @@
         <h1>Особистий кабінет</h1>
     </div>
     <ul class="user_menu">
-        <li [routerLink]="[ item.link ]"
-         routerLinkActive="active"
-          *ngFor="let item of list"
-            (click)="onSelectItem(item)"
-             [class.active]="item == activeItem">
+        <li [routerLink]="[ item.link ]" routerLinkActive="active" *ngFor="let item of list"
+            (click)="onSelectItem(item)" [class.active]="item == activeItem">
             <p class="nav-link">{{item.name}}</p>
         </li>
-       </ul>
+    </ul>
+
     <div class="user-category">
         <router-outlet></router-outlet>
     </div>

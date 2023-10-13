@@ -1,6 +1,7 @@
 section .goods-container {
   width: 100%;
   position: relative;
+  margin-top: 0px;
 }
 section .goods-container .text-left h1::before {
   left: -41px;
@@ -42,7 +43,6 @@ section .goods-container .filters-list li img {
 }
 section .goods-container .products-wrapper {
   width: 100%;
-  min-height: 100vh;
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -50,6 +50,7 @@ section .goods-container .products-wrapper {
   list-style: none;
   overflow: hidden;
   transition: var(--transition);
+  padding-left: 0rem;
 }
 section .goods-container .products-wrapper li {
   width: 32%;

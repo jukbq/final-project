@@ -28,7 +28,6 @@ export class FavoritesService {
     const customer = JSON.parse(localStorage.getItem('curentUser') as string);
     if (customer && customer.uid) {
       const userId = customer.uid;
-      console.log(userId);
       this.getFavoritesByUser(userId).subscribe((favorites) => {
         this.favoritesSubject.next(
           favorites.map((favorite) => favorite.productId)
@@ -42,9 +41,7 @@ export class FavoritesService {
     userId: string,
     productId: string
   ): Promise<DocumentReference<DocumentData>> {
-    console.log(userId);
-    console.log(productId);
-    const favoritesCollection = collection(this.afs, 'favorites');
+       const favoritesCollection = collection(this.afs, 'favorites');
     return addDoc(favoritesCollection, { userId, productId });
     this.loadFavorites();
   }

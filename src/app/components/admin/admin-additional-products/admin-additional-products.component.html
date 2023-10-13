@@ -6,6 +6,8 @@
             {{ !ap_form ? "ДОДАТИ ТОВАР" : "ВІДМІНИТИ" }}
         </button>
 
+
+        <div class="table_block">
         <table [ngClass]="{ active: ap_form }" class="table">
             <thead>
                 <tr>
@@ -22,19 +24,26 @@
                 <tr *ngFor="let addProd of addProd; let i = index">
                     <td>{{ i + 1 }}</td>
                     <td>{{ addProd.category.category }}</td>
-                    <td>{{ addProd.name }}</td>
-                    <td>{{ addProd.weight }}</td>
-                    <td>{{ addProd.price }}</td>
+                    <td>{{ addProd.apName }}</td>
+                    <td>{{ addProd.apWeight }}</td>
+                    <td>{{ addProd.apPrice }}</td>
                     <td class="image">
-                        <img [src]="addProd.images" />
+                        <img [src]="addProd.apImages" />
                     </td>
-                    <td class="btn_tr">
-                        <a (click)="editAddProd(addProd)" type="button">Редагувати</a>
-                        <a (click)="delAddPro(addProd)" type="button">Видалити</a>
+                                     <td class="btn_tr">
+                        <a (click)="editAddProd(addProd)" type="button" title="Редагувати">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/icon%2Fedit.svg?alt=media&token=2c3ab95d-c6f0-4f36-9127-626674e9d9ab&_gl=1*96vw8j*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjkyMDIxNS4zMzAuMS4xNjk2OTIwMjcyLjMuMC4w"
+                                alt="">
+                        </a>
+                        <a (click)="delAddPro(addProd)" type="button" title="Видалити">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/icon%2Fdel.svg?alt=media&token=5765a105-be2a-4537-b99e-b5f0447c88a4&_gl=1*12xf5iz*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjkyMDIxNS4zMzAuMS4xNjk2OTIwNDI2LjYwLjAuMA.."
+                                alt="">
+                        </a>
                     </td>
                 </tr>
             </tbody>
         </table>
+        </div>
 
         <div class="form_conteiner" [ngClass]="{ active: !ap_form}">
             <form [formGroup]="addProdForm" (ngSubmit)="creatAddProd()" class="form_addProd">

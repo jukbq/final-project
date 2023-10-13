@@ -43,61 +43,113 @@ section .category_menu li.active {
 section .category_menu li.active p {
   color: var(--clr-white);
 }
-section table {
+section .table_block {
+  width: 100%;
+  overflow-x: auto;
+}
+section .table_block::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+section .table_block::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--clr-green);
+}
+section .table_block table {
   width: 100%;
   margin-top: 20px;
 }
-section table thead,
-section table tbody {
-  width: 100 section table thead, section table tbody;
+section .table_block table thead,
+section .table_block table tbody {
+  width: 100 section .table_block table thead, section .table_block table tbody;
   border-bottom: 3px solid var(--clr-green);
 }
-section table thead th,
-section table thead td,
-section table tbody th,
-section table tbody td {
+section .table_block table thead th,
+section .table_block table thead td,
+section .table_block table tbody th,
+section .table_block table tbody td {
   font-size: 14px;
   line-height: 1.2em;
   padding: 5px 15px;
 }
-section table thead .number_order,
-section table thead .date_time,
-section table thead .status,
-section table tbody .number_order,
-section table tbody .date_time,
-section table tbody .status {
+section .table_block table thead .number_order,
+section .table_block table thead .date_time,
+section .table_block table thead .status,
+section .table_block table tbody .number_order,
+section .table_block table tbody .date_time,
+section .table_block table tbody .status {
   width: 14%;
 }
-section table thead .delivery_type,
-section table thead .payment,
-section table thead .order_produkts,
-section table thead .image_produkts,
-section table thead .comment,
-section table tbody .delivery_type,
-section table tbody .payment,
-section table tbody .order_produkts,
-section table tbody .image_produkts,
-section table tbody .comment {
+section .table_block table thead .number_order button,
+section .table_block table thead .date_time button,
+section .table_block table thead .status button,
+section .table_block table tbody .number_order button,
+section .table_block table tbody .date_time button,
+section .table_block table tbody .status button {
+  width: 100%;
+  border: none;
+  padding: 5px;
+}
+section .table_block table thead .number_order button img,
+section .table_block table thead .date_time button img,
+section .table_block table thead .status button img,
+section .table_block table tbody .number_order button img,
+section .table_block table tbody .date_time button img,
+section .table_block table tbody .status button img {
+  width: 20px;
+  height: 20px;
+}
+section .table_block table thead .delivery_type,
+section .table_block table thead .payment,
+section .table_block table thead .order_produkts,
+section .table_block table thead .image_produkts,
+section .table_block table thead .comment,
+section .table_block table tbody .delivery_type,
+section .table_block table tbody .payment,
+section .table_block table tbody .order_produkts,
+section .table_block table tbody .image_produkts,
+section .table_block table tbody .comment {
   width: 29%;
   border-bottom: 1px solid #D1D9CE;
 }
-section table thead .image,
-section table tbody .image {
+section .table_block table thead .image,
+section .table_block table tbody .image {
   width: 29%;
   height: 50px;
   display: flex;
   align-items: center;
 }
-section table thead .image img,
-section table tbody .image img {
+section .table_block table thead .image img,
+section .table_block table tbody .image img {
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }
-section table thead tr,
-section table tbody tr {
+section .table_block table thead tr,
+section .table_block table tbody tr {
   border-bottom: 1px solid #D1D9CE;
 }
-section table tbody {
+section .table_block table tbody {
   border-bottom: none;
+}
+
+@media (max-width: 1028px) {
+  section {
+    padding: 0px;
+  }
+  section .category_menu {
+    width: 100%;
+  }
+  section .table_block {
+    width: 100%;
+    overflow-x: auto;
+  }
+  section .table_block::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  section .table_block::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: var(--clr-green);
+  }
 }

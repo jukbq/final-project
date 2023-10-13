@@ -124,6 +124,7 @@ export class DrinksComponent {
         if (basket.some((good) => good.id === goods.id)) {
           const index = basket.findIndex((good) => good.id === goods.id);
           basket[index].count += goods.count;
+          basket[index].priceTogether = goods.price * basket[index].count;
         } else {
           basket.push(goods);
         }
@@ -132,8 +133,10 @@ export class DrinksComponent {
         this.headerService.updateBasketData(basket);
       }
 
+      goods.priceTogether = goods.price;
       localStorage.setItem('basket', JSON.stringify(basket));
       goods.count = 1;
+      this.headerService.updateBasketData(basket);
     }
   }
 }

@@ -52,7 +52,7 @@
         display: flex;
         flex-direction: column;
 
-       .popup-links-wrapper {
+        .popup-links-wrapper {
             display: flex;
             align-items: center;
             margin-top: 15px;
@@ -75,5 +75,12 @@
                 color: var(--clr-red);
             }
         }
+    }
+}
+
+@media (max-width: 524px) {
+    .modal-content {
+        width: 100%;
+        padding: 16px;
     }
 }

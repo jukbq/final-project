@@ -49,11 +49,11 @@ export class AdminAdditionalProductsComponent {
   initGoodForm(): void {
     this.addProdForm = this.formBuilder.group({
       category: [null, Validators.required],
-      name: [null, Validators.required],
-      weight: [null, Validators.required],
-      price: [null, Validators.required],
-      images: [null, Validators.required],
-      count: [1],
+      apName: [null, Validators.required],
+      apWeight: [null, Validators.required],
+      apPrice: [null, Validators.required],
+      apImages: [null, Validators.required],
+      apCount: [1],
     });
   }
 
@@ -94,10 +94,10 @@ export class AdminAdditionalProductsComponent {
   editAddProd(addProd: AdditionalProductsResponse) {
     this.addProdForm.patchValue({
       category: addProd.category,
-      name: addProd.name,
-      weight: addProd.weight,
-      price: addProd.price,
-      images: addProd.images,
+      name: addProd.apName,
+      weight: addProd.apWeight,
+      price: addProd.apPrice,
+      images: addProd.apImages,
     });
     this.ap_form = true;
     this.edit_status = true;
@@ -105,7 +105,7 @@ export class AdminAdditionalProductsComponent {
   }
 
   delAddPro(index: AdditionalProductsResponse) {
-    const task = ref(this.storsge, index.images);
+    const task = ref(this.storsge, index.apImages);
     deleteObject(task);
     this.addProdService.delAdditionalProductss(index.id as string).then(() => {
       this.getAddProd();

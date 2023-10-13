@@ -2,7 +2,6 @@
 import { СategoriesResponse } from './categories';
 import { MenuResponse } from './menu';
 
-
 export interface GoodsRequest {
   menu: MenuResponse;
   menuName: СategoriesResponse;
@@ -20,6 +19,7 @@ export interface GoodsRequest {
   bonusTogether: number;
   images: string;
   count: number;
+  addProducts: [];
 }
 
 export interface GoodsResponse extends GoodsRequest {
