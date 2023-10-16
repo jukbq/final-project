@@ -1,0 +1,281 @@
+.ing_body {
+  overflow: auto;
+  max-height: calc(100% - 78px);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d1d9ce;
+  background: var(--clr-white);
+  border-radius: 16px;
+  transition: var(--transition);
+  padding: 30px 40px;
+}
+.ing_body .info_container {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  height: 100%;
+  padding: 0 20px 20px;
+}
+.ing_body .info_container .image_box {
+  position: relative;
+  display: block;
+  padding-bottom: 0;
+  margin: 0;
+  width: 240px;
+  height: 160px;
+}
+.ing_body .info_container .image_box .fav_btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  border: none !important;
+  background: none;
+}
+.ing_body .info_container .image_box .fav_btn svg {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+.ing_body .info_container .image_box .fav_btn svg .fill-anime {
+  fill: transparent;
+  stroke: var(--clr-red);
+  transition: var(--transition);
+}
+.ing_body .info_container .image_box .fav_btn:hover svg .fill-anime {
+  stroke: var(--clr-green);
+  fill: var(--clr-green);
+}
+.ing_body .info_container .image_box .fav_btn.active svg .fill-anime {
+  fill: var(--clr-red);
+}
+.ing_body .info_container .image_box img {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: var(--transition);
+}
+.ing_body .info_container .product_info-wrapper {
+  margin-left: 30px;
+  align-self: center;
+}
+.ing_body .info_container .product_info-wrapper .product_controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ing_body .info_container .product_info-wrapper .product_controls .price_size_wrapper {
+  display: flex;
+  align-items: center;
+}
+.ing_body .info_container .product_info-wrapper .product_controls .price_size_wrapper .product_price {
+  font-size: 12px;
+  line-height: 1em;
+  margin: 0;
+}
+.ing_body .info_container .product_info-wrapper .product_controls .price_size_wrapper .product_size {
+  margin: 0 0 0 5px;
+}
+.ing_body .info_container .product_info-wrapper .product_controls .product_title-wrap {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.ing_body .info_container .product_info-wrapper .product_controls .product_title-wrap .product_title {
+  font-size: 30px;
+  min-height: auto;
+  min-height: 2.6em;
+  line-height: 1.3em;
+}
+.ing_body .info_container .product_info-wrapper .product_controls .product_title-wrap .product_title i {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 26px;
+  height: 26px;
+  border-radius: 100%;
+  background: var(--clr-third);
+  margin-left: 5px;
+}
+.ing_body .info_container .product_info-wrapper .product_controls .product_title-wrap .product_title i img {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.ing_body .info_container .product_info-wrapper .product_controls .product_desc {
+  display: -webkit-box;
+  overflow: hidden;
+  min-height: 4.5em;
+  color: var(--clr-grey);
+  font-size: 12px;
+  line-height: 1.5em;
+  margin-bottom: 10px;
+}
+.ing_body .ing_pick-up-from {
+  padding: 15px 40px 30px;
+  border-top: 1px solid #d1d9ce;
+}
+.ing_body .ing_pick-up-from .ing_group .title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--clr-black);
+  margin-bottom: 10px;
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 10px;
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_control {
+  display: none;
+  align-items: center;
+  margin-right: 10px;
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_control.active {
+  display: inline-flex;
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_control .ing_control-title {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--clr-black);
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_control .btn-close {
+  position: relative;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  background: none;
+  border: none !important;
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_control .btn-close:before, .ing_body .ing_pick-up-from .ing_group .select_inglist .ing_control .btn-close:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 40%;
+  height: 2px;
+  background: var(--clr-red);
+  transition: var(--transition);
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_control .btn-close:after {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_control .btn-close:hover:before, .ing_body .ing_pick-up-from .ing_group .select_inglist .ing_control .btn-close:hover:after {
+  background: var(--clr-green);
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_output-clean-all {
+  display: none;
+  align-items: center;
+  cursor: pointer;
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_output-clean-all.active {
+  display: inline-flex;
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_output-clean-all b {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4em;
+  color: var(--clr-red);
+  transition: var(--transition);
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_output-clean-all i {
+  position: relative;
+  margin-left: 5px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  border: 1px solid var(--clr-red);
+  transition: var(--transition);
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_output-clean-all i::before, .ing_body .ing_pick-up-from .ing_group .select_inglist .ing_output-clean-all i::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 8px;
+  height: 1px;
+  background: var(--clr-red);
+  transition: var(--transition);
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_output-clean-all i::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_output-clean-all:hover b {
+  color: var(--clr-green);
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_output-clean-all:hover i {
+  border: 1px solid var(--clr-green);
+}
+.ing_body .ing_pick-up-from .ing_group .select_inglist .ing_output-clean-all:hover i::before, .ing_body .ing_pick-up-from .ing_group .select_inglist .ing_output-clean-all:hover i::after {
+  background: var(--clr-green);
+}
+.ing_body .ing_pick-up-from .ing_group .tab-i-nav {
+  margin: 20px 0;
+}
+.ing_body .ing_pick-up-from .ing_group .tab-i-nav .tab-i-toggle {
+  display: inline-flex;
+  font-size: 0;
+}
+.ing_body .ing_pick-up-from .ing_group .tab-i-nav .tab-i-toggle .sel_ing_btn {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  flex: 1;
+  vertical-align: top;
+  cursor: pointer;
+  white-space: nowrap;
+  border: 1px solid #E1E1E1;
+  margin-left: -1px;
+  position: relative;
+  margin-right: 5px;
+  cursor: pointer;
+  border: 1px solid #d1d9ce;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+}
+.ing_body .ing_pick-up-from .ing_group .tab-i-nav .tab-i-toggle .sel_ing_btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  margin: -1px;
+  border: 2px solid var(--clr-green);
+  border-radius: inherit;
+  opacity: 0;
+  transition: var(--transition);
+}
+.ing_body .ing_pick-up-from .ing_group .tab-i-nav .tab-i-toggle .sel_ing_btn:hover {
+  color: var(--clr-green);
+}
+.ing_body .ing_pick-up-from .ing_group .tab-i-nav .tab-i-toggle .sel_ing_btn:hover:before {
+  opacity: 1;
+}
+.ing_body .ing_pick-up-from .ing_group .tab-i-nav .tab-i-toggle .sel_ing_btn.active {
+  color: var(--clr-green);
+}
+.ing_body .ing_pick-up-from .ing_group .tab-i-nav .tab-i-toggle .sel_ing_btn.active:before {
+  opacity: 1;
+}

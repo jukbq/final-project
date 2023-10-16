@@ -19,6 +19,7 @@ import { AdditionalProductsResponse } from 'src/app/shared/interfaces/additional
 import { СategoriesResponse } from 'src/app/shared/interfaces/categories';
 import { GoodsResponse } from 'src/app/shared/interfaces/goods';
 import { MenuResponse } from 'src/app/shared/interfaces/menu';
+import { AdditionalProductsService } from 'src/app/shared/services/additional-products/additional-products.service';
 import { CategoriesService } from 'src/app/shared/services/categories/categories.service';
 import { GoodsService } from 'src/app/shared/services/goods/goods.service';
 import { MenuService } from 'src/app/shared/services/menu/menu.service';
@@ -29,14 +30,6 @@ import { MenuService } from 'src/app/shared/services/menu/menu.service';
   styleUrls: ['./admin-goods.component.scss'],
 })
 export class AdminGoodsComponent {
-  constructor(
-    private formBuilder: FormBuilder,
-    private goodsService: GoodsService,
-    private categoriesService: CategoriesService,
-    private menuService: MenuService,
-    private storsge: Storage
-  ) {}
-
   public menu: Array<MenuResponse> = [];
   public category: Array<СategoriesResponse> = [];
   public goods: Array<GoodsResponse> = [];
@@ -50,21 +43,32 @@ export class AdminGoodsComponent {
   public selectedMenu: MenuResponse[] = [];
   public selectedCategories: СategoriesResponse[] = [];
   public bonusControl: FormControl = new FormControl(0);
+  public additionalProducts: Array<AdditionalProductsResponse> = [];
+  public selectedOptions: number[] = [];
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private goodsService: GoodsService,
+    private categoriesService: CategoriesService,
+    private menuService: MenuService,
+    private storsge: Storage,
+    private addProdService: AdditionalProductsService,
+  ) {}
 
   ngOnInit(): void {
     this.initGoodForm();
     this.getCategory();
     this.getMenu();
     this.getGoods();
+    this.getadditionalProducts();
 
-    // Добавляем подписку на изменения поля menu
     this.goodForm.get('menu')?.valueChanges.subscribe((menu) => {
       const categoryControl = this.goodForm.get('category');
       if (menu && (menu.menuLink === 'pizza' || menu.menuLink === 'salads')) {
         categoryControl?.enable();
         categoryControl?.setValidators([Validators.required]);
       } else {
-        categoryControl?.disable(); 
+        categoryControl?.disable();
         categoryControl?.clearValidators();
       }
       categoryControl?.updateValueAndValidity();
@@ -86,6 +90,7 @@ export class AdminGoodsComponent {
       bonusTogether: 0,
       count: 1,
       addProducts: [],
+      selectAddProduct: [],
     });
     this.goodForm.get('price')?.valueChanges.subscribe((price) => {
       const bonus = Math.round(price * 0.03);
@@ -123,21 +128,38 @@ export class AdminGoodsComponent {
     });
   }
 
+  //Завантаження додаткового товару
+  getadditionalProducts(): void {
+    this.addProdService.getAll().subscribe((data) => {
+      this.additionalProducts = data as AdditionalProductsResponse[];
+    });
+  }
+
+  logSelection(selectedOption: any) {
+    const selectedProducts = this.goodForm.get(
+      'selectAddProduct'
+    ) as FormControl;
+
+    const currentSelectedOptions = selectedProducts.value as string;
+  }
+
+  resetForm() {
+    this.goodForm.reset();
+  }
+
   creatGoods() {
     if (this.edit_status) {
-        this.goodsService
-          .editGoods(this.goodForm.value, this.goodID as string)
-          .then(() => {
-            this.getGoods();
-            this.uploadPercent = 0;
-          });
-      
-    } else {
-        this.goodsService.addGoods(this.goodForm.value).then(() => {
+      this.goodsService
+        .editGoods(this.goodForm.value, this.goodID as string)
+        .then(() => {
           this.getGoods();
           this.uploadPercent = 0;
         });
-      
+    } else {
+      this.goodsService.addGoods(this.goodForm.value).then(() => {
+        this.getGoods();
+        this.uploadPercent = 0;
+      });
     }
 
     this.goodForm.reset();
@@ -155,6 +177,7 @@ export class AdminGoodsComponent {
       price: good.price,
       images: good.images,
       addProducts: [],
+      selectAddProduct: [],
     });
     this.good_form = true;
     this.edit_status = true;

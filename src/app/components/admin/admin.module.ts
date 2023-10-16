@@ -18,12 +18,9 @@ import { AdminAdditionalProductsComponent } from './admin-additional-products/ad
     AdminCategoriesComponent,
     AdminGoodsComponent,
     AdminOrderComponent,
-    AdminAdditionalProductsComponent
+    AdminAdditionalProductsComponent,
+   
   ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule,
-    SharedModule
-  ]
+  imports: [CommonModule, AdminRoutingModule, SharedModule],
 })
-export class AdminModule { }
+export class AdminModule {}

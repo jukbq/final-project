@@ -31,7 +31,7 @@ export class AdditionalProductsService {
   getAll() {
     return collectionData(this.additionalProductsCollectio, {
       idField: 'id',
-    }) as Observable<Array<AdditionalProductsResponse>>;
+    }) as Observable<AdditionalProductsResponse[]>;
   }
 
   addAdditionalProducts(additionalProducts: AdditionalProductsRequest) {
@@ -52,7 +52,10 @@ export class AdditionalProductsService {
   }
 
   delAdditionalProductss(id: string) {
-    const additionalProductsDocumentReference = doc(this.afs, `additionalProducts/${id}`);
+    const additionalProductsDocumentReference = doc(
+      this.afs,
+      `additionalProducts/${id}`
+    );
     return deleteDoc(additionalProductsDocumentReference);
   }
 }

@@ -1,0 +1,77 @@
+<div class="ing_body">
+    <div class="info_container">
+
+        <div class="image_box">
+            <button (click)="addFavorites(productID)" [ngClass]="{ 'active': isFavorite(productID) }" class="fav_btn"
+                type="button">
+                <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="fill-anime"
+                        d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48342 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15842 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </button>
+            <img src="{{productImages}}" alt="">
+        </div>
+        <div class="product_info-wrapper">
+
+            <div class="product_controls">
+                <div class="price_size_wrapper">
+                    <div class="product_price"><b class="price" itemprop="price">{{productPrices}}</b>
+                        <span itemprop="priceCurrency" content="UAH">грн</span>
+                    </div>
+                    <div class="product_size">/ <span class="size">{{productWeightes}}</span> г</div>
+                </div>
+            </div>
+
+            <div class="product_title-wrap">
+                <div class="product_title" itemprop="name">
+                    <b>{{productName}}</b>
+                    <i><i><img src="{{productCatImg}}" alt=""></i></i>
+                </div>
+            </div>
+
+            <div class="product_desc">
+                {{productCompound}} </div>
+        </div>
+
+    </div>
+
+    <div class="ing_pick-up-from">
+        <div class="ing_group">
+            
+            <div class="title h6">Додаткові інгредієнти</div>
+            
+
+            <div class="select_inglist">
+                <div *ngFor="let selectIng of additionalProducts; let i = index" class="ing_control"
+                    [ngClass]="{ 'active': isActive(i) }">
+                    <div class="ing_control-title">
+                        {{selectIng.apName}}
+                    </div>
+                    <button class="btn-close" (click)="toggleActive(i)"></button>
+
+                </div>
+                <div class="ing_output-clean-all" (click)="cleanAll()">
+                    <b>Очистити все</b>
+                    <i></i>
+                </div>
+
+            </div>
+           
+            <div class="tab-i-nav">
+                <div class="tab-i-toggle">
+                    <div class="sel_ing_btn sauces active" (click)="selectIngBtn('sauces', $event)">
+                        <b>Соуси</b>
+                    </div>
+                    <div class="sel_ing_btn appendices" (click)="selectIngBtn('appendices', $event)">
+                        <b>Додатки</b>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>

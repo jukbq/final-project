@@ -94,10 +94,11 @@ export class AdminAdditionalProductsComponent {
   editAddProd(addProd: AdditionalProductsResponse) {
     this.addProdForm.patchValue({
       category: addProd.category,
-      name: addProd.apName,
-      weight: addProd.apWeight,
-      price: addProd.apPrice,
-      images: addProd.apImages,
+      apName: addProd.apName,
+      apWeight: addProd.apWeight,
+      apPrice: addProd.apPrice,
+      apImages: addProd.apImages,
+      apCount: addProd.apCount,
     });
     this.ap_form = true;
     this.edit_status = true;
@@ -114,11 +115,11 @@ export class AdminAdditionalProductsComponent {
 
   upload(event: any): void {
     const file = event.target.files[0];
-    this.loadFIle('images', file.name, file)
+    this.loadFIle('apImages', file.name, file)
       .then((data) => {
         if (this.uploadPercent == 100) {
           this.addProdForm.patchValue({
-            images: data,
+            apImages: data,
           });
         }
       })
@@ -153,12 +154,12 @@ export class AdminAdditionalProductsComponent {
   }
 
   deleteImage(): void {
-    const task = ref(this.storsge, this.valueByControl('images'));
+    const task = ref(this.storsge, this.valueByControl('apImages'));
     deleteObject(task).then(() => {
       console.log('File deleted');
       this.uploadPercent = 0;
       this.addProdForm.patchValue({
-        images: null,
+        apImages: null,
       });
     });
   }

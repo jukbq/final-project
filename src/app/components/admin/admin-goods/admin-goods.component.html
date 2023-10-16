@@ -2,7 +2,7 @@
 
     <div class=" add_goods ">
 
-        <button (click)="good_form = !good_form" class="btn" data-rel="address" type="button">
+        <button (click)="good_form = !good_form; resetForm()" class="btn" data-rel="address" type="button">
             {{ !good_form ? "ДОДАТИ ТОВАР" : "ВІДМІНИТИ" }}
         </button>
 
@@ -101,8 +101,18 @@
                 </div>
                 <div class="select-addProd">
 
-
                 </div>
+
+        <div class="form-group" *ngIf="goodForm.get('menu')?.value?.menuLink === 'pizza'">
+
+                <label for="selectedOptions">Оберіть додаткові товари</label>
+                <select formControlName="selectAddProduct"  id="selectedOptions" class="form-control" multiple  (change)="logSelection($event)">
+                    <option *ngFor="let option of additionalProducts"  [value]="option.id">{{ option.apName }}</option>
+                </select>
+            </div>
+
+
+
 
 
                 <div class="load_file">

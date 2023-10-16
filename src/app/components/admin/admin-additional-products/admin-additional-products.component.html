@@ -58,15 +58,13 @@
                             </option>
                         </select>
                    
-                    <input formControlName="name" type="text" name="name" class="form-control" placeholder="*Назва"
+                    <input formControlName="apName" type="text" name="apName" class="form-control" placeholder="*Назва"
                         aria-label="Назва" />
-                    <input formControlName="weight" type="number" name="weight" class="form-control" placeholder="*Вага"
+                    <input formControlName="apWeight" type="number" name="apWeight" class="form-control" placeholder="*Вага"
                         aria-label="Вага" />
-                    <input formControlName="price" type="number" name="price" class="form-control" placeholder="*Ціна"
+                    <input formControlName="apPrice" type="number" name="apPrice" class="form-control" placeholder="*Ціна"
                         aria-label="Ціна" />
                 </div>
-
-
 
                 <div class="load_file">
                     <input class="form-control form-control-lg" type="file" (change)="upload($event)" />
@@ -84,7 +82,7 @@
 
                 <div class="image_block">
                     <td class="image">
-                        <img [src]="valueByControl('images')" />
+                        <img [src]="valueByControl('apImages')" />
                     </td>
                 </div>
 

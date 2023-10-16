@@ -1,7 +1,7 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { ToastrService } from 'ngx-toastr';
 import { ActionResponse } from 'src/app/shared/interfaces/action';
 import { GoodsResponse } from 'src/app/shared/interfaces/goods';
@@ -42,7 +42,8 @@ export class PizzaComponent {
     private goodsService: GoodsService,
     private toastr: ToastrService,
     private afs: Firestore,
-    private favoritesService: FavoritesService
+    private favoritesService: FavoritesService,
+    private viewportScroller: ViewportScroller
   ) {}
 
   ngOnInit(): void {
@@ -111,6 +112,7 @@ export class PizzaComponent {
   productInfo(poduct: any): void {
     const productId = poduct.id;
     this.router.navigate(['/product-info', { id: productId }]);
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 
   currentUser() {

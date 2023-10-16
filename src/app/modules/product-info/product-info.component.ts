@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Firestore, collection, getDocs } from '@angular/fire/firestore';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AdditionalProductsComponent } from 'src/app/modals-win/additional-products/additional-products.component';
 import { AdditionalProductsResponse } from 'src/app/shared/interfaces/additional-products';
 import { APCategoryResponse } from 'src/app/shared/interfaces/additionalProductsCategory';
 import { GoodsResponse } from 'src/app/shared/interfaces/goods';
@@ -10,6 +12,9 @@ import { CategoriesService } from 'src/app/shared/services/categories/categories
 import { FavoritesService } from 'src/app/shared/services/favorites/favorites.service';
 import { GoodsService } from 'src/app/shared/services/goods/goods.service';
 import { HeaderService } from 'src/app/shared/services/header/header.service';
+import { MatSelectModule } from '@angular/material/select';
+import { firstValueFrom } from 'rxjs';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-product-info',
@@ -21,8 +26,9 @@ export class ProductInfoComponent {
   public productId = '';
   public productName = '';
   public favoriteProducts: string[] = [];
-  public productData: GoodsResponse | undefined;
-  public additionalProducts: Array<AdditionalProductsResponse> = [];
+  public productData: any = [];
+  public addProdId: any = [];
+  public additionalProducts: any = [];
   public activeAddProducts: number[] = [];
   public addProdActiveArr: any = [];
   public addProductPrice = 0;
@@ -31,6 +37,11 @@ export class ProductInfoComponent {
   public bonus = 0;
   public totalPrice = 0;
   public user = '';
+  public goodsArr: Array<GoodsResponse> = [];
+  public menuGoodsArr: Array<GoodsResponse> = [];
+  public activeSection = 'drinks';
+  public noCategory = true;
+  public ingGroupOn = false;
 
   constructor(
     private categoriesService: CategoriesService,
@@ -40,7 +51,10 @@ export class ProductInfoComponent {
     private favoritesService: FavoritesService,
     private headerService: HeaderService,
     private toastr: ToastrService,
-    private addProdService: AdditionalProductsService
+    private addProdService: AdditionalProductsService,
+    public dialog: MatDialog,
+    private router: Router,
+    private viewportScroller: ViewportScroller
   ) {}
 
   ngOnInit(): void {
@@ -51,8 +65,6 @@ export class ProductInfoComponent {
     this.productName = '';
     if (productIdParam !== null) {
       this.productId = productIdParam;
-      this.getProduct();
-
       this.favoritesService
         .getOneFavoriteProduct(this.uid, this.productId)
         .subscribe((favoriteProduct) => {
@@ -62,28 +74,67 @@ export class ProductInfoComponent {
           }
         });
     }
+
+    this.getProduct();
   }
 
   //завантаження основного товару
-  getProduct() {
-    this.goodsService
-      .getOneGoods(this.productId as string)
-      .subscribe((data) => {
-        this.productData = data as GoodsResponse;
-        this.productName = this.productData.menu.menuLink;
-        this.productPrice = this.productData.price;
-        this.productCount = this.productData.count;
-        if (this.productName === 'pizza') {
-          this.getadditionalProducts();
-        }
-        this.calcTotalPrice();
-      });
+  async getProduct() {
+    try {
+      this.productData = await firstValueFrom(
+        this.goodsService.getOneGoods(this.productId as string)
+      );
+
+      this.productName = this.productData.menu.menuLink;
+      this.productPrice = this.productData.price;
+      this.productCount = this.productData.count;
+      this.addProdId = this.productData!.selectAddProduct;
+      if (this.productName === 'desserts' || this.productName === 'drinks') {
+        this.noCategory = false;
+      }
+      console.log(this.addProdId);
+
+      if (
+        this.productName === 'pizza' &&
+        Array.isArray(this.addProdId) &&
+        this.addProdId.length > 0
+      ) {
+        this.ingGroupOn = true;
+        this.getadditionalProducts();
+        this.getRecommendedProducts();
+      } else {
+        this.ingGroupOn = false;
+      }
+      this.calcTotalPrice();
+      this.getMenuProducts();
+    } catch (error) {}
   }
 
   //Завантаження додаткового товару
   getadditionalProducts(): void {
     this.addProdService.getAll().subscribe((data) => {
-      this.additionalProducts = data as AdditionalProductsResponse[];
+      const additionalProducts = data as AdditionalProductsResponse[];
+      for (const product of this.addProdId) {
+        const existingProduct = additionalProducts.find(
+          (item: any) => item.id === product
+        );
+        this.additionalProducts.push(existingProduct);
+      }
+    });
+  }
+
+  getRecommendedProducts() {
+    this.goodsService.getAll().subscribe((data) => {
+      this.goodsArr = data.filter(
+        (item) => item.menu.menuLink === this.activeSection
+      );
+    });
+  }
+  getMenuProducts() {
+    this.goodsService.getAll().subscribe((data) => {
+      this.menuGoodsArr = data.filter(
+        (item) => item.menu.menuLink === this.productName
+      );
     });
   }
 
@@ -254,27 +305,24 @@ export class ProductInfoComponent {
         console.log('Збільшення кількості товару');
         basket[index].count += goods.count;
         basket[index].priceTogether = goods.price * basket[index].count;
-      
-   if (addProd.length > 0) {
-     console.log('перевірка чи є додатковий товар');
-     for (const element of addProd) {
-       const existingProduct = basket[index].addProducts.find(
-         (item: any) => item.id === element.id
-       );
-       if (existingProduct) {
-         console.log('Знайдено товар', existingProduct);
-         existingProduct.apCount += 1;
-         existingProduct.summPrice =
-           existingProduct.apPrice * existingProduct.apCount;
-       } else {
-         element.apCount = 1;
-         element.summPrice = element.apPrice;
-         basket[index].addProducts.push(element);
-       }
-     }
-   }
 
-        
+        if (addProd.length > 0) {
+          for (const element of addProd) {
+            const existingProduct = basket[index].addProducts.find(
+              (item: any) => item.id === element.id
+            );
+            if (existingProduct) {
+              console.log('Знайдено товар', existingProduct);
+              existingProduct.apCount += 1;
+              existingProduct.summPrice =
+                existingProduct.apPrice * existingProduct.apCount;
+            } else {
+              element.apCount = 1;
+              element.summPrice = element.apPrice;
+              basket[index].addProducts.push(element);
+            }
+          }
+        }
       } else {
         basket.push(order);
       }
@@ -299,7 +347,6 @@ export class ProductInfoComponent {
     this.clearAllActive();
     this.calcTotalPrice();
     this.getProduct();
-
   }
 
   clearAllActive() {
@@ -335,5 +382,35 @@ export class ProductInfoComponent {
         this.favoriteProducts.push(productId);
       });
     }
+  }
+
+  // Відкриття модального вікна для додавання або редагування адреси
+  ingredient(productID: number | string): void {
+    console.log(productID);
+
+    const dialogRef = this.dialog.open(AdditionalProductsComponent, {
+      panelClass: 'ing_madoal_dialog',
+      data: { productID },
+    });
+  }
+
+  drinkConfig = {
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    infinite: true,
+    centerMode: false,
+    variableWidth: true,
+    autoplay: false,
+    dots: true,
+    arrows: true,
+    swipe: true,
+  };
+
+  productInfo(poduct: any): void {
+    this.productId = poduct.id;
+    this.productName = poduct.menu.menuLink;
+    this.addProdId = [];
+    this.getProduct();
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 }

@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
@@ -28,7 +29,8 @@ export class DessertsComponent {
     private toastr: ToastrService,
     private router: Router,
     private afs: Firestore,
-    private favoritesService: FavoritesService
+    private favoritesService: FavoritesService,
+    private viewportScroller: ViewportScroller
   ) {}
 
   ngOnInit(): void {
@@ -71,6 +73,7 @@ export class DessertsComponent {
   productInfo(poduct: any): void {
     const productId = poduct.id;
     this.router.navigate(['/product-info', { id: productId }]);
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 
   // Перевірка, чи є товар у списку улюблених користувача
@@ -128,17 +131,17 @@ export class DessertsComponent {
         if (basket.some((good) => good.id === goods.id)) {
           const index = basket.findIndex((good) => good.id === goods.id);
           basket[index].count += goods.count;
-            basket[index].priceTogether = goods.price * basket[index].count;
+          basket[index].priceTogether = goods.price * basket[index].count;
         } else {
           basket.push(goods);
         }
       } else {
         basket.push(goods);
       }
-   goods.priceTogether = goods.price;
+      goods.priceTogether = goods.price;
       localStorage.setItem('basket', JSON.stringify(basket));
       goods.count = 1;
-           this.headerService.updateBasketData(basket);
+      this.headerService.updateBasketData(basket);
     }
   }
 

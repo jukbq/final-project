@@ -20,6 +20,7 @@ export interface GoodsRequest {
   images: string;
   count: number;
   addProducts: [];
+  selectAddProduct: [];
 }
 
 export interface GoodsResponse extends GoodsRequest {

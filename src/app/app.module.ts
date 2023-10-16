@@ -48,6 +48,8 @@ import { VacanciesComponent } from './modules/about-company-pages/vacancies/vaca
 import { NewsComponent } from './modules/about-company-pages/news/news.component';
 import { AboutUsComponent } from './modules/about-company-pages/about-us/about-us.component';
 import { ActionInfoComponent } from './modules/action-info/action-info.component';
+import { AdditionalProductsComponent } from './modals-win/additional-products/additional-products.component';
+import { OrderByPipe } from './shared/pipe/sort';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,8 @@ import { ActionInfoComponent } from './modules/action-info/action-info.component
     VacanciesComponent,
     NewsComponent,
     ActionInfoComponent,
-
+    AdditionalProductsComponent,
+    OrderByPipe,
   ],
   imports: [
     BrowserModule,

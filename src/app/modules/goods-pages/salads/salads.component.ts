@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
@@ -31,7 +32,8 @@ export class SaladsComponent {
     private toastr: ToastrService,
     private router: Router,
     private afs: Firestore,
-    private favoritesService: FavoritesService
+    private favoritesService: FavoritesService,
+    private viewportScroller: ViewportScroller
   ) {}
 
   ngOnInit(): void {
@@ -75,6 +77,7 @@ export class SaladsComponent {
   productInfo(poduct: any): void {
     const productId = poduct.id;
     this.router.navigate(['/product-info', { id: productId }]);
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 
   // Перевірка, чи є товар у списку улюблених користувача

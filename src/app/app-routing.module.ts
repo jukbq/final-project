@@ -17,6 +17,7 @@ import { DeliveryAndPaymentComponent } from './modules/about-company-pages/deliv
 import { NewsComponent } from './modules/about-company-pages/news/news.component';
 import { VacanciesComponent } from './modules/about-company-pages/vacancies/vacancies.component';
 import { ActionInfoComponent } from './modules/action-info/action-info.component';
+import { AdditionalProductsComponent } from './modals-win/additional-products/additional-products.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'news', component: NewsComponent },
   { path: 'vacancies', component: VacanciesComponent },
   { path: 'action-info', component: ActionInfoComponent },
+  { path: 'assProd', component: AdditionalProductsComponent },
 
   {
     path: 'product-info',
