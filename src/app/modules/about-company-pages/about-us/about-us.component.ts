@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Firestore,} from '@angular/fire/firestore';
+import { Firestore } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { addDoc, collection } from 'firebase/firestore';
 
@@ -13,11 +13,19 @@ export class AboutUsComponent {
   fileInput!: ElementRef;
   public customerForm!: FormGroup;
   public selectedFile: File | undefined;
-  
-  constructor(private formBuilder: FormBuilder, private afs: Firestore) {}
 
+  constructor(private formBuilder: FormBuilder, private afs: Firestore) {}
+  public benefits = false;
+
+  
   ngOnInit(): void {
     this.initForm();
+    const windowWidth = window.innerWidth;
+    if (windowWidth <= 524) {
+      this.benefits = true;
+    } else {
+      this.benefits = false;
+    }
   }
 
   initForm(): void {
@@ -28,7 +36,6 @@ export class AboutUsComponent {
       comment: [null],
     });
   }
-
 
   onFileChange(event: any) {
     const fileList: FileList = event.target.files;
@@ -46,7 +53,6 @@ export class AboutUsComponent {
   }
 
   async checkout() {
-   
     const vacancy = {
       firstname: this.customerForm.value.firstname,
       phone: this.customerForm.value.phone,
@@ -54,17 +60,25 @@ export class AboutUsComponent {
       comment: this.customerForm.value.comment,
       selectedFile: this.selectedFile || null,
     };
-     const vacancyCollectionRef = collection(this.afs, 'vacancy');
-     console.log(vacancyCollectionRef);
-     
-   try {
-     const docRef = await addDoc(vacancyCollectionRef, vacancy);
-     console.log('Документ успешно добавлен с ID:', docRef.id);
-   } catch (error) {
-     console.error('Ошибка при добавлении документа:', error);
-   }
+    const vacancyCollectionRef = collection(this.afs, 'vacancy');
+    console.log(vacancyCollectionRef);
 
-
-    
+    try {
+      const docRef = await addDoc(vacancyCollectionRef, vacancy);
+      console.log('Документ успешно добавлен с ID:', docRef.id);
+    } catch (error) {
+      console.error('Ошибка при добавлении документа:', error);
+    }
   }
+
+  benefitsConfig = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    fade: true,
+    autoplay: false,
+    dots: true,
+    arrows: true,
+    swipe: true,
+  };
 }

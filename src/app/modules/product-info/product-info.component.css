@@ -760,6 +760,70 @@ section .recommended_products .swiper-slide .slide .goods_card .product_controls
   section .product_info_container .info_container .info_box .ing_group .ing_row .ingredient {
     width: 30% !important;
   }
+  section .product_info_container .info_container .info_box .product_controls {
+    height: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px 10px 10px;
+  }
+  section .product_info_container .info_container .info_box .product_controls .product_price-wrap {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    font-size: 20px;
+    line-height: 1em;
+  }
+  section .product_info_container .info_container .info_box .product_controls .product_size {
+    display: inline-block;
+    flex-shrink: 0;
+    font-size: 16px;
+    line-height: 1em;
+    margin: 5px auto 0 5px;
+    color: var(--clr-grey);
+  }
+  section .product_info_container .info_container .info_box .product_controls .thumb-input-number {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    color: var(--clr-black);
+    font-size: 16px;
+    line-height: 1;
+    border: 1px solid #d1d9ce;
+    border-radius: 12px;
+    align-self: center;
+    margin-top: 10px;
+  }
+  section .product_info_container .info_container .info_box .product_controls .thumb-input-number button {
+    position: relative;
+    width: 46px;
+    height: 46px;
+    cursor: pointer;
+    background: none;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+  }
+  section .product_info_container .info_container .info_box .product_controls .thumb-input-number input {
+    width: 46px;
+    height: 28px;
+    font-weight: 400;
+    text-align: center;
+    border: none;
+    border-left: 1px solid #d1d9ce;
+    border-right: 1px solid #d1d9ce;
+  }
+  section .product_info_container .info_container .info_box .product_controls .thumb-input-number input:focus {
+    outline: none;
+    border: none;
+  }
+  section .product_info_container .info_container .info_box .product_controls .order-btn {
+    width: 40%;
+  }
 }
 @media (max-width: 524px) {
   section .product_info_container .info_container {

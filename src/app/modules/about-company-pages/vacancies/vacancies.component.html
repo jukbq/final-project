@@ -15,7 +15,7 @@
 
         <div class="h2_title">Наші вакансії</div>
 
-        <div class="our_vacancies">
+        <div *ngIf="!ourVacancies"  class="our_vacancies">
             <div class="benefits-item">
                 <div class="benefits-img">
                     <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fbenefits-img-1.svg?alt=media&token=f83d0867-0f5a-478e-b5d5-47f356179456&_gl=1*1dp1j5*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjQ5NDE3OC4zMTguMC4xNjk2NDk0MTc4LjYwLjAuMA.."
@@ -55,6 +55,51 @@
                     Регулярні виплати </div>
             </div>
         </div>
+
+        <ngx-slick-carousel *ngIf="ourVacancies" class="swiper-slide" #slickModal="slick-carousel" [config]="vacanciesConfig">
+            <div ngxSlickItem class="benefits-item">
+                <div class="benefits-img">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fbenefits-img-1.svg?alt=media&token=f83d0867-0f5a-478e-b5d5-47f356179456&_gl=1*1dp1j5*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjQ5NDE3OC4zMTguMC4xNjk2NDk0MTc4LjYwLjAuMA.."
+                        alt="">
+                </div>
+                <div class="title h5">
+                    Чудовий старт кар’єри </div>
+            </div>
+            
+            <div ngxSlickItem class="benefits-item">
+            
+                <div class="benefits-img">
+                    <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/benefits-img-2.svg"
+                        alt="https://mapizza.com.ua/wp-content/uploads/2021/09/benefits-img-2.svg">
+                </div>
+                <div class="title h5">
+                    Контакти </div>
+            </div>
+            
+            <div ngxSlickItem class="benefits-item">
+            
+                <div class="benefits-img">
+                    <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/benefits-img-3.svg"
+                        alt="https://mapizza.com.ua/wp-content/uploads/2021/09/benefits-img-3.svg">
+                </div>
+                <div class="title h5">
+                    Гнучкий графік роботи </div>
+            </div>
+            
+            <div ngxSlickItem class="benefits-item">
+            
+                <div class="benefits-img">
+                    <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/benefits-img-4.svg"
+                        alt="https://mapizza.com.ua/wp-content/uploads/2021/09/benefits-img-4.svg">
+                </div>
+                <div class="title h5">
+                    Регулярні виплати </div>
+            </div>
+          
+          
+          
+        
+        </ngx-slick-carousel>
 
         <div class="vacancy-row">
             <div class="vacancy-item">
@@ -164,7 +209,7 @@
 
     <!-- Форма вакансії -->
     <div class="form_block">
-        <div class="h2_title">
+        <div class="h2_title head">
             Любов з першого шматочка
         </div>
         <div class="contacts-block">

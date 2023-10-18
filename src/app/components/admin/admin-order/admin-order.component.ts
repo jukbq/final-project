@@ -1,16 +1,13 @@
-import { Component, NgModule } from '@angular/core';
+import { Component} from '@angular/core';
 import {
-  Firestore,
   collection,
   setDoc,
   deleteDoc,
-  docData,
-  where,
+  where, Firestore,
 } from '@angular/fire/firestore';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+
 import { Router } from '@angular/router';
-import { doc, getDocs, query, updateDoc } from 'firebase/firestore';
+import { getDocs, query } from 'firebase/firestore';
 
 const LIST: any[] = [
   { name: 'Усі' },
@@ -34,6 +31,7 @@ export class AdminOrderComponent {
     this.getUserOrders();
   }
 
+
   onSelectItem(item: string): void {
     this.activeSection = item;
     this.getUserOrders();
@@ -53,10 +51,10 @@ export class AdminOrderComponent {
          ) {
            this.userOrders.push(orderData);
          }
-        
-     
-        
-        
+
+
+
+
       });
     } catch (error) {
       console.error('Помилка при отриманні замовлень:', error);

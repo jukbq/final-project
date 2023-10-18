@@ -12,6 +12,8 @@ import { ActionService } from 'src/app/shared/services/action/action.service';
 export class ActionsComponent {
   public actions: Array<ActionResponse> = [];
   public actionName = '';
+  public windowWidth!: number;
+  public disableBlock: boolean = false;
 
   constructor(
     private actionService: ActionService,
@@ -21,6 +23,10 @@ export class ActionsComponent {
 
   ngOnInit(): void {
     this.getActions();
+    this.windowWidth = window.innerWidth;
+        if (this.windowWidth <= 524) {
+          this.disableBlock = true;
+        }
   }
 
   getActions(): void {
@@ -33,11 +39,11 @@ export class ActionsComponent {
     if (action !== 'Бонусна програма') {
       this.actionName = action.id;
       this.router.navigate(['/action-info', { id: this.actionName }]);
-       this.viewportScroller.scrollToPosition([0, 0]);
+      this.viewportScroller.scrollToPosition([0, 0]);
     } else {
       this.actionName = action;
       this.router.navigate(['/action-info', { id: this.actionName }]);
-       this.viewportScroller.scrollToPosition([0, 0]);
+      this.viewportScroller.scrollToPosition([0, 0]);
     }
   }
 }

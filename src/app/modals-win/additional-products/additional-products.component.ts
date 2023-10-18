@@ -1,10 +1,12 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { AdditionalProductsResponse } from 'src/app/shared/interfaces/additional-products';
 import { GoodsResponse } from 'src/app/shared/interfaces/goods';
 import { AdditionalProductsService } from 'src/app/shared/services/additional-products/additional-products.service';
 import { FavoritesService } from 'src/app/shared/services/favorites/favorites.service';
 import { GoodsService } from 'src/app/shared/services/goods/goods.service';
+import { HeaderService } from 'src/app/shared/services/header/header.service';
 
 @Component({
   selector: 'app-additional-products',
@@ -14,23 +16,25 @@ import { GoodsService } from 'src/app/shared/services/goods/goods.service';
 export class AdditionalProductsComponent {
   public productID: any;
   public favoriteProducts: string[] = [];
+  public productData: any = [];
   public uid = '';
-  public productImages = '';
+  public user = '';
   public productPrices = 0;
-  public productWeightes = '';
-  public productCompound = '';
-  public productName = '';
-  public productCatImg = '';
   public additionalProducts: Array<AdditionalProductsResponse> = [];
+  public addProductsSort: any = [];
   public activeAddProducts: number[] = [];
   public addProdActiveArr: any = [];
   public addProductPrice = 0;
+  public noCategory = true;
+  public bonus = 0;
 
   constructor(
     private goodsService: GoodsService,
     private favoritesService: FavoritesService,
     private addProdService: AdditionalProductsService,
     public dialogRef: MatDialogRef<AdditionalProductsComponent>,
+    private headerService: HeaderService,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA)
     public data: { productID: any }
   ) {}
@@ -38,30 +42,36 @@ export class AdditionalProductsComponent {
   ngOnInit(): void {
     const customer = JSON.parse(localStorage.getItem('curentUser') as string);
     this.uid = customer.uid;
+    this.user = customer.role;
     this.productID = this.data.productID;
+    console.log(this.productID);
+
     this.getProduct();
     this.getadditionalProducts();
   }
 
   getProduct() {
-    this.goodsService
-      .getOneGoods(this.productID as string)
-      .subscribe((data) => {
-        const productData = data as GoodsResponse;
-        this.productImages = productData.images;
-        this.productPrices = productData.price;
-        this.productWeightes = productData.weight;
-        this.productWeightes = productData.weight;
-        this.productName = productData.name;
-        this.productCompound = productData.compound;
-        this.productCatImg = productData.category.images;
-      });
+    console.log(this.productID);
+    this.goodsService.getOneGoods(this.productID).subscribe((data) => {
+      this.productData = data;
+      let productMenuName = this.productData.menu.menuLink;
+      if (productMenuName === 'desserts' || productMenuName === 'drinks') {
+        this.noCategory = false;
+      }
+    });
+
+    console.log(this.productData);
   }
 
   //Завантаження додаткового товару
   getadditionalProducts(): void {
     this.addProdService.getAll().subscribe((data) => {
-      this.additionalProducts = data as AdditionalProductsResponse[];
+      this.additionalProducts = data;
+      for (let i = 0; i < this.additionalProducts.length; i++) {
+        if (this.additionalProducts[i].category.link === 'sauce') {
+          this.addProductsSort.push(this.additionalProducts[i]);
+        }
+      }
     });
   }
 
@@ -161,14 +171,167 @@ export class AdditionalProductsComponent {
     }
   }
 
-  selectIngBtn(category: string, event: Event) {
-   const elements = document.querySelectorAll('.sauces, .appendices');
-   elements.forEach((element) => {
-     element.classList.remove('active');
-   });
+  // Зміна кількості додаткового товару в кошику
+  quantity_ings(index: any, value: boolean) {
+    const isActive = this.isActive(index);
+    if (isActive) {
+      if (value) {
+        this.addProdActiveArr = this.addProdActiveArr.map(
+          (item: {
+            id: any;
+            apCount: number;
+            apPrice: number;
+            summPrice: number;
+          }) => {
+            if (item.id === index) {
+              item.apCount += 1;
+              item.summPrice = item.apPrice * item.apCount;
+            }
+            return item;
+          }
+        );
+        for (let i = 0; i < this.addProductsSort.length; i++) {
+          if (i === index) {
+            this.addProductsSort[i].apCount += 1;
+            console.log(this.addProductsSort[i]);
+          }
+        }
+      } else {
+        this.addProdActiveArr = this.addProdActiveArr.map(
+          (item: {
+            id: any;
+            apCount: number;
+            apPrice: number;
+            summPrice: number;
+          }) => {
+            if (item.id === index) {
+              if (item.apCount > 1) {
+                item.apCount -= 1;
+                item.summPrice -= item.apPrice;
+              }
+            }
+            return item;
+          }
+        );
+        for (let i = 0; i < this.additionalProducts.length; i++) {
+          if (i === index) {
+            if (this.additionalProducts[i].apCount > 1) {
+              this.additionalProducts[i].apCount -= 1;
+            }
+          }
+        }
+      }
+    }
+    this.summAddProdActive();
+  }
 
-   // Додати активний клас до поточного елемента
-   const element = event.currentTarget as HTMLElement;
-   element.classList.add('active');
+  selectIngBtn(category: string, event: Event) {
+    const elements = document.querySelectorAll('.sauce, .appendices');
+    elements.forEach((element) => {
+      element.classList.remove('active');
+    });
+
+    // Додати активний клас до поточного елемента
+    const element = event.currentTarget as HTMLElement;
+    element.classList.add('active');
+    if (category === 'sauce') {
+      this.addProductsSort = [];
+      for (let i = 0; i < this.additionalProducts.length; i++) {
+        if (this.additionalProducts[i].category.link === 'sauce') {
+          this.addProductsSort.push(this.additionalProducts[i]);
+        }
+      }
+    } else {
+      this.addProductsSort = [];
+      for (let i = 0; i < this.additionalProducts.length; i++) {
+        this.addProductsSort.push(this.additionalProducts[i]);
+      }
+    }
+  }
+
+  quantity_goods(good: GoodsResponse, value: boolean): void {
+    if (value) {
+      ++good.count;
+      good.newPrice = true;
+      good.priceTogether = good.price * good.count;
+      good.bonusTogether = good.bonus * good.count;
+    } else if (!value && good.count > 1) {
+      --good.count;
+      good.priceTogether -= good.price;
+      good.bonusTogether -= good.bonus;
+    }
+  }
+  // Додавання товару до кошика
+  addToBasket(goods: any): void {
+    if (this.user === 'ADMIN') {
+      this.toastr.warning(
+        'Адміністратор не може робити замовлення, увійдіть або зареєструйтесь'
+      );
+      return;
+    }
+    let order = {
+      bonus: this.bonus,
+      bonusTogether: goods.bonusTogether,
+      category: goods.category,
+      compound: goods.compound,
+      count: goods.count,
+      id: goods.id,
+      images: goods.images,
+      menu: goods.menu,
+      name: goods.name,
+      newPrice: goods.newPrice,
+      price: goods.price,
+      priceTogether: goods.priceTogether,
+      weight: goods.weight,
+      addProducts: this.addProdActiveArr,
+    };
+    let basket: any = [];
+    let addProd = this.addProdActiveArr;
+    if (localStorage.length > 0 && localStorage.getItem('basket')) {
+      basket = JSON.parse(localStorage.getItem('basket') as string);
+      console.log('первірка чи кощик не пустий');
+
+      console.log('первірка чи є товар');
+      if (basket.some((good: { id: any }) => good.id === goods.id)) {
+        const index = basket.findIndex(
+          (good: { id: any }) => good.id === goods.id
+        );
+        console.log('Збільшення кількості товару');
+        basket[index].count += goods.count;
+        basket[index].priceTogether = goods.price * basket[index].count;
+
+        if (addProd.length > 0) {
+          for (const element of addProd) {
+            const existingProduct = basket[index].addProducts.find(
+              (item: any) => item.id === element.id
+            );
+            if (existingProduct) {
+              console.log('Знайдено товар', existingProduct);
+              existingProduct.apCount += 1;
+              existingProduct.summPrice =
+                existingProduct.apPrice * existingProduct.apCount;
+            } else {
+              element.apCount = 1;
+              element.summPrice = element.apPrice;
+              basket[index].addProducts.push(element);
+            }
+          }
+        }
+      } else {
+        basket.push(order);
+      }
+    } else {
+      basket.push(order);
+    }
+
+    goods.priceTogether = goods.price;
+    localStorage.setItem('basket', JSON.stringify(basket));
+    this.headerService.updateBasketData(basket);
+    this.cleanAll();
+    this.close();
+  }
+
+  close(): void {
+    this.dialogRef.close();
   }
 }

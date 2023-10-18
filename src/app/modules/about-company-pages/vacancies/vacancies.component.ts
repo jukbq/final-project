@@ -14,11 +14,18 @@ export class VacanciesComponent {
   fileInput!: ElementRef;
   public customerForm!: FormGroup;
   public selectedFile: File | undefined;
+  public ourVacancies = false;
 
   constructor(private formBuilder: FormBuilder, private afs: Firestore) {}
 
   ngOnInit(): void {
     this.initForm();
+    const windowWidth = window.innerWidth;
+    if (windowWidth <= 524) {
+      this.ourVacancies = true;
+    } else {
+      this.ourVacancies = false;
+    }
   }
 
   initForm(): void {
@@ -63,4 +70,15 @@ export class VacanciesComponent {
       console.error('Ошибка при добавлении документа:', error);
     }
   }
+
+  vacanciesConfig = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    fade: true,
+    autoplay: false,
+    dots: true,
+    arrows: true,
+    swipe: true,
+  };
 }

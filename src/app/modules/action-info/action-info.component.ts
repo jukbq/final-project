@@ -23,16 +23,16 @@ export class ActionInfoComponent {
     if (actionParam !== null) {
       this.action = actionParam;
       this.getAction();
-    } 
+    }
   }
 
   getAction() {
     if (this.action !== 'Бонусна програма')
       this.actionService.getOneAction(this.action).subscribe((data) => {
         this.actionData = data as ActionResponse;
-        this.action = this.actionData.title
+        this.action = this.actionData.title;
         console.log(this.actionData);
-              });
-console.log(this.action);
+      });
+    console.log(this.action);
   }
 }

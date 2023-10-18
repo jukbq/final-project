@@ -98,7 +98,7 @@ import { OrderByPipe } from './shared/pipe/sort';
     SlickCarouselModule,
     SharedModule,
   ],
-  providers: [ScreenTrackingService, UserTrackingService, HeaderService],
+  providers: [ ScreenTrackingService, UserTrackingService, HeaderService, ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

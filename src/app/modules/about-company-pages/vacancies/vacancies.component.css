@@ -327,6 +327,202 @@ section .form_block .contacts-block .faq-form form .batton_group .btn {
   margin-top: 0px;
 }
 
+@media (max-width: 1028px) {
+  section {
+    margin-top: 40px;
+  }
+  section .banner-align {
+    height: 320px;
+  }
+  section .banner-align .banner_title {
+    font-size: 26px;
+  }
+  section .vacancy {
+    width: 100%;
+    margin-top: 73px;
+  }
+  section .vacancy .decor-img {
+    display: none;
+  }
+  section .vacancy .h2_title {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  section .vacancy .h2_title::before {
+    content: none;
+  }
+  section .vacancy .our_vacancies {
+    flex-wrap: wrap;
+  }
+  section .vacancy .our_vacancies .benefits-item {
+    width: 48%;
+    padding: 15px 10px;
+    margin-top: 33px;
+  }
+  section .vacancy .our_vacancies .benefits-item .benefits-img img {
+    max-width: 36px;
+    max-height: 36px;
+  }
+  section .vacancy .our_vacancies .benefits-item .title {
+    font-size: 18px;
+    line-height: 1.3em;
+    font-weight: 600;
+    color: var(--clr-black);
+  }
+  section .vacancy .vacancy-row {
+    flex-wrap: wrap;
+  }
+  section .vacancy .vacancy-row .vacancy-item {
+    width: 48%;
+  }
+  section .vacancy .vacancy-row .vacancy-item .vacancy-img {
+    height: 255px;
+  }
+  section .vacancy .advantages-row {
+    flex-wrap: wrap;
+  }
+  section .vacancy .advantages-row .advantages-item {
+    width: 48%;
+    margin-bottom: 40px;
+  }
+  section .vacancy .advantages-row .advantages-item .advantages-img {
+    height: 255px;
+    align-items: center;
+  }
+  section .vacancy .advantages-row .advantages-item .advantages-img img {
+    height: 100%;
+  }
+  section .vacancy .advantages-row .advantages-item .advantages-info {
+    padding: 10px 5px 15px;
+  }
+  section .vacancy .advantages-row .advantages-item .advantages-info .h5 {
+    font-size: 18px;
+  }
+  section .form_block {
+    width: 70%;
+    margin-top: 40px;
+    margin-bottom: 5px;
+  }
+  section .form_block .h2_title {
+    margin: 0 auto;
+  }
+  section .form_block .h2_title::before {
+    content: none;
+  }
+  section .form_block .head {
+    display: none;
+  }
+  section .form_block .contacts-block {
+    width: 100%;
+    border: none;
+    border-radius: 0px;
+    flex-direction: column;
+    padding: 0px;
+    box-shadow: none;
+    margin-top: 0px;
+  }
+  section .form_block .contacts-block .decor-img {
+    display: none;
+  }
+  section .form_block .contacts-block .contacts-wrapper {
+    width: 100%;
+    padding: 0px 20px;
+    border: 1px solid #D1D9CE;
+    border-radius: 16px;
+  }
+  section .form_block .contacts-block .contacts-wrapper .contact-item {
+    padding: 15px 0;
+    border-top: 1px solid #D1D9CE;
+  }
+  section .form_block .contacts-block .contacts-wrapper .contact {
+    border-top: none;
+  }
+  section .form_block .contacts-block .faq-form {
+    width: 100%;
+    border-left: none;
+    border: 1px solid #D1D9CE;
+    border-radius: 16px;
+    padding: 20px 30px 30px;
+    margin-top: 40px;
+  }
+}
+@media (max-width: 780px) {
+  section .banner-align {
+    height: 395px;
+    overflow: visible;
+  }
+  section .banner-align .banner_title {
+    color: black;
+    bottom: -60px;
+  }
+  section .vacancy .vacancy-row {
+    flex-wrap: wrap;
+  }
+  section .vacancy .vacancy-row .vacancy-item .vacancy-img {
+    height: 185px;
+  }
+  section .vacancy .advantages-row .advantages-item {
+    box-shadow: none;
+  }
+  section .vacancy .advantages-row .advantages-item .advantages-img {
+    height: 185px;
+  }
+  section .form_block {
+    width: 100%;
+  }
+  section .form_block .h2_title {
+    font-size: 22px;
+  }
+}
+@media (max-width: 524px) {
+  section .banner-align {
+    height: 230px;
+  }
+  section .banner-align .banner_title {
+    color: black;
+    bottom: -60px;
+  }
+  section .vacancy .swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: auto;
+    position: relative;
+    transition-property: transform;
+  }
+  section .vacancy .swiper-slide .benefits-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d1d9ce;
+    border-radius: 25px;
+    padding: 15px 10px;
+  }
+  section .vacancy .swiper-slide .benefits-item .benefits-img {
+    margin-bottom: 10px;
+  }
+  section .vacancy .swiper-slide .benefits-item .title {
+    font-size: 18px;
+    line-height: 1.3em;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--clr-black);
+  }
+  section .vacancy .vacancy-row {
+    flex-wrap: wrap;
+  }
+  section .vacancy .vacancy-row .vacancy-item {
+    width: 100%;
+  }
+  section .vacancy .vacancy-row .vacancy-item .vacancy-img {
+    height: 225px;
+  }
+  section .vacancy .advantages-row .advantages-item {
+    width: 100%;
+  }
+  section .vacancy .advantages-row .advantages-item .advantages-img {
+    height: 225px;
+  }
+}
 input,
 textarea {
   padding: 0px 15px;

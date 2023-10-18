@@ -84,7 +84,6 @@ export class ProductInfoComponent {
       this.productData = await firstValueFrom(
         this.goodsService.getOneGoods(this.productId as string)
       );
-
       this.productName = this.productData.menu.menuLink;
       this.productPrice = this.productData.price;
       this.productCount = this.productData.count;

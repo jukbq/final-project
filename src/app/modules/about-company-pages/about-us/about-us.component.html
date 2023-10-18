@@ -11,12 +11,13 @@
     <div class="info_block">
 
         <div class="container">
-            <div class="benefits-wrapper">
+            <div *ngIf="!benefits" class="benefits-wrapper">
                 <img class="decor-img"
                     src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/decor%2Fdecor-img-6.svg?alt=media&token=8bc059eb-ca21-41b6-a856-9b93a4962808&_gl=1*19x35er*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjE2MjgyMy4yOTYuMS4xNjk2MTYyOTg1LjQ3LjAuMA.."
                     alt="">
 
                 <div class="row benefits-row hide-on-mobile justify-content-center ">
+
                     <div class="col-xl-3 col-md-6">
                         <div class="benefits-item">
                             <div class="benefits-img">
@@ -63,6 +64,48 @@
                     </div>
                 </div>
             </div>
+            <ngx-slick-carousel *ngIf="benefits" class="swiper-slide" #slickModal="slick-carousel"
+                [config]="benefitsConfig">
+                <div ngxSlickItem class="benefits-item">
+                    <div class="benefits-img">
+                        <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/benefits-img-1.svg" alt="">
+                    </div>
+                    <div class="title h5">
+                        Італійські продукти найвищої якості </div>
+                    <div class="benefits-info">
+                        МА імпортує продукти топових європейських брендів </div>
+                </div>
+
+                <div ngxSlickItem class="benefits-item">
+                    <div class="benefits-img">
+                        <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/benefits-img-2.svg" alt="">
+                    </div>
+                    <div class="title h5">
+                        Неймовірний смак та&nbsp;хрустка скоринка </div>
+                    <div class="benefits-info">
+                        МА готує тісто для піци лише на італійському борошні Caputo </div>
+                </div>
+
+                <div ngxSlickItem class="benefits-item">
+                    <div class="benefits-img">
+                        <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/benefits-img-3.svg" alt="">
+                    </div>
+                    <div class="title h5">
+                        Професійні кухарі та&nbsp;піцейоли майстри своєї справи </div>
+                    <div class="benefits-info">
+                        У МА працюють найкращі! Вболіваємо за розвиток кожного працівника! </div>
+                </div>
+
+                <div ngxSlickItem class="benefits-item">
+                    <div class="benefits-img">
+                        <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/benefits-img-4.svg" alt="">
+                    </div>
+                    <div class="title h5">
+                        Безкоштовна та&nbsp;швидка доставка у будь-який куточок Львова </div>
+                    <div class="benefits-info">
+                        Середній час доставки у зеленій зоні – 29 хв. </div>
+                </div>
+            </ngx-slick-carousel>
         </div>
 
         <div class="container">
@@ -161,7 +204,7 @@
 
     <!-- Форма вакансії -->
     <div class="form_block">
-        <div class="h2_title">
+        <div class="h2_title head">
             Любов з першого шматочка
         </div>
         <div class="contacts-block">
@@ -254,21 +297,22 @@
 
                         <div class="upload-wrapper" data-placeholder="Файл не вибрано">
                             <span class="wpcf7-form-control-wrap" data-name="file">
-                                <input #fileInput size="40" class="wpcf7-form-control wpcf7-file" (change)="onFileChange($event)"
-                                    accept=".pdf,.xlsx,.xls,.doc,.docx" aria-invalid="false" type="file" name="file">
+                                <input #fileInput size="40" class="wpcf7-form-control wpcf7-file"
+                                    (change)="onFileChange($event)" accept=".pdf,.xlsx,.xls,.doc,.docx"
+                                    aria-invalid="false" type="file" name="file">
                             </span>
 
                             <div class="file-name" (click)="openFileInput()">
-                               <span>Прикріпити файл</span>
+                                <span>Прикріпити файл</span>
                             </div>
                             <svg class="upload-icon" width="19" height="20" viewBox="0 0 19 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                             <path
-                                        d="M17.8666 9.20835L10.2082 16.8667C9.27005 17.8049 7.99757 18.332 6.67075 18.332C5.34393 18.332 4.07145 17.8049 3.13325 16.8667C2.19505 15.9285 1.66797 14.656 1.66797 13.3292C1.66797 12.0024 2.19505 10.7299 3.13325 9.79168L10.7916 2.13335C11.4171 1.50788 12.2654 1.15649 13.1499 1.15649C14.0345 1.15649 14.8828 1.50788 15.5082 2.13335C16.1337 2.75882 16.4851 3.60713 16.4851 4.49168C16.4851 5.37623 16.1337 6.22455 15.5082 6.85002L7.84158 14.5083C7.52885 14.8211 7.10469 14.9968 6.66242 14.9968C6.22014 14.9968 5.79598 14.8211 5.48325 14.5083C5.17051 14.1956 4.99482 13.7715 4.99482 13.3292C4.99482 12.8869 5.17051 12.4627 5.48325 12.15L12.5582 5.08335"
-                                        stroke="#E20613" stroke-width="1.5" stroke-linecap="round"
-                                        stroke-linejoin="round"></path>
-                             </svg>
-                           
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.8666 9.20835L10.2082 16.8667C9.27005 17.8049 7.99757 18.332 6.67075 18.332C5.34393 18.332 4.07145 17.8049 3.13325 16.8667C2.19505 15.9285 1.66797 14.656 1.66797 13.3292C1.66797 12.0024 2.19505 10.7299 3.13325 9.79168L10.7916 2.13335C11.4171 1.50788 12.2654 1.15649 13.1499 1.15649C14.0345 1.15649 14.8828 1.50788 15.5082 2.13335C16.1337 2.75882 16.4851 3.60713 16.4851 4.49168C16.4851 5.37623 16.1337 6.22455 15.5082 6.85002L7.84158 14.5083C7.52885 14.8211 7.10469 14.9968 6.66242 14.9968C6.22014 14.9968 5.79598 14.8211 5.48325 14.5083C5.17051 14.1956 4.99482 13.7715 4.99482 13.3292C4.99482 12.8869 5.17051 12.4627 5.48325 12.15L12.5582 5.08335"
+                                    stroke="#E20613" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </svg>
+
                             <div class="allowed">
                                 <p>до 3 Мб | pdf / doc / xls</p>
                             </div>

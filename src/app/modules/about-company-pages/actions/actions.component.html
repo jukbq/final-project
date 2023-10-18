@@ -3,7 +3,7 @@
         <h1>Акції</h1>
 
 
-        <ul class="action_list">
+        <ul *ngIf="!disableBlock" class="action_list">
             <li>
                 <div class="action_block">
                     <a class="news-img" (click)="actionInfo('Бонусна програма')">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </li>
-            <li *ngFor="let actions of actions; let i = index">
+            <li  *ngFor="let actions of actions; let i = index">
                 <div *ngIf="i % 2 === 0" class="action_block">
                     <div class="news-content">
                         <a (click)="actionInfo(actions)">
@@ -68,8 +68,97 @@
                     </div>
                 </div>
             </li>
+            <li  *ngFor="let actions of actions; let i = index">
+                <div *ngIf="i % 2 === 0" class="action_block">
+                    <div class="news-content">
+                        <a (click)="actionInfo(actions)">
+                            <h3>{{actions.title}}</h3>
+                        </a>
+                        <div class="text">
+                            <p>{{actions.description}}</p>
+                        </div>
+                        <a class="btn-link" (click)="actionInfo(actions)">
+                            <span>Дізнатись більше</span>
+                            <i></i>
+                        </a>
+                    </div>
+                    <a class="news-img" (click)="actionInfo(actions)">
+                        <img src="{{actions.images}}" alt="">
+                    </a>
+                </div>
+                <div *ngIf="i % 2 !== 0" class="action_block">
+                    <a class="news-img" (click)="actionInfo(actions)">
+                        <img src="{{actions.images}}" alt="">
+                    </a>
+            
+                    <div class="news-content">
+                        <a (click)="actionInfo(actions)">
+                            <h3>{{actions.title}}</h3>
+                        </a>
+                        <div class="text">
+                            <p>{{actions.description}}</p>
+                        </div>
+                        <a class="btn-link" (click)="actionInfo(actions)">
+                            <span>Дізнатись більше</span>
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
         </ul>
 
+        <ul *ngIf="disableBlock" class="action_list">
+            <li>
+                <div class="action_block">
+                    <a class="news-img" (click)="actionInfo('Бонусна програма')">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/final-project-393613.appspot.com/o/About%20the%20company%2Fphoto_2023-05-29_13-13-00-734x415.jpg?alt=media&token=1e51fcb0-0c25-49e6-820d-9b33106b2166&_gl=1*ibr2vw*_ga*MzkwMTAyNDg5LjE2ODc3NzIwMTI.*_ga_CW55HF8NVT*MTY5NjQyOTgxMy4zMTEuMS4xNjk2NDMyMjIwLjQ1LjAuMA.."
+                            alt="">
+                    </a>
+                    <div class="news-content">
+                        <a (click)="actionInfo('Бонусна програма')">
+                            <h3>Бонусна програма</h3>
+                        </a>
+                        <div class="text">
+                            <p>У нас є приголомшлива бонусна програма для вас, завдяки якій ви можете отримувати кешбек
+                                (бонуси) за
+                                покупки на сайті. Бонуси ви зможете використати для оплати своїх наступних замовлень на
+                                сайті.
+                                Використовуйте всі переваги нашої бонусної програми! Пройдіть реєстрацію або увійдіть в
+                                особистий
+                                кабінет, щоб накопичувати бонуси та використовувати за покупки на сайті. ✅ Накопичуєте
+                                3% […]</p>
+                        </div>
+                        <a class="btn-link" (click)="actionInfo('Бонусна програма')">
+                            <span>Дізнатись більше</span>
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li *ngFor="let actions of actions; let i = index">
+                <div class="action_block">
+                    <a class="news-img" (click)="actionInfo(actions)">
+                        <img src="{{actions.images}}" alt="">
+                    </a>
+                  
+                    <div class="news-content">
+                        <a (click)="actionInfo(actions)">
+                            <h3>{{actions.title}}</h3>
+                        </a>
+                        <div class="text">
+                            <p>{{actions.description}}</p>
+                        </div>
+                        <a class="btn-link" (click)="actionInfo(actions)">
+                            <span>Дізнатись більше</span>
+                            <i></i>
+                        </a>
+                    </div>
+                  
+                </div>
+             
+            </li>
+        
+        </ul>
 
     </div>
 

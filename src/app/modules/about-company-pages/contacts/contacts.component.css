@@ -213,6 +213,70 @@ section .form_block .contacts-block .faq-form form .batton_group .btn {
   margin-top: 0px;
 }
 
+@media (max-width: 1028px) {
+  section .form_block {
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 5px;
+  }
+  section .form_block .h2_title {
+    margin: 0 auto;
+  }
+  section .form_block .h2_title::before {
+    content: none;
+  }
+  section .form_block .head {
+    display: none;
+  }
+  section .form_block .contacts-block {
+    width: 100%;
+    border: none;
+    border-radius: 0px;
+    flex-direction: column;
+    padding: 0px;
+    box-shadow: none;
+    margin-top: 0px;
+  }
+  section .form_block .contacts-block .decor-img {
+    display: none;
+  }
+  section .form_block .contacts-block .contacts-wrapper {
+    width: 100%;
+    padding: 0px 20px;
+    border: 1px solid #D1D9CE;
+    border-radius: 16px;
+  }
+  section .form_block .contacts-block .contacts-wrapper .contact-item {
+    padding: 15px 0;
+    border-top: 1px solid #D1D9CE;
+  }
+  section .form_block .contacts-block .contacts-wrapper .contact {
+    border-top: none;
+  }
+  section .form_block .contacts-block .faq-form {
+    width: 100%;
+    border-left: none;
+    border: 1px solid #D1D9CE;
+    border-radius: 16px;
+    padding: 20px 30px 30px;
+    margin-top: 40px;
+  }
+}
+@media (max-width: 780px) {
+  section .form_block .h2_title {
+    font-size: 22px;
+  }
+}
+@media (max-width: 524px) {
+  section .form_block .contacts-block .faq-form form .form-group .user_data {
+    width: 100%;
+    flex-direction: column;
+  }
+  section .form_block .contacts-block .faq-form form .form-group .user_data input {
+    width: 100%;
+    margin-top: 16px;
+  }
+}
 input,
 textarea {
   padding: 0px 15px;

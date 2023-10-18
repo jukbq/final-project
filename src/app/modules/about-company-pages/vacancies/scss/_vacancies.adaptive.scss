@@ -1,0 +1,296 @@
+@media (max-width: 1028px) {
+    section {
+        margin-top: 40px;
+
+        .banner-align {
+            height: 320px;
+
+            .banner_title {
+                font-size: 26px;
+            }
+        }
+
+        .vacancy {
+            width: 100%;
+            margin-top: 73px;
+
+            .decor-img {
+                display: none;
+            }
+
+            .h2_title {
+                font-size: 26px;
+                margin-bottom: 10px;
+
+                &::before {
+                    content: none;
+                }
+            }
+
+            .our_vacancies {
+                flex-wrap: wrap;
+
+
+                .benefits-item {
+                    width: 48%;
+                    padding: 15px 10px;
+                    margin-top: 33px;
+
+                    .benefits-img img {
+                        max-width: 36px;
+                        max-height: 36px
+                    }
+
+                    .title {
+                        font-size: 18px;
+                        line-height: 1.3em;
+                        font-weight: 600;
+                        color: var(--clr-black);
+                    }
+                }
+            }
+
+            .vacancy-row {
+                flex-wrap: wrap;
+
+
+
+                .vacancy-item {
+                    width: 48%;
+
+                    .vacancy-img {
+                        height: 255px;
+
+                    }
+
+                }
+
+            }
+
+            .advantages-row {
+                flex-wrap: wrap;
+
+                .advantages-item {
+                    width: 48%;
+                    margin-bottom: 40px;
+
+
+                    .advantages-img {
+                        height: 255px;
+                        align-items: center;
+
+                        img {
+                            height: 100%;
+                        }
+
+
+                    }
+
+                    .advantages-info {
+                        padding: 10px 5px 15px;
+
+                        .h5 {
+                            font-size: 18px;
+
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .form_block {
+            width: 70%;
+            margin-top: 40px;
+            margin-bottom: 5px;
+
+
+
+            .h2_title {
+                margin: 0 auto;
+
+
+                &::before {
+                    content: none;
+                }
+
+            }
+
+            .head {
+                display: none;
+            }
+
+            .contacts-block {
+                width: 100%;
+                border: none;
+                border-radius: 0px;
+                flex-direction: column;
+                padding: 0px;
+                box-shadow: none;
+                margin-top: 0px;
+
+                .decor-img {
+                    display: none;
+                }
+
+                .contacts-wrapper {
+                    width: 100%;
+                    padding: 0px 20px;
+                    border: 1px solid #D1D9CE;
+                    border-radius: 16px;
+
+                    .contact-item {
+                        padding: 15px 0;
+                        border-top: 1px solid #D1D9CE;
+                    }
+
+                    .contact {
+                        border-top: none;
+                    }
+                }
+
+                .faq-form {
+                    width: 100%;
+                    border-left: none;
+                    border: 1px solid #D1D9CE;
+                    border-radius: 16px;
+                    padding: 20px 30px 30px;
+                    margin-top: 40px;
+                }
+            }
+        }
+
+    }
+}
+
+
+@media (max-width: 780px) {
+    section {
+
+        .banner-align {
+            height: 395px;
+            overflow: visible;
+
+            .banner_title {
+                color: black;
+                bottom: -60px;
+            }
+        }
+
+        .vacancy {
+
+
+            .vacancy-row {
+                flex-wrap: wrap;
+
+
+
+                .vacancy-item {
+                    .vacancy-img {
+                        height: 185px;
+                    }
+                }
+
+            }
+
+            .advantages-row {
+
+                .advantages-item {
+                    box-shadow: none;
+
+                    .advantages-img {
+                        height: 185px;
+                    }
+                }
+            }
+
+        }
+
+        .form_block {
+            width: 100%;
+
+            .h2_title {
+                font-size: 22px;
+            }
+        }
+
+    }
+}
+
+@media (max-width: 524px) {
+
+    section {
+
+        .banner-align {
+            height: 230px;
+
+
+            .banner_title {
+                color: black;
+                bottom: -60px;
+            }
+        }
+
+        .vacancy {
+            .swiper-slide {
+                flex-shrink: 0;
+                width: 100%;
+                height: auto;
+                position: relative;
+                transition-property: transform;
+
+                .benefits-item {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    border: 1px solid #d1d9ce;
+                    border-radius: 25px;
+                    padding: 15px 10px;
+
+                    .benefits-img {
+                        margin-bottom: 10px;
+                    }
+
+                    .title {
+                        font-size: 18px;
+                        line-height: 1.3em;
+                        margin-bottom: 5px;
+                        font-weight: 600;
+                        color: var(--clr-black);
+                    }
+
+
+                }
+
+
+            }
+
+            .vacancy-row {
+                flex-wrap: wrap;
+
+
+
+                .vacancy-item {
+                    width: 100%;
+
+                    .vacancy-img {
+                        height: 225px;
+                    }
+                }
+
+            }
+
+            .advantages-row {
+                .advantages-item {
+                    width: 100%;
+
+                    .advantages-img {
+                        height: 225px;
+                    }
+                }
+            }
+
+        }
+    }
+}

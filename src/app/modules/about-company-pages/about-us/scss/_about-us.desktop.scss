@@ -81,8 +81,6 @@ section {
                     max-height: 240px;
                     transform: translate3d(0px, 16px, 0px);
                 }
-
-
             }
 
             .block-wrapper {
@@ -148,6 +146,7 @@ section {
                 width: 823;
                 height: 688;
                 margin: 0 auto;
+                border-radius: 16px;
             }
         }
 
@@ -435,3 +434,5 @@ section {
         }
     }
 }
+
+

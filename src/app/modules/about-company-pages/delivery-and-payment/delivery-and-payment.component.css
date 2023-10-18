@@ -72,3 +72,55 @@ section .container .map img {
      object-fit: cover;
   border-radius: 16px;
 }
+
+@media (max-width: 1028px) {
+  section {
+    margin-top: 0px;
+  }
+  section .container {
+    width: 100%;
+  }
+  section .container .title {
+    font-size: 30px;
+  }
+  section .container .title::before {
+    content: none;
+  }
+  section .container .terms-delivery-row {
+    margin-top: 20px;
+  }
+  section .container .terms-delivery-row .delivery-item,
+  section .container .terms-delivery-row .payment-item {
+    padding: 20px 20px;
+  }
+  section .container .map {
+    height: 400px;
+  }
+}
+@media (max-width: 780px) {
+  section .container .terms-delivery-row {
+    margin-top: 16px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  section .container .terms-delivery-row .delivery-item,
+  section .container .terms-delivery-row .payment-item {
+    width: 75%;
+    margin-top: 16px;
+  }
+  section .container .map {
+    height: 380px;
+  }
+}
+@media (max-width: 524px) {
+  section .container .title {
+    font-size: 24px;
+  }
+  section .container .terms-delivery-row .delivery-item,
+  section .container .terms-delivery-row .payment-item {
+    width: 100%;
+    box-shadow: none;
+    padding: 15px;
+  }
+}

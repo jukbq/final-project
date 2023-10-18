@@ -124,6 +124,7 @@ section .info_block .video_block img {
   width: 823;
   height: 688;
   margin: 0 auto;
+  border-radius: 16px;
 }
 section .form_block {
   width: 80%;
@@ -349,6 +350,208 @@ section .form_block .contacts-block .faq-form form .batton_group .btn {
   margin-top: 0px;
 }
 
+@media (max-width: 1028px) {
+  section .banner {
+    height: 320px;
+  }
+  section .banner .banner_img .banner_title {
+    font-size: 26px;
+  }
+  section .info_block .container .benefits-wrapper .decor-img {
+    display: none;
+  }
+  section .info_block .container .block-wrapper {
+    height: 375px;
+  }
+  section .info_block .container .block-wrapper .block-info {
+    padding: 0 10px;
+  }
+  section .info_block .container .block-wrapper .block-info .title {
+    margin-bottom: 10px;
+  }
+  section .info_block .container .block-wrapper .block-info .text {
+    font-size: 16px;
+  }
+  section .info_block .video_block .h2_title {
+    text-align: center;
+  }
+  section .info_block .video_block .h2_title::before {
+    content: none;
+  }
+  section .info_block .video_block video {
+    margin: 0 auto;
+  }
+  section .form_block {
+    width: 100%;
+    margin-top: 120px;
+    margin-bottom: 5px;
+  }
+  section .form_block .h2_title {
+    margin: 0 auto;
+  }
+  section .form_block .h2_title::before {
+    content: none;
+  }
+  section .form_block .head {
+    margin-bottom: 100px;
+  }
+  section .form_block .contacts-block {
+    width: 100%;
+    border: none;
+    border-radius: 0px;
+    flex-direction: column;
+    padding: 0px;
+    box-shadow: none;
+    margin-top: 0px;
+  }
+  section .form_block .contacts-block .decor-img {
+    display: none;
+  }
+  section .form_block .contacts-block .contacts-wrapper {
+    width: 100%;
+    padding: 0px 20px;
+    border: 1px solid #D1D9CE;
+    border-radius: 16px;
+  }
+  section .form_block .contacts-block .contacts-wrapper .contact-item {
+    padding: 15px 0;
+    border-top: 1px solid #D1D9CE;
+  }
+  section .form_block .contacts-block .contacts-wrapper .contact {
+    border-top: none;
+  }
+  section .form_block .contacts-block .faq-form {
+    width: 100%;
+    border-left: none;
+    border: 1px solid #D1D9CE;
+    border-radius: 16px;
+    padding: 20px 30px 30px;
+    margin-top: 40px;
+  }
+}
+@media (max-width: 780px) {
+  section .banner {
+    height: 390px;
+  }
+  section .banner .banner_img .banner_title {
+    bottom: -55px;
+    color: var(--clr-black);
+    font-size: 26px;
+  }
+  section .info_block .container .block-wrapper {
+    height: auto;
+    flex-direction: column;
+  }
+  section .info_block .container .block-wrapper .block-info {
+    padding: 0 10px;
+    order: 2;
+  }
+  section .info_block .container .block-wrapper .block-info .title {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  section .info_block .container .block-wrapper .block-info .text {
+    font-size: 16px;
+  }
+  section .info_block .container .block-wrapper .block-img {
+    width: 100%;
+    height: 360px;
+    order: 1;
+  }
+  section .info_block .video_block .h2_title {
+    font-size: 22px;
+    text-align: center;
+  }
+  section .info_block .video_block .h2_title::before {
+    content: none;
+  }
+  section .info_block .video_block video {
+    width: 100%;
+    height: 390px;
+    margin: 0 auto;
+  }
+  section .info_block .video_block img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+  section .form_block .h2_title {
+    font-size: 22px;
+  }
+}
+@media (max-width: 524px) {
+  section .banner {
+    height: 225px;
+  }
+  section .info_block .container .swiper-slide {
+    flex-shrink: 0;
+    width: 95%;
+    height: auto;
+    position: relative;
+    transition-property: transform;
+  }
+  section .info_block .container .swiper-slide .benefits-item {
+    border: 1px solid #d1d9ce;
+    border-radius: 25px;
+    padding: 15px 20px;
+  }
+  section .info_block .container .swiper-slide .benefits-item .benefits-img {
+    margin-bottom: 10px;
+  }
+  section .info_block .container .swiper-slide .benefits-item .title {
+    font-size: 18px;
+    line-height: 1.3em;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--clr-black);
+  }
+  section .info_block .container .swiper-slide .benefits-item .benefits-info {
+    line-height: 1.3em;
+    font-size: 16px;
+    color: var(--clr-grey);
+  }
+  section .info_block .container .block-wrapper .block-info {
+    padding: 0 10px;
+    order: 2;
+  }
+  section .info_block .container .block-wrapper .block-info h2 {
+    margin-bottom: 10px;
+  }
+  section .info_block .container .block-wrapper .block-info .text {
+    font-size: 16px;
+  }
+  section .info_block .container .block-wrapper .block-img {
+    width: 100%;
+    height: 220px;
+    order: 1;
+  }
+  section .info_block .container .video_block .h2_title {
+    text-align: center;
+  }
+  section .info_block .container .video_block .h2_title::before {
+    content: none;
+  }
+  section .info_block .container .video_block video {
+    width: 100%;
+    height: 230px;
+    margin: 0 auto;
+  }
+  section .info_block .container .video_block img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+  section .form_block .contacts-block .faq-form form .form-group .user_data {
+    width: 100%;
+    flex-direction: column;
+  }
+  section .form_block .contacts-block .faq-form form .form-group .user_data input {
+    width: 100%;
+    margin-top: 16px;
+  }
+}
 input,
 textarea {
   padding: 0px 15px;
