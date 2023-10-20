@@ -37,7 +37,7 @@ export class AdditionalProductsComponent {
     private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA)
     public data: { productID: any }
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const customer = JSON.parse(localStorage.getItem('curentUser') as string);
@@ -255,10 +255,12 @@ export class AdditionalProductsComponent {
       good.newPrice = true;
       good.priceTogether = good.price * good.count;
       good.bonusTogether = good.bonus * good.count;
+      this.bonus = good.bonusTogether
     } else if (!value && good.count > 1) {
       --good.count;
       good.priceTogether -= good.price;
       good.bonusTogether -= good.bonus;
+      this.bonus = good.bonusTogether
     }
   }
   // Додавання товару до кошика

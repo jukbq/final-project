@@ -72,7 +72,6 @@ export class ProductInfoComponent {
         .getOneFavoriteProduct(this.uid, this.productId)
         .subscribe((favoriteProduct) => {
           if (favoriteProduct !== null) {
-            // Якщо продукт є у списку улюблених, додайте його до favoriteProducts
             this.favoriteProducts.push(this.productId);
           }
         });
@@ -246,11 +245,14 @@ export class ProductInfoComponent {
       good.newPrice = true;
       good.priceTogether = good.price * good.count;
       good.bonusTogether = good.bonus * good.count;
+      this.bonus = good.bonusTogether
     } else if (!value && good.count > 1) {
       --good.count;
       good.priceTogether -= good.price;
       good.bonusTogether -= good.bonus;
+      this.bonus = good.bonusTogether
     }
+
   }
   //
 
