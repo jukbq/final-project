@@ -7,6 +7,6 @@ export const environment = {
     projectId: 'final-project-393613',
     storageBucket: 'final-project-393613.appspot.com',
     messagingSenderId: '1081720963205',
-    appId: '1:1081720963205:web:c976203b90a6b2c94e29ec',
+    appId: '1:1081720963205:web:c50230bda6820f1c4e29ec',
   },
 }; 

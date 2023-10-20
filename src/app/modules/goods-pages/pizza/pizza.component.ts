@@ -44,7 +44,7 @@ export class PizzaComponent {
     private afs: Firestore,
     private favoritesService: FavoritesService,
     private viewportScroller: ViewportScroller
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Підписка на подію кліку в хедері
@@ -272,7 +272,7 @@ export class PizzaComponent {
     slidesToScroll: 1,
     infinite: true,
     fade: true,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 3000,
     dots: true,
     arrows: true,

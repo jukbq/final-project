@@ -55,12 +55,15 @@ export class ProductInfoComponent {
     public dialog: MatDialog,
     private router: Router,
     private viewportScroller: ViewportScroller
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const customer = JSON.parse(localStorage.getItem('curentUser') as string);
-    this.uid = customer.uid;
-    this.user = customer.role;
+    if (customer) {
+      this.uid = customer.uid;
+      this.user = customer.role;
+
+    }
     const productIdParam = this.route.snapshot.paramMap.get('id');
     this.productName = '';
     if (productIdParam !== null) {
@@ -88,6 +91,8 @@ export class ProductInfoComponent {
       this.productPrice = this.productData.price;
       this.productCount = this.productData.count;
       this.addProdId = this.productData!.selectAddProduct;
+      console.log(this.productName);
+
       if (this.productName === 'desserts' || this.productName === 'drinks') {
         this.noCategory = false;
       }
@@ -106,7 +111,7 @@ export class ProductInfoComponent {
       }
       this.calcTotalPrice();
       this.getMenuProducts();
-    } catch (error) {}
+    } catch (error) { }
   }
 
   //Завантаження додаткового товару
