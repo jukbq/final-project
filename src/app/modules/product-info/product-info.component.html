@@ -99,7 +99,7 @@
 
                     <ul class="ing_row">
 
-                        <li *ngFor="let ing of additionalProducts,  let i = index" class="ingredient"
+                        <li  *ngFor="let ing of additionalProducts,  let i = index" class="ingredient"
                             [ngClass]="{ 'active': isActive(i) }">
 
                             <div class="ing_card" (click)="toggleActive(i)">
@@ -146,11 +146,10 @@
 
                     <div class="w-100"></div>
 
-                    <div class="thumb-input-number">
+                    <div class="thumb-input-number"  *ngIf="productData">
                         <button (click)="quantity_goods(productData, false)" type="button" class="decrement"
                             data-key="">-</button>
-                        <input [value]="productData.count" class="product-qty" value="1" readonly="" tabindex="-1"
-                            max="" data-id="640" data-key="">
+                        <input  [value]="productData.count" class="product-qty" value="1">
                         <button (click)="quantity_goods(productData, true)" type="button" class="increment"
                             data-key="">+</button>
                     </div>

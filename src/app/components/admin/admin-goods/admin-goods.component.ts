@@ -53,7 +53,7 @@ export class AdminGoodsComponent {
     private menuService: MenuService,
     private storsge: Storage,
     private addProdService: AdditionalProductsService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.initGoodForm();
@@ -88,7 +88,7 @@ export class AdminGoodsComponent {
       priceTogether: 0,
       bonus: this.bonusControl,
       bonusTogether: 0,
-      count: 1,
+      count: [1],
       addProducts: [],
       selectAddProduct: [],
     });

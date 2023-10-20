@@ -88,15 +88,11 @@ export class ProductInfoComponent {
       );
       this.productName = this.productData.menu.menuLink;
       this.productPrice = this.productData.price;
-      this.productCount = this.productData.count;
       this.addProdId = this.productData!.selectAddProduct;
-      console.log(this.productName);
 
       if (this.productName === 'desserts' || this.productName === 'drinks') {
         this.noCategory = false;
       }
-      console.log(this.addProdId);
-
       if (
         this.productName === 'pizza' &&
         Array.isArray(this.addProdId) &&
@@ -245,13 +241,12 @@ export class ProductInfoComponent {
       good.newPrice = true;
       good.priceTogether = good.price * good.count;
       good.bonusTogether = good.bonus * good.count;
-      this.bonus = good.bonusTogether
     } else if (!value && good.count > 1) {
       --good.count;
       good.priceTogether -= good.price;
       good.bonusTogether -= good.bonus;
-      this.bonus = good.bonusTogether
     }
+    this.calcTotalPrice();
 
   }
   //
