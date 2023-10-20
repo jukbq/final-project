@@ -41,8 +41,11 @@ export class AdditionalProductsComponent {
 
   ngOnInit(): void {
     const customer = JSON.parse(localStorage.getItem('curentUser') as string);
-    this.uid = customer.uid;
-    this.user = customer.role;
+    if (customer) {
+      this.uid = customer.uid;
+      this.user = customer.role;
+
+    }
     this.productID = this.data.productID;
     console.log(this.productID);
 
