@@ -43,6 +43,7 @@ export class HeaderComponent {
   public count = 0;
 
 
+
   constructor(
     private el: ElementRef,
     private router: Router,
@@ -109,7 +110,6 @@ export class HeaderComponent {
 
   // Вибір пункту меню
   onSelectItem(item: string): void {
-
     this.menuLink = item;
     this.headerService.emitHeaderClick(item);
     if (item !== 'pizza') {
