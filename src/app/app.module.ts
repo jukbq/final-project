@@ -89,7 +89,6 @@ import { OrderByPipe } from './shared/pipe/sort';
     provideMessaging(() => getMessaging()),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
-    BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     ToastrModule.forRoot(),
     providePerformance(() => getPerformance()),
@@ -98,7 +97,7 @@ import { OrderByPipe } from './shared/pipe/sort';
     SlickCarouselModule,
     SharedModule,
   ],
-  providers: [ ScreenTrackingService, UserTrackingService, HeaderService, ],
+  providers: [ScreenTrackingService, UserTrackingService, HeaderService,],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

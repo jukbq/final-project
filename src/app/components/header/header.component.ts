@@ -52,7 +52,7 @@ export class HeaderComponent {
     private afs: Firestore,
     private favoritesService: FavoritesService,
     private viewportScroller: ViewportScroller
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.changeUserUrl();
@@ -109,7 +109,7 @@ export class HeaderComponent {
 
   // Вибір пункту меню
   onSelectItem(item: string): void {
-   
+
     this.menuLink = item;
     this.headerService.emitHeaderClick(item);
     if (item !== 'pizza') {
@@ -119,7 +119,7 @@ export class HeaderComponent {
 
   // Анімація активного стану гамбургера
   hamburger_active() {
-       const headerTop = this.el.nativeElement.querySelector('.header-top');
+    const headerTop = this.el.nativeElement.querySelector('.header-top');
     const headerMenuList = this.el.nativeElement.querySelector('.menu-list');
     const hamburgerInner =
       this.el.nativeElement.querySelector('.hamburger-inner');
@@ -207,6 +207,7 @@ export class HeaderComponent {
       this.activeUserMenu = !this.activeUserMenu;
     }
   }
+
   closrUserMenu() {
     this.activeUserMenu = false;
   }

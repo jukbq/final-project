@@ -92,12 +92,4 @@ describe('FooterComponent', () => {
 
     expect(routerLinkAttribute).toBeDefined();
   });
-
-
-
-
-
-
-
-
 });

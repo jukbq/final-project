@@ -24,7 +24,7 @@ export class SignupComponent {
     private afs: Firestore,
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<SignupComponent>
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.logFormInit();
@@ -54,7 +54,7 @@ export class SignupComponent {
       this.enailSighUp(email, password)
         .then(() => {
           console.log('Користувача успішно зареэстровано');
-                this.active();
+          this.active();
         })
         .catch((e) => {
           console.log('Корситувача з такою адресою вже зареєстровано');
@@ -79,10 +79,10 @@ export class SignupComponent {
       role: 'USER',
       userBonus: 0,
     };
-     await setDoc(doc(this.afs, 'users', userReg.user.uid), user);
+    await setDoc(doc(this.afs, 'users', userReg.user.uid), user);
     localStorage.setItem('curentUser', JSON.stringify(user));
-  
-    
+
+
   }
 
   active(): void {
