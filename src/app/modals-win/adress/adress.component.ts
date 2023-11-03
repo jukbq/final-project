@@ -31,7 +31,7 @@ export class AdressComponent {
     public dialogRef: MatDialogRef<AdressComponent>,
     @Inject(MAT_DIALOG_DATA)
     public data: { action: 'add' | 'edit'; id?: number }
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (this.data.action == 'edit') {
@@ -40,7 +40,6 @@ export class AdressComponent {
       this.userAddressInfo();
     } else {
       this.addressFormInit();
-      console.log(this.data.action);
     }
   }
 
@@ -104,25 +103,25 @@ export class AdressComponent {
     this.dialogRef.close();
   }
   editAddress() {
-  const updatedAddress = {
-    type: this.addressForn.value.type,
-    city: this.addressForn.value.city,
-    street: this.addressForn.value.street,
-    houseNumber: this.addressForn.value.houseNumber,
-    entrance: this.addressForn.value.entrance,
-    floor: this.addressForn.value.floor,
-    apartment: this.addressForn.value.apartment,
-  };
+    const updatedAddress = {
+      type: this.addressForn.value.type,
+      city: this.addressForn.value.city,
+      street: this.addressForn.value.street,
+      houseNumber: this.addressForn.value.houseNumber,
+      entrance: this.addressForn.value.entrance,
+      floor: this.addressForn.value.floor,
+      apartment: this.addressForn.value.apartment,
+    };
 
-  const currentUser = JSON.parse(localStorage.getItem('curentUser') || '{}');
-  if (this.data.id !== undefined) {
-    const index = this.data.id;
-     if (index >= 0 && index < currentUser.address.length) {
-      currentUser.address[index] = updatedAddress;
-       localStorage.setItem('curentUser', JSON.stringify(currentUser));
-            this.dialogRef.close();
+    const currentUser = JSON.parse(localStorage.getItem('curentUser') || '{}');
+    if (this.data.id !== undefined) {
+      const index = this.data.id;
+      if (index >= 0 && index < currentUser.address.length) {
+        currentUser.address[index] = updatedAddress;
+        localStorage.setItem('curentUser', JSON.stringify(currentUser));
+        this.dialogRef.close();
+      }
     }
   }
-}
 
 }
